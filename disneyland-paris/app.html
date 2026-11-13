@@ -3,7 +3,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Manrope:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 <style>
+ .leaflet-pane, .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-tile-container, .leaflet-pane > svg, .leaflet-pane > canvas, .leaflet-zoom-box, .leaflet-image-layer, .leaflet-layer { position: absolute; left: 0; top: 0; } .leaflet-container { overflow: hidden; } .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow { -webkit-user-select: none; -moz-user-select: none; user-select: none; -webkit-user-drag: none; } .leaflet-tile::selection { background: transparent; } .leaflet-safari .leaflet-tile { image-rendering: -webkit-optimize-contrast; } .leaflet-safari .leaflet-tile-container { width: 1600px; height: 1600px; -webkit-transform-origin: 0 0; } .leaflet-marker-icon, .leaflet-marker-shadow { display: block; } .leaflet-container .leaflet-overlay-pane svg { max-width: none !important; max-height: none !important; } .leaflet-container .leaflet-marker-pane img, .leaflet-container .leaflet-shadow-pane img, .leaflet-container .leaflet-tile-pane img, .leaflet-container img.leaflet-image-layer, .leaflet-container .leaflet-tile { max-width: none !important; max-height: none !important; width: auto; padding: 0; } .leaflet-container img.leaflet-tile { mix-blend-mode: plus-lighter; } .leaflet-container.leaflet-touch-zoom { -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; } .leaflet-container.leaflet-touch-drag { -ms-touch-action: pinch-zoom; touch-action: none; touch-action: pinch-zoom; } .leaflet-container.leaflet-touch-drag.leaflet-touch-zoom { -ms-touch-action: none; touch-action: none; } .leaflet-container { -webkit-tap-highlight-color: transparent; } .leaflet-container a { -webkit-tap-highlight-color: rgba(51, 181, 229, 0.4); } .leaflet-tile { filter: inherit; visibility: hidden; } .leaflet-tile-loaded { visibility: inherit; } .leaflet-zoom-box { width: 0; height: 0; -moz-box-sizing: border-box; box-sizing: border-box; z-index: 800; } .leaflet-overlay-pane svg { -moz-user-select: none; } .leaflet-pane { z-index: 400; } .leaflet-tile-pane { z-index: 200; } .leaflet-overlay-pane { z-index: 400; } .leaflet-shadow-pane { z-index: 500; } .leaflet-marker-pane { z-index: 600; } .leaflet-tooltip-pane { z-index: 650; } .leaflet-popup-pane { z-index: 700; } .leaflet-map-pane canvas { z-index: 100; } .leaflet-map-pane svg { z-index: 200; } .leaflet-vml-shape { width: 1px; height: 1px; } .lvml { behavior: none; display: inline-block; position: absolute; } .leaflet-control { position: relative; z-index: 800; pointer-events: visiblePainted; pointer-events: auto; } .leaflet-top, .leaflet-bottom { position: absolute; z-index: 1000; pointer-events: none; } .leaflet-top { top: 0; } .leaflet-right { right: 0; } .leaflet-bottom { bottom: 0; } .leaflet-left { left: 0; } .leaflet-control { float: left; clear: both; } .leaflet-right .leaflet-control { float: right; } .leaflet-top .leaflet-control { margin-top: 10px; } .leaflet-bottom .leaflet-control { margin-bottom: 10px; } .leaflet-left .leaflet-control { margin-left: 10px; } .leaflet-right .leaflet-control { margin-right: 10px; } .leaflet-fade-anim .leaflet-popup { opacity: 0; -webkit-transition: opacity 0.2s linear; -moz-transition: opacity 0.2s linear; transition: opacity 0.2s linear; } .leaflet-fade-anim .leaflet-map-pane .leaflet-popup { opacity: 1; } .leaflet-zoom-animated { -webkit-transform-origin: 0 0; -ms-transform-origin: 0 0; transform-origin: 0 0; } svg.leaflet-zoom-animated { will-change: transform; } .leaflet-zoom-anim .leaflet-zoom-animated { -webkit-transition: -webkit-transform 0.25s cubic-bezier(0,0,0.25,1); -moz-transition: -moz-transform 0.25s cubic-bezier(0,0,0.25,1); transition: transform 0.25s cubic-bezier(0,0,0.25,1); } .leaflet-zoom-anim .leaflet-tile, .leaflet-pan-anim .leaflet-tile { -webkit-transition: none; -moz-transition: none; transition: none; } .leaflet-zoom-anim .leaflet-zoom-hide { visibility: hidden; } .leaflet-interactive { cursor: pointer; } .leaflet-grab { cursor: -webkit-grab; cursor: -moz-grab; cursor: grab; } .leaflet-crosshair, .leaflet-crosshair .leaflet-interactive { cursor: crosshair; } .leaflet-popup-pane, .leaflet-control { cursor: auto; } .leaflet-dragging .leaflet-grab, .leaflet-dragging .leaflet-grab .leaflet-interactive, .leaflet-dragging .leaflet-marker-draggable { cursor: move; cursor: -webkit-grabbing; cursor: -moz-grabbing; cursor: grabbing; } .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-image-layer, .leaflet-pane > svg path, .leaflet-tile-container { pointer-events: none; } .leaflet-marker-icon.leaflet-interactive, .leaflet-image-layer.leaflet-interactive, .leaflet-pane > svg path.leaflet-interactive, svg.leaflet-image-layer.leaflet-interactive path { pointer-events: visiblePainted; pointer-events: auto; } .leaflet-container { background: #ddd; outline-offset: 1px; } .leaflet-container a { color: #0078A8; } .leaflet-zoom-box { border: 2px dotted #38f; background: rgba(255,255,255,0.5); } .leaflet-container { font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; font-size: 12px; font-size: 0.75rem; line-height: 1.5; } .leaflet-bar { box-shadow: 0 1px 5px rgba(0,0,0,0.65); border-radius: 4px; } .leaflet-bar a { background-color: #fff; border-bottom: 1px solid #ccc; width: 26px; height: 26px; line-height: 26px; display: block; text-align: center; text-decoration: none; color: black; } .leaflet-bar a, .leaflet-control-layers-toggle { background-position: 50% 50%; background-repeat: no-repeat; display: block; } .leaflet-bar a:hover, .leaflet-bar a:focus { background-color: #f4f4f4; } .leaflet-bar a:first-child { border-top-left-radius: 4px; border-top-right-radius: 4px; } .leaflet-bar a:last-child { border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; border-bottom: none; } .leaflet-bar a.leaflet-disabled { cursor: default; background-color: #f4f4f4; color: #bbb; } .leaflet-touch .leaflet-bar a { width: 30px; height: 30px; line-height: 30px; } .leaflet-touch .leaflet-bar a:first-child { border-top-left-radius: 2px; border-top-right-radius: 2px; } .leaflet-touch .leaflet-bar a:last-child { border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; } .leaflet-control-zoom-in, .leaflet-control-zoom-out { font: bold 18px 'Lucida Console', Monaco, monospace; text-indent: 1px; } .leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out { font-size: 22px; } .leaflet-control-layers { box-shadow: 0 1px 5px rgba(0,0,0,0.4); background: #fff; border-radius: 5px; } .leaflet-control-layers-toggle { background-image: none; width: 36px; height: 36px; } .leaflet-retina .leaflet-control-layers-toggle { background-image: none; background-size: 26px 26px; } .leaflet-touch .leaflet-control-layers-toggle { width: 44px; height: 44px; } .leaflet-control-layers .leaflet-control-layers-list, .leaflet-control-layers-expanded .leaflet-control-layers-toggle { display: none; } .leaflet-control-layers-expanded .leaflet-control-layers-list { display: block; position: relative; } .leaflet-control-layers-expanded { padding: 6px 10px 6px 6px; color: #333; background: #fff; } .leaflet-control-layers-scrollbar { overflow-y: scroll; overflow-x: hidden; padding-right: 5px; } .leaflet-control-layers-selector { margin-top: 2px; position: relative; top: 1px; } .leaflet-control-layers label { display: block; font-size: 13px; font-size: 1.08333em; } .leaflet-control-layers-separator { height: 0; border-top: 1px solid #ddd; margin: 5px -10px 5px -6px; } .leaflet-default-icon-path { background-image: none; } .leaflet-container .leaflet-control-attribution { background: #fff; background: rgba(255, 255, 255, 0.8); margin: 0; } .leaflet-control-attribution, .leaflet-control-scale-line { padding: 0 5px; color: #333; line-height: 1.4; } .leaflet-control-attribution a { text-decoration: none; } .leaflet-control-attribution a:hover, .leaflet-control-attribution a:focus { text-decoration: underline; } .leaflet-attribution-flag { display: inline !important; vertical-align: baseline !important; width: 1em; height: 0.6669em; } .leaflet-left .leaflet-control-scale { margin-left: 5px; } .leaflet-bottom .leaflet-control-scale { margin-bottom: 5px; } .leaflet-control-scale-line { border: 2px solid #777; border-top: none; line-height: 1.1; padding: 2px 5px 1px; white-space: nowrap; -moz-box-sizing: border-box; box-sizing: border-box; background: rgba(255, 255, 255, 0.8); text-shadow: 1px 1px #fff; } .leaflet-control-scale-line:not(:first-child) { border-top: 2px solid #777; border-bottom: none; margin-top: -2px; } .leaflet-control-scale-line:not(:first-child):not(:last-child) { border-bottom: 2px solid #777; } .leaflet-touch .leaflet-control-attribution, .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar { box-shadow: none; } .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar { border: 2px solid rgba(0,0,0,0.2); background-clip: padding-box; } .leaflet-popup { position: absolute; text-align: center; margin-bottom: 20px; } .leaflet-popup-content-wrapper { padding: 1px; text-align: left; border-radius: 12px; } .leaflet-popup-content { margin: 13px 24px 13px 20px; line-height: 1.3; font-size: 13px; font-size: 1.08333em; min-height: 1px; } .leaflet-popup-content p { margin: 17px 0; margin: 1.3em 0; } .leaflet-popup-tip-container { width: 40px; height: 20px; position: absolute; left: 50%; margin-top: -1px; margin-left: -20px; overflow: hidden; pointer-events: none; } .leaflet-popup-tip { width: 17px; height: 17px; padding: 1px; margin: -10px auto 0; pointer-events: auto; -webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); } .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: white; color: #333; box-shadow: 0 3px 14px rgba(0,0,0,0.4); } .leaflet-container a.leaflet-popup-close-button { position: absolute; top: 0; right: 0; border: none; text-align: center; width: 24px; height: 24px; font: 16px/24px Tahoma, Verdana, sans-serif; color: #757575; text-decoration: none; background: transparent; } .leaflet-container a.leaflet-popup-close-button:hover, .leaflet-container a.leaflet-popup-close-button:focus { color: #585858; } .leaflet-popup-scrolled { overflow: auto; } .leaflet-oldie .leaflet-popup-content-wrapper { -ms-zoom: 1; } .leaflet-oldie .leaflet-popup-tip { width: 24px; margin: 0 auto; -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)"; filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678); } .leaflet-oldie .leaflet-control-zoom, .leaflet-oldie .leaflet-control-layers, .leaflet-oldie .leaflet-popup-content-wrapper, .leaflet-oldie .leaflet-popup-tip { border: 1px solid #999; } .leaflet-div-icon { background: #fff; border: 1px solid #666; } .leaflet-tooltip { position: absolute; padding: 6px; background-color: #fff; border: 1px solid #fff; border-radius: 3px; color: #222; white-space: nowrap; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; pointer-events: none; box-shadow: 0 1px 3px rgba(0,0,0,0.4); } .leaflet-tooltip.leaflet-interactive { cursor: pointer; pointer-events: auto; } .leaflet-tooltip-top:before, .leaflet-tooltip-bottom:before, .leaflet-tooltip-left:before, .leaflet-tooltip-right:before { position: absolute; pointer-events: none; border: 6px solid transparent; background: transparent; content: ""; } .leaflet-tooltip-bottom { margin-top: 6px; } .leaflet-tooltip-top { margin-top: -6px; } .leaflet-tooltip-bottom:before, .leaflet-tooltip-top:before { left: 50%; margin-left: -6px; } .leaflet-tooltip-top:before { bottom: 0; margin-bottom: -12px; border-top-color: #fff; } .leaflet-tooltip-bottom:before { top: 0; margin-top: -12px; margin-left: -6px; border-bottom-color: #fff; } .leaflet-tooltip-left { margin-left: -6px; } .leaflet-tooltip-right { margin-left: 6px; } .leaflet-tooltip-left:before, .leaflet-tooltip-right:before { top: 50%; margin-top: -6px; } .leaflet-tooltip-left:before { right: 0; margin-right: -12px; border-left-color: #fff; } .leaflet-tooltip-right:before { left: 0; margin-left: -12px; border-right-color: #fff; } @media print { .leaflet-control { -webkit-print-color-adjust: exact; print-color-adjust: exact; } } 
 /* Layout: one-column app shell, starry castle hero on top, floating glass tab bar at the bottom; wide screens get multi-column card grids. Single committed night-sky look. */
 :root{
   --night:#0a0e2c;
@@ -57,7 +59,11 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .crew-strip{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
 .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border-radius:999px;background:rgba(10,14,44,.55);
   border:1px solid var(--line);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-weight:600;font-size:13px}
-.av{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:11px;letter-spacing:-.02em;color:#0a0e2c;flex:none}
+.av{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:10px;letter-spacing:.02em;color:#0a0e2c;flex:none}
+.sync{display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;background:rgba(10,14,44,.6);border:1px solid var(--line);font-size:12px;font-weight:700;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.sync i{width:8px;height:8px;border-radius:50%;box-shadow:0 0 8px currentColor}
+.topline{justify-content:flex-start}
+.topline .actions{margin-left:auto}
 .icon-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);
   background:rgba(10,14,44,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:13px;font-weight:600}
 .icon-btn[aria-pressed="true"]{border-color:var(--gold);color:var(--gold)}
@@ -229,6 +235,70 @@ main{padding-top:26px;position:relative;z-index:1}
 .badge small{font-size:11.5px;color:var(--muted);line-height:1.35}
 .badge:not(.on){opacity:.6}
 
+/* Photos */
+.hero-photo{position:absolute;inset:0;overflow:hidden;background:var(--night)}
+.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:0;transition:opacity 1.2s ease;transform-origin:60% 40%;animation:kenburns 38s ease-in-out infinite alternate}
+.hero-photo[data-loaded="1"] img{opacity:1}
+.hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,10,36,.92) 0%,rgba(7,10,36,.72) 38%,rgba(7,10,36,.18) 75%),linear-gradient(180deg,rgba(7,10,36,.35) 0%,rgba(7,10,36,0) 30%,rgba(10,14,44,.96) 100%)}
+@keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.14) translate(-1.5%,-1%)}}
+.hero-credit{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:6px;z-index:2;font-size:10px;color:rgba(241,242,255,.55);background:none;border:0;padding:4px;cursor:pointer}
+.ph{position:relative;margin:-18px -18px 0;aspect-ratio:16/9;overflow:hidden;border-radius:var(--r) var(--r) 0 0;background:var(--panel-2);max-width:none}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;max-width:100%}
+.ride:hover .ph img,.food:hover .ph img{transform:scale(1.05)}
+.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,44,0) 45%,rgba(10,14,44,.85) 100%);pointer-events:none}
+.ph .ph-chip{position:absolute;left:12px;bottom:10px;z-index:1;display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#0a0e2c;padding:4px 9px;border-radius:99px}
+.ph .ph-chip svg{width:13px;height:13px}
+.ph.noimg{display:grid;place-items:center;background:radial-gradient(circle at 30% 20%,var(--bc),transparent 60%),var(--panel-2)}
+.ph.noimg>svg{width:40px;height:40px;color:var(--bc);opacity:.8}
+.linkish{background:none;border:0;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.linkish:hover h3{color:var(--gold)}
+.carousel{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,32%);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:thin}
+.carousel>*{scroll-snap-align:start}
+.pick{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;border:1px solid var(--line);background:var(--panel-2);text-align:left;padding:0;color:var(--ink)}
+.pick img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:100%}
+.pick::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,10,36,0) 40%,rgba(7,10,36,.92))}
+.pick .pk{position:absolute;left:14px;right:14px;bottom:14px;z-index:1;display:grid;gap:6px}
+.pick .pk b{font-family:var(--f-display);font-size:19px;line-height:1.15}
+.pick .rank{position:absolute;top:12px;left:12px;z-index:1;font-family:var(--f-mono);font-size:13px;background:rgba(7,10,36,.7);border:1px solid var(--line);padding:3px 8px;border-radius:8px;color:var(--gold)}
+.stack{display:flex}
+.stack .av{width:24px;height:24px;font-size:9px;border:2px solid var(--night);margin-left:-6px}
+.stack .av:first-child{margin-left:0}
+.sheet{width:min(720px,100%);max-height:calc(100vh - 40px);overflow:auto;text-align:left;padding:0}
+.sheet .sh-img{position:relative;aspect-ratio:16/9;background:var(--panel-2)}
+.sheet .sh-img img{width:100%;height:100%;object-fit:cover;display:block;max-width:100%}
+.sheet .sh-body{padding:20px;display:grid;gap:12px}
+.sheet .x{position:absolute;top:12px;right:12px;z-index:2;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:rgba(7,10,36,.7);color:var(--ink);display:grid;place-items:center;font-size:20px;line-height:1}
+.credit{font-size:11.5px;color:var(--muted)}
+.credit a{color:var(--muted)}
+.credits{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.credits li{display:grid;grid-template-columns:64px 1fr;gap:10px;align-items:center;font-size:12.5px}
+.credits img{width:64px;height:44px;object-fit:cover;border-radius:6px}
+.credits a{color:var(--gold)}
+.food .ph{margin-bottom:2px}
+.hotel .ph{margin-bottom:14px;aspect-ratio:21/9}
+.landpanel .ph{margin-bottom:14px;aspect-ratio:21/8}
+/* Real map */
+#leafmap{height:min(68vh,620px);min-height:380px;border-radius:var(--r);border:1px solid var(--line);background:#0b1236;z-index:0}
+.leaflet-container{font-family:var(--f-body)!important;background:#0b1236!important}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--panel-2)!important;color:var(--ink)!important;box-shadow:0 12px 30px rgba(0,0,0,.5)!important}
+.leaflet-popup-content{margin:0!important;width:230px!important}
+.leaflet-container a.leaflet-popup-close-button{color:var(--ink)!important}
+.pop img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-radius:12px 12px 0 0}
+.pop div{padding:10px 12px;display:grid;gap:4px}
+.pop b{font-size:14px}
+.pop .btn{padding:7px 10px;font-size:12px;margin-top:4px}
+.pin{display:grid;place-items:center;border-radius:50%;border:2px solid #0a0e2c;box-shadow:0 2px 10px rgba(0,0,0,.6);color:#0a0e2c;font-weight:800;font-size:10px}
+.pin svg{width:13px;height:13px}
+.pin.voted{outline:2px solid var(--gold);outline-offset:2px}
+.pin.done{background:var(--mint)!important}
+.pin-hotel{width:auto!important;height:auto!important;white-space:nowrap;background:var(--rose);color:#3a1027;padding:4px 9px;border-radius:99px;font-weight:800;font-size:11px;border:2px solid #0a0e2c;box-shadow:0 2px 12px rgba(244,169,198,.6)}
+.maptools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.landchips{display:flex;gap:8px;flex-wrap:wrap}
+.landchip{padding:7px 12px;border-radius:99px;border:1px solid var(--line);background:transparent;font-size:13px;font-weight:700;color:var(--muted);display:inline-flex;gap:7px;align-items:center}
+.landchip i{width:9px;height:9px;border-radius:50%}
+.landchip[aria-pressed="true"]{color:var(--ink);border-color:var(--gold);background:rgba(240,201,120,.1)}
+.osm-credit{font-size:11px;color:var(--muted)}
+
 /* Tab bar */
 .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;justify-content:center;
   padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));pointer-events:none}
@@ -272,10 +342,12 @@ main{padding-top:26px;position:relative;z-index:1}
 <canvas id="snow" aria-hidden="true"></canvas>
 
 <header class="hero" id="top">
+  <div class="hero-photo" id="heroPhoto" aria-hidden="true"></div>
   <canvas id="sky" aria-hidden="true"></canvas>
   <div class="hero-inner">
     <div class="topline">
       <span class="brand">Marne-la-Vallée · Nov 2026</span>
+      <span class="sync" id="syncChip" role="status"></span>
       <div class="actions">
         <button class="icon-btn" id="snowBtn" aria-pressed="true" title="Toggle snowfall">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M4 7l16 10M20 7L4 17"/></svg>Snow</button>
@@ -298,7 +370,7 @@ main{padding-top:26px;position:relative;z-index:1}
 </section>
 
 <main class="wrap" id="app"></main>
-<footer><p class="foot wrap">Made for Max, Marjo &amp; Maurits. A personal trip planner, not an official Disney app. Check hours and show times in the official app on the day.</p></footer>
+<footer><p class="foot wrap"><button class="btn ghost" id="creditsBtn" style="padding:6px 12px;font-size:12px;margin-bottom:8px">Photo &amp; map credits</button><br>Made for Max, Marjo, Martina &amp; Maurits. A personal trip planner, not an official Disney app. Check hours and show times in the official app on the day.</p></footer>
 
 <div class="tabbar"><nav aria-label="Sections" id="tabs"></nav></div>
 <div class="overlay" id="overlay" hidden></div>
@@ -315,9 +387,10 @@ const DAY2 = Date.UTC(2026,10,29,23,0,0);         // 30 Nov 00:00 Paris
 const TRIP_END = Date.UTC(2026,10,30,23,0,0);     // 1 Dec 00:00 Paris
 
 const CREW = [
-  {id:"max",   name:"Max",     ini:"Mx", color:"#8fd3ff", note:"Thrill hunter"},
-  {id:"marjo", name:"Marjo",   ini:"Mj", color:"#f4a9c6", note:"Castle & sparkle"},
-  {id:"me",    name:"Maurits", ini:"Ma", color:"#f0c978", note:"Trip planner"}
+  {id:"max",     name:"Max",     ini:"MX", color:"#8fd3ff", note:"Thrill hunter"},
+  {id:"marjo",   name:"Marjo",   ini:"MJ", color:"#f4a9c6", note:"Castle & sparkle"},
+  {id:"martina", name:"Martina", ini:"MT", color:"#c9b2ff", note:"Magic & memories"},
+  {id:"me",      name:"Maurits", ini:"MR", color:"#f0c978", note:"Trip planner"}
 ];
 
 const TAGS = {
@@ -452,6 +525,14 @@ const LANDS = {
   "Production Courtyard":{c:"#9aa3d8",d:"Hollywood-style street with the Tower of Terror."}
 };
 
+/* ================= Photos & map data (real photos from Wikimedia Commons, map from OpenStreetMap) ================= */
+const PHOTOS = /*PHOTOS*/{}/*END*/;
+const MAPDATA = /*MAPDATA*/null/*END*/;
+const photo = k => PHOTOS[k] || null;
+const landKey = l => "land_" + l.toLowerCase().replace(/[^a-z]+/g, "");
+const imgTag = (k, cls = "photo", alt = "") => { const ph = photo(k); return ph ? `<img class="${cls}" src="${esc(ph.f)}" alt="${esc(alt)}" loading="lazy" decoding="async" data-credit="${esc(k)}">` : ""; };
+const creditLine = k => { const ph = photo(k); return ph ? `<div class="credit">Photo: ${esc(ph.by)} · <a href="${esc(ph.page)}" target="_blank" rel="noopener">${esc(ph.lic)}</a></div>` : ""; };
+
 /* ================= State ================= */
 const KEY = "magic-weekend-v1";
 const store = {
@@ -464,8 +545,8 @@ const freshPlan = () => DEFAULT_PLAN.map((p,i) => ({id:"d"+i, ...p, done:false})
 const defaults = () => ({
   me:"me", snow:true, day:1, park:"all", type:"all", q:"", sort:"votes", land:null,
   plan: freshPlan(),
-  votes:{hyper:{max:1,me:1},flight:{max:1},frozen:{marjo:1,me:1},pp:{marjo:1},btm:{max:1,me:1,marjo:1},rat:{marjo:1,me:1},tot:{max:1}},
-  moments:[], scores:{}, ridden:{}, food:{tdl:{want:1},cj:{want:1},remy:{want:1},rb:{want:1}}, pack:{}
+  votes:{},
+  moments:[], scores:{}, ridden:{}, food:{}, pack:{}
 });
 function load(){
   const d = defaults(), raw = store.get();
@@ -482,7 +563,87 @@ function load(){
   return out;
 }
 let S = load();
-const save = () => store.set(S);
+/* ---- shared sync: local by default, live through the artifact db when available ---- */
+const SHARED = ["plan","votes","ridden","food","pack","scores","moments"];
+const PREF_KEYS = ["me","snow","day","park","type","q","sort","land","mapLayer"];
+const toDocs = (k, v) => {           // state slice -> {docId: data}
+  const out = {};
+  if (k==="plan"||k==="moments") (v||[]).forEach(it => { const {id, ...rest} = it; out[id] = rest; });
+  else if (k==="ridden") Object.entries(v||{}).forEach(([id,at]) => out[id] = {at});
+  else if (k==="pack") Object.keys(v||{}).forEach(id => out[id] = {done:true});
+  else Object.entries(v||{}).forEach(([id,o]) => { if (o && Object.values(o).some(Boolean)) out[id] = o; });
+  return out;
+};
+const fromDocs = (k, docs) => {      // [{id,data}] -> state slice
+  if (k==="plan"||k==="moments") return docs.map(d => ({id:d.id, ...d.data}));
+  const o = {};
+  docs.forEach(d => { o[d.id] = k==="ridden" ? (d.data.at||1) : k==="pack" ? 1 : d.data; });
+  return o;
+};
+const SYNC = {mode:"local", db:null, shadow:{}, status:"local", writes:0};
+function setStatus(st){ SYNC.status = st; const el = document.getElementById("syncChip"); if (el) renderSync(); }
+function save(){
+  store.set(S);
+  if (SYNC.mode !== "live") return;
+  for (const k of SHARED){
+    const docs = toDocs(k, S[k]), sh = SYNC.shadow[k] || {};
+    for (const [id, data] of Object.entries(docs)){
+      const j = JSON.stringify(data);
+      if (sh[id] !== j){ sh[id] = j; dbWrite(() => SYNC.db.doc(k+"/"+id).set(data)); }
+    }
+    for (const id of Object.keys(sh)) if (!(id in docs)){ delete sh[id]; dbWrite(() => SYNC.db.doc(k+"/"+id).delete()); }
+    SYNC.shadow[k] = sh;
+  }
+}
+function dbWrite(fn){
+  SYNC.writes++; setStatus("saving");
+  const done = () => { if (--SYNC.writes===0) setStatus("live"); };
+  fn().then(done, err => {
+    done();
+    if (err && err.code==="unavailable") setTimeout(() => dbWrite(fn), 800 + Math.random()*800);
+    else if (err && (err.code==="not_granted"||err.code==="revoked")) { setStatus("readonly"); toast("You can view the trip but not change it. Ask Maurits for edit access."); }
+    else if (err && err.code==="quota_exceeded") toast("The shared trip storage is full. Delete a few album photos.");
+    else toast("Couldn't save that change. Check your connection.");
+  });
+}
+let renderPending = false;
+const isTyping = () => { const a = document.activeElement; return a && a.matches && a.matches("#app input:not([type=checkbox]), #app select, #app textarea"); };
+function liveRender(){
+  if (isTyping()){ renderPending = true; return; }
+  if (renderPending === "raf") return;
+  renderPending = "raf";
+  requestAnimationFrame(() => { renderPending = false; renderCrew();
+    if ((location.hash||"").slice(1) === "map" && leafMap) return;   // keep the map where people left it
+    const y = scrollY; route(); scrollTo(0, y); });
+}
+document.addEventListener("focusout", () => setTimeout(() => { if (renderPending===true && !isTyping()){ renderPending=false; liveRender(); } }, 60));
+async function startSync(){
+  if (!window.claude || typeof window.claude.use !== "function") return;
+  setStatus("connecting");
+  let db = null;
+  try { db = await window.claude.use("db"); } catch(e){ db = null; }
+  if (!db){ setStatus("local"); return; }
+  SYNC.db = db; SYNC.mode = "live";
+  const seen = new Set();
+  const timer = setTimeout(() => { if (seen.size < SHARED.length) setStatus("slow"); }, 10000);
+  SHARED.forEach(k => {
+    db.collection(k).onSnapshot(snap => {
+      const docs = snap.docs.filter(d => d.exists).map(d => ({id:d.id, data:d.data()||{}}));
+      SYNC.shadow[k] = Object.fromEntries(docs.map(d => [d.id, JSON.stringify(d.data)]));
+      S[k] = fromDocs(k, docs);
+      seen.add(k); if (seen.size === SHARED.length){ clearTimeout(timer); if (!SYNC.writes) setStatus("live"); }
+      store.set(S); liveRender();
+    }, err => { if (err && err.code==="revoked") setStatus("readonly"); else setStatus("slow"); });
+  });
+}
+function renderSync(){
+  const el = document.getElementById("syncChip"); if (!el) return;
+  const M = {local:["On this device","var(--muted)"], connecting:["Connecting…","var(--muted)"], live:["Live with the crew","var(--mint)"],
+    saving:["Saving…","var(--gold)"], slow:["Reconnecting…","var(--gold)"], readonly:["View only","var(--rose)"]};
+  const [t,c] = M[SYNC.status] || M.local;
+  el.innerHTML = `<i style="background:${c}"></i>${t}`;
+  el.title = SYNC.mode==="live" ? "Votes, plan, bookings, packing and the album are shared between everyone's phones" : "Changes are saved on this device only";
+}
 
 /* ================= Helpers ================= */
 const $ = s => document.querySelector(s);
@@ -560,6 +721,10 @@ R.home = () => {
   const ridden = Object.keys(S.ridden).length, total = RIDES.length;
   const packed = PACK.filter(p => S.pack[p.id]).length;
   const top = RIDES.slice().sort((a,b)=>voteCount(b.id)-voteCount(a.id)).slice(0,3);
+  const anyVotes = RIDES.some(r => voteCount(r.id));
+  const MUST = ["castle","frozen","btm","pp","hyper","rat","potc","tot","flight","pm"];
+  const picks = anyVotes ? RIDES.filter(r => voteCount(r.id)).sort((a,b)=>voteCount(b.id)-voteCount(a.id)).slice(0,10)
+                         : MUST.map(id => RIDES.find(r => r.id===id)).filter(Boolean);
   const ph = phase();
   const nxWhen = nx ? (nx.d===1 ? "Sun 29 Nov" : "Mon 30 Nov") : "";
   return `
@@ -571,11 +736,20 @@ R.home = () => {
     </div>
   </section>
 
+  <section style="display:grid;gap:12px">
+    <div class="sec-head"><div><div class="eyebrow">${anyVotes ? "Crew picks" : "Must-sees"}</div><h2 style="font-size:20px;margin-top:4px">${anyVotes ? "What we voted for" : "Start voting on these"}</h2></div><a class="btn ghost" href="#rides" style="padding:8px 12px;font-size:13px">All rides</a></div>
+    <div class="carousel" role="group" aria-label="Ride highlights">${picks.map((r,i) => { const v = S.votes[r.id] || {}; return `<button class="pick" data-open="${r.id}" aria-label="${esc(r.name)}">
+      ${imgTag(r.id, "photo", r.name) || `<div class="ph noimg" style="--bc:${TYPE_META[r.type].c};position:absolute;inset:0;margin:0;aspect-ratio:auto;border-radius:0">${svg(TYPE_META[r.type].icon)}</div>`}
+      ${anyVotes ? `<span class="rank">#${i+1} · ${voteCount(r.id)}★</span>` : ""}
+      <span class="pk"><span class="eyebrow" style="color:${TYPE_META[r.type].c}">${esc(r.land)}</span><b>${esc(r.name)}</b>
+      <span class="stack">${CREW.filter(c => v[c.id]).map(av).join("")}</span></span></button>`; }).join("")}</div>
+  </section>
+
   <section class="grid g3">
     <div class="card stat"><div class="eyebrow">Rides ridden</div><div class="big mono">${ridden}<span class="muted" style="font-size:18px"> / ${total}</span></div><div class="bar"><i style="width:${ridden/total*100}%"></i></div></div>
     <div class="card stat"><div class="eyebrow">Packed</div><div class="big mono">${packed}<span class="muted" style="font-size:18px"> / ${PACK.length}</span></div><div class="bar"><i style="width:${packed/PACK.length*100}%"></i></div></div>
     <div class="card stat"><div class="eyebrow">Crew favourites</div>
-      <div style="display:grid;gap:4px;font-weight:700;font-size:14px">${top.map((r,i)=>`<div style="display:flex;justify-content:space-between;gap:8px"><span>${i+1}. ${esc(r.name)}</span><span class="mono" style="color:var(--gold)">${voteCount(r.id)}★</span></div>`).join("")}</div>
+      <div style="display:grid;gap:4px;font-weight:700;font-size:14px">${!voteCount(top[0].id)?'<span class="muted" style="font-weight:500">No votes yet. Open Rides and tap your initials on the rides you want.</span>':top.filter(r=>voteCount(r.id)).map((r,i)=>`<div style="display:flex;justify-content:space-between;gap:8px"><span>${i+1}. ${esc(r.name)}</span><span class="mono" style="color:var(--gold)">${voteCount(r.id)}★</span></div>`).join("")}</div>
     </div>
   </section>
 
@@ -610,6 +784,7 @@ R.home = () => {
 B.home = () => {
   document.querySelectorAll("[data-me]").forEach(b => b.onclick = () => { S.me=b.dataset.me; save(); route(); renderCrew(); toast(`Hi ${crew(S.me).name}!`); });
   $("#spinBtn").onclick = roulette;
+  document.querySelectorAll("[data-open]").forEach(b => b.onclick = () => openRide(b.dataset.open));
 };
 
 R.plan = () => {
@@ -706,15 +881,15 @@ R.rides = () => {
 function rideCard(r){
   const tm = TYPE_META[r.type];
   const v = S.votes[r.id]||{};
-  return `<article class="card ride ${S.ridden[r.id]?"done":""}">
-    <div class="ride-top">
-      <div class="ride-badge" style="--bc:${tm.c}">${svg(tm.icon)}</div>
+  return `<article class="card ride ${S.ridden[r.id]?"done":""}" data-rid="${r.id}">
+    <button class="linkish" data-open="${r.id}" aria-label="Open ${esc(r.name)} details" style="display:grid;gap:12px">
+      <div class="ph ${photo(r.id)?"":"noimg"}" style="--bc:${tm.c}">${photo(r.id)?imgTag(r.id,"photo",r.name):svg(tm.icon)}<span class="ph-chip" style="background:${tm.c}">${svg(tm.icon)}${tm.label}</span></div>
       <div style="min-width:0"><h3>${esc(r.name)}</h3><div class="where">${esc(r.land)} · ${PARKS[r.park]}</div></div>
-    </div>
+    </button>
     <p>${esc(r.blurb)}</p>
     ${r.tip?`<div class="tipline"><span aria-hidden="true">✦</span><span>${esc(r.tip)}</span></div>`:""}
     <div class="ride-foot">
-      <div class="thrill" title="Intensity ${r.lvl} of 5" aria-label="Intensity ${r.lvl} of 5">${[1,2,3,4,5].map(i=>`<i class="${i<=r.lvl?"on":""}"></i>`).join("")}<span class="muted" style="font-size:11px;margin-left:6px">${tm.label}</span></div>
+      <div class="thrill" title="Intensity ${r.lvl} of 5" aria-label="Intensity ${r.lvl} of 5">${[1,2,3,4,5].map(i=>`<i class="${i<=r.lvl?"on":""}"></i>`).join("")}<span class="muted" style="font-size:11px;margin-left:6px">Intensity</span></div>
       <div class="votes">
         ${CREW.map(c=>`<button class="vote" data-vote="${r.id}" data-who="${c.id}" aria-pressed="${!!v[c.id]}" aria-label="${c.name} wants to ride" title="${c.name}" style="${v[c.id]?`background:${c.color};border-color:${c.color}`:""}">${c.ini}</button>`).join("")}
         <button class="mini" data-ride="${r.id}" aria-pressed="${!!S.ridden[r.id]}" aria-label="Mark as ridden" title="Ridden">${svg(ICON.check)}</button>
@@ -732,6 +907,7 @@ B.rides = () => {
   $("#spinBtn").onclick = roulette;
 };
 function bindRideButtons(){
+  document.querySelectorAll("[data-open]").forEach(b => b.onclick = () => openRide(b.dataset.open));
   document.querySelectorAll("[data-vote]").forEach(b => b.onclick = () => {
     const id=b.dataset.vote, who=b.dataset.who; S.votes[id]=S.votes[id]||{};
     if (S.votes[id][who]) delete S.votes[id][who]; else S.votes[id][who]=1;
@@ -743,14 +919,13 @@ function bindRideButtons(){
   });
 }
 function refreshRideCard(id){
-  const btn = document.querySelector(`[data-ride="${id}"]`);
-  const card = btn && btn.closest("article");
+  const card = document.querySelector(`article[data-rid="${id}"]`);
   if (!card) { route(); return; }
   const tmp = document.createElement("div"); tmp.innerHTML = rideCard(RIDES.find(r=>r.id===id)).trim();
   card.replaceWith(tmp.firstChild); bindRideButtons();
 }
 
-R.map = () => {
+const schematicMap = () => {
   const sel = S.land && LANDS[S.land] ? S.land : "Fantasyland";
   const rides = RIDES.filter(r=>r.land===sel);
   const L = (name,shape,lx,ly,label,size,line2) => `<g class="land-shape ${name===sel?"sel":""}" data-land="${esc(name)}" tabindex="0" role="button" aria-label="${esc(name)}">${shape.split("FILL").join(LANDS[name].c)}<text class="map-label" x="${lx}" y="${ly}" text-anchor="middle" ${size?`style="font-size:${size}px"`:""}>${esc(label||name)}${line2?`<tspan x="${lx}" dy="15">${esc(line2)}</tspan>`:""}</text></g>`;
@@ -809,11 +984,89 @@ R.map = () => {
     <ul>${rides.map(r=>`<li><span style="font-weight:700;min-width:0">${esc(r.name)}</span><span class="muted" style="flex:none">${S.ridden[r.id]?'<span style="color:var(--mint);font-weight:700">Ridden ✓</span>':voteCount(r.id)?`<span class="mono" style="color:var(--gold)">${voteCount(r.id)}★</span>`:TYPE_META[r.type].label}</span></li>`).join("")}</ul>
   </section>`;
 };
-B.map = () => {
+const bindSchematic = () => {
   document.querySelectorAll("[data-land]").forEach(g => {
     const go = () => { S.land=g.dataset.land; save(); route(); setTimeout(()=>document.querySelector(".landpanel").scrollIntoView({behavior:"smooth",block:"nearest"}),50); };
     g.addEventListener("click", go);
     g.addEventListener("keydown", e => { if (e.key==="Enter"||e.key===" ") { e.preventDefault(); go(); } });
+  });
+};
+
+const landPanel = sel => {
+  const rides = RIDES.filter(r => r.land === sel); const first = rides[0];
+  return `<section class="card landpanel">
+    ${photo(landKey(sel)) ? `<div class="ph">${imgTag(landKey(sel), "photo", sel)}</div>` : ""}
+    <div class="eyebrow" style="color:${LANDS[sel].c}">${first ? PARKS[first.park] : ""}</div>
+    <h2 style="font-family:var(--f-display);font-size:24px;margin-top:4px">${esc(sel)}</h2>
+    <p class="muted" style="margin:6px 0 0;max-width:65ch">${esc(LANDS[sel].d)}</p>
+    <ul>${rides.map(r => `<li><button class="linkish" data-open="${r.id}" style="font-weight:700;min-width:0">${esc(r.name)}</button><span class="muted" style="flex:none">${S.ridden[r.id] ? '<span style="color:var(--mint);font-weight:700">Ridden ✓</span>' : voteCount(r.id) ? `<span class="mono" style="color:var(--gold)">${voteCount(r.id)}★</span>` : TYPE_META[r.type].label}</span></li>`).join("")}</ul>
+    ${creditLine(landKey(sel))}
+  </section>`;
+};
+let leafMap = null;
+R.map = () => {
+  if (!(window.L && MAPDATA)) return schematicMap();
+  const sel = S.land && LANDS[S.land] ? S.land : "Fantasyland";
+  return `
+  <div class="sec-head"><div><div class="eyebrow">Resort map · OpenStreetMap</div><h2>Find your way</h2></div>
+    <div class="maptools">
+      <div class="seg" role="group" aria-label="Show on map">
+        ${[["rides","Rides"],["food","Food"],["all","Everything"]].map(([k,l]) => `<button data-layer="${k}" aria-pressed="${(S.mapLayer||"rides")===k}">${l}</button>`).join("")}
+      </div>
+      <button class="btn" id="fitMap" style="padding:8px 12px;font-size:13px">${svg(ICON.map)}Whole resort</button>
+    </div></div>
+  <div id="leafmap" role="region" aria-label="Interactive map of Disneyland Paris"></div>
+  <div class="osm-credit">Map data © OpenStreetMap contributors (ODbL). Pin colours show ride type; a gold ring means the crew voted for it, green means ridden.</div>
+  <div class="landchips" role="group" aria-label="Lands">${Object.keys(LANDS).map(l => `<button class="landchip" data-land="${esc(l)}" aria-pressed="${l===sel}"><i style="background:${LANDS[l].c}"></i>${esc(l.replace(", U.S.A.",""))}</button>`).join("")}</div>
+  ${landPanel(sel)}`;
+};
+B.map = () => {
+  document.querySelectorAll("[data-open]").forEach(b => b.onclick = () => openRide(b.dataset.open));
+  if (!(window.L && MAPDATA)) return bindSchematic();
+  if (leafMap) { leafMap.remove(); leafMap = null; }
+  const el = $("#leafmap");
+  const map = leafMap = L.map(el, {zoomControl:true, attributionControl:false, preferCanvas:true, minZoom:14, maxZoom:20, zoomSnap:.25, wheelPxPerZoomLevel:90});
+  const R0 = L.canvas({padding:.3});
+  const ST = {
+    park:{color:"#f0c978", weight:1.5, opacity:.55, fillColor:"#1d2766", fillOpacity:.55, dashArray:"4 4"},
+    green:{stroke:false, fillColor:"#1f4a3a", fillOpacity:.55},
+    water:{stroke:false, fillColor:"#2c5bb8", fillOpacity:.75},
+    building:{color:"#3a4590", weight:.6, fillColor:"#2a3478", fillOpacity:.9},
+    path:{color:"#8b93c9", weight:1.2, opacity:.55},
+    road:{color:"#4b5494", weight:3, opacity:.8},
+    rail:{color:"#c3a6ff", weight:2, opacity:.7, dashArray:"6 5"}
+  };
+  let n = 0;
+  for (const kind of ["park","green","water","building","road","path","rail"]){
+    for (const g of MAPDATA.f[kind] || []){
+      const ll = g.map(([a,b]) => [a/1e5, b/1e5]);
+      (kind==="path"||kind==="road"||kind==="rail" ? L.polyline(ll, {...ST[kind], renderer:R0, interactive:false}) : L.polygon(ll, {...ST[kind], renderer:R0, interactive:false})).addTo(map); n++;
+    }
+  }
+  el.dataset.shapes = n;
+  const layer = S.mapLayer || "rides";
+  const P = MAPDATA.p || {};
+  const pins = [];
+  const pinIcon = (cls, html, c, size=24) => L.divIcon({className:"", html:`<div class="pin ${cls}" style="width:${size}px;height:${size}px;background:${c}">${html}</div>`, iconSize:[size,size], iconAnchor:[size/2,size/2], popupAnchor:[0,-size/2]});
+  if (layer !== "food") RIDES.forEach(r => { const pos = P[r.id]; if (!pos) return; const tm = TYPE_META[r.type];
+    const m = L.marker([pos[0]/1e5, pos[1]/1e5], {icon:pinIcon((voteCount(r.id)?"voted ":"") + (S.ridden[r.id]?"done":""), S.ridden[r.id] ? svg(ICON.check) : svg(tm.icon), tm.c), title:r.name, keyboard:true}).addTo(map);
+    m.bindPopup(`<div class="pop">${imgTag(r.id, "photo", r.name)}<div><b>${esc(r.name)}</b><span class="muted" style="font-size:12px">${esc(r.land)} · ${tm.label}</span><button class="btn primary" data-open="${r.id}">Details</button></div></div>`);
+    m.on("popupopen", e => { const b = e.popup.getElement().querySelector("[data-open]"); if (b) b.onclick = () => openRide(r.id); });
+    pins.push(m); if (S.focusRide === r.id) setTimeout(() => { map.setView(m.getLatLng(), 18); m.openPopup(); }, 50); });
+  if (layer !== "rides") FOOD.forEach(f => { const pos = P[f.id]; if (!pos) return;
+    const m = L.marker([pos[0]/1e5, pos[1]/1e5], {icon:pinIcon((S.food[f.id]||{}).booked?"done":"", svg(ICON.food), "#8ce6c0", 22), title:f.name, keyboard:true}).addTo(map);
+    m.bindPopup(`<div class="pop">${imgTag(f.id, "photo", f.name)}<div><b>${esc(f.name)}</b><span class="muted" style="font-size:12px">${esc(f.where)} · ${esc(f.kind)}</span></div></div>`); pins.push(m); });
+  if (P.hotel) pins.push(L.marker([P.hotel[0]/1e5, P.hotel[1]/1e5], {icon:L.divIcon({className:"", html:'<div class="pin pin-hotel">★ Our hotel</div>', iconSize:[96,26], iconAnchor:[48,13]}), title:"Disneyland Hotel", zIndexOffset:1000}).addTo(map).bindPopup(`<div class="pop">${imgTag("hotel","photo","Disneyland Hotel")}<div><b>Disneyland Hotel</b><span class="muted" style="font-size:12px">Deluxe room with terrace · Sun 29 → Mon 30 Nov</span></div></div>`));
+  if (P.station) pins.push(L.marker([P.station[0]/1e5, P.station[1]/1e5], {icon:L.divIcon({className:"", html:'<div class="pin pin-hotel" style="background:#c3a6ff;color:#1b1040">Train station</div>', iconSize:[104,26], iconAnchor:[52,13]}), title:"Marne-la-Vallée–Chessy station"}).addTo(map));
+  const fit = () => map.fitBounds(MAPDATA.b.map(([a,b]) => [a/1e5, b/1e5]), {padding:[10,10]});
+  if (S.focusRide) { const pos = P[S.focusRide]; if (pos) map.setView([pos[0]/1e5,pos[1]/1e5], 18); else fit(); S.focusRide = null; } else fit();
+  setTimeout(() => map.invalidateSize(), 60);
+  $("#fitMap").onclick = fit;
+  document.querySelectorAll("[data-layer]").forEach(b => b.onclick = () => { S.mapLayer = b.dataset.layer; save(); route(); });
+  document.querySelectorAll(".landchip").forEach(b => b.onclick = () => {
+    S.land = b.dataset.land; save(); const y = scrollY; route(); scrollTo(0, y);
+    const rs = RIDES.filter(r => r.land === S.land && P[r.id]).map(r => [P[r.id][0]/1e5, P[r.id][1]/1e5]);
+    if (rs.length && leafMap) leafMap.fitBounds(rs, {padding:[50,50], maxZoom:18});
   });
 };
 
@@ -831,6 +1084,7 @@ R.food = () => {
       <h3 style="font-family:var(--f-display);font-size:18px;color:var(--gold)">${label}</h3>
       <div class="grid g3">${FOOD.filter(f=>inGroup(f,g)).map(f=>{const st=S.food[f.id]||{};return `
         <article class="card food">
+          ${photo(f.id) ? `<div class="ph">${imgTag(f.id, "photo", f.name)}</div>` : ""}
           <div><h3>${esc(f.name)}</h3><div class="muted" style="font-size:12.5px">${esc(f.where)} · ${esc(f.kind)}</div></div>
           <p style="margin:0;font-size:13.5px;color:#d3d6f5">${esc(f.blurb)}</p>
           <div class="pills">${f.tags.map(t=>`<span class="pill ${t==="Character dining"?"hot":""}">${esc(t)}</span>`).join("")}${f.book?`<span class="pill">Book ahead</span>`:`<span class="pill ok">Walk in</span>`}</div>
@@ -853,17 +1107,19 @@ R.stay = () => {
   <div class="sec-head"><div><div class="eyebrow">Our night</div><h2>Hotel & checklist</h2></div></div>
   <div class="grid g2">
     <section class="card hotel">
+      ${photo("hotel") ? `<div class="ph">${imgTag("hotel", "photo", "The Disneyland Hotel")}</div>` : ""}
       <div class="eyebrow" style="color:var(--rose)">Sunday 29 → Monday 30 November · 1 night</div>
       <h3 style="margin-top:6px">Disneyland Hotel</h3>
       <p class="muted" style="margin:4px 0 0">The pink Victorian palace right at the gates of Disneyland Park, redone in a royal theme.</p>
       <dl class="kv">
         <dt>Room</dt><dd>Deluxe room with terrace</dd>
-        <dt>Beds</dt><dd>Two double beds</dd>
-        <dt>Guests</dt><dd>Max, Marjo &amp; Maurits</dd>
+        <dt>Beds</dt><dd>Two double beds · room for 4</dd>
+        <dt>Guests</dt><dd>Max, Marjo, Martina &amp; Maurits</dd>
         <dt>Check-in</dt><dd>Sun from about 15:00</dd>
         <dt>Check-out</dt><dd>Mon, usually by 11:00</dd>
       </dl>
       <div class="incl"><span>Breakfast included</span><span>Deluxe Lounge access</span><span>Park tickets</span></div>
+      ${creditLine("hotel") ? `<div style="margin-top:12px">${creditLine("hotel")}</div>` : ""}
     </section>
     <section class="card" style="display:grid;gap:12px;align-content:start">
       <div class="eyebrow">Getting there</div>
@@ -913,7 +1169,7 @@ R.moments = () => {
   const ms = (S.moments||[]).slice().sort((a,b)=>b.at-a.at);
   const sc = S.scores||{};
   return `
-  <div class="sec-head"><div><div class="eyebrow">Memories</div><h2>Moments & score battle</h2></div><span class="muted">Saved on this device only</span></div>
+  <div class="sec-head"><div><div class="eyebrow">Memories</div><h2>Moments & score battle</h2></div><span class="muted">${SYNC.mode==="live"?"Shared with the whole crew":"Saved on this device only"}</span></div>
   <section class="card" style="display:grid;gap:12px">
     <div class="eyebrow">Capture a moment</div>
     <form class="drop" id="momForm" autocomplete="off">
@@ -925,8 +1181,8 @@ R.moments = () => {
   </section>
   ${ms.length ? `<div class="mom-grid">${ms.map(m=>{const c=crew(m.who)||CREW[2];return `
     <article class="card mom">
-      ${m.img?`<img src="${m.img}" alt="${esc(m.text)}">`:`<div class="noimg">${esc(m.text.slice(0,60))}</div>`}
-      <div class="mom-body">${m.img?`<div style="font-weight:700;overflow-wrap:anywhere">${esc(m.text)}</div>`:""}
+      ${momSrc(m)?`<img src="${esc(momSrc(m))}" alt="${esc(m.text)}" loading="lazy">`:`<div class="noimg">${esc(m.text.slice(0,60))}</div>`}
+      <div class="mom-body">${momSrc(m)?`<div style="font-weight:700;overflow-wrap:anywhere">${esc(m.text)}</div>`:""}
         <div class="mom-meta"><span style="display:flex;align-items:center;gap:6px">${av(c)}${c.name} · ${new Date(m.at).toLocaleString("en-GB",{weekday:"short",hour:"2-digit",minute:"2-digit",timeZone:"Europe/Paris"})}</span>
         <button class="mini" data-mdel="${m.id}" aria-label="Delete moment">${svg(ICON.trash)}</button></div></div>
     </article>`}).join("")}</div>`
@@ -941,7 +1197,7 @@ R.moments = () => {
   </section>`;
 };
 B.moments = () => {
-  let pending = null;
+  let pending = null, pendingBlob = null;
   $("#momFile").onchange = e => {
     const f = e.target.files && e.target.files[0]; if (!f) return;
     $("#fileTxt").textContent = "Preparing photo…";
@@ -951,6 +1207,7 @@ B.moments = () => {
       const c = document.createElement("canvas"); c.width = Math.round(im.width*k); c.height = Math.round(im.height*k);
       c.getContext("2d").drawImage(im,0,0,c.width,c.height);
       pending = c.toDataURL("image/jpeg",.72);
+      pendingBlob = null; c.toBlob(b => { pendingBlob = b; }, "image/jpeg", .82);
       $("#fileLbl").innerHTML = `<img src="${pending}" alt=""><span id="fileTxt">Photo ready</span>`;
     }; im.onerror = () => { $("#fileTxt").textContent = "That file isn't an image. Try another."; }; im.src = rd.result; };
     rd.readAsDataURL(f);
@@ -958,11 +1215,18 @@ B.moments = () => {
   $("#momForm").onsubmit = e => {
     e.preventDefault();
     const text = $("#momText").value.trim(); if (!text) return;
-    S.moments = S.moments || [];
-    S.moments.push({id:mkId(), at:Date.now(), who:$("#momWho").value, text, img:pending});
-    try { localStorage.setItem(KEY, JSON.stringify(S)); toast("Moment saved"); burst(); }
-    catch(err){ S.moments[S.moments.length-1].img = null; save(); toast("Storage full: saved the text without the photo"); }
-    route();
+    const btn = e.submitter || $("#momForm button[type=submit]"); btn.disabled = true;
+    const m = {id:mkId(), at:Date.now(), who:$("#momWho").value, text, img:null, asset:null};
+    const finish = () => { S.moments = (S.moments||[]).concat(m); save(); toast("Moment saved"); burst(); route(); };
+    if (!pending) return finish();
+    (async () => {
+      if (SYNC.mode === "live"){
+        let assets = null; try { assets = await window.claude.use("assets"); } catch(_){}
+        if (assets && pendingBlob){ try { const r = await assets.upload(pendingBlob); m.asset = r.id; return finish(); } catch(_){} }
+        m.img = await shrink(pending, 560, .62);   // small enough for a shared document
+      } else m.img = pending;
+      finish();
+    })();
   };
   document.querySelectorAll("[data-mdel]").forEach(b => b.onclick = () => confirmTap(b, "Sure?", () => { S.moments = S.moments.filter(m=>m.id!==b.dataset.mdel); save(); route(); toast("Moment deleted"); }));
   document.querySelectorAll("[data-sg]").forEach(inp => inp.onchange = () => {
@@ -972,6 +1236,47 @@ B.moments = () => {
     save(); const y = scrollY; route(); scrollTo(0,y);
   });
 };
+
+function shrink(dataUrl, max, q){
+  return new Promise(res => { const im = new Image(); im.onload = () => {
+    const k = Math.min(1, max/Math.max(im.width, im.height)); const c = document.createElement("canvas");
+    c.width = Math.round(im.width*k); c.height = Math.round(im.height*k); c.getContext("2d").drawImage(im,0,0,c.width,c.height);
+    res(c.toDataURL("image/jpeg", q)); }; im.onerror = () => res(null); im.src = dataUrl; });
+}
+const momSrc = m => m.asset ? "/_blob/" + encodeURIComponent(m.asset) : m.img;
+
+function openOverlay(html, focusSel){
+  const ov = $("#overlay"); ov.innerHTML = html; ov.hidden = false;
+  ov.onclick = e => { if (e.target === ov || e.target.closest("[data-close]")) ov.hidden = true; };
+  const f = ov.querySelector(focusSel || "[data-close]"); if (f) f.focus();
+}
+function openRide(id){
+  const r = RIDES.find(x => x.id === id); if (!r) return; const tm = TYPE_META[r.type]; const v = S.votes[r.id] || {};
+  const voters = CREW.filter(c => v[c.id]);
+  openOverlay(`<div class="modal sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle">
+    <div class="sh-img">${photo(r.id) ? imgTag(r.id, "photo", r.name) : `<div class="ph noimg" style="--bc:${tm.c};margin:0;border-radius:0;height:100%">${svg(tm.icon)}</div>`}<button class="x" data-close aria-label="Close">×</button></div>
+    <div class="sh-body">
+      <div class="eyebrow" style="color:${tm.c}">${tm.label} · ${esc(r.land)} · ${PARKS[r.park]}</div>
+      <h2 id="shTitle" style="font-family:var(--f-display);font-size:26px">${esc(r.name)}</h2>
+      <p style="margin:0;font-size:15px;color:#d9dcff">${esc(r.blurb)}</p>
+      ${r.tip ? `<div class="tipline" style="font-size:14px"><span aria-hidden="true">✦</span><span>${esc(r.tip)}</span></div>` : ""}
+      <div class="thrill" aria-label="Intensity ${r.lvl} of 5">${[1,2,3,4,5].map(i => `<i class="${i<=r.lvl?"on":""}"></i>`).join("")}<span class="muted" style="font-size:12px;margin-left:8px">Intensity ${r.lvl}/5</span></div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="muted">${voters.length ? "Wanted by" : "Nobody has voted yet"}</span>${voters.map(c => `<span class="chip">${av(c)}${c.name}</span>`).join("")}</div>
+      <div class="actions"><button class="btn ${S.ridden[r.id]?"":"primary"}" id="shRidden">${svg(ICON.check)}${S.ridden[r.id] ? "Ridden, undo" : "Mark as ridden"}</button><a class="btn" href="#map" data-close data-focus="${r.id}">${svg(ICON.map)}Show on map</a></div>
+      ${creditLine(r.id)}
+    </div></div>`, ".x");
+  $("#shRidden").onclick = () => { if (S.ridden[r.id]) delete S.ridden[r.id]; else { S.ridden[r.id] = Date.now(); burst(); toast("Ridden! ✓"); } save(); $("#overlay").hidden = true; liveRender(); };
+  const mapLink = $("#overlay [data-focus]"); if (mapLink) mapLink.addEventListener("click", () => { S.land = r.land; S.focusRide = r.id; });
+}
+function openCredits(){
+  const used = Object.entries(PHOTOS);
+  openOverlay(`<div class="modal sheet" role="dialog" aria-modal="true" aria-labelledby="crTitle" style="padding:22px">
+    <button class="x" data-close aria-label="Close" style="position:sticky;float:right;top:0">×</button>
+    <div class="eyebrow">Credits</div><h2 id="crTitle" style="font-family:var(--f-display);font-size:22px;margin:4px 0 10px">Photos & map</h2>
+    <p class="muted" style="margin:0 0 14px">Photos come from Wikimedia Commons under the licences listed, unchanged except for resizing and cropping. Map data © OpenStreetMap contributors, available under the Open Database License.</p>
+    <ul class="credits">${used.map(([k, ph]) => `<li data-src="${esc(ph.f)}"><img src="${esc(ph.f)}" alt="" loading="lazy"><span><b>${esc(ph.t || k)}</b><br>${esc(ph.by)} · <a href="${esc(ph.page)}" target="_blank" rel="noopener">${esc(ph.lic)}</a></span></li>`).join("") || '<li class="muted">No photos loaded.</li>'}</ul>
+  </div>`, ".x");
+}
 
 /* ================= Roulette ================= */
 function roulette(){
@@ -1012,7 +1317,7 @@ function tickCountdown(){
   let diff;
   if (now < TRIP_START){ diff = TRIP_START-now; cap.innerHTML = `until check-in at the <b>Disneyland Hotel</b> · Sunday 29 November, 15:00`; }
   else if (now < TRIP_END){ diff = TRIP_END-now; cap.innerHTML = `<b>We're here!</b> Time left to soak up the magic · Paris time ${parisNow()}`; }
-  else { diff = 0; cap.innerHTML = `<b>Merci</b> for a magical weekend, Max, Marjo &amp; Maurits`; }
+  else { diff = 0; cap.innerHTML = `<b>Merci</b> for a magical weekend, Max, Marjo, Martina &amp; Maurits`; }
   const d=Math.floor(diff/864e5), h=Math.floor(diff/36e5)%24, m=Math.floor(diff/6e4)%60, s=Math.floor(diff/1e3)%60;
   $("#cdD").textContent = d>99?d:pad(d); $("#cdH").textContent=pad(h); $("#cdM").textContent=pad(m); $("#cdS").textContent=pad(s);
 }
@@ -1107,7 +1412,24 @@ function burst(){
   if (reduceMotion) return;
   for (let i=0;i<3;i++) setTimeout(()=>firework(W*(.2+Math.random()*.6), H*(.15+Math.random()*.3), true), i*220);
 }
+let heroPhotoOn = false;
 function drawSky(t){
+  if (heroPhotoOn){
+    sx.clearRect(0,0,W,H);
+    sx.globalCompositeOperation="lighter";
+    for (let i=sparks.length-1;i>=0;i--){
+      const p=sparks[i]; p.x+=p.vx; p.y+=p.vy; p.vx*=.985; p.vy=p.vy*.985+.035; p.life-=p.decay;
+      if (p.life<=0){ sparks.splice(i,1); continue; }
+      sx.globalAlpha=Math.max(0,p.life); sx.fillStyle=p.c; sx.beginPath(); sx.arc(p.x,p.y,p.r*p.life+.3,0,Math.PI*2); sx.fill();
+    }
+    sx.globalAlpha=1; sx.globalCompositeOperation="source-over";
+    if (S.snow){
+      if (heroFlakes.length===0) heroFlakes = Array.from({length:Math.round(W*H/9000)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.8+.5,v:.25+Math.random()*.6,w:Math.random()*6}));
+      sx.fillStyle="rgba(255,255,255,.85)";
+      for (const f of heroFlakes){ if(!reduceMotion){ f.y+=f.v; f.x+=Math.sin(t/1500+f.w)*.3; if(f.y>H){f.y=-4;f.x=Math.random()*W;} } sx.beginPath(); sx.arc(f.x,f.y,f.r,0,Math.PI*2); sx.fill(); }
+    }
+    return;
+  }
   const g = sx.createLinearGradient(0,0,0,H); g.addColorStop(0,"#070a24"); g.addColorStop(.6,"#141a4f"); g.addColorStop(1,"#2a2468");
   sx.globalCompositeOperation="source-over"; sx.fillStyle=g; sx.fillRect(0,0,W,H);
   // moon
@@ -1165,7 +1487,18 @@ let snowRunning=false;
 function startSnow(){ if (!snowRunning && S.snow && !reduceMotion){ snowRunning=true; requestAnimationFrame(snowLoop); } else if(!S.snow){ nx2.clearRect(0,0,SW,SH); } }
 
 /* ================= Boot ================= */
+function heroPhoto(){
+  const ph = photo("castle_night") || photo("castle"); const box = $("#heroPhoto"); if (!ph || !box) return;
+  const key = photo("castle_night") ? "castle_night" : "castle";
+  const im = new Image(); im.alt = ""; im.decoding = "async";
+  im.onload = () => { box.appendChild(im); requestAnimationFrame(() => { box.dataset.loaded = "1"; heroPhotoOn = true; drawSky(performance.now()); }); };
+  im.src = ph.f;
+  const c = document.createElement("button"); c.className = "hero-credit"; c.textContent = "Photo: " + ph.by + " · " + ph.lic; c.onclick = openCredits;
+  $("#top").appendChild(c);
+}
 function boot(){
+  renderSync(); startSync(); heroPhoto();
+  $("#creditsBtn").onclick = openCredits;
   { const n=Date.now(); if (n>=DAY1 && n<TRIP_END) S.day = n>=DAY2 ? 2 : 1; }
   renderCrew(); route(); tickCountdown(); setInterval(tickCountdown,1000);
   sizeSky(); sizeSnow();
