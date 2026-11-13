@@ -302,6 +302,58 @@ main{padding-top:26px;position:relative;z-index:1}
 .landchip[aria-pressed="true"]{color:var(--ink);border-color:var(--gold);background:rgba(240,201,120,.1)}
 .osm-credit{font-size:11px;color:var(--muted)}
 
+/* Information blocks */
+.hello{display:grid;gap:16px;grid-template-columns:minmax(0,1fr) auto;align-items:center;background:radial-gradient(420px 220px at 0% 0%,rgba(240,201,120,.16),transparent 70%),linear-gradient(180deg,var(--panel),var(--night-2))}
+.hello-h{font-family:var(--f-display);font-size:clamp(24px,4vw,34px);margin-top:4px}
+.emt{display:grid;gap:16px;border-color:rgba(240,201,120,.45);background:radial-gradient(500px 240px at 100% 0%,rgba(240,201,120,.18),transparent 70%),linear-gradient(180deg,var(--panel),var(--night-2))}
+.emt-head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:center}
+.emt-head h2{font-family:var(--f-display);font-size:clamp(20px,3vw,26px);margin-top:4px}
+.emt-time{font-size:clamp(28px,5vw,44px);color:var(--gold);line-height:1;display:grid;justify-items:center;padding:14px 16px;border-radius:16px;border:1px solid rgba(240,201,120,.35);background:rgba(240,201,120,.07)}
+.emt-time span{font-size:.5em;color:var(--muted)}
+.emt-cols{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.emt-cols .pills{margin-top:8px}
+.emt .pill{font-size:12px;padding:5px 10px;color:var(--ink);background:rgba(255,255,255,.08)}
+.daycard{display:grid;gap:14px}
+.daycard.today{border-color:var(--gold);box-shadow:0 0 0 3px rgba(240,201,120,.15),var(--shadow)}
+.day-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.day-top h2{font-family:var(--f-display);font-size:22px;margin-top:4px}
+.sun{display:flex;gap:12px;color:var(--muted);font-family:var(--f-mono);font-size:13px}
+.sun span{display:inline-flex;gap:5px;align-items:center}
+.sun svg{width:16px;height:16px;color:var(--gold)}
+.hours{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hours>div{padding:12px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--line);display:grid;gap:2px}
+.hours span{font-size:12px}
+.hours b{font-size:clamp(17px,2.4vw,21px)}
+.facts-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.facts-list li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;font-size:14px}
+.facts-list svg{width:20px;height:20px;color:var(--gold);margin-top:2px}
+.showcard{display:grid;gap:10px}
+.showcard h3{font-size:17px;font-weight:800}
+.showcard .where{font-size:12.5px;color:var(--muted)}
+.showcard p{margin:0;font-size:13.5px;color:#d3d6f5}
+.ph .ph-emt{position:absolute;right:10px;top:10px;z-index:1;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;color:#2a1d00;background:var(--gold);padding:4px 9px;border-radius:99px;box-shadow:0 2px 10px rgba(0,0,0,.4)}
+.ph .ph-emt svg{width:13px;height:13px}
+.emtnote{display:grid;grid-template-columns:20px minmax(0,1fr);gap:10px;padding:12px;border-radius:12px;background:rgba(240,201,120,.08);border:1px solid rgba(240,201,120,.3);font-size:13.5px}
+.emtnote svg{width:20px;height:20px;color:var(--gold)}
+.xmas{background:radial-gradient(500px 260px at 100% 0%,rgba(244,169,198,.18),transparent 70%),linear-gradient(180deg,var(--panel),var(--night-2))}
+.xmas .ph{margin-bottom:14px;aspect-ratio:21/8}
+.breakfast{border-color:rgba(140,230,192,.35)}
+.fchip svg{display:inline-block}
+@media (max-width:640px){.hello{grid-template-columns:1fr}.emt-head{grid-template-columns:1fr}.emt-time{justify-items:start;grid-auto-flow:column;gap:8px}}
+
+.photo-sheet .sh-img{aspect-ratio:auto;background:#05071c;display:grid;place-items:center}
+.photo-sheet .sh-img img{width:auto;max-width:100%;height:auto;max-height:68vh;object-fit:contain}
+.carousel.mem{grid-auto-columns:minmax(200px,24%)}
+.carousel.mem .pick{aspect-ratio:3/4}
+
+.parkimg{aspect-ratio:16/9;border-radius:12px;overflow:hidden;margin-bottom:10px;max-width:100%}
+.parkimg img{width:100%;height:100%;object-fit:cover;display:block}
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;margin:14px 0 0}
+.duo figure{margin:0;display:grid;gap:6px}
+.duo img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;display:block;max-width:100%}
+.duo figcaption{font-size:12px;color:var(--muted)}
+.showcard .ph{margin-bottom:2px}
+
 /* Tab bar */
 .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;justify-content:center;
   padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));pointer-events:none}
@@ -350,8 +402,7 @@ main{padding-top:26px;position:relative;z-index:1}
   <canvas id="sky" aria-hidden="true"></canvas>
   <div class="hero-inner">
     <div class="topline">
-      <span class="brand">Marne-la-Vallée · Nov 2026</span>
-      <span class="sync" id="syncChip" role="status"></span>
+      <span class="brand">Disneyland Paris · 29–30 Nov 2026</span>
       <div class="actions">
         <button class="icon-btn" id="snowBtn" aria-pressed="true" title="Toggle snowfall">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M4 7l16 10M20 7L4 17"/></svg>Snow</button>
@@ -374,7 +425,7 @@ main{padding-top:26px;position:relative;z-index:1}
 </section>
 
 <main class="wrap" id="app"></main>
-<footer><p class="foot wrap"><button class="btn ghost" id="creditsBtn" style="padding:6px 12px;font-size:12px;margin-bottom:8px">Photo &amp; map credits</button><br>Made for Max, Marjo, Martina &amp; Maurits. A personal trip planner, not an official Disney app. Check hours and show times in the official app on the day.</p></footer>
+<footer><p class="foot wrap"><button class="btn ghost" id="creditsBtn" style="padding:6px 12px;font-size:12px;margin-bottom:8px">Photo &amp; map credits</button><br>Made for Max, Marjo, Martina &amp; Maurits. A personal trip guide, not an official Disney app. Hours and show times come from published schedules and can change, so check the official app on the day.</p></footer>
 
 <div class="tabbar"><nav aria-label="Sections" id="tabs"></nav></div>
 <div class="overlay" id="overlay" hidden></div>
@@ -384,77 +435,94 @@ main{padding-top:26px;position:relative;z-index:1}
 (() => {
 "use strict";
 
-/* ================= Data ================= */
-const TRIP_START = Date.UTC(2026,10,29,14,0,0);   // 29 Nov 2026 15:00 Paris (CET, UTC+1)
+/* ================= Trip facts ================= */
+const TRIP_START = Date.UTC(2026,10,29,14,0,0);   // 29 Nov 2026 15:00 Paris (CET, UTC+1): hotel check-in
 const DAY1 = Date.UTC(2026,10,28,23,0,0);         // 29 Nov 00:00 Paris
 const DAY2 = Date.UTC(2026,10,29,23,0,0);         // 30 Nov 00:00 Paris
 const TRIP_END = Date.UTC(2026,10,30,23,0,0);     // 1 Dec 00:00 Paris
 
 const CREW = [
-  {id:"max",     name:"Max",     ini:"MX", color:"#8fd3ff", note:"Thrill hunter"},
-  {id:"marjo",   name:"Marjo",   ini:"MJ", color:"#f4a9c6", note:"Castle & sparkle"},
-  {id:"martina", name:"Martina", ini:"MT", color:"#c9b2ff", note:"Magic & memories"},
-  {id:"me",      name:"Maurits", ini:"MR", color:"#f0c978", note:"Trip planner"}
+  {id:"max",     name:"Max",     ini:"MX", color:"#8fd3ff"},
+  {id:"marjo",   name:"Marjo",   ini:"MJ", color:"#f4a9c6"},
+  {id:"martina", name:"Martina", ini:"MT", color:"#c9b2ff"},
+  {id:"me",      name:"Maurits", ini:"MR", color:"#f0c978"}
 ];
 
-const TAGS = {
-  travel:{label:"Travel", c:"#a3a9d6"},
-  hotel:{label:"Hotel", c:"#f4a9c6"},
-  park:{label:"Ride", c:"#8fd3ff"},
-  food:{label:"Food", c:"#8ce6c0"},
-  show:{label:"Show", c:"#f0c978"}
-};
+/* Researched November 2026. Hours and show times change; the page says so wherever it shows them. */
+const EMT = {start:"08:00", end:"09:00",
+  dlp:["Peter Pan's Flight","Big Thunder Mountain","Star Wars Hyperspace Mountain","Buzz Lightyear Laser Blast","Dumbo","Orbitron"],
+  daw:["World of Frozen","Crush's Coaster","Ratatouille","Spider-Man W.E.B. Adventure","Tower of Terror"]};
 
-const DEFAULT_PLAN = [
-  {d:1,t:"08:30",title:"Head to Marne-la-Vallée–Chessy",note:"RER A or TGV, the station is a short walk from the hotel",tag:"travel"},
-  {d:1,t:"10:00",title:"Drop bags at the Disneyland Hotel",note:"Bell desk keeps luggage until the room is ready",tag:"hotel"},
-  {d:1,t:"10:30",title:"Frontierland: Big Thunder Mountain & Phantom Manor",note:"Start west while queues are short",tag:"park"},
-  {d:1,t:"12:30",title:"Lunch at Captain Jack's",note:"Table service inside the Pirates bayou, book ahead",tag:"food"},
-  {d:1,t:"14:00",title:"Adventureland: Pirates, Indiana Jones & Adventure Isle",note:"",tag:"park"},
-  {d:1,t:"15:00",title:"Check in: Deluxe room with terrace",note:"Room keys, quick rest, enjoy the view",tag:"hotel"},
-  {d:1,t:"16:45",title:"Sunset over the castle",note:"Sunset around 16:57, perfect from the terrace or Main Street",tag:"show"},
-  {d:1,t:"17:30",title:"Discoveryland: Hyperspace Mountain & Star Tours",note:"Dark early, the neon looks great",tag:"park"},
-  {d:1,t:"19:30",title:"Dinner",note:"Hotel or park, see the Food tab",tag:"food"},
-  {d:1,t:"21:00",title:"Nighttime spectacular at the castle",note:"Check exact time in the official app; claim a spot early",tag:"show"},
-  {d:2,t:"07:15",title:"Breakfast at the hotel",note:"Included in our booking",tag:"food"},
-  {d:2,t:"08:30",title:"Extra Magic Time: rope-drop Peter Pan's Flight",note:"Hotel guests get early entry, confirm hours in the app",tag:"park"},
-  {d:2,t:"10:30",title:"Check out, leave bags at the bell desk",note:"Usually by 11:00",tag:"hotel"},
-  {d:2,t:"11:00",title:"World of Frozen: Frozen Ever After",note:"Newest ride at Disney Adventure World, expect queues",tag:"park"},
-  {d:2,t:"12:45",title:"Lunch at Bistrot Chez Rémy",note:"Rat-sized restaurant in Worlds of Pixar, book ahead",tag:"food"},
-  {d:2,t:"14:15",title:"Avengers Campus: Flight Force & Spider-Man",note:"",tag:"park"},
-  {d:2,t:"16:00",title:"Tower of Terror, then Ratatouille",note:"",tag:"park"},
-  {d:2,t:"17:30",title:"Lakeside lights at Adventure Bay",note:"Evening show times vary, check the app",tag:"show"},
-  {d:2,t:"19:00",title:"Collect bags and head home",note:"Last souvenirs at Disney Village on the way",tag:"travel"}
+const SHOWS = [
+  {id:"tales", name:"Disney Tales of Magic", where:"Sleeping Beauty Castle · Disneyland Park", when:"Every night, around park closing",
+   d:"The castle nighttime spectacular. Since April 2026 it runs without drones and uses projections and pyrotechnics instead. Main Street gives the classic straight-on view.", photo:"castle_night"},
+  {id:"cascade", name:"Disney Cascade of Lights", where:"Adventure Bay · Disney Adventure World", when:"Every night",
+   d:"The new drone and water show on the lake that opened with Disney Adventure World on 29 March 2026. This is where the drones moved to.", photo:"land_adventureway"},
+  {id:"parade", name:"Mickey's Dazzling Christmas Parade", where:"Main Street, U.S.A. · Disneyland Park", when:"15:55 and 17:45", alt:"land_mainstreetusa",
+   photo2:"parade", d:"Part of Disney Enchanted Christmas (7 November 2026 to 6 January 2027). The 2026 schedule has two parades a day, at 15:55 and 17:45. Sunset is just before 17:00, so the 17:45 parade runs after dark.", photo:"land_mainstreetusa"},
+  {id:"arendelle", name:"A Celebration in Arendelle", where:"Arendelle Bay · World of Frozen", when:"Daily",
+   d:"Anna, Elsa and friends on the bay in front of the North Mountain, in the land that opened in March 2026. Anna and Elsa also meet guests inside Arendelle Castle.", photo:"frozen"}
+];
+
+const DAYS = [
+  {n:1, date:"Sunday 29 November", short:"Sun 29 Nov", t0:DAY1,
+   hours:"9:00 – 22:00", hoursNote:"Parks open at 9:00 on your dates, right after your Extra Magic Time",
+   sunset:"16:57", sunrise:"08:20",
+   facts:[["clock","Extra Magic Time","08:00 – 09:00 for hotel guests. Your arrival day counts."],
+          ["hotel","Hotel check-in","Room ready from about 15:00. The bell desk keeps bags before that."],
+          ["sparkle","Christmas parade","Mickey's Dazzling Christmas Parade at 15:55 and 17:45 on Main Street."]]},
+  {n:2, date:"Monday 30 November", short:"Mon 30 Nov", t0:DAY2,
+   hours:"9:00 – 22:00", hoursNote:"Listed for 30 November in 2026 park-hour guides",
+   sunset:"16:56", sunrise:"08:22",
+   facts:[["clock","Extra Magic Time","08:00 – 09:00 again. Departure day counts too."],
+          ["hotel","Hotel check-out","Usually by 11:00. The bell desk holds bags for the rest of the day."],
+          ["sparkle","Christmas parade & evening shows","Parade at 15:55 and 17:45, then Disney Tales of Magic at the castle and Disney Cascade of Lights on the lake."]]}
+];
+
+const SOURCES = [
+  ["Extra Magic Time guide (2026)", "https://dlptips.com/planning-tips/extra-magic-hours/"],
+  ["Extra Magic Time: who gets early entry", "https://julieears.com/us/planning/disneyland-paris-extra-magic-time/"],
+  ["Disneyland Paris opening hours 2026", "https://dlptips.com/disneyland-paris-opening-hours/"],
+  ["Early closures November 2026", "https://www.disneyfanatic.com/disneyland-paris-christmas-early-closures-november-2026-emd1/"],
+  ["Christmas 2026: Disney Enchanted Christmas dates", "https://www.sortiraparis.com/en/news/christmas-and-holidays/articles/44467-christmas-2026-at-disneyland-paris-disney-s-enchanted-christmas-dates"],
+  ["Disney Tales of Magic 2026 changes", "https://www.laughingplace.com/disney-parks/disney-tales-of-magic-2026-changes/"],
+  ["Disney Adventure World opening, 29 March 2026", "https://news.disneylandparis.com/en/on-march-29-2026-world-of-frozen-along-with-many-new-experiences-will-open-within-disney-adventure-world-the-reimagined-second-park-at-disneyland-paris/"],
+  ["What to do at Disney Adventure World", "https://www.themeparkinsider.com/reviews/disney-adventure-world/"],
+  ["Disneyland Hotel review: Deluxe Lounge", "https://www.thewholeworldisaplayground.com/disneyland-hotel-paris-review/"],
+  ["Christmas parade times 2026", "https://julieears.com/us/seasons-events/disneyland-paris-christmas-parade/"],
+  ["Christmas reaches World of Frozen for the first time", "https://news.disneylandparis.com/en/for-the-first-time-the-magic-of-christmas-will-extend-to-world-of-frozen-adding-a-whole-new-dimension-to-disney-enchanted-christmas-celebrated-across-both-disneyland-paris-parks/"],
+  ["November 2026 park hours and closures", "https://insidethemagic.net/2026/11/disneyland-paris-sets-6-dates-of-closure-for-november-gates-to-lockdown-at-7-pm-ad1/"],
+  ["Official calendar and opening times", "https://www.disneylandparis.com/en-int/calendars/park-hours"]
 ];
 
 const RIDES = [
   // Disneyland Park
-  {id:"btm",name:"Big Thunder Mountain",park:"dlp",land:"Frontierland",type:"coaster",lvl:3,blurb:"Runaway mine train around an island in the Rivers of the Far West. Fast, twisty, great at night.",tip:"Ride after dark for the best views."},
+  {id:"btm",emt:1,name:"Big Thunder Mountain",park:"dlp",land:"Frontierland",type:"coaster",lvl:3,blurb:"Runaway mine train around an island in the Rivers of the Far West. Fast, twisty, great at night.",tip:"Ride after dark for the best views."},
   {id:"pm",name:"Phantom Manor",park:"dlp",land:"Frontierland",type:"dark",lvl:2,blurb:"A spooky Victorian mansion on a hill with a ghostly bride and a full ghost town finale.",tip:"Look for the Pepper's ghost ballroom."},
   {id:"potc",name:"Pirates of the Caribbean",park:"dlp",land:"Adventureland",type:"dark",lvl:2,blurb:"Boat ride through cannon fights and pirate towns with two short drops.",tip:"Captain Jack's restaurant sits inside the ride."},
   {id:"indy",name:"Indiana Jones et le Temple du Péril",park:"dlp",land:"Adventureland",type:"coaster",lvl:4,blurb:"Short, rattly coaster through jungle temple ruins, with a loop.",tip:"Hold on to hats and glasses."},
   {id:"isle",name:"Adventure Isle & Skull Rock",park:"dlp",land:"Adventureland",type:"walk",lvl:1,blurb:"Caves, rope bridges and a treehouse to explore between rides.",tip:"Good break when queues spike."},
-  {id:"pp",name:"Peter Pan's Flight",park:"dlp",land:"Fantasyland",type:"dark",lvl:1,blurb:"Fly a pirate galleon over moonlit London to Neverland.",tip:"Queue gets long fast; go first thing."},
+  {id:"pp",emt:1,name:"Peter Pan's Flight",park:"dlp",land:"Fantasyland",type:"dark",lvl:1,blurb:"Fly a pirate galleon over moonlit London to Neverland.",tip:"Queue gets long fast; go first thing."},
   {id:"isw",name:"\"it's a small world\"",park:"dlp",land:"Fantasyland",type:"dark",lvl:1,blurb:"Gentle boat cruise past singing dolls from every corner of the globe.",tip:"Indoors and warm on a cold day."},
   {id:"dragon",name:"La Tanière du Dragon",park:"dlp",land:"Fantasyland",type:"walk",lvl:1,blurb:"A huge animatronic dragon sleeps in a cave under the castle.",tip:"Enter from the castle's left side."},
   {id:"castle",name:"Sleeping Beauty Castle gallery",park:"dlp",land:"Fantasyland",type:"walk",lvl:1,blurb:"Stained-glass windows and tapestries upstairs in the castle.",tip:"Quiet, free of queues, beautiful photos."},
-  {id:"tea",name:"Mad Hatter's Tea Cups",park:"dlp",land:"Fantasyland",type:"family",lvl:2,blurb:"Spinning tea cups under a lantern-lit roof. You control the spin.",tip:"Max will spin it too fast."},
+  {id:"tea",name:"Mad Hatter's Tea Cups",park:"dlp",land:"Fantasyland",type:"family",lvl:2,blurb:"Spinning tea cups under a lantern-lit roof. You control the spin.",tip:"You control the spin with the wheel in the middle."},
   {id:"alice",name:"Alice's Curious Labyrinth",park:"dlp",land:"Fantasyland",type:"walk",lvl:1,blurb:"Hedge maze ending at the Queen of Hearts' castle with a view.",tip:"Best in daylight."},
-  {id:"hyper",name:"Star Wars Hyperspace Mountain",park:"dlp",land:"Discoveryland",type:"coaster",lvl:5,blurb:"Launched indoor coaster in the dark with loops and an X-wing battle.",tip:"The most intense ride in the park."},
+  {id:"hyper",emt:1,name:"Star Wars Hyperspace Mountain",park:"dlp",land:"Discoveryland",type:"coaster",lvl:5,blurb:"Launched indoor coaster in the dark with loops and an X-wing battle.",tip:"The most intense ride in the park."},
   {id:"tours",name:"Star Tours: The Adventures Continue",park:"dlp",land:"Discoveryland",type:"sim",lvl:3,blurb:"3D flight simulator with randomised destinations each time.",tip:"Ride twice, the story changes."},
-  {id:"buzz",name:"Buzz Lightyear Laser Blast",park:"dlp",land:"Discoveryland",type:"dark",lvl:1,blurb:"Shoot targets with laser blasters and compete on score.",tip:"Crew battle: lowest score buys hot chocolate."},
+  {id:"buzz",emt:1,name:"Buzz Lightyear Laser Blast",park:"dlp",land:"Discoveryland",type:"dark",lvl:1,blurb:"Shoot targets with laser blasters and compete on score.",tip:"Compare scores at the exit: lowest buys the hot chocolate."},
   {id:"autopia",name:"Autopia",park:"dlp",land:"Discoveryland",type:"family",lvl:1,blurb:"Drive retro-future cars on a winding track.",tip:""},
   {id:"nautilus",name:"Les Mystères du Nautilus",park:"dlp",land:"Discoveryland",type:"walk",lvl:1,blurb:"Walk through Captain Nemo's submarine, giant squid included.",tip:"Short and often overlooked."},
   {id:"rail",name:"Disneyland Railroad",park:"dlp",land:"Main Street, U.S.A.",type:"family",lvl:1,blurb:"Steam train circling the park with stops in several lands.",tip:"Rest tired legs between lands."},
   // Disney Adventure World
-  {id:"frozen",name:"Frozen Ever After",park:"daw",land:"World of Frozen",type:"dark",lvl:2,blurb:"Boat ride into Arendelle and Elsa's ice palace, with a backwards drop.",tip:"Newest headline ride, go early or late."},
-  {id:"arendelle",name:"Arendelle village",park:"daw",land:"World of Frozen",type:"walk",lvl:1,blurb:"Walk the village under the North Mountain and catch Frozen characters.",tip:"Beautiful lit up after dark."},
+  {id:"frozen",emt:1,name:"Frozen Ever After",park:"daw",land:"World of Frozen",type:"dark",lvl:2,blurb:"Boat ride into Arendelle and Elsa's ice palace, with a backwards drop.",tip:"Newest headline ride, go early or late."},
+  {id:"arendelle",emt:1,name:"Arendelle village",park:"daw",land:"World of Frozen",type:"walk",lvl:1,blurb:"Walk the village under the North Mountain and catch Frozen characters.",tip:"Beautiful lit up after dark."},
   {id:"tangled",name:"Raiponce Tangled Spin",park:"daw",land:"Adventure Way",type:"family",lvl:2,blurb:"Lantern-themed spinning ride along the new promenade.",tip:""},
   {id:"flight",name:"Avengers Assemble: Flight Force",park:"daw",land:"Avengers Campus",type:"coaster",lvl:5,blurb:"Launched coaster with inversions alongside Iron Man and Captain Marvel.",tip:"Single Rider line is often much faster."},
-  {id:"spidey",name:"Spider-Man W.E.B. Adventure",park:"daw",land:"Avengers Campus",type:"dark",lvl:1,blurb:"Interactive ride where you sling webs with your hands.",tip:"Compare scores at the exit."},
-  {id:"tot",name:"The Twilight Zone Tower of Terror",park:"daw",land:"Production Courtyard",type:"thrill",lvl:5,blurb:"Haunted hotel elevator with random drops in the dark.",tip:"Look out over the park at the top."},
-  {id:"crush",name:"Crush's Coaster",park:"daw",land:"Worlds of Pixar",type:"coaster",lvl:4,blurb:"Spinning turtle shell coaster through the East Australian Current.",tip:"Queue is slow-moving, check wait first."},
-  {id:"rat",name:"Ratatouille: The Adventure",park:"daw",land:"Worlds of Pixar",type:"dark",lvl:2,blurb:"Trackless 3D ride shrunk to rat size through Gusteau's kitchen.",tip:"Single Rider line available."},
+  {id:"spidey",emt:1,name:"Spider-Man W.E.B. Adventure",park:"daw",land:"Avengers Campus",type:"dark",lvl:1,blurb:"Interactive ride where you sling webs with your hands.",tip:"Compare scores at the exit."},
+  {id:"tot",emt:1,name:"The Twilight Zone Tower of Terror",park:"daw",land:"Production Courtyard",type:"thrill",lvl:5,blurb:"Haunted hotel elevator with random drops in the dark.",tip:"Look out over the park at the top."},
+  {id:"crush",emt:1,name:"Crush's Coaster",park:"daw",land:"Worlds of Pixar",type:"coaster",lvl:4,blurb:"Spinning turtle shell coaster through the East Australian Current.",tip:"Queue is slow-moving, check wait first."},
+  {id:"rat",emt:1,name:"Ratatouille: The Adventure",park:"daw",land:"Worlds of Pixar",type:"dark",lvl:2,blurb:"Trackless 3D ride shrunk to rat size through Gusteau's kitchen.",tip:"Single Rider line available."},
   {id:"rc",name:"RC Racer",park:"daw",land:"Worlds of Pixar",type:"thrill",lvl:4,blurb:"Half-pipe shuttle that swings you up a giant orange track.",tip:""},
   {id:"para",name:"Toy Soldiers Parachute Drop",park:"daw",land:"Worlds of Pixar",type:"family",lvl:2,blurb:"Parachute drop tower in Andy's backyard.",tip:""},
   {id:"cars",name:"Cars ROAD TRIP",park:"daw",land:"Worlds of Pixar",type:"family",lvl:1,blurb:"Tram tour along Route 66 scenes from Cars.",tip:""}
@@ -471,22 +539,9 @@ const TYPE_META = {
 
 const PARKS = {dlp:"Disneyland Park", daw:"Disney Adventure World"};
 
-const SHOOTERS = [{id:"buzz",name:"Buzz Lightyear Laser Blast"},{id:"spidey",name:"Spider-Man W.E.B. Adventure"}];
-const ACHIEVEMENTS = [
-  {id:"packed",t:"Bags packed",d:"Tick every item on the packing list",ok:()=>PACK.every(p=>S.pack[p.id])},
-  {id:"castle",t:"Royal guests",d:"Check in at the Disneyland Hotel",ok:()=>S.plan.some(p=>/check in/i.test(p.title)&&p.done)},
-  {id:"rope",t:"Rope-drop heroes",d:"Ride Peter Pan's Flight or Frozen Ever After",ok:()=>S.ridden.pp||S.ridden.frozen},
-  {id:"coaster",t:"Coaster crew",d:"Ride all five coasters",ok:()=>RIDES.filter(r=>r.type==="coaster").every(r=>S.ridden[r.id])},
-  {id:"both",t:"Two-park weekend",d:"Ride something in both parks",ok:()=>RIDES.some(r=>r.park==="dlp"&&S.ridden[r.id])&&RIDES.some(r=>r.park==="daw"&&S.ridden[r.id])},
-  {id:"half",t:"Half the resort",d:"Ride 14 attractions",ok:()=>Object.keys(S.ridden).length>=14},
-  {id:"food",t:"Tables booked",d:"Book three restaurants",ok:()=>Object.values(S.food).filter(f=>f.booked).length>=3},
-  {id:"laser",t:"Laser legends",d:"Log scores on both shooting rides",ok:()=>SHOOTERS.every(g=>Object.keys((S.scores||{})[g.id]||{}).length)},
-  {id:"moment",t:"Memory makers",d:"Save five moments",ok:()=>(S.moments||[]).length>=5}
-];
-
 const FOOD = [
-  {id:"rb",name:"Royal Banquet",where:"Disneyland Hotel",kind:"Buffet",tags:["Hotel","Character dining"],blurb:"Grand buffet in the hotel, with princesses and friends dropping by. Likely where our included breakfast happens.",book:true},
-  {id:"tdl",name:"La Table de Lumière",where:"Disneyland Hotel",kind:"Table service",tags:["Hotel","Special dinner"],blurb:"Elegant dining room inspired by Beauty and the Beast. Our candidate for a dressed-up Sunday dinner.",book:true},
+  {id:"rb",name:"Royal Banquet",where:"Disneyland Hotel",kind:"Buffet",tags:["Hotel","Character dining"],blurb:"Grand buffet in the hotel, with princesses and friends dropping by. Characters stop by during the meal.",book:true},
+  {id:"tdl",name:"La Table de Lumière",where:"Disneyland Hotel",kind:"Table service",tags:["Hotel","Special dinner"],blurb:"Elegant dining room inspired by Beauty and the Beast. For a dressed-up dinner.",book:true},
   {id:"rl",name:"Royal Lounge",where:"Disneyland Hotel",kind:"Bar & lounge",tags:["Hotel","Drinks"],blurb:"Quiet royal-themed lounge for a nightcap after the castle show.",book:false},
   {id:"cj",name:"Captain Jack's – Restaurant des Pirates",where:"Adventureland",kind:"Table service",tags:["Themed"],blurb:"Eat by candlelight inside the Pirates of the Caribbean bayou, boats drifting past.",book:true},
   {id:"auberge",name:"Auberge de Cendrillon",where:"Fantasyland",kind:"Table service",tags:["Character dining"],blurb:"French country inn with Cinderella and princess visits at the table.",book:true},
@@ -495,26 +550,11 @@ const FOOD = [
   {id:"pym",name:"PYM Kitchen",where:"Avengers Campus",kind:"Buffet",tags:["Themed"],blurb:"Buffet where food comes shrunken or super-sized thanks to Pym tech.",book:true},
   {id:"hyperion",name:"Café Hyperion",where:"Discoveryland",kind:"Quick service",tags:["Quick"],blurb:"Big airship-hangar food court, handy before Hyperspace Mountain.",book:false},
   {id:"hathi",name:"Colonel Hathi's Pizza Outpost",where:"Adventureland",kind:"Quick service",tags:["Quick"],blurb:"Pizza and pasta in a colonial jungle outpost.",book:false},
-  {id:"ludwig",name:"King Ludwig's Castle",where:"Disney Village",kind:"Table service",tags:["Evening"],blurb:"Bavarian dishes on the way to the station on Monday evening.",book:false},
-  {id:"earl",name:"Earl of Sandwich",where:"Disney Village",kind:"Quick service",tags:["Quick"],blurb:"Hot sandwiches for the trip home.",book:false}
+  {id:"nordic",name:"Nordic Crowns Tavern",where:"World of Frozen",kind:"Quick service",tags:["New in 2026"],blurb:"Nordic comfort food in the village of Arendelle, right by Frozen Ever After.",book:false},
+  {id:"ludwig",name:"King Ludwig's Castle",where:"Disney Village",kind:"Table service",tags:["Evening"],blurb:"Bavarian dishes and a beer-hall atmosphere.",book:false},
+  {id:"earl",name:"Earl of Sandwich",where:"Disney Village",kind:"Quick service",tags:["Quick"],blurb:"Hot sandwiches when you just want something quick.",book:false}
 ];
 
-const PACK = [
-  {id:"p1",cat:"Essentials",t:"ID cards / passports"},
-  {id:"p2",cat:"Essentials",t:"Booking confirmation (email or PDF)"},
-  {id:"p3",cat:"Essentials",t:"Official Disneyland Paris app installed & logged in"},
-  {id:"p4",cat:"Essentials",t:"Phone chargers + power bank"},
-  {id:"p5",cat:"Cold weather",t:"Warm coat"},
-  {id:"p6",cat:"Cold weather",t:"Gloves, beanie & scarf"},
-  {id:"p7",cat:"Cold weather",t:"Rain poncho or packable jacket"},
-  {id:"p8",cat:"Cold weather",t:"Comfortable waterproof shoes"},
-  {id:"p9",cat:"Overnight",t:"Toiletries"},
-  {id:"p10",cat:"Overnight",t:"Pyjamas & a change of clothes"},
-  {id:"p11",cat:"Overnight",t:"Swimsuit for the hotel pool"},
-  {id:"p12",cat:"Overnight",t:"Something smart for dinner"},
-  {id:"p13",cat:"Overnight",t:"Medication"},
-  {id:"p14",cat:"Overnight",t:"Small backpack for the parks"}
-];
 
 const LANDS = {
   "Main Street, U.S.A.":{c:"#f0c978",d:"Victorian main street leading to the castle. Shops, parades and the railroad station."},
@@ -530,126 +570,32 @@ const LANDS = {
 };
 
 /* ================= Photos & map data (real photos from Wikimedia Commons, map from OpenStreetMap) ================= */
-const PHOTOS = /*PHOTOS*/{}/*END*/;
+const PHOTOS = /*PHOTOS*/{"hotel": {"f": "photos/hotel.jpg", "t": "Complexe Disneyland Paris - Chessy (FR77) - 2025-10-13 - 1", "by": "Chabe01", "lic": "CC BY-SA 4.0", "page": "https://commons.wikimedia.org/wiki/File:Complexe_Disneyland_Paris_-_Chessy_(FR77)_-_2025-10-13_-_1.jpg"}, "btm": {"f": "photos/btm.jpg", "t": "Frontierland à Disneyland Paris", "by": "Buzzz1981", "lic": "CC0", "page": "https://commons.wikimedia.org/wiki/File:Frontierland_%C3%A0_Disneyland_Paris.jpg"}, "land_frontierland": {"f": "photos/land_frontierland.jpg", "t": "Frontierland - panoramio (2)", "by": "Mister No", "lic": "CC BY 3.0", "page": "https://commons.wikimedia.org/wiki/File:Frontierland_-_panoramio_(2).jpg"}, "pm": {"f": "photos/pm.jpg", "t": "Phantom Manor à Disneyland Paris", "by": "Buzzz1981", "lic": "CC0", "page": "https://commons.wikimedia.org/wiki/File:Phantom_Manor_%C3%A0_Disneyland_Paris.jpg"}, "land_adventureland": {"f": "photos/land_adventureland.jpg", "t": "Adventureland (9724714322)", "by": "HumMelissa_Glee", "lic": "CC BY 2.0", "page": "https://commons.wikimedia.org/wiki/File:Adventureland_(9724714322).jpg"}, "isle": {"f": "photos/isle.jpg", "t": "Parc dysney - panoramio", "by": "chisloup", "lic": "CC BY 3.0", "page": "https://commons.wikimedia.org/wiki/File:Parc_dysney_-_panoramio.jpg"}, "land_discoveryland": {"f": "photos/land_discoveryland.jpg", "t": "Disneyland Steampunk (2847311763)", "by": "Stéphane Gallay from Laconnex, Switzerland", "lic": "CC BY 2.0", "page": "https://commons.wikimedia.org/wiki/File:Disneyland_Steampunk_(2847311763).jpg"}, "christmas": {"f": "photos/christmas.jpg", "t": "Disneyland Paris 132", "by": "Zakarie Faibis", "lic": "CC BY-SA 4.0", "page": "https://commons.wikimedia.org/wiki/File:Disneyland_Paris_132.jpg"}, "hathi": {"f": "photos/hathi.jpg", "t": "Colonel Hathi’s Outpost Restaurant sign", "by": "Rémi Moreels", "lic": "CC BY 4.0", "page": "https://commons.wikimedia.org/wiki/File:Colonel_Hathi%E2%80%99s_Outpost_Restaurant_sign.jpg"}, "land_fantasyland": {"f": "photos/land_fantasyland.jpg", "t": "Le Carrousel de Lancelot", "by": "Nikki Pender", "lic": "CC BY 2.0", "page": "https://commons.wikimedia.org/wiki/File:Le_Carrousel_de_Lancelot.jpg"}}/*END*/;
 const MAPDATA = /*MAPDATA*/null/*END*/;
 const photo = k => PHOTOS[k] || null;
 const landKey = l => "land_" + l.toLowerCase().replace(/[^a-z]+/g, "");
 const imgTag = (k, cls = "photo", alt = "") => { const ph = photo(k); return ph ? `<img class="${cls}" src="${esc(ph.f)}" alt="${esc(alt)}" loading="lazy" decoding="async" data-credit="${esc(k)}">` : ""; };
-const creditLine = k => { const ph = photo(k); return ph ? `<div class="credit">Photo: ${esc(ph.by)} · <a href="${esc(ph.page)}" target="_blank" rel="noopener">${esc(ph.lic)}</a></div>` : ""; };
+const creditLine = k => { const ph = photo(k); return !ph ? "" : ph.own ? `<div class="credit">Your photo</div>` : `<div class="credit">Photo: ${esc(ph.by)} · <a href="${esc(ph.page)}" target="_blank" rel="noopener">${esc(ph.lic)}</a></div>`; };
 
-/* ================= State ================= */
-const KEY = "magic-weekend-v1";
+/* ================= Preferences (this device only) ================= */
+const KEY = "magic-weekend-prefs-v2";
 const store = {
   get(){ try { return JSON.parse(localStorage.getItem(KEY)) || null } catch(e){ return null } },
   set(v){ try { localStorage.setItem(KEY, JSON.stringify(v)) } catch(e){} }
 };
-let uid = 0;
-const mkId = () => "i" + Date.now().toString(36) + (uid++).toString(36);
-const freshPlan = () => DEFAULT_PLAN.map((p,i) => ({id:"d"+i, ...p, done:false}));
-const defaults = () => ({
-  me:"me", snow:true, day:1, park:"all", type:"all", q:"", sort:"votes", land:null,
-  plan: freshPlan(),
-  votes:{},
-  moments:[], scores:{}, ridden:{}, food:{}, pack:{}
-});
 function load(){
-  const d = defaults(), raw = store.get();
-  if (!raw || typeof raw !== "object") return d;
+  const d = {me:null, snow:true, park:"all", type:"all", q:"", sort:"land", land:null, mapLayer:"rides", emtOnly:false};
+  const raw = store.get(); if (!raw || typeof raw !== "object") return d;
   const out = Object.assign(d, raw);
-  const isObj = v => v && typeof v === "object" && !Array.isArray(v);
-  if (!Array.isArray(out.plan) || out.plan.some(p => !p || typeof p.title!=="string" || !/^\d{2}:\d{2}$/.test(p.t) || ![1,2].includes(p.d))) out.plan = freshPlan();
-  if (!Array.isArray(out.moments)) out.moments = [];
-  out.moments = out.moments.filter(m => m && typeof m.text==="string");
-  ["votes","ridden","food","pack","scores"].forEach(k => { if (!isObj(out[k])) out[k] = {}; });
-  if (!CREW.some(c=>c.id===out.me)) out.me = "me";
-  if (![1,2].includes(out.day)) out.day = 1;
+  if (out.me !== null && !CREW.some(c => c.id === out.me)) out.me = null;
   if (typeof out.q !== "string") out.q = "";
+  if (!["all","dlp","daw"].includes(out.park)) out.park = "all";
+  if (!["land","thrill","az"].includes(out.sort)) out.sort = "land";
   return out;
 }
 let S = load();
-/* ---- shared sync: local by default, live through the artifact db when available ---- */
-const SHARED = ["plan","votes","ridden","food","pack","scores","moments"];
-const PREF_KEYS = ["me","snow","day","park","type","q","sort","land","mapLayer"];
-const toDocs = (k, v) => {           // state slice -> {docId: data}
-  const out = {};
-  if (k==="plan"||k==="moments") (v||[]).forEach(it => { const {id, ...rest} = it; out[id] = rest; });
-  else if (k==="ridden") Object.entries(v||{}).forEach(([id,at]) => out[id] = {at});
-  else if (k==="pack") Object.keys(v||{}).forEach(id => out[id] = {done:true});
-  else Object.entries(v||{}).forEach(([id,o]) => { if (o && Object.values(o).some(Boolean)) out[id] = o; });
-  return out;
-};
-const fromDocs = (k, docs) => {      // [{id,data}] -> state slice
-  if (k==="plan"||k==="moments") return docs.map(d => ({id:d.id, ...d.data}));
-  const o = {};
-  docs.forEach(d => { o[d.id] = k==="ridden" ? (d.data.at||1) : k==="pack" ? 1 : d.data; });
-  return o;
-};
-const SYNC = {mode:"local", db:null, shadow:{}, status:"local", writes:0};
-function setStatus(st){ SYNC.status = st; const el = document.getElementById("syncChip"); if (el) renderSync(); }
-function save(){
-  store.set(S);
-  if (SYNC.mode !== "live") return;
-  for (const k of SHARED){
-    const docs = toDocs(k, S[k]), sh = SYNC.shadow[k] || {};
-    for (const [id, data] of Object.entries(docs)){
-      const j = JSON.stringify(data);
-      if (sh[id] !== j){ sh[id] = j; dbWrite(() => SYNC.db.doc(k+"/"+id).set(data)); }
-    }
-    for (const id of Object.keys(sh)) if (!(id in docs)){ delete sh[id]; dbWrite(() => SYNC.db.doc(k+"/"+id).delete()); }
-    SYNC.shadow[k] = sh;
-  }
-}
-function dbWrite(fn){
-  SYNC.writes++; setStatus("saving");
-  const done = () => { if (--SYNC.writes===0) setStatus("live"); };
-  fn().then(done, err => {
-    done();
-    if (err && err.code==="unavailable") setTimeout(() => dbWrite(fn), 800 + Math.random()*800);
-    else if (err && (err.code==="not_granted"||err.code==="revoked")) { setStatus("readonly"); toast("You can view the trip but not change it. Ask Maurits for edit access."); }
-    else if (err && err.code==="quota_exceeded") toast("The shared trip storage is full. Delete a few album photos.");
-    else toast("Couldn't save that change. Check your connection.");
-  });
-}
-let renderPending = false;
-const isTyping = () => { const a = document.activeElement; return a && a.matches && a.matches("#app input:not([type=checkbox]), #app select, #app textarea"); };
-function liveRender(){
-  if (isTyping()){ renderPending = true; return; }
-  if (renderPending === "raf") return;
-  renderPending = "raf";
-  requestAnimationFrame(() => { renderPending = false; renderCrew();
-    if ((location.hash||"").slice(1) === "map" && leafMap) return;   // keep the map where people left it
-    const y = scrollY; route(); scrollTo(0, y); });
-}
-document.addEventListener("focusout", () => setTimeout(() => { if (renderPending===true && !isTyping()){ renderPending=false; liveRender(); } }, 60));
-async function startSync(){
-  if (!window.claude || typeof window.claude.use !== "function") return;
-  setStatus("connecting");
-  let db = null;
-  try { db = await window.claude.use("db"); } catch(e){ db = null; }
-  if (!db){ setStatus("local"); return; }
-  SYNC.db = db; SYNC.mode = "live";
-  const seen = new Set();
-  const timer = setTimeout(() => { if (seen.size < SHARED.length) setStatus("slow"); }, 10000);
-  SHARED.forEach(k => {
-    db.collection(k).onSnapshot(snap => {
-      const docs = snap.docs.filter(d => d.exists).map(d => ({id:d.id, data:d.data()||{}}));
-      SYNC.shadow[k] = Object.fromEntries(docs.map(d => [d.id, JSON.stringify(d.data)]));
-      S[k] = fromDocs(k, docs);
-      seen.add(k); if (seen.size === SHARED.length){ clearTimeout(timer); if (!SYNC.writes) setStatus("live"); }
-      store.set(S); liveRender();
-    }, err => { if (err && err.code==="revoked") setStatus("readonly"); else setStatus("slow"); });
-  });
-}
-function renderSync(){
-  const el = document.getElementById("syncChip"); if (!el) return;
-  const M = {local:["On this device","var(--muted)"], connecting:["Connecting…","var(--muted)"], live:["Live with the crew","var(--mint)"],
-    saving:["Saving…","var(--gold)"], slow:["Reconnecting…","var(--gold)"], readonly:["View only","var(--rose)"]};
-  const [t,c] = M[SYNC.status] || M.local;
-  el.innerHTML = `<i style="background:${c}"></i>${t}`;
-  el.title = SYNC.mode==="live" ? "Votes, plan, bookings, packing and the album are shared between everyone's phones" : "Changes are saved on this device only";
-}
+const save = () => store.set(S);
 
-/* ================= Helpers ================= */
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const crew = id => CREW.find(c => c.id === id);
@@ -657,6 +603,8 @@ const av = c => `<span class="av" style="background:${c.color}">${c.ini}</span>`
 const svg = (inner, extra="") => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ${extra}>${inner}</svg>`;
 const ICON = {
   home:'<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/>',
+  days:'<rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/><circle cx="12" cy="15" r="2.2"/>',
+  hotel:'<path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6M3 21h18"/>',
   plan:'<rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9h18M8 2v4M16 2v4M7 13h4M7 17h7"/>',
   rides:'<path d="M2 18c4-10 7-10 10-4s6 6 10-6"/><path d="M5 18v3M12 15v6M19 13v8"/>',
   map:'<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>',
@@ -670,196 +618,152 @@ const ICON = {
   copy:'<rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>',
   camera:'<path d="M4 8h3l2-3h6l2 3h3v12H4z"/><circle cx="12" cy="13" r="4"/>',
   medal:'<circle cx="12" cy="14" r="6"/><path d="M8 3l4 5 4-5"/><path d="M12 11.5l.9 1.8 2 .3-1.4 1.4.3 2-1.8-1-1.8 1 .3-2-1.4-1.4 2-.3z"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  star:'<path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.6 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/>',
+  sparkle:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6"/>',
   reset:'<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>'
 };
-function confirmTap(btn, label, action){
-  if (btn.dataset.armed){ action(); return; }
-  btn.dataset.armed = "1"; const old = btn.innerHTML;
-  btn.innerHTML = label; btn.style.borderColor = "var(--danger)"; btn.style.color = "var(--danger)";
-  setTimeout(() => { if (btn.isConnected){ delete btn.dataset.armed; btn.innerHTML = old; btn.style.borderColor = ""; btn.style.color = ""; } }, 3000);
-}
 let toastT;
 function toast(msg){ const t=$("#toast"); t.textContent=msg; t.hidden=false; clearTimeout(toastT); toastT=setTimeout(()=>t.hidden=true,1800); }
-const voteCount = id => Object.keys(S.votes[id]||{}).length;
-const parisNow = () => {
-  const p = new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Paris",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date());
-  return p;
-};
-const itemTime = it => (it.d===1?DAY1:DAY2) + (parseInt(it.t)||0)*3600000 + (parseInt(it.t.split(":")[1])||0)*60000;
-const sortedPlan = d => S.plan.filter(p => p.d===d).sort((a,b) => a.t.localeCompare(b.t));
-function nextItem(){
-  const now = Date.now();
-  const all = S.plan.slice().sort((a,b) => itemTime(a)-itemTime(b));
-  return all.find(p => !p.done && itemTime(p) >= now - 45*60000) || null;
-}
-function phase(){
-  const now = Date.now();
-  if (now < DAY1) return "before";
-  if (now < TRIP_END) return "during";
-  return "after";
-}
+const parisHour = () => +new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Paris",hour:"2-digit",hour12:false}).format(new Date());
+const parisNow = () => new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Paris",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date());
+function phase(){ const n = Date.now(); return n < DAY1 ? "before" : n < TRIP_END ? "during" : "after"; }
+const today = () => { const n = Date.now(); return n >= DAY2 && n < TRIP_END ? DAYS[1] : n >= DAY1 && n < DAY2 ? DAYS[0] : null; };
+const me = () => crew(S.me);
+const greeting = () => { const h = parisHour(); return h < 5 ? "Bonne nuit" : h < 18 ? "Bonjour" : "Bonsoir"; };
+const daysLeft = () => Math.max(0, Math.floor((TRIP_START - Date.now()) / 864e5));
 
 /* ================= Tabs & routing ================= */
 const VIEWS = [
-  {id:"home",label:"Home"},{id:"plan",label:"Plan"},{id:"rides",label:"Rides"},
-  {id:"map",label:"Map"},{id:"food",label:"Food"},{id:"stay",label:"Stay"},{id:"moments",label:"Album"}
+  {id:"home",label:"Home",icon:"home"},{id:"days",label:"Your days",icon:"days"},{id:"rides",label:"Rides",icon:"rides"},
+  {id:"map",label:"Map",icon:"map"},{id:"food",label:"Food",icon:"food"},{id:"hotel",label:"Hotel",icon:"hotel"}
 ];
 function renderTabs(cur){
-  $("#tabs").innerHTML = VIEWS.map(v => `<a class="tab" href="#${v.id}" ${v.id===cur?'aria-current="page"':''}>${svg(ICON[v.id])}<span>${v.label}</span></a>`).join("");
+  $("#tabs").innerHTML = VIEWS.map(v => `<a class="tab" href="#${v.id}" ${v.id===cur?'aria-current="page"':''}>${svg(ICON[v.icon])}<span>${v.label}</span></a>`).join("");
 }
 function route(){
   const h = (location.hash||"").slice(1);
   const v = VIEWS.some(x => x.id===h) ? h : "home";
   renderTabs(v);
-  const app = $("#app");
-  app.innerHTML = `<div class="view" id="v-${v}">${R[v]()}</div>`;
+  $("#app").innerHTML = `<div class="view" id="v-${v}">${R[v]()}</div>`;
   if (B[v]) B[v]();
 }
 window.addEventListener("hashchange", () => { route(); const top=$("#app").getBoundingClientRect().top+scrollY-90; if (scrollY>top) scrollTo({top,behavior:"smooth"}); });
-
-/* ================= Views ================= */
 const R = {}, B = {};
 
+/* ================= Shared bits ================= */
+const showCard = s0 => { const s = Object.assign({}, s0, {photo: [s0.photo2, s0.photo, s0.alt].find(k => k && photo(k))}); return `<article class="card showcard">
+  ${photo(s.photo) ? `<div class="ph">${imgTag(s.photo, "photo", s.name)}<span class="ph-chip" style="background:var(--gold)">${svg(ICON.sparkle)}${esc(s.when)}</span></div>` : ""}
+  <div><h3>${esc(s.name)}</h3><div class="where">${esc(s.where)}</div></div>
+  <p>${esc(s.d)}</p>${creditLine(s.photo)}</article>`; };
+const emtCard = (compact) => `<section class="card emt">
+  <div class="emt-head"><div class="emt-time mono">${EMT.start}<span>–</span>${EMT.end}</div>
+    <div><div class="eyebrow">Your magic hours</div><h2>Extra Magic Time, both mornings</h2>
+    <p class="muted" style="margin:4px 0 0">As Disneyland Hotel guests you get into the parks up to an hour before everyone else, on Sunday and on Monday. Bring your hotel card to the gate.</p></div></div>
+  ${compact ? "" : `<div class="emt-cols">
+    <div>${photo("park_dlp") ? `<div class="parkimg">${imgTag("park_dlp","photo","")}</div>` : ""}<div class="eyebrow" style="color:var(--rose)">Disneyland Park</div><div class="pills">${EMT.dlp.map(x => `<span class="pill">${esc(x)}</span>`).join("")}</div></div>
+    <div>${photo("park_daw") ? `<div class="parkimg">${imgTag("park_daw","photo","")}</div>` : ""}<div class="eyebrow" style="color:var(--ice)">Disney Adventure World</div><div class="pills">${EMT.daw.map(x => `<span class="pill">${esc(x)}</span>`).join("")}</div></div>
+  </div>
+  <p class="credit" style="margin:0">Rides usually open during Extra Magic Time, according to 2026 guides. Disney doesn't publish a fixed list, so check the app that morning.</p>`}
+</section>`;
+const dayCard = (d, isToday) => `<article class="card daycard ${isToday?"today":""}">
+  <div class="day-top"><div><div class="eyebrow">${isToday ? "Today" : "Day " + d.n}</div><h2>${d.date}</h2></div>
+    <div class="sun"><span>${svg('<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>')} ${d.sunrise}</span><span>${svg('<path d="M3 18h18M7 18a5 5 0 0 1 10 0M12 7v4M5 12l2 1M19 12l-2 1"/>')} ${d.sunset}</span></div></div>
+  <div class="hours"><div><span class="muted">Extra Magic Time</span><b class="mono" style="color:var(--gold)">${EMT.start} – ${EMT.end}</b></div>
+    <div><span class="muted">Both parks</span><b class="mono">${d.hours}</b></div></div>
+  <p class="credit" style="margin:0">${d.hoursNote}. Confirm in the official app.</p>
+  <ul class="facts-list">${d.facts.map(([ic,t,x]) => `<li>${svg(ICON[ic])}<span><b>${t}</b><br>${x}</span></li>`).join("")}</ul>
+</article>`;
+
+/* ================= Home ================= */
 R.home = () => {
-  const nx = nextItem();
-  const ridden = Object.keys(S.ridden).length, total = RIDES.length;
-  const packed = PACK.filter(p => S.pack[p.id]).length;
-  const top = RIDES.slice().sort((a,b)=>voteCount(b.id)-voteCount(a.id)).slice(0,3);
-  const anyVotes = RIDES.some(r => voteCount(r.id));
+  const p = phase(), t = today(), m = me();
   const MUST = ["castle","frozen","btm","pp","hyper","rat","potc","tot","flight","pm"];
-  const picks = anyVotes ? RIDES.filter(r => voteCount(r.id)).sort((a,b)=>voteCount(b.id)-voteCount(a.id)).slice(0,10)
-                         : MUST.map(id => RIDES.find(r => r.id===id)).filter(Boolean);
-  const ph = phase();
-  const nxWhen = nx ? (nx.d===1 ? "Sun 29 Nov" : "Mon 30 Nov") : "";
+  const picks = MUST.map(id => RIDES.find(r => r.id===id)).filter(Boolean);
+  const hello = m ? `${greeting()}, ${m.name}` : greeting();
+  const lead = p==="before" ? (daysLeft() ? `${daysLeft()} ${daysLeft()===1?"day":"days"} until the four of you check in at the Disneyland Hotel.` : "Less than a day until the four of you check in at the Disneyland Hotel.")
+             : p==="during" ? `It's ${t.date}. Here's what matters today.` : "That was the magic weekend. Merci!";
   return `
-  <section class="card next-card" aria-label="Next up">
-    <div><div class="eyebrow">${ph==="during"?"Up next":"First stop"}</div><div class="next-time">${nx?esc(nx.t):"—"}</div></div>
-    <div style="min-width:0">
-      ${nx ? `<div class="muted" style="font-size:13px">${nxWhen}</div><div class="next-title">${esc(nx.title)}</div>${nx.note?`<div class="muted" style="font-size:13.5px">${esc(nx.note)}</div>`:""}`
-           : `<div class="next-title">${ph==="after"?"What a weekend. Merci for the memories!":"Everything on the plan is done."}</div>`}
-    </div>
+  <section class="card hello">
+    <div><div class="eyebrow">${m ? "Your trip guide" : "Who's reading?"}</div><h2 class="hello-h">${esc(hello)}</h2><p class="muted" style="margin:4px 0 0">${lead}</p></div>
+    <div class="whoami" role="group" aria-label="Who's reading">${CREW.map(c=>`<button class="who" data-me="${c.id}" aria-pressed="${S.me===c.id}">${av(c)}<span>${c.name}</span></button>`).join("")}</div>
   </section>
-
+  ${t ? dayCard(t, true) : ""}
+  ${emtCard(false)}
   <section style="display:grid;gap:12px">
-    <div class="sec-head"><div><div class="eyebrow">${anyVotes ? "Crew picks" : "Must-sees"}</div><h2 style="font-size:20px;margin-top:4px">${anyVotes ? "What we voted for" : "Start voting on these"}</h2></div><a class="btn ghost" href="#rides" style="padding:8px 12px;font-size:13px">All rides</a></div>
-    <div class="carousel" role="group" aria-label="Ride highlights">${picks.map((r,i) => { const v = S.votes[r.id] || {}; return `<button class="pick" data-open="${r.id}" aria-label="${esc(r.name)}">
+    <div class="sec-head"><div><div class="eyebrow">Must-sees</div><h2 style="font-size:20px;margin-top:4px">The big ones</h2></div><a class="btn ghost" href="#rides" style="padding:8px 12px;font-size:13px">All rides</a></div>
+    <div class="carousel" role="group" aria-label="Ride highlights">${picks.map(r => `<button class="pick" data-open="${r.id}" aria-label="${esc(r.name)}">
       ${imgTag(r.id, "photo", r.name) || `<div class="ph noimg" style="--bc:${TYPE_META[r.type].c};position:absolute;inset:0;margin:0;aspect-ratio:auto;border-radius:0">${svg(TYPE_META[r.type].icon)}</div>`}
-      ${anyVotes ? `<span class="rank">#${i+1} · ${voteCount(r.id)}★</span>` : ""}
-      <span class="pk"><span class="eyebrow" style="color:${TYPE_META[r.type].c}">${esc(r.land)}</span><b>${esc(r.name)}</b>
-      <span class="stack">${CREW.filter(c => v[c.id]).map(av).join("")}</span></span></button>`; }).join("")}</div>
+      ${r.emt ? `<span class="rank">Magic hours</span>` : ""}
+      <span class="pk"><span class="eyebrow" style="color:${TYPE_META[r.type].c}">${esc(r.land)}</span><b>${esc(r.name)}</b></span></button>`).join("")}</div>
   </section>
-
-  <section class="grid g3">
-    <div class="card stat"><div class="eyebrow">Rides ridden</div><div class="big mono">${ridden}<span class="muted" style="font-size:18px"> / ${total}</span></div><div class="bar"><i style="width:${ridden/total*100}%"></i></div></div>
-    <div class="card stat"><div class="eyebrow">Packed</div><div class="big mono">${packed}<span class="muted" style="font-size:18px"> / ${PACK.length}</span></div><div class="bar"><i style="width:${packed/PACK.length*100}%"></i></div></div>
-    <div class="card stat"><div class="eyebrow">Crew favourites</div>
-      <div style="display:grid;gap:4px;font-weight:700;font-size:14px">${!voteCount(top[0].id)?'<span class="muted" style="font-weight:500">No votes yet. Open Rides and tap your initials on the rides you want.</span>':top.filter(r=>voteCount(r.id)).map((r,i)=>`<div style="display:flex;justify-content:space-between;gap:8px"><span>${i+1}. ${esc(r.name)}</span><span class="mono" style="color:var(--gold)">${voteCount(r.id)}★</span></div>`).join("")}</div>
-    </div>
+  ${MEM().length ? `<section style="display:grid;gap:12px">
+    <div class="sec-head"><div><div class="eyebrow">From your visits</div><h2 style="font-size:20px;margin-top:4px">Your Disneyland moments</h2></div><span class="muted">${MEM().length} photos</span></div>
+    <div class="carousel mem" role="group" aria-label="Your photos">${MEM().map(k => `<button class="pick" data-photo="${k}" aria-label="${esc(PHOTOS[k].t)}">${imgTag(k, "photo", "")}<span class="pk"><b>${esc(PHOTOS[k].t)}</b></span></button>`).join("")}</div>
+  </section>` : ""}
+  <section class="card xmas">
+    ${photo("christmas") ? `<div class="ph">${imgTag("christmas","photo","Christmas at Disneyland Paris")}</div>` : ""}
+    <div class="eyebrow" style="color:var(--rose)">7 November 2026 – 6 January 2027</div>
+    <h2 style="font-family:var(--f-display);font-size:24px;margin-top:4px">Disney Enchanted Christmas</h2>
+    <p style="margin:6px 0 0;max-width:65ch">You arrive in the middle of the Christmas season. Main Street is decorated, Mickey's Dazzling Christmas Parade runs at 15:55 and 17:45, and for the first time Christmas also reaches World of Frozen.</p>
+    <div class="actions" style="margin-top:12px"><a class="btn" href="#days">${svg(ICON.days)}Shows and hours for your days</a></div>
   </section>
-
   <section class="card">
-    <div class="sec-head"><div><div class="eyebrow">Who's holding the iPad?</div><h2 style="font-size:20px;margin-top:4px">Pick yourself to vote on rides</h2></div></div>
-    <div class="whoami" style="margin-top:14px">${CREW.map(c=>`<button class="who" data-me="${c.id}" aria-pressed="${S.me===c.id}">${av(c)}<span>${c.name}<small>${c.note}</small></span></button>`).join("")}</div>
-  </section>
-
-  <section class="card">
-    <div class="sec-head"><div><div class="eyebrow">Achievements</div><h2 style="font-size:20px;margin-top:4px">${ACHIEVEMENTS.filter(a=>a.ok()).length} of ${ACHIEVEMENTS.length} unlocked</h2></div></div>
-    <div class="badges" style="margin-top:14px">${ACHIEVEMENTS.map(a=>`<div class="badge ${a.ok()?"on":""}"><div class="medal">${svg(ICON.medal)}</div><b>${a.t}</b><small>${a.d}</small></div>`).join("")}</div>
-  </section>
-
-  <section class="card">
-    <div class="eyebrow">The essentials</div>
+    <div class="eyebrow">Your stay at a glance</div>
     <div class="facts" style="margin-top:12px">
       <div class="fact"><span class="muted">Arrive</span><b>Sun 29 Nov</b></div>
       <div class="fact"><span class="muted">Leave</span><b>Mon 30 Nov</b></div>
       <div class="fact"><span class="muted">Hotel</span><b>Disneyland Hotel</b></div>
       <div class="fact"><span class="muted">Room</span><b>Deluxe + terrace</b></div>
+      <div class="fact"><span class="muted">Guests</span><b>The four of you</b></div>
       <div class="fact"><span class="muted">Sunset</span><b class="mono">≈ 16:57</b></div>
-      <div class="fact"><span class="muted">Typical weather</span><b>3–8 °C, damp</b></div>
     </div>
-  </section>
-
-  <section class="actions">
-    <button class="btn primary" id="spinBtn">${svg(ICON.dice)}Ride roulette</button>
-    <a class="btn" href="#plan">${svg(ICON.plan)}Open the plan</a>
-    <a class="btn" href="#map">${svg(ICON.map)}Explore the map</a>
   </section>`;
 };
 B.home = () => {
-  document.querySelectorAll("[data-me]").forEach(b => b.onclick = () => { S.me=b.dataset.me; save(); route(); renderCrew(); toast(`Hi ${crew(S.me).name}!`); });
-  $("#spinBtn").onclick = roulette;
+  document.querySelectorAll("[data-me]").forEach(b => b.onclick = () => { S.me = S.me===b.dataset.me ? null : b.dataset.me; save(); route(); renderCrew(); if (S.me) toast(`${greeting()}, ${me().name}!`); });
   document.querySelectorAll("[data-open]").forEach(b => b.onclick = () => openRide(b.dataset.open));
+  document.querySelectorAll("[data-photo]").forEach(b => b.onclick = () => openPhoto(b.dataset.photo));
 };
-
-R.plan = () => {
-  const items = sortedPlan(S.day);
-  const nx = nextItem();
-  const doneN = items.filter(i=>i.done).length;
-  return `
-  <div class="sec-head">
-    <div><div class="eyebrow">Itinerary</div><h2>Our two days</h2></div>
-    <div class="daytabs" role="tablist">
-      <button class="daytab" role="tab" data-day="1" aria-selected="${S.day===1}">Day 1<small>Sun 29 Nov · Disneyland Park</small></button>
-      <button class="daytab" role="tab" data-day="2" aria-selected="${S.day===2}">Day 2<small>Mon 30 Nov · Adventure World</small></button>
-    </div>
-  </div>
-  <div class="card" style="display:grid;gap:14px">
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-      <span class="muted">${doneN} of ${items.length} done · tap the tick when you finish something</span>
-      <button class="btn ghost" id="resetPlan" style="padding:8px 12px;font-size:13px">${svg(ICON.reset)}Reset day</button>
-    </div>
-    <div class="timeline">
-      ${items.length ? items.map(it => {
-        const tg = TAGS[it.tag]||TAGS.park;
-        return `<div class="ti ${it.done?"done":""} ${nx&&nx.id===it.id?"now":""}" style="--dot:${tg.c}">
-          <div class="ti-time">${esc(it.t)}</div>
-          <div style="min-width:0"><div class="ti-title">${esc(it.title)}</div>${it.note?`<div class="ti-note">${esc(it.note)}</div>`:""}<span class="tag" style="--tagc:${tg.c}">${tg.label}</span></div>
-          <div class="ti-ctrls">
-            <button class="mini" data-done="${it.id}" aria-pressed="${!!it.done}" aria-label="Mark done">${svg(ICON.check)}</button>
-            <button class="mini" data-del="${it.id}" aria-label="Remove">${svg(ICON.trash)}</button>
-          </div></div>`;}).join("") : `<div class="empty">Nothing planned for this day yet. Add the first stop below.</div>`}
-    </div>
-    <form class="addrow" id="addForm" autocomplete="off">
-      <input class="field" type="time" id="addTime" value="12:00" aria-label="Time" required>
-      <input class="field" id="addTitle" placeholder="Add a stop, e.g. Hot chocolate on Main Street" aria-label="What" required>
-      <select class="field" id="addTag" aria-label="Type">${Object.entries(TAGS).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join("")}</select>
-      <button class="btn primary" type="submit">${svg(ICON.plus)}Add</button>
-    </form>
-  </div>`;
-};
-B.plan = () => {
-  document.querySelectorAll("[data-day]").forEach(b => b.onclick = () => { S.day=+b.dataset.day; save(); route(); });
-  document.querySelectorAll("[data-done]").forEach(b => b.onclick = () => {
-    const it = S.plan.find(p=>p.id===b.dataset.done); it.done=!it.done; save(); route();
-    if (it.done) { burst(); toast("Done! ✓"); }
-  });
-  document.querySelectorAll("[data-del]").forEach(b => b.onclick = () => {
-    const i = S.plan.findIndex(p=>p.id===b.dataset.del); const removed = S.plan.splice(i,1)[0]; save(); route(); toast(`Removed “${removed.title.slice(0,28)}”`);
-  });
-  $("#resetPlan").onclick = e => confirmTap(e.currentTarget, "Tap again to reset", () => {
-    S.plan = S.plan.filter(p=>p.d!==S.day).concat(freshPlan().filter(p=>p.d===S.day)); save(); route(); toast(`Day ${S.day} restored`);
-  });
-  $("#addForm").onsubmit = e => {
-    e.preventDefault();
-    const title = $("#addTitle").value.trim(); if (!title) return;
-    S.plan.push({id:mkId(), d:S.day, t:$("#addTime").value||"12:00", title, note:"", tag:$("#addTag").value, done:false});
-    save(); route(); toast("Added to the plan");
+const MEM = () => Object.keys(PHOTOS).filter(k => k.startsWith("mem_")).sort();
+function openPhoto(k){
+  const list = MEM(); let i = Math.max(0, list.indexOf(k));
+  const draw = () => { const ph = PHOTOS[list[i]];
+    openOverlay(`<div class="modal sheet photo-sheet" role="dialog" aria-modal="true" aria-label="${esc(ph.t)}">
+      <div class="sh-img"><img class="photo" src="${esc(ph.f)}" alt="${esc(ph.t)}"><button class="x" data-close aria-label="Close">×</button></div>
+      <div class="sh-body" style="grid-template-columns:auto 1fr auto;align-items:center">
+        <button class="btn" id="phPrev" aria-label="Previous photo">‹</button><div style="text-align:center"><b>${esc(ph.t)}</b><div class="credit">${i+1} of ${list.length} · Your photo</div></div><button class="btn" id="phNext" aria-label="Next photo">›</button>
+      </div></div>`, ".x");
+    $("#phPrev").onclick = () => { i = (i - 1 + list.length) % list.length; draw(); };
+    $("#phNext").onclick = () => { i = (i + 1) % list.length; draw(); };
   };
+  draw();
+}
+
+/* ================= Your days ================= */
+R.days = () => {
+  const t = today();
+  return `
+  <div class="sec-head"><div><div class="eyebrow">Your two days</div><h2>Hours, magic hours & shows</h2></div><span class="muted">Information only, no schedule</span></div>
+  <div class="grid g2">${DAYS.map(d => dayCard(d, t && t.n===d.n)).join("")}</div>
+  ${emtCard(true)}
+  <section style="display:grid;gap:12px">
+    <h3 style="font-family:var(--f-display);font-size:20px;color:var(--gold)">Shows on both evenings</h3>
+    <div class="grid g2">${SHOWS.map(showCard).join("")}</div>
+    <p class="credit" style="margin:0">Exact show times are published daily in the official Disneyland Paris app.</p>
+  </section>`;
 };
 
+/* ================= Rides ================= */
 R.rides = () => {
   const q = S.q.toLowerCase();
-  let list = RIDES.filter(r => (S.park==="all"||r.park===S.park) && (S.type==="all"||r.type===S.type) &&
+  let list = RIDES.filter(r => (S.park==="all"||r.park===S.park) && (S.type==="all"||r.type===S.type) && (!S.emtOnly || r.emt) &&
     (!q || (r.name+" "+r.land+" "+r.blurb).toLowerCase().includes(q)));
-  if (S.sort==="votes") list.sort((a,b)=>voteCount(b.id)-voteCount(a.id) || a.name.localeCompare(b.name));
-  else if (S.sort==="thrill") list.sort((a,b)=>b.lvl-a.lvl);
-  else list.sort((a,b)=>a.land.localeCompare(b.land) || a.name.localeCompare(b.name));
-  const me = crew(S.me);
+  if (S.sort==="thrill") list.sort((a,b)=>b.lvl-a.lvl || a.name.localeCompare(b.name));
+  else if (S.sort==="az") list.sort((a,b)=>a.name.localeCompare(b.name));
+  else list.sort((a,b)=>a.park.localeCompare(b.park) || a.land.localeCompare(b.land) || a.name.localeCompare(b.name));
   return `
-  <div class="sec-head">
-    <div><div class="eyebrow">Attractions</div><h2>Rides & wonders</h2></div>
-    <div class="chip">${av(me)}Voting as ${me.name}</div>
-  </div>
+  <div class="sec-head"><div><div class="eyebrow">Attractions</div><h2>Rides & wonders</h2></div><span class="muted">${list.length} of ${RIDES.length}</span></div>
   <div class="card" style="display:grid;gap:12px">
     <div class="toolbar">
       <input class="field" id="q" type="search" placeholder="Search rides, lands…" value="${esc(S.q)}" aria-label="Search">
@@ -871,34 +775,27 @@ R.rides = () => {
       <div class="filters">
         <button class="fchip" data-type="all" aria-pressed="${S.type==="all"}">All</button>
         ${Object.entries(TYPE_META).map(([k,v])=>`<button class="fchip" data-type="${k}" aria-pressed="${S.type===k}">${v.label}</button>`).join("")}
+        <button class="fchip" id="emtOnly" aria-pressed="${!!S.emtOnly}">${svg(ICON.clock,'style="width:14px;height:14px;vertical-align:-2px"')} Magic hours</button>
       </div>
       <div class="seg" role="group" aria-label="Sort">
-        ${[["votes","Crew votes"],["thrill","Thrill"],["land","Land"]].map(([k,l])=>`<button data-sort="${k}" aria-pressed="${S.sort===k}">${l}</button>`).join("")}
+        ${[["land","By land"],["thrill","Thrill"],["az","A–Z"]].map(([k,l])=>`<button data-sort="${k}" aria-pressed="${S.sort===k}">${l}</button>`).join("")}
       </div>
     </div>
   </div>
   <div class="grid g3" id="rideGrid">
     ${list.length ? list.map(rideCard).join("") : `<div class="empty" style="grid-column:1/-1">No rides match “${esc(S.q)}”. Try another word or clear the filters.</div>`}
-  </div>
-  <div class="actions"><button class="btn primary" id="spinBtn">${svg(ICON.dice)}Can't decide? Spin the roulette</button></div>`;
+  </div>`;
 };
 function rideCard(r){
   const tm = TYPE_META[r.type];
-  const v = S.votes[r.id]||{};
-  return `<article class="card ride ${S.ridden[r.id]?"done":""}" data-rid="${r.id}">
+  return `<article class="card ride" data-rid="${r.id}">
     <button class="linkish" data-open="${r.id}" aria-label="Open ${esc(r.name)} details" style="display:grid;gap:12px">
-      <div class="ph ${photo(r.id)?"":"noimg"}" style="--bc:${tm.c}">${photo(r.id)?imgTag(r.id,"photo",r.name):svg(tm.icon)}<span class="ph-chip" style="background:${tm.c}">${svg(tm.icon)}${tm.label}</span></div>
+      <div class="ph ${photo(r.id)?"":"noimg"}" style="--bc:${tm.c}">${photo(r.id)?imgTag(r.id,"photo",r.name):svg(tm.icon)}<span class="ph-chip" style="background:${tm.c}">${svg(tm.icon)}${tm.label}</span>${r.emt?`<span class="ph-emt">${svg(ICON.clock)}Magic hours</span>`:""}</div>
       <div style="min-width:0"><h3>${esc(r.name)}</h3><div class="where">${esc(r.land)} · ${PARKS[r.park]}</div></div>
     </button>
     <p>${esc(r.blurb)}</p>
     ${r.tip?`<div class="tipline"><span aria-hidden="true">✦</span><span>${esc(r.tip)}</span></div>`:""}
-    <div class="ride-foot">
-      <div class="thrill" title="Intensity ${r.lvl} of 5" aria-label="Intensity ${r.lvl} of 5">${[1,2,3,4,5].map(i=>`<i class="${i<=r.lvl?"on":""}"></i>`).join("")}<span class="muted" style="font-size:11px;margin-left:6px">Intensity</span></div>
-      <div class="votes">
-        ${CREW.map(c=>`<button class="vote" data-vote="${r.id}" data-who="${c.id}" aria-pressed="${!!v[c.id]}" aria-label="${c.name} wants to ride" title="${c.name}" style="${v[c.id]?`background:${c.color};border-color:${c.color}`:""}">${c.ini}</button>`).join("")}
-        <button class="mini" data-ride="${r.id}" aria-pressed="${!!S.ridden[r.id]}" aria-label="Mark as ridden" title="Ridden">${svg(ICON.check)}</button>
-      </div>
-    </div>
+    <div class="thrill" aria-label="Intensity ${r.lvl} of 5">${[1,2,3,4,5].map(i=>`<i class="${i<=r.lvl?"on":""}"></i>`).join("")}<span class="muted" style="font-size:11px;margin-left:6px">Intensity</span></div>
   </article>`;
 }
 B.rides = () => {
@@ -907,28 +804,11 @@ B.rides = () => {
   document.querySelectorAll("[data-park]").forEach(b => b.onclick = () => { S.park=b.dataset.park; save(); route(); });
   document.querySelectorAll("[data-type]").forEach(b => b.onclick = () => { S.type=b.dataset.type; save(); route(); });
   document.querySelectorAll("[data-sort]").forEach(b => b.onclick = () => { S.sort=b.dataset.sort; save(); route(); });
-  bindRideButtons();
-  $("#spinBtn").onclick = roulette;
-};
-function bindRideButtons(){
+  $("#emtOnly").onclick = () => { S.emtOnly = !S.emtOnly; save(); route(); };
   document.querySelectorAll("[data-open]").forEach(b => b.onclick = () => openRide(b.dataset.open));
-  document.querySelectorAll("[data-vote]").forEach(b => b.onclick = () => {
-    const id=b.dataset.vote, who=b.dataset.who; S.votes[id]=S.votes[id]||{};
-    if (S.votes[id][who]) delete S.votes[id][who]; else S.votes[id][who]=1;
-    save(); refreshRideCard(id);
-  });
-  document.querySelectorAll("[data-ride]").forEach(b => b.onclick = () => {
-    const id=b.dataset.ride; if (S.ridden[id]) delete S.ridden[id]; else { S.ridden[id]=Date.now(); burst(); toast("Ridden! ✓"); }
-    save(); refreshRideCard(id);
-  });
-}
-function refreshRideCard(id){
-  const card = document.querySelector(`article[data-rid="${id}"]`);
-  if (!card) { route(); return; }
-  const tmp = document.createElement("div"); tmp.innerHTML = rideCard(RIDES.find(r=>r.id===id)).trim();
-  card.replaceWith(tmp.firstChild); bindRideButtons();
-}
+};
 
+/* ================= Map ================= */
 const schematicMap = () => {
   const sel = S.land && LANDS[S.land] ? S.land : "Fantasyland";
   const rides = RIDES.filter(r=>r.land===sel);
@@ -968,15 +848,12 @@ const schematicMap = () => {
     ${L("Avengers Campus",'<ellipse cx="236" cy="540" rx="68" ry="40" fill="FILL" fill-opacity=".28" stroke="FILL" stroke-opacity=".8"/>',236,538,"Avengers",13,"Campus")}
     <!-- Hotel, station, village -->
     <path d="M316 470 L583 462" stroke="#8fd3ff" stroke-opacity=".4" stroke-width="2" stroke-dasharray="4 5"/>
-    <path d="M640 484 L640 520 L560 556" stroke="#f0c978" stroke-opacity=".5" stroke-width="2" stroke-dasharray="4 5" fill="none"/>
     <g>
       <rect x="583" y="440" width="114" height="44" rx="10" fill="#f4a9c6" fill-opacity=".92"/>
       <text x="640" y="467" text-anchor="middle" style="font-weight:800;font-size:13px;fill:#3a1027">Disneyland Hotel</text>
       <circle cx="712" cy="436" r="10" fill="#f0c978"/><text x="712" y="440" text-anchor="middle" style="font-weight:800;font-size:11px;fill:#2a1d00">★</text>
-      <text class="map-small" x="728" y="440" style="fill:#f0c978">We sleep here</text>
+      <text class="map-small" x="728" y="440" style="fill:#f0c978">Your hotel</text>
     </g>
-    <rect x="470" y="556" width="170" height="34" rx="8" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".25"/>
-    <text class="map-small" x="555" y="578" text-anchor="middle" style="fill:#f1f2ff">Train station (RER / TGV)</text>
     <rect x="720" y="500" width="130" height="34" rx="8" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".25"/>
     <text class="map-small" x="785" y="522" text-anchor="middle" style="fill:#f1f2ff">Disney Village</text>
   </svg>
@@ -985,7 +862,7 @@ const schematicMap = () => {
     <div class="eyebrow" style="color:${LANDS[sel].c}">${RIDES.find(r=>r.land===sel)?PARKS[RIDES.find(r=>r.land===sel).park]:""}</div>
     <h2 style="font-family:var(--f-display);font-size:24px;margin-top:4px">${esc(sel)}</h2>
     <p class="muted" style="margin:6px 0 0;max-width:65ch">${esc(LANDS[sel].d)}</p>
-    <ul>${rides.map(r=>`<li><span style="font-weight:700;min-width:0">${esc(r.name)}</span><span class="muted" style="flex:none">${S.ridden[r.id]?'<span style="color:var(--mint);font-weight:700">Ridden ✓</span>':voteCount(r.id)?`<span class="mono" style="color:var(--gold)">${voteCount(r.id)}★</span>`:TYPE_META[r.type].label}</span></li>`).join("")}</ul>
+    <ul>${rides.map(r=>`<li><button class="linkish" data-open="${r.id}" style="font-weight:700;min-width:0">${esc(r.name)}</button><span class="muted" style="flex:none">${r.emt?'<span style="color:var(--gold);font-weight:700">Magic hours</span> · ':""}${TYPE_META[r.type].label}</span></li>`).join("")}</ul>
   </section>`;
 };
 const bindSchematic = () => {
@@ -1003,7 +880,7 @@ const landPanel = sel => {
     <div class="eyebrow" style="color:${LANDS[sel].c}">${first ? PARKS[first.park] : ""}</div>
     <h2 style="font-family:var(--f-display);font-size:24px;margin-top:4px">${esc(sel)}</h2>
     <p class="muted" style="margin:6px 0 0;max-width:65ch">${esc(LANDS[sel].d)}</p>
-    <ul>${rides.map(r => `<li><button class="linkish" data-open="${r.id}" style="font-weight:700;min-width:0">${esc(r.name)}</button><span class="muted" style="flex:none">${S.ridden[r.id] ? '<span style="color:var(--mint);font-weight:700">Ridden ✓</span>' : voteCount(r.id) ? `<span class="mono" style="color:var(--gold)">${voteCount(r.id)}★</span>` : TYPE_META[r.type].label}</span></li>`).join("")}</ul>
+    <ul>${rides.map(r => `<li><button class="linkish" data-open="${r.id}" style="font-weight:700;min-width:0">${esc(r.name)}</button><span class="muted" style="flex:none">${r.emt ? '<span style="color:var(--gold);font-weight:700">Magic hours</span> · ' : ""}${TYPE_META[r.type].label}</span></li>`).join("")}</ul>
     ${creditLine(landKey(sel))}
   </section>`;
 };
@@ -1020,7 +897,7 @@ R.map = () => {
       <button class="btn" id="fitMap" style="padding:8px 12px;font-size:13px">${svg(ICON.map)}Whole resort</button>
     </div></div>
   <div id="leafmap" role="region" aria-label="Interactive map of Disneyland Paris"></div>
-  <div class="osm-credit">Map data © OpenStreetMap contributors (ODbL). Pin colours show ride type; a gold ring means the crew voted for it, green means ridden.</div>
+  <div class="osm-credit">Map data © OpenStreetMap contributors (ODbL). Pin colours show ride type; a gold ring means it usually opens during your Extra Magic Time.</div>
   <div class="landchips" role="group" aria-label="Lands">${Object.keys(LANDS).map(l => `<button class="landchip" data-land="${esc(l)}" aria-pressed="${l===sel}"><i style="background:${LANDS[l].c}"></i>${esc(l.replace(", U.S.A.",""))}</button>`).join("")}</div>
   ${landPanel(sel)}`;
 };
@@ -1053,15 +930,14 @@ B.map = () => {
   const pins = [];
   const pinIcon = (cls, html, c, size=24) => L.divIcon({className:"", html:`<div class="pin ${cls}" style="width:${size}px;height:${size}px;background:${c}">${html}</div>`, iconSize:[size,size], iconAnchor:[size/2,size/2], popupAnchor:[0,-size/2]});
   if (layer !== "food") RIDES.forEach(r => { const pos = P[r.id]; if (!pos) return; const tm = TYPE_META[r.type];
-    const m = L.marker([pos[0]/1e5, pos[1]/1e5], {icon:pinIcon((voteCount(r.id)?"voted ":"") + (S.ridden[r.id]?"done":""), S.ridden[r.id] ? svg(ICON.check) : svg(tm.icon), tm.c), title:r.name, keyboard:true}).addTo(map);
+    const m = L.marker([pos[0]/1e5, pos[1]/1e5], {icon:pinIcon(r.emt?"voted":"", svg(tm.icon), tm.c), title:r.name, keyboard:true}).addTo(map);
     m.bindPopup(`<div class="pop">${imgTag(r.id, "photo", r.name)}<div><b>${esc(r.name)}</b><span class="muted" style="font-size:12px">${esc(r.land)} · ${tm.label}</span><button class="btn primary" data-open="${r.id}">Details</button></div></div>`);
     m.on("popupopen", e => { const b = e.popup.getElement().querySelector("[data-open]"); if (b) b.onclick = () => openRide(r.id); });
     pins.push(m); if (S.focusRide === r.id) setTimeout(() => { map.setView(m.getLatLng(), 18); m.openPopup(); }, 50); });
   if (layer !== "rides") FOOD.forEach(f => { const pos = P[f.id]; if (!pos) return;
-    const m = L.marker([pos[0]/1e5, pos[1]/1e5], {icon:pinIcon((S.food[f.id]||{}).booked?"done":"", svg(ICON.food), "#8ce6c0", 22), title:f.name, keyboard:true}).addTo(map);
+    const m = L.marker([pos[0]/1e5, pos[1]/1e5], {icon:pinIcon("", svg(ICON.food), "#8ce6c0", 22), title:f.name, keyboard:true}).addTo(map);
     m.bindPopup(`<div class="pop">${imgTag(f.id, "photo", f.name)}<div><b>${esc(f.name)}</b><span class="muted" style="font-size:12px">${esc(f.where)} · ${esc(f.kind)}</span></div></div>`); pins.push(m); });
-  if (P.hotel) pins.push(L.marker([P.hotel[0]/1e5, P.hotel[1]/1e5], {icon:L.divIcon({className:"", html:'<div class="pin pin-hotel">★ Our hotel</div>', iconSize:[96,26], iconAnchor:[48,13]}), title:"Disneyland Hotel", zIndexOffset:1000}).addTo(map).bindPopup(`<div class="pop">${imgTag("hotel","photo","Disneyland Hotel")}<div><b>Disneyland Hotel</b><span class="muted" style="font-size:12px">Deluxe room with terrace · Sun 29 → Mon 30 Nov</span></div></div>`));
-  if (P.station) pins.push(L.marker([P.station[0]/1e5, P.station[1]/1e5], {icon:L.divIcon({className:"", html:'<div class="pin pin-hotel" style="background:#c3a6ff;color:#1b1040">Train station</div>', iconSize:[104,26], iconAnchor:[52,13]}), title:"Marne-la-Vallée–Chessy station"}).addTo(map));
+  if (P.hotel) pins.push(L.marker([P.hotel[0]/1e5, P.hotel[1]/1e5], {icon:L.divIcon({className:"", html:'<div class="pin pin-hotel">★ Our hotel</div>', iconSize:[96,26], iconAnchor:[48,13]}), title:"Disneyland Hotel", zIndexOffset:1000}).addTo(map).bindPopup(`<div class="pop">${imgTag("hotel","photo","Disneyland Hotel")}<div><b>Disneyland Hotel</b><span class="muted" style="font-size:12px">Your Deluxe room with terrace · Sun 29 → Mon 30 Nov</span></div></div>`));
   const fit = () => map.fitBounds(MAPDATA.b.map(([a,b]) => [a/1e5, b/1e5]), {padding:[10,10]});
   if (S.focusRide) { const pos = P[S.focusRide]; if (pos) map.setView([pos[0]/1e5,pos[1]/1e5], 18); else fit(); S.focusRide = null; } else fit();
   setTimeout(() => map.invalidateSize(), 60);
@@ -1074,180 +950,74 @@ B.map = () => {
   });
 };
 
+
+/* ================= Food ================= */
 R.food = () => {
-  const groups = [["Disneyland Hotel","At our hotel"],["Parks","In the parks"],["Disney Village","Disney Village"]];
-  const inGroup = (f,g) => g==="Disneyland Hotel" ? f.where==="Disneyland Hotel" : g==="Disney Village" ? f.where==="Disney Village" : (f.where!=="Disneyland Hotel" && f.where!=="Disney Village");
-  const booked = FOOD.filter(f=>S.food[f.id]&&S.food[f.id].booked).length;
-  const want = FOOD.filter(f=>S.food[f.id]&&S.food[f.id].want);
-  const needBook = want.filter(f=>f.book && !S.food[f.id].booked);
+  const groups = [["hotel","At your hotel"],["parks","In the parks"],["village","Disney Village"]];
+  const g = f => f.where==="Disneyland Hotel" ? "hotel" : f.where==="Disney Village" ? "village" : "parks";
   return `
-  <div class="sec-head"><div><div class="eyebrow">Food & drinks</div><h2>Where we eat</h2></div><span class="muted">${booked} booked · ${want.length} on the wish list</span></div>
-  ${needBook.length?`<div class="card" style="border-color:rgba(240,201,120,.4)"><div class="eyebrow">Still to book</div><p style="margin:6px 0 0">${needBook.map(f=>`<b>${esc(f.name)}</b>`).join(", ")}. Table-service spots fill up, so reserve in the official app before the trip.</p></div>`:""}
-  ${groups.map(([g,label])=>`
+  <div class="sec-head"><div><div class="eyebrow">Food & drinks</div><h2>Where to eat</h2></div><span class="muted">Table-service spots fill up: book them in the official app</span></div>
+  <section class="card breakfast">
+    <div class="eyebrow" style="color:var(--mint)">Included in your booking</div>
+    <h3 style="font-family:var(--f-display);font-size:20px;margin-top:4px">Breakfast, tea time & drinks at the Deluxe Lounge</h3>
+    <p style="margin:6px 0 0">Your Deluxe room includes the Deluxe Lounge: breakfast buffet, a themed tea time in the afternoon and soft drinks all day, with its own reception and concierge.</p>
+    ${photo("breakfast") || photo("dessert") ? `<div class="duo">${["breakfast","dessert"].filter(k => photo(k)).map(k => `<figure>${imgTag(k,"photo",k==="breakfast"?"Breakfast on an earlier visit":"Dessert on an earlier visit")}<figcaption>${k==="breakfast"?"Breakfast on an earlier visit":"Dessert time, last time round"}</figcaption></figure>`).join("")}</div>` : ""}
+  </section>
+  ${groups.map(([k,label]) => `
     <section style="display:grid;gap:12px">
       <h3 style="font-family:var(--f-display);font-size:18px;color:var(--gold)">${label}</h3>
-      <div class="grid g3">${FOOD.filter(f=>inGroup(f,g)).map(f=>{const st=S.food[f.id]||{};return `
+      <div class="grid g3">${FOOD.filter(f => g(f)===k).map(f => `
         <article class="card food">
           ${photo(f.id) ? `<div class="ph">${imgTag(f.id, "photo", f.name)}</div>` : ""}
           <div><h3>${esc(f.name)}</h3><div class="muted" style="font-size:12.5px">${esc(f.where)} · ${esc(f.kind)}</div></div>
           <p style="margin:0;font-size:13.5px;color:#d3d6f5">${esc(f.blurb)}</p>
           <div class="pills">${f.tags.map(t=>`<span class="pill ${t==="Character dining"?"hot":""}">${esc(t)}</span>`).join("")}${f.book?`<span class="pill">Book ahead</span>`:`<span class="pill ok">Walk in</span>`}</div>
-          <div class="toggle-row">
-            <button class="tbtn want" data-fw="${f.id}" aria-pressed="${!!st.want}">${st.want?"★ On our list":"☆ Want"}</button>
-            ${f.book?`<button class="tbtn" data-fb="${f.id}" aria-pressed="${!!st.booked}">${st.booked?"✓ Booked":"Mark booked"}</button>`:""}
-          </div>
-        </article>`}).join("")}</div>
+        </article>`).join("")}</div>
     </section>`).join("")}`;
 };
-B.food = () => {
-  const tog = (id,k) => { S.food[id]=S.food[id]||{}; S.food[id][k]=!S.food[id][k]; save(); const y=scrollY; route(); scrollTo(0,y); };
-  document.querySelectorAll("[data-fw]").forEach(b=>b.onclick=()=>tog(b.dataset.fw,"want"));
-  document.querySelectorAll("[data-fb]").forEach(b=>b.onclick=()=>{tog(b.dataset.fb,"booked"); if(S.food[b.dataset.fb].booked) toast("Table booked ✓");});
-};
 
-R.stay = () => {
-  const cats = [...new Set(PACK.map(p=>p.cat))];
-  return `
-  <div class="sec-head"><div><div class="eyebrow">Our night</div><h2>Hotel & checklist</h2></div></div>
+/* ================= Hotel ================= */
+R.hotel = () => `
+  <div class="sec-head"><div><div class="eyebrow">Your night</div><h2>Disneyland Hotel</h2></div></div>
   <div class="grid g2">
     <section class="card hotel">
       ${photo("hotel") ? `<div class="ph">${imgTag("hotel", "photo", "The Disneyland Hotel")}</div>` : ""}
       <div class="eyebrow" style="color:var(--rose)">Sunday 29 → Monday 30 November · 1 night</div>
-      <h3 style="margin-top:6px">Disneyland Hotel</h3>
+      <h3 style="margin-top:6px">Your room</h3>
       <p class="muted" style="margin:4px 0 0">The pink Victorian palace right at the gates of Disneyland Park, redone in a royal theme.</p>
       <dl class="kv">
         <dt>Room</dt><dd>Deluxe room with terrace</dd>
-        <dt>Beds</dt><dd>Two double beds · room for 4</dd>
-        <dt>Guests</dt><dd>Max, Marjo, Martina &amp; Maurits</dd>
-        <dt>Check-in</dt><dd>Sun from about 15:00</dd>
+        <dt>Booked for</dt><dd>Max, Marjo, Martina &amp; Maurits</dd>
+        <dt>Beds</dt><dd>Two double beds · 4 guests</dd>
+        <dt>Check-in</dt><dd>Sun, from about 15:00</dd>
         <dt>Check-out</dt><dd>Mon, usually by 11:00</dd>
       </dl>
-      <div class="incl"><span>Breakfast included</span><span>Deluxe Lounge access</span><span>Park tickets</span></div>
+      <div class="incl"><span>Breakfast included</span><span>Deluxe Lounge access</span><span>Park tickets</span><span>Extra Magic Time</span></div>
       ${creditLine("hotel") ? `<div style="margin-top:12px">${creditLine("hotel")}</div>` : ""}
     </section>
     <section class="card" style="display:grid;gap:12px;align-content:start">
-      <div class="eyebrow">Getting there</div>
-      <p style="margin:0">Train to <b>Marne-la-Vallée–Chessy</b> (RER A or TGV). The hotel is a few minutes' walk through Disney Plaza, right above the park entrance.</p>
-      <div class="copyline"><span class="field mono" id="addr" style="flex:1 1 220px;user-select:all">Disneyland Hotel, 77777 Marne-la-Vallée, France</span><button class="btn" id="copyAddr">${svg(ICON.copy)}Copy</button></div>
-      <div class="eyebrow" style="margin-top:6px">Perks to use</div>
-      <ul class="checklist" style="gap:2px">
-        <li style="padding:4px 0">✦ Early park entry for hotel guests (Extra Magic Time)</li>
-        <li style="padding:4px 0">✦ Bell desk holds bags before check-in and after check-out</li>
-        <li style="padding:4px 0">✦ Indoor pool, bring swimsuits</li>
-        <li style="padding:4px 0">✦ Terrace view toward the castle at night</li>
+      ${photo("hotel_lobby") ? `<div class="ph">${imgTag("hotel_lobby","photo","The Disneyland Hotel lobby at Christmas")}<span class="ph-chip" style="background:var(--rose)">The lobby at Christmas</span></div>` : ""}
+      <div class="eyebrow">What your Deluxe room includes</div>
+      <ul class="facts-list">
+        <li>${svg(ICON.food)}<span><b>Deluxe Lounge</b><br>Breakfast buffet, themed tea time in the afternoon and soft drinks all day.</span></li>
+        <li>${svg(ICON.star)}<span><b>Own reception & concierge</b><br>A dedicated desk for Deluxe guests, so no queue at the main reception.</span></li>
+        <li>${svg(ICON.clock)}<span><b>Extra Magic Time every day</b><br>Up to an hour before the public, on arrival and departure day too (08:00–09:00).</span></li>
+        <li>${svg(ICON.sparkle)}<span><b>Illuminated canopy</b><br>Deluxe rooms have an animated, lit canopy above the beds.</span></li>
+        <li>${svg(ICON.hotel)}<span><b>Bell desk</b><br>Drop bags before check-in and leave them after check-out.</span></li>
       </ul>
     </section>
   </div>
-
-  <div class="grid g2">
-    <section class="card">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><div class="eyebrow">Packing list</div><span class="mono muted" style="font-size:13px">${PACK.filter(p=>S.pack[p.id]).length}/${PACK.length}</span></div>
-      <div class="bar" style="margin:10px 0 6px"><i style="width:${PACK.filter(p=>S.pack[p.id]).length/PACK.length*100}%"></i></div>
-      ${cats.map(c=>`<div style="margin-top:12px"><div class="muted" style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase">${c}</div>
-        <ul class="checklist">${PACK.filter(p=>p.cat===c).map(p=>`<li><label><input type="checkbox" id="pk-${p.id}" data-pack="${p.id}" ${S.pack[p.id]?"checked":""}><span>${esc(p.t)}</span></label></li>`).join("")}</ul></div>`).join("")}
-    </section>
-    <section class="card">
-      <div class="eyebrow">Insider tips</div>
-      <ol class="tips" style="margin-top:12px">
-        <li><span>Use the <b>official Disneyland Paris app</b> for live wait times, show schedules and restaurant bookings.</span></li>
-        <li><span>Be at the gates for <b>Extra Magic Time</b> on Monday and go straight to Peter Pan's Flight or Frozen Ever After.</span></li>
-        <li><span>It's dark before 17:00 in late November. Save Big Thunder Mountain and Main Street for after sunset.</span></li>
-        <li><span><b>Single Rider</b> lines on rides like Ratatouille and Flight Force can save a lot of time if we don't mind splitting up.</span></li>
-        <li><span>Christmas decorations are likely to be up. Main Street and the castle are the photo spots.</span></li>
-        <li><span>Indoor rides (Small World, Pirates, Ratatouille) are perfect for warming up when it rains.</span></li>
-        <li><span>Keep a power bank handy: the app drains the battery fast in the cold.</span></li>
-      </ol>
-    </section>
-  </div>`;
-};
-B.stay = () => {
-  document.querySelectorAll("[data-pack]").forEach(c=>c.onchange=()=>{ if(c.checked) S.pack[c.dataset.pack]=1; else delete S.pack[c.dataset.pack]; save(); const y=scrollY; route(); scrollTo(0,y); });
-  $("#copyAddr").onclick = () => {
-    const txt = $("#addr").textContent;
-    const fallback = () => { const r=document.createRange(); r.selectNodeContents($("#addr")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); toast("Address selected, copy it"); };
-    try { navigator.clipboard.writeText(txt).then(()=>toast("Address copied"), fallback); } catch(e){ fallback(); }
-  };
-};
-
-R.moments = () => {
-  const ms = (S.moments||[]).slice().sort((a,b)=>b.at-a.at);
-  const sc = S.scores||{};
-  return `
-  <div class="sec-head"><div><div class="eyebrow">Memories</div><h2>Moments & score battle</h2></div><span class="muted">${SYNC.mode==="live"?"Shared with the whole crew":"Saved on this device only"}</span></div>
-  <section class="card" style="display:grid;gap:12px">
-    <div class="eyebrow">Capture a moment</div>
-    <form class="drop" id="momForm" autocomplete="off">
-      <label class="filebtn" id="fileLbl">${svg(ICON.camera)}<span id="fileTxt">Add a photo (optional)</span><input type="file" id="momFile" accept="image/*"></label>
-      <select class="field" id="momWho" aria-label="Who">${CREW.map(c=>`<option value="${c.id}" ${c.id===S.me?"selected":""}>${c.name}</option>`).join("")}</select>
-      <input class="field full" id="momText" placeholder="What happened? e.g. Max screamed on Tower of Terror" aria-label="Caption" required maxlength="160">
-      <button class="btn primary full" type="submit">${svg(ICON.plus)}Save moment</button>
-    </form>
-  </section>
-  ${ms.length ? `<div class="mom-grid">${ms.map(m=>{const c=crew(m.who)||CREW[2];return `
-    <article class="card mom">
-      ${momSrc(m)?`<img src="${esc(momSrc(m))}" alt="${esc(m.text)}" loading="lazy">`:`<div class="noimg">${esc(m.text.slice(0,60))}</div>`}
-      <div class="mom-body">${momSrc(m)?`<div style="font-weight:700;overflow-wrap:anywhere">${esc(m.text)}</div>`:""}
-        <div class="mom-meta"><span style="display:flex;align-items:center;gap:6px">${av(c)}${c.name} · ${new Date(m.at).toLocaleString("en-GB",{weekday:"short",hour:"2-digit",minute:"2-digit",timeZone:"Europe/Paris"})}</span>
-        <button class="mini" data-mdel="${m.id}" aria-label="Delete moment">${svg(ICON.trash)}</button></div></div>
-    </article>`}).join("")}</div>`
-  : `<div class="empty">No moments yet. The first churro, the first scream on Tower of Terror, the castle at night: save them here.</div>`}
-  <section style="display:grid;gap:12px">
-    <h3 style="font-family:var(--f-display);font-size:20px;color:var(--gold)">Score battle</h3>
-    <div class="score-grid">${SHOOTERS.map(g=>{const v=sc[g.id]||{};const vals=CREW.map(c=>+v[c.id]||0);const best=Math.max(...vals);return `
-      <div class="card"><div class="eyebrow">${esc(g.name)}</div>
-        ${CREW.map((c,i)=>`<div class="score-row">${av(c)}<span style="font-weight:700">${c.name} ${best>0&&vals[i]===best?'<span class="crown">♛ LEADER</span>':""}</span>
-          <input class="field" type="number" inputmode="numeric" min="0" step="10" id="sc-${g.id}-${c.id}" data-sg="${g.id}" data-sw="${c.id}" value="${v[c.id]||""}" placeholder="0" aria-label="${c.name} score"></div>`).join("")}
-      </div>`}).join("")}</div>
+  <section class="card">
+    <div class="eyebrow">Good to know</div>
+    <ol class="tips" style="margin-top:12px">
+      <li><span>The <b>official Disneyland Paris app</b> has live wait times, the day's show times and restaurant bookings.</span></li>
+      <li><span>Extra Magic Time rides vary by morning. Peter Pan's Flight and World of Frozen get the longest queues later, so they're worth going to first.</span></li>
+      <li><span>It's dark before 17:00 in late November, so Christmas lights, the parade and Big Thunder Mountain are at their best early in the evening.</span></li>
+      <li><span>Since April 2026 the castle show uses projections and fireworks. The drones fly over the lake in Disney Cascade of Lights.</span></li>
+      <li><span>Late November is usually 3–8 °C and damp. Indoor rides (Pirates, "it's a small world", Ratatouille) are warm.</span></li>
+      <li><span><b>Single Rider</b> lines on Ratatouille and Flight Force are much shorter if you don't mind splitting up.</span></li>
+    </ol>
   </section>`;
-};
-B.moments = () => {
-  let pending = null, pendingBlob = null;
-  $("#momFile").onchange = e => {
-    const f = e.target.files && e.target.files[0]; if (!f) return;
-    $("#fileTxt").textContent = "Preparing photo…";
-    const rd = new FileReader();
-    rd.onload = () => { const im = new Image(); im.onload = () => {
-      const max = 900, k = Math.min(1, max/Math.max(im.width, im.height));
-      const c = document.createElement("canvas"); c.width = Math.round(im.width*k); c.height = Math.round(im.height*k);
-      c.getContext("2d").drawImage(im,0,0,c.width,c.height);
-      pending = c.toDataURL("image/jpeg",.72);
-      pendingBlob = null; c.toBlob(b => { pendingBlob = b; }, "image/jpeg", .82);
-      $("#fileLbl").innerHTML = `<img src="${pending}" alt=""><span id="fileTxt">Photo ready</span>`;
-    }; im.onerror = () => { $("#fileTxt").textContent = "That file isn't an image. Try another."; }; im.src = rd.result; };
-    rd.readAsDataURL(f);
-  };
-  $("#momForm").onsubmit = e => {
-    e.preventDefault();
-    const text = $("#momText").value.trim(); if (!text) return;
-    const btn = e.submitter || $("#momForm button[type=submit]"); btn.disabled = true;
-    const m = {id:mkId(), at:Date.now(), who:$("#momWho").value, text, img:null, asset:null};
-    const finish = () => { S.moments = (S.moments||[]).concat(m); save(); toast("Moment saved"); burst(); route(); };
-    if (!pending) return finish();
-    (async () => {
-      if (SYNC.mode === "live"){
-        let assets = null; try { assets = await window.claude.use("assets"); } catch(_){}
-        if (assets && pendingBlob){ try { const r = await assets.upload(pendingBlob); m.asset = r.id; return finish(); } catch(_){} }
-        m.img = await shrink(pending, 560, .62);   // small enough for a shared document
-      } else m.img = pending;
-      finish();
-    })();
-  };
-  document.querySelectorAll("[data-mdel]").forEach(b => b.onclick = () => confirmTap(b, "Sure?", () => { S.moments = S.moments.filter(m=>m.id!==b.dataset.mdel); save(); route(); toast("Moment deleted"); }));
-  document.querySelectorAll("[data-sg]").forEach(inp => inp.onchange = () => {
-    S.scores = S.scores || {}; S.scores[inp.dataset.sg] = S.scores[inp.dataset.sg] || {};
-    const v = Math.max(0, parseInt(inp.value)||0);
-    if (v) S.scores[inp.dataset.sg][inp.dataset.sw] = v; else delete S.scores[inp.dataset.sg][inp.dataset.sw];
-    save(); const y = scrollY; route(); scrollTo(0,y);
-  });
-};
-
-function shrink(dataUrl, max, q){
-  return new Promise(res => { const im = new Image(); im.onload = () => {
-    const k = Math.min(1, max/Math.max(im.width, im.height)); const c = document.createElement("canvas");
-    c.width = Math.round(im.width*k); c.height = Math.round(im.height*k); c.getContext("2d").drawImage(im,0,0,c.width,c.height);
-    res(c.toDataURL("image/jpeg", q)); }; im.onerror = () => res(null); im.src = dataUrl; });
-}
-const momSrc = m => m.asset ? "/_blob/" + encodeURIComponent(m.asset) : m.img;
 
 function openOverlay(html, focusSel){
   const ov = $("#overlay"); ov.innerHTML = html; ov.hidden = false;
@@ -1255,8 +1025,7 @@ function openOverlay(html, focusSel){
   const f = ov.querySelector(focusSel || "[data-close]"); if (f) f.focus();
 }
 function openRide(id){
-  const r = RIDES.find(x => x.id === id); if (!r) return; const tm = TYPE_META[r.type]; const v = S.votes[r.id] || {};
-  const voters = CREW.filter(c => v[c.id]);
+  const r = RIDES.find(x => x.id === id); if (!r) return; const tm = TYPE_META[r.type];
   openOverlay(`<div class="modal sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle">
     <div class="sh-img">${photo(r.id) ? imgTag(r.id, "photo", r.name) : `<div class="ph noimg" style="--bc:${tm.c};margin:0;border-radius:0;height:100%">${svg(tm.icon)}</div>`}<button class="x" data-close aria-label="Close">×</button></div>
     <div class="sh-body">
@@ -1265,62 +1034,36 @@ function openRide(id){
       <p style="margin:0;font-size:15px;color:#d9dcff">${esc(r.blurb)}</p>
       ${r.tip ? `<div class="tipline" style="font-size:14px"><span aria-hidden="true">✦</span><span>${esc(r.tip)}</span></div>` : ""}
       <div class="thrill" aria-label="Intensity ${r.lvl} of 5">${[1,2,3,4,5].map(i => `<i class="${i<=r.lvl?"on":""}"></i>`).join("")}<span class="muted" style="font-size:12px;margin-left:8px">Intensity ${r.lvl}/5</span></div>
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="muted">${voters.length ? "Wanted by" : "Nobody has voted yet"}</span>${voters.map(c => `<span class="chip">${av(c)}${c.name}</span>`).join("")}</div>
-      <div class="actions"><button class="btn ${S.ridden[r.id]?"":"primary"}" id="shRidden">${svg(ICON.check)}${S.ridden[r.id] ? "Ridden, undo" : "Mark as ridden"}</button><a class="btn" href="#map" data-close data-focus="${r.id}">${svg(ICON.map)}Show on map</a></div>
+      ${r.emt ? `<div class="emtnote">${svg(ICON.clock)}<span><b>Usually open during your Extra Magic Time</b> (08:00–09:00 for hotel guests). Not guaranteed every morning; the official app shows that day's list.</span></div>` : ""}
+      <div class="actions"><a class="btn" href="#map" data-close data-focus="${r.id}">${svg(ICON.map)}Show on map</a></div>
       ${creditLine(r.id)}
     </div></div>`, ".x");
-  $("#shRidden").onclick = () => { if (S.ridden[r.id]) delete S.ridden[r.id]; else { S.ridden[r.id] = Date.now(); burst(); toast("Ridden! ✓"); } save(); $("#overlay").hidden = true; liveRender(); };
   const mapLink = $("#overlay [data-focus]"); if (mapLink) mapLink.addEventListener("click", () => { S.land = r.land; S.focusRide = r.id; });
 }
 function openCredits(){
   const used = Object.entries(PHOTOS);
   openOverlay(`<div class="modal sheet" role="dialog" aria-modal="true" aria-labelledby="crTitle" style="padding:22px">
     <button class="x" data-close aria-label="Close" style="position:sticky;float:right;top:0">×</button>
-    <div class="eyebrow">Credits</div><h2 id="crTitle" style="font-family:var(--f-display);font-size:22px;margin:4px 0 10px">Photos & map</h2>
-    <p class="muted" style="margin:0 0 14px">Photos come from Wikimedia Commons under the licences listed, unchanged except for resizing and cropping. Map data © OpenStreetMap contributors, available under the Open Database License.</p>
-    <ul class="credits">${used.map(([k, ph]) => `<li data-src="${esc(ph.f)}"><img src="${esc(ph.f)}" alt="" loading="lazy"><span><b>${esc(ph.t || k)}</b><br>${esc(ph.by)} · <a href="${esc(ph.page)}" target="_blank" rel="noopener">${esc(ph.lic)}</a></span></li>`).join("") || '<li class="muted">No photos loaded.</li>'}</ul>
+    <div class="eyebrow">Credits</div><h2 id="crTitle" style="font-family:var(--f-display);font-size:22px;margin:4px 0 10px">Photos, map & sources</h2>
+    <p class="muted" style="margin:0 0 14px">Photos marked "Your photo" are your own. The others come from Wikimedia Commons under the licences listed, unchanged except for resizing and cropping. Map data © OpenStreetMap contributors, available under the Open Database License.</p>
+    <div class="eyebrow" style="margin:6px 0 8px">Research sources (November 2026)</div>
+    <ul class="credits" style="margin-bottom:16px">${SOURCES.map(([t,u]) => `<li style="grid-template-columns:1fr"><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}</a></li>`).join("")}</ul>
+    <div class="eyebrow" style="margin:6px 0 8px">Photos</div>
+    <ul class="credits">${used.map(([k, ph]) => `<li data-src="${esc(ph.f)}"><img src="${esc(ph.f)}" alt="" loading="lazy"><span><b>${esc(ph.t || k)}</b><br>${ph.own ? "Your photo" : `${esc(ph.by)} · <a href="${esc(ph.page)}" target="_blank" rel="noopener">${esc(ph.lic)}</a>`}</span></li>`).join("") || '<li class="muted">No photos loaded.</li>'}</ul>
   </div>`, ".x");
 }
 
-/* ================= Roulette ================= */
-function roulette(){
-  const pool = RIDES.filter(r=>!S.ridden[r.id]);
-  const ov = $("#overlay");
-  if (!pool.length){ toast("You've ridden everything!"); return; }
-  const weighted = pool.flatMap(r => Array(1 + voteCount(r.id)*2).fill(r));
-  const pick = weighted[Math.floor(Math.random()*weighted.length)];
-  ov.innerHTML = `<div class="modal" role="dialog" aria-modal="true" aria-labelledby="rlTitle">
-    <div class="eyebrow">Ride roulette</div><h2 id="rlTitle" style="font-family:var(--f-display);font-size:22px;margin-top:6px">Where to next?</h2>
-    <div class="slot" id="slot"><div><b>…</b></div></div>
-    <p class="muted" style="font-size:13px;margin:0 0 16px">Weighted by crew votes. Rides already ridden are skipped.</p>
-    <div class="actions" style="justify-content:center"><button class="btn" id="rlAgain">${svg(ICON.dice)}Spin again</button><button class="btn primary" id="rlClose">Let's go</button></div></div>`;
-  ov.hidden = false;
-  const slot = $("#slot");
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let n = reduce ? 0 : 18, delay = 50;
-  const tick = () => {
-    const r = n>0 ? pool[Math.floor(Math.random()*pool.length)] : pick;
-    slot.innerHTML = `<div><b>${esc(r.name)}</b><small>${esc(r.land)} · ${PARKS[r.park]}</small></div>`;
-    if (n-- > 0) { delay *= 1.12; setTimeout(tick, delay); } else burst();
-  };
-  tick();
-  $("#rlAgain").onclick = roulette;
-  $("#rlClose").onclick = () => { ov.hidden = true; };
-  ov.onclick = e => { if (e.target===ov) ov.hidden = true; };
-  $("#rlClose").focus();
-}
-document.addEventListener("keydown", e => { if (e.key==="Escape") $("#overlay").hidden = true; });
 
 /* ================= Crew strip & countdown ================= */
 function renderCrew(){
-  $("#crewStrip").innerHTML = CREW.map(c=>`<span class="chip" ${S.me===c.id?'style="border-color:'+c.color+'"':''}>${av(c)}${c.name}${c.id==="me"?' <span class="muted" style="font-weight:500">(me)</span>':""}</span>`).join("");
+  $("#crewStrip").innerHTML = CREW.map(c=>`<span class="chip" ${S.me===c.id?'style="border-color:'+c.color+'"':''}>${av(c)}${c.name}</span>`).join("");
 }
 const pad = n => String(n).padStart(2,"0");
 function tickCountdown(){
   const now = Date.now(); const cap = $("#cdCap");
   let diff;
   if (now < TRIP_START){ diff = TRIP_START-now; cap.innerHTML = `until check-in at the <b>Disneyland Hotel</b> · Sunday 29 November, 15:00`; }
-  else if (now < TRIP_END){ diff = TRIP_END-now; cap.innerHTML = `<b>We're here!</b> Time left to soak up the magic · Paris time ${parisNow()}`; }
+  else if (now < TRIP_END){ diff = TRIP_END-now; cap.innerHTML = `<b>You're here!</b> Time left to soak up the magic · Paris time ${parisNow()}`; }
   else { diff = 0; cap.innerHTML = `<b>Merci</b> for a magical weekend, Max, Marjo, Martina &amp; Maurits`; }
   const d=Math.floor(diff/864e5), h=Math.floor(diff/36e5)%24, m=Math.floor(diff/6e4)%60, s=Math.floor(diff/1e3)%60;
   $("#cdD").textContent = d>99?d:pad(d); $("#cdH").textContent=pad(h); $("#cdM").textContent=pad(m); $("#cdS").textContent=pad(s);
@@ -1492,18 +1235,18 @@ function startSnow(){ if (!snowRunning && S.snow && !reduceMotion){ snowRunning=
 
 /* ================= Boot ================= */
 function heroPhoto(){
-  const ph = photo("castle_night") || photo("castle"); const box = $("#heroPhoto"); if (!ph || !box) return;
-  const key = photo("castle_night") ? "castle_night" : "castle";
+  const key = ["castle_night","castle","hotel"].find(k => photo(k)); const ph = key && photo(key); const box = $("#heroPhoto"); if (!ph || !box) return;
   const im = new Image(); im.alt = ""; im.decoding = "async";
   im.onload = () => { box.appendChild(im); requestAnimationFrame(() => { box.dataset.loaded = "1"; heroPhotoOn = true; drawSky(performance.now()); }); };
   im.src = ph.f;
-  const c = document.createElement("button"); c.className = "hero-credit"; c.textContent = "Photo: " + ph.by + " · " + ph.lic; c.onclick = openCredits;
+  const c = document.createElement("button"); c.className = "hero-credit"; c.textContent = ph.own ? "Your photo" : "Photo: " + ph.by + " · " + ph.lic; c.onclick = openCredits;
   $("#top").appendChild(c);
 }
+
+/* ================= Boot ================= */
 function boot(){
-  renderSync(); startSync(); heroPhoto();
+  heroPhoto();
   $("#creditsBtn").onclick = openCredits;
-  { const n=Date.now(); if (n>=DAY1 && n<TRIP_END) S.day = n>=DAY2 ? 2 : 1; }
   renderCrew(); route(); tickCountdown(); setInterval(tickCountdown,1000);
   sizeSky(); sizeSnow();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(()=>{ moonCache=null; drawSky(performance.now()); });
@@ -1514,9 +1257,9 @@ function boot(){
   $("#snowBtn").onclick = () => { S.snow=!S.snow; save(); $("#snowBtn").setAttribute("aria-pressed", String(S.snow)); startSnow(); toast(S.snow?"Let it snow":"Snow off"); };
   $("#fwBtn").onclick = () => { if (reduceMotion){ toast("Animations are off on this device"); return; } burst(); setTimeout(burst,700); };
   document.addEventListener("visibilitychange", () => { if (!document.hidden) startSnow(); });
+  document.addEventListener("keydown", e => { if (e.key==="Escape") $("#overlay").hidden = true; });
   startSnow();
-  // refresh "next up" each minute on the home/plan views
-  setInterval(() => { const h=(location.hash||"#home").slice(1); if ((h==="home"||h==="plan"||h==="") && !document.activeElement.matches("input,select")) route(); }, 60000);
+  setInterval(() => { const h=(location.hash||"#home").slice(1); if ((h==="home"||h==="days"||h==="") && !document.activeElement.matches("input,select")) route(); }, 60000);
 }
 boot();
 })();
