@@ -729,35 +729,7 @@ body{background:radial-gradient(1200px 700px at 50% -10%,#1b2a7a 0%,rgba(6,10,34
 .no-lights .lights{display:none}
 .ln-magic{flex:none;border:0;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;background:rgba(255,255,255,.12);color:var(--ink)}
 
-/* ---------- Magic panel (bottom sheet) ---------- */
-.fxpanel{position:fixed;inset:0;z-index:65}
-.fx-back{position:absolute;inset:0;background:rgba(3,6,22,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transition:opacity .35s ease}
-.fx-sheet{position:absolute;left:50%;bottom:0;width:min(560px,100%);max-height:88svh;overflow:auto;transform:translate(-50%,105%);transition:transform .55s var(--ease);
-  background:linear-gradient(180deg,rgba(30,40,100,.92),rgba(12,18,52,.96));backdrop-filter:blur(30px) saturate(1.6);-webkit-backdrop-filter:blur(30px) saturate(1.6);
-  border-radius:30px 30px 0 0;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 -30px 80px rgba(0,0,0,.6);padding:10px 20px calc(20px + env(safe-area-inset-bottom,0px))}
-.fxpanel.on .fx-back{opacity:1}.fxpanel.on .fx-sheet{transform:translate(-50%,0)}
-.fx-grab{width:40px;height:5px;border-radius:9px;background:rgba(255,255,255,.25);margin:4px auto 12px}
-.fx-sheet h2{font-family:var(--f-display);font-size:30px;font-weight:700;letter-spacing:-.03em}
-.fx-sub{margin:2px 0 14px;color:var(--muted);font-size:15px}
-.fx-label{font-size:13px;font-weight:600;color:var(--muted);margin:14px 4px 8px}
-.fx-seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border-radius:14px;background:rgba(255,255,255,.07)}
-.fx-seg button{border:0;border-radius:10px;padding:10px 6px;background:transparent;color:var(--muted);font-weight:600;font-size:14px;transition:background .3s,color .3s}
-.fx-seg button[aria-pressed="true"]{background:var(--gold);color:#241800}
-.fx-now{margin:8px 4px 0;font-size:12.5px;color:var(--muted);min-height:1em}
-.fx-now a{color:var(--gold)}
-.fx-list{border-radius:18px;background:rgba(255,255,255,.06);overflow:hidden}
-.fx-row{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 14px}
-.fx-row+.fx-row{box-shadow:inset 0 1px 0 rgba(255,255,255,.07)}
-.fx-ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(243,197,107,.3),rgba(255,93,115,.25));font-size:17px;color:#fff}
-.fx-tx b{display:block;font-size:15.5px;font-weight:600}.fx-tx small{display:block;color:var(--muted);font-size:12.5px;line-height:1.35}
-.sw{position:relative;width:51px;height:31px;border-radius:99px;border:0;background:rgba(255,255,255,.18);padding:0;transition:background .3s}
-.sw i{position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.35);transition:transform .35s var(--spring)}
-.sw[aria-checked="true"]{background:var(--fir)}.sw[aria-checked="true"] i{transform:translateX(20px)}
-.fx-finale{margin-top:16px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:14px;font-weight:700;font-size:16px;
-  color:#241800;background:linear-gradient(90deg,#ffd98c,#f7a9c6,#ff8a9a);box-shadow:0 10px 30px -10px rgba(255,93,115,.6)}
-.fx-finale svg{width:18px;height:18px}
-.fx-done{margin-top:10px;width:100%;border:0;border-radius:16px;padding:13px;font-weight:600;font-size:16px;background:rgba(255,255,255,.1);color:var(--ink)}
-@media (max-width:640px){.hero .actions .icon-btn{padding:7px 11px;font-size:12.5px}.hero #snowBtn{display:none}.ln-magic{display:none}}
+@media (max-width:640px){.hero .actions .icon-btn{padding:7px 11px;font-size:12.5px}}
 
 /* ---------- Hidden Mickeys ---------- */
 .hm{position:absolute;right:10px;bottom:8px;z-index:4;width:30px;height:30px;padding:6px;border:0;border-radius:50%;background:transparent;color:currentColor;opacity:.16;cursor:pointer;transition:opacity .3s,transform .4s var(--spring)}
@@ -812,71 +784,6 @@ footer .foot{position:relative}
 .rainbow-lights .lights i{animation-duration:.35s!important;filter:hue-rotate(0deg);animation-name:twinkle,huey!important}
 @keyframes huey{to{filter:hue-rotate(360deg)}}
 
-/* ---------- Attraction scenes ---------- */
-.scene{position:absolute;right:10px;bottom:10px;z-index:2;width:74px;height:48px;padding:4px 5px;border-radius:14px;background:rgba(10,16,48,.5);
-  backdrop-filter:blur(12px) saturate(1.5);-webkit-backdrop-filter:blur(12px) saturate(1.5);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);pointer-events:none}
-.scene.big{width:120px;height:78px;right:14px;bottom:14px;border-radius:18px}
-.pick .scene{top:12px;right:12px;bottom:auto}
-.scene svg{width:100%;height:100%;overflow:visible}
-.scene .ln{fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.scene .dim{fill:none;stroke:rgba(255,255,255,.4);stroke-width:1.4;stroke-linecap:round}
-.scene .fl{fill:var(--gold);stroke:none}
-.scene .glow{filter:drop-shadow(0 0 4px #ffb347)}
-.scene .ey{fill:#0a1030}.scene .ey.red{fill:#ff5d73}
-.scene .wave{fill:none;stroke:#8fc9ff;stroke-width:1.8;animation:scWave 2.4s linear infinite}
-@keyframes scWave{to{transform:translateX(-16px)}}
-.scene .tw,.scene .tw-star{fill:#fff;animation:scTw 1.6s ease-in-out infinite alternate}
-.scene .d2{animation-delay:.5s}.scene .d3{animation-delay:1s}.scene .d4{animation-delay:1.4s}
-@keyframes scTw{from{opacity:.15}to{opacity:1}}
-.sc-drop{animation:scDrop 3s cubic-bezier(.6,0,.4,1) infinite}
-@keyframes scDrop{0%,20%{transform:translateY(0)}45%{transform:translateY(22px)}55%{transform:translateY(16px)}70%{transform:translateY(24px)}100%{transform:translateY(0)}}
-.scene .bolt{fill:none;stroke:#ffe27a;stroke-width:1.8;opacity:0;animation:scBolt 3s infinite}
-@keyframes scBolt{40%,48%{opacity:0}44%{opacity:1}46%{opacity:.2}}
-.sc-fly{animation:scFly 3.6s ease-in-out infinite}
-@keyframes scFly{0%{transform:translate(-6px,6px)}50%{transform:translate(22px,-6px) rotate(-6deg)}100%{transform:translate(-6px,6px)}}
-.sc-spin{animation:scSpin 3s linear infinite}
-@keyframes scSpin{to{transform:rotate(360deg)}}
-.sc-bob{animation:scBob 2.4s ease-in-out infinite}
-@keyframes scBob{50%{transform:translateY(-3px) rotate(2deg)}}
-.sc-chug{animation:scChug .5s ease-in-out infinite alternate}
-@keyframes scChug{to{transform:translateY(-1px)}}
-.scene .puff{fill:rgba(255,255,255,.75);animation:scPuff 2s ease-out infinite}
-@keyframes scPuff{0%{transform:translate(0,0) scale(.6);opacity:.9}100%{transform:translate(-14px,-10px) scale(2);opacity:0}}
-.sc-drive{animation:scDrive 2.4s ease-in-out infinite}
-@keyframes scDrive{0%{transform:translateX(-10px)}50%{transform:translateX(14px)}100%{transform:translateX(-10px)}}
-.scene .speed{fill:none;stroke:rgba(255,255,255,.6);stroke-width:1.4;stroke-linecap:round;animation:scTw .4s infinite alternate}
-.sc-chute{animation:scChute 4s ease-in-out infinite}
-@keyframes scChute{0%{transform:translate(0,-8px) rotate(-6deg)}50%{transform:translate(0,6px) rotate(6deg)}100%{transform:translate(0,-8px) rotate(-6deg)}}
-.sc-rise{animation:scRise 4s linear infinite}
-.sc-rise.d2{animation-delay:1.3s}.sc-rise.d3{animation-delay:2.6s}
-@keyframes scRise{0%{transform:translateY(8px);opacity:0}20%{opacity:1}100%{transform:translateY(-30px);opacity:0}}
-.sc-ghost{animation:scGhost 3s ease-in-out infinite}
-@keyframes scGhost{0%,100%{transform:translate(0,0);opacity:.9}50%{transform:translate(-6px,-5px);opacity:.3}}
-.sc-rocket{animation:scRocket 2.6s ease-in-out infinite}
-@keyframes scRocket{0%,100%{transform:translateY(4px)}50%{transform:translateY(-4px)}}
-.scene .flame{fill:#ff8a3c;animation:scTw .15s infinite alternate}
-.scene .streak{fill:none;stroke:#cfe6ff;stroke-width:1.6;stroke-linecap:round;transform-origin:32px 20px;transform:rotate(var(--a));animation:scStreak 1s linear infinite;animation-delay:var(--dl)}
-@keyframes scStreak{0%{stroke-dasharray:0 30;stroke-dashoffset:0;opacity:0}30%{opacity:1}100%{stroke-dasharray:10 30;stroke-dashoffset:-24;opacity:0}}
-.sc-sweep{animation:scSweep 3s ease-in-out infinite}
-.scene .beam{fill:rgba(255,236,170,.45)}
-@keyframes scSweep{0%,100%{transform:rotate(-28deg)}50%{transform:rotate(28deg)}}
-.sc-surf{animation:scBob 1.8s ease-in-out infinite}
-.sc-scurry{animation:scDrive 1.6s steps(8) infinite}
-.sc-hop{animation:scHop 1.4s cubic-bezier(.3,1.6,.6,1) infinite}
-@keyframes scHop{0%,100%{transform:translateY(0)}40%{transform:translateY(-8px) rotate(-8deg)}}
-.sc-flag{animation:scFlag 1.2s ease-in-out infinite alternate;transform-origin:18px 12px}
-@keyframes scFlag{to{transform:skewY(5deg) scaleX(.94)}}
-.sc-web .ln{stroke-dasharray:120;animation:scWeb 3s ease-in-out infinite}
-@keyframes scWeb{0%{stroke-dashoffset:120}50%,80%{stroke-dashoffset:0}100%{stroke-dashoffset:-120}}
-.sc-loop{animation:scSpin 3.2s cubic-bezier(.5,0,.5,1) infinite}
-.scene .laser{fill:none;stroke:#4fe39b;stroke-width:1.6;stroke-dasharray:4 4;animation:scLaser .6s linear infinite}
-@keyframes scLaser{to{stroke-dashoffset:-16}}
-.sc-roll{animation:scRoll 2.6s linear infinite}
-@keyframes scRoll{0%{transform:translateX(-8px) rotate(0)}100%{transform:translateX(72px) rotate(540deg)}}
-.scene .bub{fill:none;stroke:#bfe9ff;stroke-width:1.2;animation:scBub 2.6s ease-in infinite}
-@keyframes scBub{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(-30px);opacity:0}}
-.ride:hover .scene *{animation-duration:.9s!important}
-
 /* ---------- Christmas decorations ---------- */
 .sec-head{position:relative}
 .baubles{position:absolute;right:4px;top:-14px;display:flex;gap:14px;pointer-events:none}
@@ -907,9 +814,26 @@ footer .foot{position:relative}
 .spec,.incl span,.emt .pill,.cd-cell,.fchip,.food,.showcard,.daycard,.sec-head h2,.eyebrow,.kv dd,.tips li{cursor:pointer}
 .ti-home{animation:rxbounce .6s var(--spring)}.ti-days{animation:rxflip .7s var(--ease)}.ti-rides{animation:scSpin .7s var(--ease)}
 .ti-map{animation:rxring .7s linear}.ti-food{animation:rxjump .6s var(--spring)}.ti-hotel{animation:rxglow 1s ease}
-@media (prefers-reduced-motion:reduce){.scene *{animation:none!important}}
 .topline{position:relative;z-index:3}.hero h1{position:relative;z-index:2}
 .music-credit{font-size:11px;color:var(--muted)}.music-credit a{color:var(--muted)}
+
+/* ---------- Living photos ---------- */
+canvas.live{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;border-radius:inherit}
+.ph.alive>img,.pick.alive>img,.sh-img.alive>img{animation:kb 22s ease-in-out infinite alternate}
+@keyframes kb{from{transform:translate3d(0,var(--py,0px),0) scale(1.02)}to{transform:translate3d(-1.5%,calc(var(--py,0px) - 1%),0) scale(1.1)}}
+.ph .ph-chip,.ph .ph-emt,.ph .ph-area,.pick .pk,.pick .rank,.pick .pk-area,.sh-img .x,.sh-img .ph-area{z-index:3}
+.sh-img{position:relative;overflow:hidden}
+@media (prefers-reduced-motion:reduce){canvas.live{display:none}.alive>img{animation:none!important}}
+
+/* ---------- Clean-up pass ---------- */
+.spec-v.grad{-webkit-background-clip:text;background-clip:text;color:transparent}
+.toast{max-width:min(86vw,420px);text-align:center;background:rgba(18,26,70,.82);color:var(--ink);border-radius:20px;padding:11px 18px;font-size:14.5px;font-weight:600;line-height:1.35;
+  backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),0 20px 50px rgba(0,0,0,.5)}
+@media (max-width:640px){
+  .baubles{top:-40px;right:2px;gap:10px;transform:scale(.8);transform-origin:100% 0}
+  .sec-head{margin-top:44px}
+  .view>.sec-head:first-child{margin-top:30px}
+}
 
 </style>
 
@@ -1842,7 +1766,7 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">"
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 /* Effect and music choices, remembered on this device only */
 const FXP = {lanterns:true, stars:true, aurora:false, pixie:true, tink:true, lights:true, heroFw:true, track:"street"};
-const saveFx = () => {};
+
 
 /* ---------------- FX canvas: fireworks + pixie dust ----------------
    Rendered like a long-exposure photo: every frame fades what is already on the
@@ -1941,7 +1865,7 @@ function rocket(x, ty, opts = {}){
   rockets.push({x:sx, y:sy, px:sx, py:sy, vx:(x - sx) / (Math.sqrt(2 * h / .05)), vy:-Math.sqrt(2 * .05 * h) * 1.04, ty, t:0, kind:opts.kind || "burst", pal:opts.pal, big:opts.big});
   kick();
 }
-function launch(x, y, big, from){ if (RM || !FXP.heroFw) return; rocket(x, y, {big, from}); }
+function launch(x, y, big, from){ if (RM || !FXP.heroFw || scrollY > innerHeight * .3 || document.querySelector("#overlay:not([hidden])")) return; rocket(x, y, {big, from}); }
 function show(n = 9){
   if (RM) return;
   for (let i = 0; i < n; i++) setTimeout(() => rocket(FW * rnd(.12, .88), FH * rnd(.1, .38), {big:i === n - 1 || Math.random() < .3}), i * 420 + rnd(0, 200));
@@ -2088,7 +2012,6 @@ function xmasLights(root){ $$(".xmas", root).forEach(c => { if (!c.querySelector
    Magic panel: effects and music, remembered on this device only.
    ===================================================================== */
 const NOTE_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>';
-const WAND_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 15 9"/><path d="M15 3v3M18.5 4.5l-2 2M21 9h-3M12 6h0M19 13l-1.5-1.5"/></svg>';
 
 /* ---------------- Ambient canvas: lanterns + shooting stars ---------------- */
 const amb = document.createElement("canvas"); amb.id = "amb"; amb.setAttribute("aria-hidden", "true");
@@ -2230,14 +2153,13 @@ function playTrack(){ window.__audioState = () => audioEl ? {paused:audioEl.paus
   if (!audioEl.src) audioEl.src = TRACKS[trackI].f;
   audioEl.play().catch(() => {}); nowPlaying(); return true;
 }
-function nowPlaying(){ const t = mode === "street" && TRACKS[trackI]; if (playing && t && window.__hello) window.__hello("♪ " + t.t); const el = $("#fxNow"); if (!el) return;
-  el.innerHTML = !playing ? "" : t ? `Now playing: <b>${esc(t.t)}</b> · ${esc(t.by)} · <a href="${esc(t.page)}" target="_blank" rel="noopener">${esc(t.lic)}</a>` : mode === "street" ? "Main Street sounds" : "Now playing: <b>Silent Night</b> · music box arrangement"; }
+function nowPlaying(){ const t = mode === "street" && TRACKS[trackI]; if (playing && t && window.__hello) window.__hello("♪ " + t.t + " · " + t.by); }
 function setMusic(on, m){
   if (m) mode = m; if (!mode) mode = FXP.track === "box" ? "box" : "street";
   if (on && !actx) setupAudio();
   playing = on;
   $$("[data-music]").forEach(b => b.setAttribute("aria-pressed", String(on)));
-  if (!actx){ syncPanel(); return; }
+  if (!actx) return;
   const now = actx.currentTime; master.gain.cancelScheduledValues(now); master.gain.setValueAtTime(master.gain.value, now);
   evT.forEach(clearTimeout); evT = []; clearInterval(timer);
   if (on){
@@ -2245,7 +2167,7 @@ function setMusic(on, m){
     if (mode === "box"){ streetBus.gain.setTargetAtTime(0, now, .3); stopCrowd(); if (audioEl) audioEl.pause(); if (nextLoop < now) nextLoop = now + .15; timer = setInterval(tick, 250); tick(); }
     else { streetBus.gain.setTargetAtTime(.55, now, .5); startCrowd(); streetEvents(); if (!playTrack()){ if (nextLoop < now) nextLoop = now + .4; timer = setInterval(() => { if (nextLoop < actx.currentTime + 1){ scheduleLoop(nextLoop); nextLoop += LOOP; } }, 250); } }
   } else { master.gain.linearRampToValueAtTime(0, now + .8); setTimeout(() => { if (!playing){ if (audioEl) audioEl.pause(); stopCrowd(); actx.suspend(); nextLoop = 0; } }, 900); }
-  nowPlaying(); syncPanel();
+  nowPlaying();
 }
 document.addEventListener("visibilitychange", () => { if (!actx || !playing) return; if (document.hidden){ actx.suspend(); if (audioEl) audioEl.pause(); } else { actx.resume(); if (mode === "street" && audioEl) audioEl.play().catch(() => {}); } });
 
@@ -2255,7 +2177,6 @@ const mkBtn = (cls, html, title, data) => { const b = document.createElement("bu
 if (heroActs) heroActs.prepend(mkBtn("icon-btn music", NOTE_SVG + "Music", "Main Street music", {music:"1"}));
 $("#lnFw").before(mkBtn("ln-music", "♪ Music", "Main Street music", {music:"1"}));
 $$("[data-music]").forEach(b => { b.setAttribute("aria-pressed", "false"); b.addEventListener("click", () => setMusic(!playing, "street")); });
-function syncPanel(){}
 document.body.classList.toggle("fx-aurora", false);
 startAmb(); scheduleTink();
 
@@ -2529,50 +2450,112 @@ function decorate(root){
 decorate(document);
 
 
-/* ---------------- Little animated scene for every attraction ----------------
-   Simple line drawings, our own, animated with SVG/CSS. They live in a frosted
-   badge on each ride card and, bigger, on the ride's sheet. */
-const TRACK = "M2 30 C10 30 12 8 20 8 S30 32 38 30 S48 6 56 10 S62 26 62 26";
-const SC = {
-  coaster:`<path class="ln" d="${TRACK}"/><g><circle r="3.2" class="fl"/><animateMotion dur="2.4s" repeatCount="indefinite" path="${TRACK}" rotate="auto"/></g>`,
-  mine:`<path class="ln" d="M2 32 L14 32 L20 14 L30 14 L38 28 L50 28 L56 18 L62 18"/><path class="dim" d="M8 32v6M26 14v24M44 28v10M58 18v20"/><g><rect x="-4" y="-3" width="8" height="5" rx="1.5" class="fl"/><animateMotion dur="2.8s" repeatCount="indefinite" path="M2 32 L14 32 L20 14 L30 14 L38 28 L50 28 L56 18 L62 18" rotate="auto"/></g>`,
-  elevator:`<path class="dim" d="M22 2v36M42 2v36"/><g class="sc-drop"><rect x="25" y="4" width="14" height="10" rx="2" class="fl"/><path class="ln" d="M32 0v4"/></g><path class="bolt" d="M52 4 l-4 8 h4 l-4 8"/>`,
-  ship:`<g class="sc-fly"><path class="fl" d="M8 26 h16 l-3 4 h-10z"/><path class="ln" d="M16 26 V12 l7 12"/></g><circle class="tw" cx="44" cy="10" r="1.2"/><circle class="tw d2" cx="54" cy="18" r="1"/><circle class="tw d3" cx="38" cy="22" r="1"/>`,
-  cups:`<g class="sc-spin" style="transform-origin:32px 22px"><circle cx="22" cy="22" r="7" class="ln"/><circle cx="42" cy="22" r="7" class="ln"/><circle cx="22" cy="22" r="2.5" class="fl"/><circle cx="42" cy="22" r="2.5" class="fl"/></g><path class="dim" d="M8 36h48"/>`,
-  boat:`<path class="wave" d="M0 32 q8 -4 16 0 t16 0 t16 0 t16 0 t16 0"/><g class="sc-bob"><path class="fl" d="M18 24 h28 l-5 6 h-18z"/><path class="ln" d="M24 24v-8h16v8"/></g>`,
-  train:`<g class="sc-chug"><rect x="10" y="16" width="20" height="12" rx="2" class="ln"/><rect x="30" y="20" width="10" height="8" class="ln"/><circle cx="16" cy="30" r="3" class="fl"/><circle cx="26" cy="30" r="3" class="fl"/><circle cx="36" cy="30" r="2.5" class="fl"/><path class="ln" d="M34 20v-6h4v6"/></g><circle class="puff" cx="36" cy="10" r="3"/><circle class="puff d2" cx="36" cy="10" r="3"/><path class="dim" d="M2 34h60"/>`,
-  car:`<g class="sc-drive"><path class="fl" d="M14 26 h26 l-4 -7 h-14z"/><circle cx="20" cy="28" r="3" class="ln"/><circle cx="34" cy="28" r="3" class="ln"/></g><path class="speed" d="M2 18h8M4 24h7M2 30h6"/><path class="dim" d="M2 32h60"/>`,
-  chute:`<g class="sc-chute"><path class="fl" d="M20 14 q12 -12 24 0z"/><path class="ln" d="M20 14 L30 28 M44 14 L34 28 M32 4 V28"/><rect x="28" y="28" width="8" height="6" rx="1" class="ln"/></g>`,
-  flake:`<g class="sc-spin" style="transform-origin:32px 20px"><path class="ln" d="M32 6v28M20 13l24 14M20 27l24-14"/><path class="ln" d="M29 9l3 3 3-3M29 31l3-3 3 3"/></g><circle class="tw" cx="10" cy="10" r="1.2"/><circle class="tw d2" cx="54" cy="30" r="1.2"/>`,
-  lantern:`<g class="sc-rise"><rect x="27" y="22" width="10" height="12" rx="3" class="fl glow"/></g><g class="sc-rise d2"><rect x="44" y="26" width="7" height="9" rx="2" class="fl glow"/></g><g class="sc-rise d3"><rect x="12" y="28" width="6" height="8" rx="2" class="fl glow"/></g>`,
-  ghost:`<path class="dim" d="M8 36 V18 L20 8 L32 18 V36"/><g class="sc-ghost"><path class="fl" d="M40 30 v-12 a8 8 0 0 1 16 0 v12 l-3 -3 -2.5 3 -2.5 -3 -2.5 3 -2.5 -3z"/><circle cx="45" cy="18" r="1.3" class="ey"/><circle cx="51" cy="18" r="1.3" class="ey"/></g>`,
-  rocket:`<g class="sc-rocket"><path class="fl" d="M32 6 l6 12 v10 h-12 v-10z"/><path class="flame" d="M28 28 l4 9 l4 -9z"/></g><circle class="tw" cx="12" cy="8" r="1"/><circle class="tw d2" cx="52" cy="14" r="1"/><circle class="tw d3" cx="46" cy="32" r="1"/>`,
-  warp:`${[0,1,2,3,4,5,6,7].map(i => `<path class="streak" style="--a:${i * 45}deg;--dl:${(i * .13).toFixed(2)}s" d="M32 20 h6"/>`).join("")}<circle cx="32" cy="20" r="2" class="fl"/>`,
-  spot:`<g class="sc-sweep" style="transform-origin:32px 2px"><path class="beam" d="M32 2 L20 38 H44z"/></g><circle class="tw" cx="12" cy="30" r="1.2"/><circle class="tw d2" cx="52" cy="28" r="1.2"/>`,
-  turtle:`<path class="wave" d="M0 30 q8 -6 16 0 t16 0 t16 0 t16 0 t16 0"/><g class="sc-surf"><ellipse cx="32" cy="22" rx="9" ry="6" class="fl"/><circle cx="43" cy="21" r="3" class="ln"/></g>`,
-  rat:`<g class="sc-scurry"><ellipse cx="30" cy="28" rx="8" ry="5" class="fl"/><circle cx="39" cy="26" r="3.5" class="fl"/><circle cx="40" cy="23" r="2" class="ln"/><path class="ln" d="M22 28 q-8 0 -10 -6"/></g><path class="dim" d="M2 34h60"/>`,
-  castle:`<path class="ln" d="M14 36V22h6v-6l3-6 3 6v6h4V12l2-8 2 8v10h4v-6l3-6 3 6v6h6v14z"/><path class="tw-star" d="M50 6l1 3 3 1-3 1-1 3-1-3-3-1 3-1z"/>`,
-  hat:`<g class="sc-hop"><rect x="24" y="10" width="16" height="14" rx="2" class="fl"/><rect x="18" y="24" width="28" height="4" rx="2" class="ln"/></g><path class="dim" d="M8 36h48"/>`,
-  flag:`<path class="dim" d="M18 4v34"/><path class="sc-flag fl" d="M18 6 q8 -4 16 0 t16 0 v12 q-8 -4 -16 0 t-16 0z"/>`,
-  web:`<g class="sc-web"><path class="ln" d="M32 20 L32 2 M32 20 L50 8 M32 20 L58 26 M32 20 L42 38 M32 20 L18 38 M32 20 L6 24 M32 20 L14 6"/><path class="ln" d="M32 12 L40 14 L44 22 L38 30 L28 30 L22 24 L24 14z"/></g>`,
-  jet:`<g class="sc-loop" style="transform-origin:32px 20px"><path class="fl" d="M32 6 l4 8 h8 l-8 4 l2 6 l-6 -3 l-6 3 l2 -6 l-8 -4 h8z"/></g>`,
-  target:`<circle cx="44" cy="20" r="10" class="ln"/><circle cx="44" cy="20" r="5" class="ln"/><circle cx="44" cy="20" r="1.8" class="fl"/><path class="laser" d="M4 30 L44 20"/>`,
-  boulder:`<path class="dim" d="M2 34h60"/><g class="sc-roll"><circle cx="0" cy="26" r="7" class="fl"/><path class="ln" d="M-4 23l6 5M2 21l-2 7"/></g>`,
-  smoke:`<path class="ln" d="M10 36 q0 -22 22 -22 q22 0 22 22"/><circle class="puff" cx="32" cy="22" r="3"/><circle class="puff d2" cx="28" cy="22" r="3"/><circle class="puff d3" cx="36" cy="22" r="3"/><circle cx="26" cy="30" r="1.6" class="ey red"/><circle cx="38" cy="30" r="1.6" class="ey red"/>`,
-  bubbles:`<path class="dim" d="M20 36 q12 -10 24 0"/><circle class="bub" cx="22" cy="34" r="2.5"/><circle class="bub d2" cx="34" cy="34" r="3.5"/><circle class="bub d3" cx="44" cy="34" r="2"/><circle class="bub d4" cx="28" cy="34" r="1.6"/>`,
-  maze:`<path class="ln" d="M6 6h52v28H6zM14 6v20h14M36 34V16h14M22 14h6"/><g class="sc-maze"><circle r="2.4" class="fl"/><animateMotion dur="4s" repeatCount="indefinite" path="M10 30 V10 H20 V22 H32 V30 H42 V12 H54 V30"/></g>`,
-  world:`<g class="sc-bob"><path class="fl" d="M18 26 h28 l-4 5 h-20z"/></g><path class="wave" d="M0 33 q8 -4 16 0 t16 0 t16 0 t16 0 t16 0"/><circle class="tw" cx="14" cy="10" r="2" style="fill:#ff5d73"/><circle class="tw d2" cx="32" cy="7" r="2" style="fill:#4fc58f"/><circle class="tw d3" cx="50" cy="11" r="2" style="fill:#8fc9ff"/>`
-};
-const RIDE_SCENE = {btm:"mine", pm:"ghost", potc:"boat", indy:"boulder", isle:"flag", pp:"ship", isw:"world", dragon:"smoke", castle:"castle", tea:"cups", alice:"maze",
-  hyper:"rocket", tours:"warp", buzz:"target", autopia:"car", nautilus:"bubbles", rail:"train", frozen:"flake", arendelle:"flake", tangled:"lantern", flight:"jet",
-  spidey:"web", tot:"elevator", crush:"turtle", rat:"rat", rc:"coaster", para:"chute", cars:"car"};
-const sceneSvg = (id, big) => { const k = RIDE_SCENE[id]; return k ? `<span class="scene${big ? " big" : ""}" aria-hidden="true"><svg viewBox="0 0 64 40">${SC[k]}</svg></span>` : ""; };
-function addScenes(root){
-  $$(".ride[data-rid]", root).forEach(c => { const ph = c.querySelector(".ph"); if (!ph || ph.querySelector(".scene")) return; ph.insertAdjacentHTML("beforeend", sceneSvg(c.dataset.rid)); });
-  $$(".pick[data-open]", root).forEach(p => { if (p.querySelector(".scene")) return; p.insertAdjacentHTML("beforeend", sceneSvg(p.dataset.open)); });
+
+/* =====================================================================
+   Living photos: every attraction's picture gets its own real-time effect.
+   One shared loop, only for pictures that are on screen, ~30 fps.
+   ===================================================================== */
+const LIVE_FX = {frozen:"snow", arendelle:"snow", pm:"fog", tot:"storm", dragon:"embers", hyper:"warp", tours:"warp", nautilus:"bubbles", crush:"bubbles",
+  potc:"water", isle:"water", isw:"confetti", btm:"rays", indy:"rays", pp:"fairy", castle:"fairy", alice:"fairy", tangled:"lanterns", rail:"steam", buzz:"lasers",
+  tea:"confetti", autopia:"speed", cars:"speed", rc:"speed", flight:"speed", spidey:"speed", para:"clouds", rat:"bokeh"};
+const lives = new Map();
+const glowDot = (() => { const c = document.createElement("canvas"); c.width = c.height = 64; const x = c.getContext("2d"); const g = x.createRadialGradient(32, 32, 0, 32, 32, 32);
+  g.addColorStop(0, "rgba(255,255,255,1)"); g.addColorStop(.25, "rgba(255,255,255,.8)"); g.addColorStop(1, "rgba(255,255,255,0)"); x.fillStyle = g; x.fillRect(0, 0, 64, 64); return c; })();
+const tinted = {};
+function tint(color){ if (tinted[color]) return tinted[color]; const c = document.createElement("canvas"); c.width = c.height = 64; const x = c.getContext("2d");
+  x.drawImage(glowDot, 0, 0); x.globalCompositeOperation = "source-atop"; x.fillStyle = color; x.fillRect(0, 0, 64, 64);
+  x.globalCompositeOperation = "destination-over"; return tinted[color] = c; }
+function makeLive(host, kind){
+  if (host.querySelector(":scope > canvas.live")) return;
+  const cv = document.createElement("canvas"); cv.className = "live"; cv.setAttribute("aria-hidden", "true"); host.appendChild(cv);
+  const L = {host, cv, x:cv.getContext("2d"), kind, w:0, h:0, p:[], t:0, flash:0, next:0, seen:false};
+  lives.set(cv, L); liveIO.observe(host);
+}
+const liveIO = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => { for (const L of lives.values()) if (L.host === e.target){ L.seen = e.isIntersecting; if (L.seen) startLive(); } }), {rootMargin:"60px"}) : {observe(){}};
+function sizeLive(L){ const r = L.host.getBoundingClientRect(), d = Math.min(1.5, devicePixelRatio || 1); const w = Math.round(r.width), h = Math.round(r.height);
+  if (w === L.w && h === L.h) return; L.w = w; L.h = h; L.cv.width = Math.max(1, w * d); L.cv.height = Math.max(1, h * d); L.x.setTransform(d, 0, 0, d, 0, 0); L.p = []; }
+const R = (a, b) => a + Math.random() * (b - a);
+const SPAWN = {
+  snow: L => ({x:R(0, L.w), y:-6, z:R(.4, 1), vx:R(-.3, .3), ph:R(0, 6.28)}),
+  fog: L => ({x:R(-L.w * .3, L.w), y:R(L.h * .45, L.h * .95), r:R(L.w * .18, L.w * .4), vx:R(.15, .45), a:R(.08, .18)}),
+  storm: L => ({x:R(0, L.w * 1.2), y:R(-L.h, 0), l:R(10, 22), v:R(9, 14)}),
+  embers: L => ({x:R(L.w * .1, L.w * .9), y:L.h + 4, vx:R(-.4, .4), vy:R(-1.6, -.6), life:R(60, 120), age:0, c:Math.random() < .6 ? "#ff8a3c" : "#ffd27a", s:R(2, 5)}),
+  warp: L => { const a = R(0, 6.283); return {a, d:R(2, 20), v:R(.6, 1.6)}; },
+  bubbles: L => ({x:R(0, L.w), y:L.h + 8, r:R(2, 7), vy:R(-.9, -.35), ph:R(0, 6.28)}),
+  confetti: L => ({x:R(0, L.w), y:R(0, L.h), s:R(1.5, 3.5), c:["#ff5d73","#ffd27a","#4fc58f","#8fc9ff","#f7a9c6","#ffffff"][Math.floor(R(0, 6))], ph:R(0, 6.28), v:R(.02, .06)}),
+  fairy: L => ({x:R(0, L.w), y:R(0, L.h), vx:R(-.25, .25), vy:R(-.35, -.05), life:R(70, 140), age:0, s:R(1.5, 3.5), c:["#fff1c9","#ffd27a","#ffffff","#cfe6ff"][Math.floor(R(0, 4))]}),
+  lanterns: L => ({x:R(0, L.w), y:L.h + 20, s:R(.5, 1.1), vy:R(-.5, -.25), ph:R(0, 6.28)}),
+  steam: L => ({x:R(L.w * .05, L.w * .35), y:L.h * .55, r:R(10, 22), vx:R(.2, .6), vy:R(-.7, -.3), life:R(90, 150), age:0}),
+  speed: L => ({y:R(0, L.h), x:L.w + R(0, 80), l:R(30, 90), v:R(14, 26), a:R(.15, .45)}),
+  clouds: L => ({x:R(-L.w * .4, L.w), y:R(0, L.h * .45), r:R(L.w * .12, L.w * .25), vx:R(.1, .3), a:R(.06, .14)}),
+  bokeh: L => ({x:R(0, L.w), y:R(0, L.h), r:R(6, 18), c:["rgba(255,200,120,","rgba(255,150,170,","rgba(255,230,180,"][Math.floor(R(0, 3))], ph:R(0, 6.28), v:R(.01, .03)}),
+  water: L => ({y:R(L.h * .55, L.h), ph:R(0, 6.28), a:R(.05, .12), f:R(.01, .03)}),
+  rays: () => null, lasers: () => null };
+const COUNT = {snow:60, fog:7, storm:70, embers:40, warp:70, bubbles:22, confetti:40, fairy:36, lanterns:9, steam:10, speed:14, clouds:6, bokeh:14, water:8};
+function drawLive(L, dt){
+  const {x, w, h, kind} = L; x.clearRect(0, 0, w, h); L.t += dt;
+  const want = COUNT[kind] || 0; while (L.p.length < want){ const s = SPAWN[kind](L); if (!s) break; if (kind === "snow" || kind === "bubbles") s.y = R(0, h); if (kind === "lanterns") s.y = R(h * .2, h + 20); L.p.push(s); }
+  x.globalCompositeOperation = "lighter";
+  if (kind === "snow"){ L.p.forEach(p => { p.y += (.5 + p.z * 1.1) * dt; p.ph += .02 * dt; p.x += (p.vx + Math.sin(p.ph) * .3) * dt; if (p.y > h + 6){ Object.assign(p, SPAWN.snow(L)); }
+    const s = 2 + p.z * 5; x.globalAlpha = .35 + p.z * .55; x.drawImage(glowDot, p.x - s, p.y - s, s * 2, s * 2); }); }
+  else if (kind === "fog"){ x.globalCompositeOperation = "source-over"; L.p.forEach(p => { p.x += p.vx * dt; if (p.x - p.r > w) Object.assign(p, SPAWN.fog(L), {x:-p.r});
+    const g = x.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r); g.addColorStop(0, `rgba(200,210,255,${p.a})`); g.addColorStop(1, "rgba(200,210,255,0)"); x.fillStyle = g; x.fillRect(p.x - p.r, p.y - p.r, p.r * 2, p.r * 2); });
+    if (Math.sin(L.t * .02) > .995){ x.fillStyle = "rgba(170,255,210,.06)"; x.fillRect(0, 0, w, h); } }
+  else if (kind === "storm"){ x.strokeStyle = "rgba(200,220,255,.35)"; x.lineWidth = 1; x.beginPath();
+    L.p.forEach(p => { p.y += p.v * dt; p.x -= p.v * .25 * dt; if (p.y > h){ p.y = R(-40, 0); p.x = R(0, w * 1.2); } x.moveTo(p.x, p.y); x.lineTo(p.x + p.l * .25, p.y - p.l); }); x.stroke();
+    if (L.t > L.next){ L.flash = 1; L.next = L.t + R(120, 260); } if (L.flash > 0){ x.globalCompositeOperation = "source-over"; x.fillStyle = `rgba(225,235,255,${.55 * L.flash * (Math.sin(L.flash * 30) > 0 ? 1 : .3)})`; x.fillRect(0, 0, w, h); L.flash -= .06 * dt; } }
+  else if (kind === "embers"){ L.p.forEach(p => { p.age += dt; p.x += (p.vx + Math.sin(p.age * .08) * .3) * dt; p.y += p.vy * dt; if (p.age > p.life) Object.assign(p, SPAWN.embers(L));
+    const k = 1 - p.age / p.life; x.globalAlpha = k; const s = p.s * (1 + (1 - k)); x.drawImage(tint(p.c), p.x - s * 2, p.y - s * 2, s * 4, s * 4); });
+    x.globalCompositeOperation = "source-over"; const pulse = .12 + .06 * Math.sin(L.t * .07); const g = x.createLinearGradient(0, h, 0, h * .4); g.addColorStop(0, `rgba(255,90,40,${pulse})`); g.addColorStop(1, "rgba(255,90,40,0)"); x.fillStyle = g; x.fillRect(0, 0, w, h); }
+  else if (kind === "warp"){ const cx = w / 2, cy = h / 2; x.lineCap = "round"; L.p.forEach(p => { p.d *= 1 + .035 * p.v * dt; if (p.d > Math.max(w, h)) Object.assign(p, SPAWN.warp(L));
+    const k = Math.min(1, p.d / (w * .5)); const x1 = cx + Math.cos(p.a) * p.d, y1 = cy + Math.sin(p.a) * p.d, x0 = cx + Math.cos(p.a) * p.d * .82, y0 = cy + Math.sin(p.a) * p.d * .82;
+    x.strokeStyle = `rgba(200,225,255,${.15 + k * .7})`; x.lineWidth = .6 + k * 1.8; x.beginPath(); x.moveTo(x0, y0); x.lineTo(x1, y1); x.stroke(); }); }
+  else if (kind === "bubbles"){ x.globalCompositeOperation = "source-over"; L.p.forEach(p => { p.y += p.vy * dt; p.ph += .05 * dt; const bx = p.x + Math.sin(p.ph) * 3; if (p.y < -10) Object.assign(p, SPAWN.bubbles(L));
+    x.strokeStyle = "rgba(210,240,255,.55)"; x.lineWidth = 1; x.beginPath(); x.arc(bx, p.y, p.r, 0, 6.283); x.stroke(); x.fillStyle = "rgba(255,255,255,.5)"; x.beginPath(); x.arc(bx - p.r * .35, p.y - p.r * .35, p.r * .25, 0, 6.283); x.fill(); });
+    x.globalCompositeOperation = "lighter"; for (let i = 0; i < 4; i++){ const yy = (L.t * .4 + i * h / 4) % h; const g = x.createLinearGradient(0, yy - 20, 0, yy + 20); g.addColorStop(0, "rgba(120,200,255,0)"); g.addColorStop(.5, "rgba(120,200,255,.05)"); g.addColorStop(1, "rgba(120,200,255,0)"); x.fillStyle = g; x.fillRect(0, yy - 20, w, 40); } }
+  else if (kind === "water"){ L.p.forEach(p => { p.ph += p.f * dt * 3; x.strokeStyle = `rgba(255,236,190,${p.a})`; x.lineWidth = 2; x.beginPath(); for (let xx = 0; xx <= w; xx += 8){ const yy = p.y + Math.sin(xx * .04 + p.ph) * 3 + Math.sin(xx * .013 - p.ph * .7) * 4; xx ? x.lineTo(xx, yy) : x.moveTo(xx, yy); } x.stroke(); }); }
+  else if (kind === "rays"){ const sweep = (L.t * .004) % 2; for (let i = 0; i < 4; i++){ const cx = w * (.1 + (sweep + i * .27) % 1.2); const g = x.createLinearGradient(cx, 0, cx + w * .25, h);
+      g.addColorStop(0, "rgba(255,230,170,.16)"); g.addColorStop(1, "rgba(255,230,170,0)"); x.fillStyle = g; x.beginPath(); x.moveTo(cx - 14, 0); x.lineTo(cx + 18, 0); x.lineTo(cx + w * .3, h); x.lineTo(cx + w * .2, h); x.closePath(); x.fill(); }
+    if (L.p.length < 26) L.p.push({x:R(0, w), y:R(0, h), vx:R(-.15, .15), vy:R(-.1, .1), s:R(.8, 2), ph:R(0, 6.28)});
+    L.p.forEach(p => { p.x += p.vx * dt; p.y += p.vy * dt; p.ph += .05 * dt; if (p.x < 0 || p.x > w || p.y < 0 || p.y > h){ p.x = R(0, w); p.y = R(0, h); } x.globalAlpha = .3 + .3 * Math.sin(p.ph); x.drawImage(tint("#ffe7b0"), p.x - p.s * 2, p.y - p.s * 2, p.s * 4, p.s * 4); }); }
+  else if (kind === "confetti" || kind === "bokeh"){ L.p.forEach(p => { p.ph += p.v * dt; p.y -= .15 * dt; if (p.y < -20) p.y = h + 20;
+    if (kind === "confetti"){ x.globalAlpha = .4 + .6 * Math.abs(Math.sin(p.ph * 2)); x.drawImage(tint(p.c), p.x - p.s * 3, p.y - p.s * 3, p.s * 6, p.s * 6); }
+    else { x.globalAlpha = .5 + .5 * Math.sin(p.ph); const g = x.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r); g.addColorStop(0, p.c + ".28)"); g.addColorStop(.7, p.c + ".12)"); g.addColorStop(1, p.c + "0)"); x.fillStyle = g; x.beginPath(); x.arc(p.x, p.y, p.r, 0, 6.283); x.fill(); } }); }
+  else if (kind === "fairy"){ L.p.forEach(p => { p.age += dt; p.x += p.vx * dt; p.y += p.vy * dt; if (p.age > p.life) Object.assign(p, SPAWN.fairy(L)); const k = Math.sin(Math.PI * p.age / p.life);
+    x.globalAlpha = k; const s = p.s * (1 + .4 * Math.sin(p.age * .3)); x.drawImage(tint(p.c), p.x - s * 3, p.y - s * 3, s * 6, s * 6); });
+    if (L.t > L.next){ L.next = L.t + R(160, 320); L.streak = {x:-20, y:R(h * .15, h * .5), v:R(5, 8)}; }
+    if (L.streak){ const s = L.streak; s.x += s.v * dt; for (let i = 0; i < 10; i++){ x.globalAlpha = (1 - i / 10) * .9; x.drawImage(tint("#fff3c4"), s.x - i * 7 - 6, s.y + Math.sin((s.x - i * 7) * .04) * 8 - 6, 12 - i, 12 - i); } if (s.x > w + 80) L.streak = null; } }
+  else if (kind === "lanterns"){ L.p.forEach(p => { p.y += p.vy * dt; p.ph += .02 * dt; if (p.y < -30) Object.assign(p, SPAWN.lanterns(L)); const lx = p.x + Math.sin(p.ph) * 6, s = 14 * p.s;
+    x.globalAlpha = .55; x.drawImage(tint("#ffb347"), lx - s * 1.6, p.y - s * 1.6, s * 3.2, s * 3.2); x.globalCompositeOperation = "source-over"; x.globalAlpha = .95;
+    const g = x.createLinearGradient(0, p.y - s * .6, 0, p.y + s * .6); g.addColorStop(0, "#ffe7a8"); g.addColorStop(1, "#ff9a3c"); x.fillStyle = g; x.beginPath(); x.roundRect ? x.roundRect(lx - s * .35, p.y - s * .5, s * .7, s, s * .2) : x.rect(lx - s * .35, p.y - s * .5, s * .7, s); x.fill(); x.globalCompositeOperation = "lighter"; }); }
+  else if (kind === "steam"){ x.globalCompositeOperation = "source-over"; L.p.forEach(p => { p.age += dt; p.x += p.vx * dt; p.y += p.vy * dt; p.r += .12 * dt; if (p.age > p.life) Object.assign(p, SPAWN.steam(L));
+    const k = 1 - p.age / p.life; const g = x.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r); g.addColorStop(0, `rgba(240,244,255,${.32 * k})`); g.addColorStop(1, "rgba(240,244,255,0)"); x.fillStyle = g; x.beginPath(); x.arc(p.x, p.y, p.r, 0, 6.283); x.fill(); }); }
+  else if (kind === "speed"){ x.lineCap = "round"; L.p.forEach(p => { p.x -= p.v * dt; if (p.x + p.l < 0) Object.assign(p, SPAWN.speed(L)); const g = x.createLinearGradient(p.x, 0, p.x + p.l, 0); g.addColorStop(0, `rgba(255,255,255,${p.a})`); g.addColorStop(1, "rgba(255,255,255,0)");
+    x.strokeStyle = g; x.lineWidth = 1.4; x.beginPath(); x.moveTo(p.x, p.y); x.lineTo(p.x + p.l, p.y); x.stroke(); }); }
+  else if (kind === "clouds"){ x.globalCompositeOperation = "source-over"; L.p.forEach(p => { p.x += p.vx * dt; if (p.x - p.r > w) Object.assign(p, SPAWN.clouds(L), {x:-p.r}); const g = x.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r); g.addColorStop(0, `rgba(255,255,255,${p.a})`); g.addColorStop(1, "rgba(255,255,255,0)"); x.fillStyle = g; x.fillRect(p.x - p.r, p.y - p.r, p.r * 2, p.r * 2); }); }
+  else if (kind === "lasers"){ const t = L.t * .03; [["#ff4d63", 0], ["#4fe39b", 2.1], ["#8fc9ff", 4.2]].forEach(([c, o]) => { const y0 = h * (.2 + .3 * Math.sin(t + o)), y1 = h * (.6 + .3 * Math.cos(t * 1.3 + o));
+    x.strokeStyle = c; x.globalAlpha = .55 + .35 * Math.sin(t * 3 + o); x.lineWidth = 1.6; x.shadowColor = c; x.shadowBlur = 8; x.beginPath(); x.moveTo(0, y0); x.lineTo(w, y1); x.stroke(); x.shadowBlur = 0; }); }
+  x.globalAlpha = 1; x.globalCompositeOperation = "source-over";
+  // a glint of light sweeping across every picture now and then
+  const gp = (L.t % 420) / 420; if (gp < .18){ const gx = (gp / .18) * (w + 200) - 100; const g = x.createLinearGradient(gx - 60, 0, gx + 60, 0); g.addColorStop(0, "rgba(255,255,255,0)"); g.addColorStop(.5, "rgba(255,255,255,.14)"); g.addColorStop(1, "rgba(255,255,255,0)"); x.fillStyle = g; x.fillRect(0, 0, w, h); }
+}
+let liveRunning = false, liveLast = 0, liveAcc = 0;
+function liveLoop(now){
+  const dt = Math.min(3, liveLast ? (now - liveLast) / 16.67 : 1); liveLast = now; liveAcc += dt;
+  let any = false;
+  for (const [cv, L] of lives){ if (!L.host.isConnected){ lives.delete(cv); continue; } if (!L.seen) continue; any = true; if (liveAcc >= 1.9){ sizeLive(L); drawLive(L, liveAcc); } }
+  if (liveAcc >= 1.9) liveAcc = 0;
+  if (any && !document.hidden) requestAnimationFrame(liveLoop); else { liveRunning = false; liveLast = 0; }
+}
+function startLive(){ if (RM || liveRunning) return; liveRunning = true; requestAnimationFrame(liveLoop); }
+document.addEventListener("visibilitychange", () => { if (!document.hidden) startLive(); });
+function addLiving(root){
+  if (RM) return;
+  $$(".ride[data-rid]", root).forEach(c => { const k = LIVE_FX[c.dataset.rid]; const ph = c.querySelector(".ph"); if (k && ph){ ph.classList.add("alive"); makeLive(ph, k); } });
+  $$(".pick[data-open]", root).forEach(p => { const k = LIVE_FX[p.dataset.open]; if (k){ p.classList.add("alive"); makeLive(p, k); } });
   const sh = $("#overlay .modal.sheet"), t = $("#overlay #shTitle");
-  if (sh && t && !sh.querySelector(".scene")){ const id = ((window.__rideIds && window.__rideIds()) || {})[t.textContent.trim()];
-    const img = sh.querySelector(".sh-img"); if (id && img) img.insertAdjacentHTML("beforeend", sceneSvg(id, true)); }
+  if (sh && t){ const id = ((window.__rideIds && window.__rideIds()) || {})[t.textContent.trim()]; const img = sh.querySelector(".sh-img"); if (id && img && LIVE_FX[id]){ img.classList.add("alive"); makeLive(img, LIVE_FX[id]); } }
+  startLive();
 }
 
 /* Music credits (Creative Commons, from Jamendo) */
@@ -2580,12 +2563,12 @@ if (TRACKS.length){ const f = $("footer .foot"); if (f){ const p = document.crea
   p.innerHTML = "<br>Music: " + TRACKS.map(t => `${esc(t.t)} by ${esc(t.by)} (<a href="${esc(t.page)}" target="_blank" rel="noopener">${esc(t.lic)}</a>)`).join(" · ") + ". Street sounds are our own."; f.appendChild(p); } }
 /* ---------------- Hook into the app's re-renders ---------------- */
 function refresh(){
-  const view = $("#app .view"); statement(view); xmasLights($("#app")); placeMickeys(); decorate($("#app")); addScenes($("#app")); enhance($("#app")); placeInd(); lnSub(); onScroll();
+  const view = $("#app .view"); statement(view); xmasLights($("#app")); placeMickeys(); decorate($("#app")); addLiving($("#app")); enhance($("#app")); placeInd(); lnSub(); onScroll();
   // stagger the first screen of a newly opened view
 }
 new MutationObserver(refresh).observe($("#app"), {childList:true});
 new MutationObserver(placeInd).observe($("#tabs"), {childList:true});
-new MutationObserver(() => { enhance($("#overlay")); rideFx(); countRide(); addScenes(document); }).observe($("#overlay"), {childList:true});
+new MutationObserver(() => { enhance($("#overlay")); rideFx(); countRide(); addLiving(document); }).observe($("#overlay"), {childList:true});
 refresh();
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { indX = null; placeInd(); });
 // a small welcome show once the page has settled
