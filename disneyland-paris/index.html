@@ -815,6 +815,105 @@ footer .foot{position:relative}
 .rainbow-lights .lights i{animation-duration:.35s!important;filter:hue-rotate(0deg);animation-name:twinkle,huey!important}
 @keyframes huey{to{filter:hue-rotate(360deg)}}
 
+/* ---------- Attraction scenes ---------- */
+.scene{position:absolute;right:10px;bottom:10px;z-index:2;width:74px;height:48px;padding:4px 5px;border-radius:14px;background:rgba(10,16,48,.5);
+  backdrop-filter:blur(12px) saturate(1.5);-webkit-backdrop-filter:blur(12px) saturate(1.5);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);pointer-events:none}
+.scene.big{width:120px;height:78px;right:14px;bottom:14px;border-radius:18px}
+.pick .scene{top:12px;right:12px;bottom:auto}
+.scene svg{width:100%;height:100%;overflow:visible}
+.scene .ln{fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.scene .dim{fill:none;stroke:rgba(255,255,255,.4);stroke-width:1.4;stroke-linecap:round}
+.scene .fl{fill:var(--gold);stroke:none}
+.scene .glow{filter:drop-shadow(0 0 4px #ffb347)}
+.scene .ey{fill:#0a1030}.scene .ey.red{fill:#ff5d73}
+.scene .wave{fill:none;stroke:#8fc9ff;stroke-width:1.8;animation:scWave 2.4s linear infinite}
+@keyframes scWave{to{transform:translateX(-16px)}}
+.scene .tw,.scene .tw-star{fill:#fff;animation:scTw 1.6s ease-in-out infinite alternate}
+.scene .d2{animation-delay:.5s}.scene .d3{animation-delay:1s}.scene .d4{animation-delay:1.4s}
+@keyframes scTw{from{opacity:.15}to{opacity:1}}
+.sc-drop{animation:scDrop 3s cubic-bezier(.6,0,.4,1) infinite}
+@keyframes scDrop{0%,20%{transform:translateY(0)}45%{transform:translateY(22px)}55%{transform:translateY(16px)}70%{transform:translateY(24px)}100%{transform:translateY(0)}}
+.scene .bolt{fill:none;stroke:#ffe27a;stroke-width:1.8;opacity:0;animation:scBolt 3s infinite}
+@keyframes scBolt{40%,48%{opacity:0}44%{opacity:1}46%{opacity:.2}}
+.sc-fly{animation:scFly 3.6s ease-in-out infinite}
+@keyframes scFly{0%{transform:translate(-6px,6px)}50%{transform:translate(22px,-6px) rotate(-6deg)}100%{transform:translate(-6px,6px)}}
+.sc-spin{animation:scSpin 3s linear infinite}
+@keyframes scSpin{to{transform:rotate(360deg)}}
+.sc-bob{animation:scBob 2.4s ease-in-out infinite}
+@keyframes scBob{50%{transform:translateY(-3px) rotate(2deg)}}
+.sc-chug{animation:scChug .5s ease-in-out infinite alternate}
+@keyframes scChug{to{transform:translateY(-1px)}}
+.scene .puff{fill:rgba(255,255,255,.75);animation:scPuff 2s ease-out infinite}
+@keyframes scPuff{0%{transform:translate(0,0) scale(.6);opacity:.9}100%{transform:translate(-14px,-10px) scale(2);opacity:0}}
+.sc-drive{animation:scDrive 2.4s ease-in-out infinite}
+@keyframes scDrive{0%{transform:translateX(-10px)}50%{transform:translateX(14px)}100%{transform:translateX(-10px)}}
+.scene .speed{fill:none;stroke:rgba(255,255,255,.6);stroke-width:1.4;stroke-linecap:round;animation:scTw .4s infinite alternate}
+.sc-chute{animation:scChute 4s ease-in-out infinite}
+@keyframes scChute{0%{transform:translate(0,-8px) rotate(-6deg)}50%{transform:translate(0,6px) rotate(6deg)}100%{transform:translate(0,-8px) rotate(-6deg)}}
+.sc-rise{animation:scRise 4s linear infinite}
+.sc-rise.d2{animation-delay:1.3s}.sc-rise.d3{animation-delay:2.6s}
+@keyframes scRise{0%{transform:translateY(8px);opacity:0}20%{opacity:1}100%{transform:translateY(-30px);opacity:0}}
+.sc-ghost{animation:scGhost 3s ease-in-out infinite}
+@keyframes scGhost{0%,100%{transform:translate(0,0);opacity:.9}50%{transform:translate(-6px,-5px);opacity:.3}}
+.sc-rocket{animation:scRocket 2.6s ease-in-out infinite}
+@keyframes scRocket{0%,100%{transform:translateY(4px)}50%{transform:translateY(-4px)}}
+.scene .flame{fill:#ff8a3c;animation:scTw .15s infinite alternate}
+.scene .streak{fill:none;stroke:#cfe6ff;stroke-width:1.6;stroke-linecap:round;transform-origin:32px 20px;transform:rotate(var(--a));animation:scStreak 1s linear infinite;animation-delay:var(--dl)}
+@keyframes scStreak{0%{stroke-dasharray:0 30;stroke-dashoffset:0;opacity:0}30%{opacity:1}100%{stroke-dasharray:10 30;stroke-dashoffset:-24;opacity:0}}
+.sc-sweep{animation:scSweep 3s ease-in-out infinite}
+.scene .beam{fill:rgba(255,236,170,.45)}
+@keyframes scSweep{0%,100%{transform:rotate(-28deg)}50%{transform:rotate(28deg)}}
+.sc-surf{animation:scBob 1.8s ease-in-out infinite}
+.sc-scurry{animation:scDrive 1.6s steps(8) infinite}
+.sc-hop{animation:scHop 1.4s cubic-bezier(.3,1.6,.6,1) infinite}
+@keyframes scHop{0%,100%{transform:translateY(0)}40%{transform:translateY(-8px) rotate(-8deg)}}
+.sc-flag{animation:scFlag 1.2s ease-in-out infinite alternate;transform-origin:18px 12px}
+@keyframes scFlag{to{transform:skewY(5deg) scaleX(.94)}}
+.sc-web .ln{stroke-dasharray:120;animation:scWeb 3s ease-in-out infinite}
+@keyframes scWeb{0%{stroke-dashoffset:120}50%,80%{stroke-dashoffset:0}100%{stroke-dashoffset:-120}}
+.sc-loop{animation:scSpin 3.2s cubic-bezier(.5,0,.5,1) infinite}
+.scene .laser{fill:none;stroke:#4fe39b;stroke-width:1.6;stroke-dasharray:4 4;animation:scLaser .6s linear infinite}
+@keyframes scLaser{to{stroke-dashoffset:-16}}
+.sc-roll{animation:scRoll 2.6s linear infinite}
+@keyframes scRoll{0%{transform:translateX(-8px) rotate(0)}100%{transform:translateX(72px) rotate(540deg)}}
+.scene .bub{fill:none;stroke:#bfe9ff;stroke-width:1.2;animation:scBub 2.6s ease-in infinite}
+@keyframes scBub{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(-30px);opacity:0}}
+.ride:hover .scene *{animation-duration:.9s!important}
+
+/* ---------- Christmas decorations ---------- */
+.sec-head{position:relative}
+.baubles{position:absolute;right:4px;top:-14px;display:flex;gap:14px;pointer-events:none}
+.bauble{position:relative;display:block;width:16px;height:calc(var(--l) + 16px);pointer-events:auto;cursor:pointer;transform-origin:50% 0;animation:swing 3.4s ease-in-out infinite alternate;animation-delay:var(--d)}
+.bauble::before{content:"";position:absolute;left:50%;top:0;width:1px;height:var(--l);background:rgba(255,255,255,.3)}
+.bauble::after{content:"";position:absolute;left:0;bottom:0;width:16px;height:16px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0,var(--b) 30%,color-mix(in srgb,var(--b) 60%,#000) 100%);box-shadow:0 0 12px color-mix(in srgb,var(--b) 70%,transparent)}
+.bauble.ring{animation:jiggle .8s ease}
+@keyframes swing{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+@keyframes jiggle{0%,100%{transform:rotate(0)}20%{transform:rotate(-24deg)}45%{transform:rotate(18deg)}70%{transform:rotate(-9deg)}}
+.snowcap{position:absolute;left:12px;right:12px;top:-9px;height:16px;z-index:5;cursor:pointer;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 16' preserveAspectRatio='none'%3E%3Cpath fill='%23ffffff' d='M0 16V9c6-6 12-7 18-3s10 5 16 1 12-7 20-3 10 6 17 3 12-8 19-4 9 6 15 3 10-5 15-1v15z'/%3E%3Cpath fill='%23e6eeff' d='M0 16v-3c10-3 20-3 30 0s20 3 30 0 20-3 30 0 20 3 30 0v3z'/%3E%3C/svg%3E") 0 0/240px 16px repeat-x;filter:drop-shadow(0 2px 3px rgba(0,0,0,.3))}
+.card.hello,.card.xmas,.card.hotel,.daycard,.card.emt{overflow:visible}
+.card.hello{overflow:hidden}.card.hello .snowcap{top:0}
+.lights i{pointer-events:auto;cursor:pointer}
+.lights i.pop{animation:bulbpop .5s var(--spring)}
+@keyframes bulbpop{50%{transform:scale(1.8)}}
+.lights{pointer-events:none}
+
+/* ---------- Reactions ---------- */
+.rx-flip{animation:rxflip .7s var(--ease)}
+@keyframes rxflip{0%{transform:none}50%{transform:perspective(600px) rotateX(70deg)}100%{transform:none}}
+.rx-glow{animation:rxglow 1.4s ease}
+@keyframes rxglow{30%{box-shadow:0 0 0 2px var(--gold),0 0 60px rgba(243,197,107,.5)}}
+.rx-jump{display:inline-block;animation:rxjump .6s var(--spring)}
+@keyframes rxjump{40%{transform:translateY(-14px) rotate(-4deg)}}
+.wv{display:inline-block;animation:wv .9s var(--spring) both;animation-delay:calc(var(--i) * 30ms)}
+@keyframes wv{40%{transform:translateY(-10px);color:var(--gold)}}
+.tips li.ticked span{text-decoration:line-through;text-decoration-color:var(--fir);opacity:.6}
+.spec,.incl span,.emt .pill,.cd-cell,.fchip,.food,.showcard,.daycard,.sec-head h2,.eyebrow,.kv dd,.tips li{cursor:pointer}
+.ti-home{animation:rxbounce .6s var(--spring)}.ti-days{animation:rxflip .7s var(--ease)}.ti-rides{animation:scSpin .7s var(--ease)}
+.ti-map{animation:rxring .7s linear}.ti-food{animation:rxjump .6s var(--spring)}.ti-hotel{animation:rxglow 1s ease}
+@media (prefers-reduced-motion:reduce){.scene *{animation:none!important}}
+.topline{position:relative;z-index:3}.hero h1{position:relative;z-index:2}
+.music-credit{font-size:11px;color:var(--muted)}.music-credit a{color:var(--muted)}
+
 </style>
 </head><body>
 
@@ -1035,6 +1134,7 @@ function allocate(){
 }
 const picOf = s => (ALLOC || (ALLOC = allocate()))[s] || null;
 window.__alloc = () => (ALLOC || (ALLOC = allocate()));
+window.__rideIds = () => Object.fromEntries(RIDES.map(r => [r.name, r.id]));
 const rideKey = r => picOf("ride:" + r.id);
 const landPic = l => picOf("land:" + l);
 const foodKey = f => picOf("food:" + f.id);
@@ -1857,7 +1957,7 @@ function dust(x, y, n = 14, color){
     spark({x, y, vx:Math.cos(a) * v, vy:Math.sin(a) * v - .8, c:color || pick(PAL)[0], size:rnd(3, 6), life:rnd(34, 60), drag:.94, grav:.04, tw:.9, trail:0, star:Math.random() < .55}); }
   kick();
 }
-window.__magic = {show, dust, explode, rocket, launch};
+window.__magic = {show, dust, explode, rocket, launch, count:() => parts.length + rockets.length + flashes.length};
 
 /* Pixie-dust trail for mouse users, sparkle bursts for taps */
 let lastTrail = 0;
@@ -2059,7 +2159,7 @@ function scheduleTink(){ clearTimeout(tinkT); if (RM || !FXP.tink) return; tinkT
    a soft "park loudspeaker" EQ, with a synthesised street around it: crowd,
    the horse-drawn streetcar and its bell, the railroad whistle, sleigh bells.
    Alternative: our music-box Silent Night. */
-const TRACKS = /*TRACKS*/[]/*END*/;
+const TRACKS = /*TRACKS*/[{"f": "audio/maple.m4a", "t": "Maple Leaf Rag", "by": "Akashic Records", "lic": "CC BY-NC-ND 3.0", "page": "https://www.jamendo.com/track/982406", "dur": 165}, {"f": "audio/entertainer.m4a", "t": "The Entertainer", "by": "OnClassical", "lic": "CC BY-NC-SA 3.0", "page": "https://www.jamendo.com/track/1518935", "dur": 205}, {"f": "audio/elite.m4a", "t": "Elite Syncopations", "by": "PremiumMusic (Instrumental Version)", "lic": "CC BY-NC-ND 3.0", "page": "https://www.jamendo.com/track/988746", "dur": 248}, {"f": "audio/jazzybells.m4a", "t": "Jazzy Bells", "by": "Dee Yan-Key", "lic": "CC BY-NC-SA 3.0", "page": "https://www.jamendo.com/track/1270649", "dur": 161}]/*END*/;
 const NOTE = n => { const m = {C:0,D:2,E:4,F:5,G:7,A:9,B:11}[n[0]] + (n[1] === "#" ? 1 : 0); return 440 * Math.pow(2, (m + (parseInt(n.slice(-1)) + 1) * 12 - 69) / 12); };
 const MEL = "G4 3,A4 1,G4 2,E4 6,G4 3,A4 1,G4 2,E4 6,D5 4,D5 2,B4 6,C5 4,C5 2,G4 6,A4 4,A4 2,C5 3,B4 1,A4 2,G4 3,A4 1,G4 2,E4 6,A4 4,A4 2,C5 3,B4 1,A4 2,G4 3,A4 1,G4 2,E4 6,D5 4,D5 2,F5 3,D5 1,B4 2,C5 6,E5 6,C5 3,G4 1,E4 2,G4 3,F4 1,D4 2,C4 12"
   .split(",").map(s => { const [n, d] = s.split(" "); return [NOTE(n), +d]; });
@@ -2127,9 +2227,9 @@ function streetEvents(){
   const ev = (fn, a, b) => { const k = () => { if (playing && mode === "street"){ fn(); } evT.push(setTimeout(k, rnd(a, b))); }; evT.push(setTimeout(k, rnd(a * .3, b * .5))); };
   ev(streetcar, 35000, 60000); ev(whistle, 70000, 120000); ev(jingle, 22000, 40000);
 }
-function playTrack(){
+function playTrack(){ window.__audioState = () => audioEl ? {paused:audioEl.paused, t:audioEl.currentTime, src:audioEl.src} : null;
   if (!TRACKS.length) return false;
-  if (!audioEl){ audioEl = new Audio(); audioEl.preload = "auto"; audioEl.crossOrigin = "anonymous"; actx.createMediaElementSource(audioEl).connect(musicBus);
+  if (!audioEl){ audioEl = new Audio(); audioEl.preload = "auto"; audioEl.volume = .75;
     audioEl.addEventListener("ended", () => { trackI = (trackI + 1) % TRACKS.length; audioEl.src = TRACKS[trackI].f; audioEl.play().catch(() => {}); nowPlaying(); }); }
   if (!audioEl.src) audioEl.src = TRACKS[trackI].f;
   audioEl.play().catch(() => {}); nowPlaying(); return true;
@@ -2306,7 +2406,7 @@ let helloI = 0;
 document.addEventListener("click", e => {
   const t = e.target; if (!t.closest) return;
   let el;
-  if ((el = t.closest(".hero .brand")) && taps("brand", 3)){ const [x, y] = at(el); frenchFw(x + 80, y + 90); hello("Bonjour de Paris!"); }
+  if ((el = t.closest(".hero .brand"))){ const [x, y] = at(el); if (taps("brand", 3)){ frenchFw(x + 80, y + 90); hello("Bonjour de Paris!"); } else { dust(x, y, 10, "#fff1c9"); hello(pick(["Bonjour!", "Paris is calling", "Only the best weekend of the year"])); } }
   else if ((el = t.closest(".emt-time"))){ el.classList.remove("rx-ring"); void el.offsetWidth; el.classList.add("rx-ring"); hello(pick(["Rise and shine: magic hours!", "08:00 sharp. The parks are yours", "Early birds get Peter Pan's Flight"])); }
   else if ((el = t.closest(".pick .rank"))){ const [x, y] = at(el); dust(x, y, 16, "#ffd27a"); }
   else if ((el = t.closest(".pill.hot"))){ const [x, y] = at(el); hearts(x, y); hello("Characters may stop by your table"); }
@@ -2371,14 +2471,125 @@ setInterval(() => { const d = $("#cdD"); if (!d) return; if (lastDay !== null &&
 if (window.DeviceMotionEvent && typeof DeviceMotionEvent.requestPermission !== "function"){ let lastShake = 0;
   addEventListener("devicemotion", e => { const a = e.accelerationIncludingGravity; if (!a) return; const f = Math.abs(a.x) + Math.abs(a.y) + Math.abs(a.z); const now = Date.now(); if (f > 38 && now - lastShake > 4000){ lastShake = now; flurry(); hello("You shook the snow globe"); } }); }
 
+
+/* ---------------- Every part does something ---------------- */
+function steam(x, y){ for (let i = 0; i < 14; i++) setTimeout(() => spark({x:x + rnd(-24, 24), y, vx:rnd(-.3, .3), vy:rnd(-1.4, -.7), c:"#fff8ee", size:rnd(9, 15), life:rnd(50, 80), drag:.985, grav:-.006, trail:0}), i * 45); kick(); }
+function zzz(x, y){ ["z","Z","z"].forEach((_, i) => setTimeout(() => spark({x:x + i * 8, y, vx:rnd(.2, .6), vy:-1, c:"#cfe0ff", size:7 - i, life:70, drag:.99, grav:-.004, trail:0, star:1}), i * 260)); kick(); }
+function burstAt(el, color, n = 14){ const [x, y] = at(el); dust(x, y, n, color); }
+function wave(el){ if (el.dataset.waving) return; el.dataset.waving = "1"; const t = el.textContent; el.innerHTML = [...t].map((c, i) => `<span class="wv" style="--i:${i}">${c === " " ? "&nbsp;" : esc(c)}</span>`).join("");
+  setTimeout(() => { el.textContent = t; delete el.dataset.waving; }, 1600); }
+const QUIPS = {
+  spec:{"Check-in":"Bags ready? Magic awaits", "Check-out":"Already? Let's not think about it", "Magic hours":"The best hour of the day", "Parks open":"And close at 22:00. Pace yourselves", "Guests":"Four's the perfect ride row", "Sunset":"Then the castle lights up"},
+  incl:{"Breakfast included":"Croissants: unlimited*", "Deluxe Lounge access":"Tea time with a view", "Park tickets":"Both parks, both days", "Extra Magic Time":"First in line, every morning"},
+  food:{"Table service":"Fancy! Napkin on the lap", "Buffet":"Second helpings are a tradition", "Quick service":"Fast, tasty, back to the rides", "Character dining":"Autograph book ready?", "Lounge":"Feet up, tea in hand", "Bar":"Cheers!"},
+  cd:["Days fly when you're excited", "Hours until the hotel hello", "Every minute counts", "Seconds of pure anticipation"]};
+document.addEventListener("click", e => {
+  const t = e.target; if (!t.closest || t.closest("[data-hm]")) return; let el;
+  if ((el = t.closest(".spec"))){ el.classList.remove("rx-flip"); void el.offsetWidth; el.classList.add("rx-flip"); const l = el.querySelector(".spec-l").textContent; hello(QUIPS.spec[l] || "Magic!"); burstAt(el, "#ffd27a"); }
+  else if ((el = t.closest(".incl span"))){ hello(QUIPS.incl[el.textContent] || "Included!"); burstAt(el, "#f7a9c6"); }
+  else if ((el = t.closest(".food")) && !t.closest("a,button")){ const ph = el.querySelector(".ph") || el; const r = ph.getBoundingClientRect(); steam(r.left + r.width / 2, r.top + r.height * .6);
+    const kind = (el.querySelector(".muted") || {}).textContent || ""; const k = Object.keys(QUIPS.food).find(q => kind.includes(q)); hello(k ? QUIPS.food[k] : "Bon appétit!"); }
+  else if ((el = t.closest(".showcard")) && !t.closest("a")){ const r = el.getBoundingClientRect(); explode(r.left + r.width * .3, r.top + 40, "peony", null, false); setTimeout(() => explode(r.left + r.width * .7, r.top + 30, "ring", null, false), 250); }
+  else if ((el = t.closest(".daycard")) && !t.closest("a,button,.sun span")){ el.classList.remove("rx-glow"); void el.offsetWidth; el.classList.add("rx-glow"); hello(el.textContent.includes("29") ? "Day one: arrival magic" : "Day two: one more round"); }
+  else if ((el = t.closest(".emt .pill"))){ burstAt(el, "#ffd27a", 18); hello(`${el.textContent}: straight there at 08:00!`); }
+  else if ((el = t.closest(".cd-cell"))){ const i = [...el.parentElement.querySelectorAll(".cd-cell")].indexOf(el); el.classList.remove("rx-bounce"); void el.offsetWidth; el.classList.add("rx-bounce"); hello(QUIPS.cd[i] || "Tick tock"); }
+  else if ((el = t.closest(".sec-head h2, .glance-h, .hello-h"))) wave(el);
+  else if ((el = t.closest(".eyebrow"))) burstAt(el, "#ffd27a", 8);
+  else if ((el = t.closest(".statement .w"))){ el.classList.remove("rx-jump"); void el.offsetWidth; el.classList.add("rx-jump"); }
+  else if ((el = t.closest(".fchip"))) burstAt(el, getComputedStyle(el).color, 10);
+  else if ((el = t.closest("[data-park]"))){ burstAt(el, el.dataset.park === "dlp" ? "#f7a9c6" : el.dataset.park === "daw" ? "#8fc9ff" : "#ffd27a", 14); }
+  else if ((el = t.closest("[data-sort]"))) hello({land:"Sorted by land, like a map", thrill:"Biggest screams first", az:"A to Z, très organisé"}[el.dataset.sort] || "Sorted");
+  else if ((el = t.closest(".kv dd"))){ const v = el.textContent; if (/bed/i.test(v)){ const [x, y] = at(el); zzz(x, y); hello("Sweet dreams of Disney"); } else if (/Max/.test(v)){ const [x, y] = at(el); CREWC.forEach((c, i) => setTimeout(() => explode(x + (i - 1.5) * 50, y - 60, "ring", [c, "#fff"], false), i * 150)); } else if (/terrace/i.test(v)) hello("Morning coffee outside? Yes please"); else burstAt(el, "#ffd27a"); }
+  else if ((el = t.closest(".tips li"))){ el.classList.toggle("ticked"); burstAt(el, "#4fc58f", 10); }
+  else if ((el = t.closest(".facts-list li"))) burstAt(el, "#ffd27a", 10);
+  else if ((el = t.closest(".landchip"))){ const c = getComputedStyle(el.querySelector("i") || el).backgroundColor; burstAt(el, c, 16); }
+  else if ((el = t.closest(".ln-title"))){ scrollTo({top:0, behavior:"smooth"}); tinkFlight(); }
+  else if ((el = t.closest("#creditsBtn"))){ const [x, y] = at(el); hearts(x, y); }
+  else if ((el = t.closest("#toast"))){ confetti(40); el.hidden = true; }
+  else if ((el = t.closest(".lights i"))){ el.style.setProperty("--c", pick(BULBS)); el.classList.remove("pop"); void el.offsetWidth; el.classList.add("pop"); const [x, y] = at(el); dust(x, y, 6, getComputedStyle(el).backgroundColor); }
+  else if ((el = t.closest(".bauble"))){ el.classList.remove("ring"); void el.offsetWidth; el.classList.add("ring"); const [x, y] = at(el); dust(x, y + 10, 14, getComputedStyle(el).getPropertyValue("--b")); if (playing && actx) jingle(); }
+  else if ((el = t.closest(".snowcap"))){ const r = el.getBoundingClientRect(); for (let i = 0; i < 30; i++) spark({x:rnd(r.left, r.right), y:r.top + 6, vx:rnd(-.4, .4), vy:rnd(.4, 1.6), c:"#ffffff", size:rnd(2, 4), life:rnd(60, 110), drag:.99, grav:.03, trail:0}); kick(); }
+  else if ((el = t.closest(".leaflet-popup-content"))) burstAt(el, "#ffd27a", 10);
+}, false);
+document.addEventListener("pointerover", e => { const el = e.target.closest && e.target.closest(".spec, .incl span, .emt .pill"); if (!el || e.pointerType !== "mouse" || el.dataset.hov) return; el.dataset.hov = "1"; setTimeout(() => delete el.dataset.hov, 1500); burstAt(el, "#fff1c9", 4); });
+/* Carousels: reaching the end */
+document.addEventListener("scroll", e => { const c = e.target; if (!c.classList || !c.classList.contains("carousel") || c.dataset.end) return;
+  if (c.scrollLeft + c.clientWidth >= c.scrollWidth - 4){ c.dataset.end = "1"; const r = c.getBoundingClientRect(); dust(r.right - 30, r.top + r.height / 2, 20); hello(c.classList.contains("mem") ? "More memories coming on 29 November" : "That's all the big ones. Now go ride them!"); } }, true);
+/* Opening a memory photo */
+new MutationObserver(() => { const ps = $("#overlay .photo-sheet"); if (ps && !ps.dataset.h){ ps.dataset.h = "1"; hearts(FW / 2, FH * .45); } }).observe($("#overlay"), {childList:true});
+/* Tabs: each icon has its own little move when you arrive */
+addEventListener("hashchange", () => setTimeout(() => { const a = $(".tab[aria-current='page'] svg"); if (!a) return; const v = (location.hash || "#home").slice(1); a.classList.remove("ti-home","ti-days","ti-rides","ti-map","ti-food","ti-hotel"); void a.getBoundingClientRect(); a.classList.add("ti-" + v); }, 30));
+/* Snow button: hold it for a blizzard */
+const sb = $("#snowBtn"); let sbT = null;
+if (sb){ sb.addEventListener("pointerdown", () => { sbT = setTimeout(() => { flurry(); flurry(); hello("Blizzard!"); }, 700); }); ["pointerup","pointerleave"].forEach(ev => sb.addEventListener(ev, () => clearTimeout(sbT))); }
+
+/* ---------------- Christmas decorations ---------------- */
+const BAUBLE_C = ["#ff5d73","#f3c56b","#4fc58f","#8fc9ff","#f7a9c6"];
+function decorate(root){
+  $$(".sec-head", root).forEach((h, i) => { if (h.querySelector(".baubles")) return; const d = document.createElement("div"); d.className = "baubles"; d.setAttribute("aria-hidden", "true");
+    d.innerHTML = [0, 1, 2].map(k => `<span class="bauble" style="--b:${BAUBLE_C[(i + k) % 5]};--l:${[34, 52, 26][k]}px;--d:${(k * .7 + i * .3).toFixed(2)}s"></span>`).join(""); h.appendChild(d); });
+  $$(".card.hello, .card.xmas, .card.hotel, .daycard, .card.emt, .countdown", root).forEach(c => { if (c.querySelector(".snowcap")) return; const s = document.createElement("span"); s.className = "snowcap"; s.setAttribute("aria-hidden", "true"); c.appendChild(s); });
+}
+decorate(document);
+
+
+/* ---------------- Little animated scene for every attraction ----------------
+   Simple line drawings, our own, animated with SVG/CSS. They live in a frosted
+   badge on each ride card and, bigger, on the ride's sheet. */
+const TRACK = "M2 30 C10 30 12 8 20 8 S30 32 38 30 S48 6 56 10 S62 26 62 26";
+const SC = {
+  coaster:`<path class="ln" d="${TRACK}"/><g><circle r="3.2" class="fl"/><animateMotion dur="2.4s" repeatCount="indefinite" path="${TRACK}" rotate="auto"/></g>`,
+  mine:`<path class="ln" d="M2 32 L14 32 L20 14 L30 14 L38 28 L50 28 L56 18 L62 18"/><path class="dim" d="M8 32v6M26 14v24M44 28v10M58 18v20"/><g><rect x="-4" y="-3" width="8" height="5" rx="1.5" class="fl"/><animateMotion dur="2.8s" repeatCount="indefinite" path="M2 32 L14 32 L20 14 L30 14 L38 28 L50 28 L56 18 L62 18" rotate="auto"/></g>`,
+  elevator:`<path class="dim" d="M22 2v36M42 2v36"/><g class="sc-drop"><rect x="25" y="4" width="14" height="10" rx="2" class="fl"/><path class="ln" d="M32 0v4"/></g><path class="bolt" d="M52 4 l-4 8 h4 l-4 8"/>`,
+  ship:`<g class="sc-fly"><path class="fl" d="M8 26 h16 l-3 4 h-10z"/><path class="ln" d="M16 26 V12 l7 12"/></g><circle class="tw" cx="44" cy="10" r="1.2"/><circle class="tw d2" cx="54" cy="18" r="1"/><circle class="tw d3" cx="38" cy="22" r="1"/>`,
+  cups:`<g class="sc-spin" style="transform-origin:32px 22px"><circle cx="22" cy="22" r="7" class="ln"/><circle cx="42" cy="22" r="7" class="ln"/><circle cx="22" cy="22" r="2.5" class="fl"/><circle cx="42" cy="22" r="2.5" class="fl"/></g><path class="dim" d="M8 36h48"/>`,
+  boat:`<path class="wave" d="M0 32 q8 -4 16 0 t16 0 t16 0 t16 0 t16 0"/><g class="sc-bob"><path class="fl" d="M18 24 h28 l-5 6 h-18z"/><path class="ln" d="M24 24v-8h16v8"/></g>`,
+  train:`<g class="sc-chug"><rect x="10" y="16" width="20" height="12" rx="2" class="ln"/><rect x="30" y="20" width="10" height="8" class="ln"/><circle cx="16" cy="30" r="3" class="fl"/><circle cx="26" cy="30" r="3" class="fl"/><circle cx="36" cy="30" r="2.5" class="fl"/><path class="ln" d="M34 20v-6h4v6"/></g><circle class="puff" cx="36" cy="10" r="3"/><circle class="puff d2" cx="36" cy="10" r="3"/><path class="dim" d="M2 34h60"/>`,
+  car:`<g class="sc-drive"><path class="fl" d="M14 26 h26 l-4 -7 h-14z"/><circle cx="20" cy="28" r="3" class="ln"/><circle cx="34" cy="28" r="3" class="ln"/></g><path class="speed" d="M2 18h8M4 24h7M2 30h6"/><path class="dim" d="M2 32h60"/>`,
+  chute:`<g class="sc-chute"><path class="fl" d="M20 14 q12 -12 24 0z"/><path class="ln" d="M20 14 L30 28 M44 14 L34 28 M32 4 V28"/><rect x="28" y="28" width="8" height="6" rx="1" class="ln"/></g>`,
+  flake:`<g class="sc-spin" style="transform-origin:32px 20px"><path class="ln" d="M32 6v28M20 13l24 14M20 27l24-14"/><path class="ln" d="M29 9l3 3 3-3M29 31l3-3 3 3"/></g><circle class="tw" cx="10" cy="10" r="1.2"/><circle class="tw d2" cx="54" cy="30" r="1.2"/>`,
+  lantern:`<g class="sc-rise"><rect x="27" y="22" width="10" height="12" rx="3" class="fl glow"/></g><g class="sc-rise d2"><rect x="44" y="26" width="7" height="9" rx="2" class="fl glow"/></g><g class="sc-rise d3"><rect x="12" y="28" width="6" height="8" rx="2" class="fl glow"/></g>`,
+  ghost:`<path class="dim" d="M8 36 V18 L20 8 L32 18 V36"/><g class="sc-ghost"><path class="fl" d="M40 30 v-12 a8 8 0 0 1 16 0 v12 l-3 -3 -2.5 3 -2.5 -3 -2.5 3 -2.5 -3z"/><circle cx="45" cy="18" r="1.3" class="ey"/><circle cx="51" cy="18" r="1.3" class="ey"/></g>`,
+  rocket:`<g class="sc-rocket"><path class="fl" d="M32 6 l6 12 v10 h-12 v-10z"/><path class="flame" d="M28 28 l4 9 l4 -9z"/></g><circle class="tw" cx="12" cy="8" r="1"/><circle class="tw d2" cx="52" cy="14" r="1"/><circle class="tw d3" cx="46" cy="32" r="1"/>`,
+  warp:`${[0,1,2,3,4,5,6,7].map(i => `<path class="streak" style="--a:${i * 45}deg;--dl:${(i * .13).toFixed(2)}s" d="M32 20 h6"/>`).join("")}<circle cx="32" cy="20" r="2" class="fl"/>`,
+  spot:`<g class="sc-sweep" style="transform-origin:32px 2px"><path class="beam" d="M32 2 L20 38 H44z"/></g><circle class="tw" cx="12" cy="30" r="1.2"/><circle class="tw d2" cx="52" cy="28" r="1.2"/>`,
+  turtle:`<path class="wave" d="M0 30 q8 -6 16 0 t16 0 t16 0 t16 0 t16 0"/><g class="sc-surf"><ellipse cx="32" cy="22" rx="9" ry="6" class="fl"/><circle cx="43" cy="21" r="3" class="ln"/></g>`,
+  rat:`<g class="sc-scurry"><ellipse cx="30" cy="28" rx="8" ry="5" class="fl"/><circle cx="39" cy="26" r="3.5" class="fl"/><circle cx="40" cy="23" r="2" class="ln"/><path class="ln" d="M22 28 q-8 0 -10 -6"/></g><path class="dim" d="M2 34h60"/>`,
+  castle:`<path class="ln" d="M14 36V22h6v-6l3-6 3 6v6h4V12l2-8 2 8v10h4v-6l3-6 3 6v6h6v14z"/><path class="tw-star" d="M50 6l1 3 3 1-3 1-1 3-1-3-3-1 3-1z"/>`,
+  hat:`<g class="sc-hop"><rect x="24" y="10" width="16" height="14" rx="2" class="fl"/><rect x="18" y="24" width="28" height="4" rx="2" class="ln"/></g><path class="dim" d="M8 36h48"/>`,
+  flag:`<path class="dim" d="M18 4v34"/><path class="sc-flag fl" d="M18 6 q8 -4 16 0 t16 0 v12 q-8 -4 -16 0 t-16 0z"/>`,
+  web:`<g class="sc-web"><path class="ln" d="M32 20 L32 2 M32 20 L50 8 M32 20 L58 26 M32 20 L42 38 M32 20 L18 38 M32 20 L6 24 M32 20 L14 6"/><path class="ln" d="M32 12 L40 14 L44 22 L38 30 L28 30 L22 24 L24 14z"/></g>`,
+  jet:`<g class="sc-loop" style="transform-origin:32px 20px"><path class="fl" d="M32 6 l4 8 h8 l-8 4 l2 6 l-6 -3 l-6 3 l2 -6 l-8 -4 h8z"/></g>`,
+  target:`<circle cx="44" cy="20" r="10" class="ln"/><circle cx="44" cy="20" r="5" class="ln"/><circle cx="44" cy="20" r="1.8" class="fl"/><path class="laser" d="M4 30 L44 20"/>`,
+  boulder:`<path class="dim" d="M2 34h60"/><g class="sc-roll"><circle cx="0" cy="26" r="7" class="fl"/><path class="ln" d="M-4 23l6 5M2 21l-2 7"/></g>`,
+  smoke:`<path class="ln" d="M10 36 q0 -22 22 -22 q22 0 22 22"/><circle class="puff" cx="32" cy="22" r="3"/><circle class="puff d2" cx="28" cy="22" r="3"/><circle class="puff d3" cx="36" cy="22" r="3"/><circle cx="26" cy="30" r="1.6" class="ey red"/><circle cx="38" cy="30" r="1.6" class="ey red"/>`,
+  bubbles:`<path class="dim" d="M20 36 q12 -10 24 0"/><circle class="bub" cx="22" cy="34" r="2.5"/><circle class="bub d2" cx="34" cy="34" r="3.5"/><circle class="bub d3" cx="44" cy="34" r="2"/><circle class="bub d4" cx="28" cy="34" r="1.6"/>`,
+  maze:`<path class="ln" d="M6 6h52v28H6zM14 6v20h14M36 34V16h14M22 14h6"/><g class="sc-maze"><circle r="2.4" class="fl"/><animateMotion dur="4s" repeatCount="indefinite" path="M10 30 V10 H20 V22 H32 V30 H42 V12 H54 V30"/></g>`,
+  world:`<g class="sc-bob"><path class="fl" d="M18 26 h28 l-4 5 h-20z"/></g><path class="wave" d="M0 33 q8 -4 16 0 t16 0 t16 0 t16 0 t16 0"/><circle class="tw" cx="14" cy="10" r="2" style="fill:#ff5d73"/><circle class="tw d2" cx="32" cy="7" r="2" style="fill:#4fc58f"/><circle class="tw d3" cx="50" cy="11" r="2" style="fill:#8fc9ff"/>`
+};
+const RIDE_SCENE = {btm:"mine", pm:"ghost", potc:"boat", indy:"boulder", isle:"flag", pp:"ship", isw:"world", dragon:"smoke", castle:"castle", tea:"cups", alice:"maze",
+  hyper:"rocket", tours:"warp", buzz:"target", autopia:"car", nautilus:"bubbles", rail:"train", frozen:"flake", arendelle:"flake", tangled:"lantern", flight:"jet",
+  spidey:"web", tot:"elevator", crush:"turtle", rat:"rat", rc:"coaster", para:"chute", cars:"car"};
+const sceneSvg = (id, big) => { const k = RIDE_SCENE[id]; return k ? `<span class="scene${big ? " big" : ""}" aria-hidden="true"><svg viewBox="0 0 64 40">${SC[k]}</svg></span>` : ""; };
+function addScenes(root){
+  $$(".ride[data-rid]", root).forEach(c => { const ph = c.querySelector(".ph"); if (!ph || ph.querySelector(".scene")) return; ph.insertAdjacentHTML("beforeend", sceneSvg(c.dataset.rid)); });
+  $$(".pick[data-open]", root).forEach(p => { if (p.querySelector(".scene")) return; p.insertAdjacentHTML("beforeend", sceneSvg(p.dataset.open)); });
+  const sh = $("#overlay .modal.sheet"), t = $("#overlay #shTitle");
+  if (sh && t && !sh.querySelector(".scene")){ const id = ((window.__rideIds && window.__rideIds()) || {})[t.textContent.trim()];
+    const img = sh.querySelector(".sh-img"); if (id && img) img.insertAdjacentHTML("beforeend", sceneSvg(id, true)); }
+}
+
+/* Music credits (Creative Commons, from Jamendo) */
+if (TRACKS.length){ const f = $("footer .foot"); if (f){ const p = document.createElement("span"); p.className = "music-credit";
+  p.innerHTML = "<br>Music: " + TRACKS.map(t => `${esc(t.t)} by ${esc(t.by)} (<a href="${esc(t.page)}" target="_blank" rel="noopener">${esc(t.lic)}</a>)`).join(" · ") + ". Street sounds are our own."; f.appendChild(p); } }
 /* ---------------- Hook into the app's re-renders ---------------- */
 function refresh(){
-  const view = $("#app .view"); statement(view); xmasLights($("#app")); placeMickeys(); enhance($("#app")); placeInd(); lnSub(); onScroll();
+  const view = $("#app .view"); statement(view); xmasLights($("#app")); placeMickeys(); decorate($("#app")); addScenes($("#app")); enhance($("#app")); placeInd(); lnSub(); onScroll();
   // stagger the first screen of a newly opened view
 }
 new MutationObserver(refresh).observe($("#app"), {childList:true});
 new MutationObserver(placeInd).observe($("#tabs"), {childList:true});
-new MutationObserver(() => { enhance($("#overlay")); rideFx(); countRide(); }).observe($("#overlay"), {childList:true});
+new MutationObserver(() => { enhance($("#overlay")); rideFx(); countRide(); addScenes(document); }).observe($("#overlay"), {childList:true});
 refresh();
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { indX = null; placeInd(); });
 // a small welcome show once the page has settled
