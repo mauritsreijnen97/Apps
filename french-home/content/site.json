@@ -36,7 +36,7 @@
       "id": "brocante",
       "name": "Brocante",
       "blurb": "Flea markets, antiques fairs and the stories behind our finds.",
-      "photo": "photos/brocante.jpg"
+      "photo": "photos/farmhouse2.jpg"
     },
     {
       "id": "travels",
@@ -58,7 +58,7 @@
       "coverCaption": "",
       "featured": true,
       "status": "published",
-      "body": "There is a particular morning every year when the house decides that winter is over. The stone walls, which have held the cold since November, begin to give back a little warmth. The swallows return to the barn. And for the first time in months, every shutter goes up at once.\n\n## Opening the house\n\nWe start in the same order every spring: the kitchen first, because that is where the day begins, then the long room facing the garden, and finally the bedrooms under the roof. Linen curtains come out of the cupboard and are hung damp so the creases fall out on their own.\n\n> The best restoration advice we were ever given: live in a room for a full year before you change anything.\n\n## Small changes, not big ones\n\nThis year the projects are modest. A fresh coat of limewash in the hallway. New wicks for the oil lamps on the terrace. A row of terracotta pots along the south wall, ready for geraniums.\n\n- Limewash breathes, so old walls stay dry.\n- Unglazed terracotta ages beautifully in the sun.\n- Linen and cotton beat anything synthetic in a stone house.\n\n![Late afternoon light on the garden side of the house](photos/farmhouse2.jpg)\n\nBy the end of the week the table is outside under the plane tree, and lunch stretches into the late afternoon. The house, it seems, agrees."
+      "body": "There is a particular morning every year when the house decides that winter is over. The stone walls, which have held the cold since November, begin to give back a little warmth. The swallows return to the barn. And for the first time in months, every shutter goes up at once.\n\n## Opening the house\n\nWe start in the same order every spring: the kitchen first, because that is where the day begins, then the long room facing the garden, and finally the bedrooms under the roof. Linen curtains come out of the cupboard and are hung damp so the creases fall out on their own.\n\n> The best restoration advice we were ever given: live in a room for a full year before you change anything.\n\n## Small changes, not big ones\n\nThis year the projects are modest. A fresh coat of limewash in the hallway. New wicks for the oil lamps on the terrace. A row of terracotta pots along the south wall, ready for geraniums.\n\n- Limewash breathes, so old walls stay dry.\n- Unglazed terracotta ages beautifully in the sun.\n- Linen and cotton beat anything synthetic in a stone house.\n\n![Painted furniture and lace in one of the bedrooms](photos/farmhouse2.jpg)\n\nBy the end of the week the table is outside under the plane tree, and lunch stretches into the late afternoon. The house, it seems, agrees."
     },
     {
       "id": "a2",
@@ -68,7 +68,7 @@
       "category": "brocante",
       "date": "2026-05-03",
       "author": "",
-      "cover": "photos/brocante.jpg",
+      "cover": "photos/farmhouse2.jpg",
       "coverCaption": "",
       "featured": false,
       "status": "published",
@@ -159,7 +159,7 @@
     {
       "id": "p2",
       "src": "photos/farmhouse2.jpg",
-      "caption": "The garden side of the farmhouse",
+      "caption": "A painted bedroom full of old country furniture",
       "credit": "Zairon",
       "license": "CC BY-SA 4.0",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vaulx_Jardins_secrets_The_Farmhouse_Provence_2.jpg",
@@ -175,16 +175,6 @@
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lavender_field_and_Mont_Ventoux.jpg",
       "gallery": true,
       "date": "2026-07-02"
-    },
-    {
-      "id": "p4",
-      "src": "photos/brocante.jpg",
-      "caption": "Antiques market at L'Isle-sur-la-Sorgue",
-      "credit": "Jean-Louis Zimmermann",
-      "license": "CC BY 2.0",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vue_du_march%C3%A9_%C3%A0_la_brocante_et_aux_antiquit%C3%A9s_%C3%A0_l%27Isle-sur-la-Sorgue_03.jpg",
-      "gallery": true,
-      "date": "2026-05-03"
     },
     {
       "id": "p5",
