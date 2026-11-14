@@ -1,0 +1,230 @@
+{
+  "site": {
+    "name": "Maison de Campagne",
+    "tagline": "French country living",
+    "description": "Stories from a life in the French countryside: old houses, kitchen gardens, long tables, brocante finds and the small roads between villages.",
+    "author": "",
+    "email": "",
+    "instagram": "",
+    "quote": "A house in the country is never finished. It simply keeps telling you what it wants next.",
+    "quoteBy": "From our notebook",
+    "galleryIntro": "Corners, gardens, markets and roads: the pictures we keep coming back to.",
+    "aboutTitle": "Welcome to the house",
+    "aboutPhoto": "photos/farmhouse2.jpg",
+    "about": "Maison de Campagne is a journal about living slowly in rural France: restoring old rooms, growing what we eat, setting a long table for friends and hunting for treasures at Sunday markets.\n\nEvery story here is written from the house: what we are planting, what we found at the brocante, which village road we took last weekend.\n\n## Write to us\n\nWe love hearing from readers who share the same dream, or who already live it."
+  },
+  "categories": [
+    {
+      "id": "house",
+      "name": "The House",
+      "blurb": "Old stones, painted shutters and rooms that slowly come back to life.",
+      "photo": "photos/chaumiere.jpg"
+    },
+    {
+      "id": "garden",
+      "name": "The Garden",
+      "blurb": "Old roses, potagers and the rhythm of the seasons.",
+      "photo": "photos/roses.jpg"
+    },
+    {
+      "id": "table",
+      "name": "At the Table",
+      "blurb": "Market baskets, village bakeries and long lunches outdoors.",
+      "photo": "photos/bread.jpg"
+    },
+    {
+      "id": "brocante",
+      "name": "Brocante",
+      "blurb": "Flea markets, antiques fairs and the stories behind our finds.",
+      "photo": "photos/farmhouse2.jpg"
+    },
+    {
+      "id": "travels",
+      "name": "Travels",
+      "blurb": "Back roads, lavender fields and villages worth the detour.",
+      "photo": "photos/lavender.jpg"
+    }
+  ],
+  "articles": [
+    {
+      "id": "a1",
+      "slug": "spring-returns-to-a-provencal-farmhouse",
+      "title": "Spring Returns to a Provençal Farmhouse",
+      "dek": "Shutters thrown open, terracotta warming in the sun, and the first lunch of the year outside.",
+      "category": "house",
+      "date": "2026-04-12",
+      "author": "",
+      "cover": "photos/hero.jpg",
+      "coverCaption": "",
+      "featured": true,
+      "status": "published",
+      "body": "There is a particular morning every year when the house decides that winter is over. The stone walls, which have held the cold since November, begin to give back a little warmth. The swallows return to the barn. And for the first time in months, every shutter goes up at once.\n\n## Opening the house\n\nWe start in the same order every spring: the kitchen first, because that is where the day begins, then the long room facing the garden, and finally the bedrooms under the roof. Linen curtains come out of the cupboard and are hung damp so the creases fall out on their own.\n\n> The best restoration advice we were ever given: live in a room for a full year before you change anything.\n\n## Small changes, not big ones\n\nThis year the projects are modest. A fresh coat of limewash in the hallway. New wicks for the oil lamps on the terrace. A row of terracotta pots along the south wall, ready for geraniums.\n\n- Limewash breathes, so old walls stay dry.\n- Unglazed terracotta ages beautifully in the sun.\n- Linen and cotton beat anything synthetic in a stone house.\n\n![Painted furniture and lace in one of the bedrooms](photos/farmhouse2.jpg)\n\nBy the end of the week the table is outside under the plane tree, and lunch stretches into the late afternoon. The house, it seems, agrees."
+    },
+    {
+      "id": "a2",
+      "slug": "sunday-morning-at-the-antiques-market",
+      "title": "Sunday Morning at the Antiques Market",
+      "dek": "How we hunt for treasures along the river at L'Isle-sur-la-Sorgue, and what we carried home.",
+      "category": "brocante",
+      "date": "2026-05-03",
+      "author": "",
+      "cover": "photos/farmhouse2.jpg",
+      "coverCaption": "",
+      "featured": false,
+      "status": "published",
+      "body": "The trick to a good brocante morning is to arrive before the coffee is ready. By eight o'clock the dealers along the canals of L'Isle-sur-la-Sorgue are still unwrapping their stock, and the best pieces are on the tables for only a few minutes.\n\n## What we look for\n\nWe rarely go with a list. Instead we keep a few rules in mind:\n\n- **Linen** with hand-stitched monograms, especially heavy sheets that can become curtains.\n- **Confit pots** and glazed earthenware in yellow and green.\n- **Old garden tools** with worn wooden handles.\n- Anything with its original paint, however chipped.\n\n> Buy what you love, not what you think is valuable. It has to live with you.\n\n## The art of the bargain\n\nA polite *bonjour* goes further than any haggling technique. Ask about the object's story, take your time, and if the price is a little high, ask gently whether the dealer can do better. Often they can.\n\nThis Sunday we carried home a pair of zinc watering cans, a stack of striped torchons and a small walnut stool that will end up beside the kitchen fire."
+    },
+    {
+      "id": "a3",
+      "slug": "lavender-season-on-the-plateau",
+      "title": "Lavender Season on the Plateau",
+      "dek": "A slow drive between purple fields, with Mont Ventoux on the horizon.",
+      "category": "travels",
+      "date": "2026-07-02",
+      "author": "",
+      "cover": "photos/lavender.jpg",
+      "coverCaption": "",
+      "featured": false,
+      "status": "published",
+      "body": "For a few weeks each summer, roughly from mid-June to mid-July, the lavender fields of Haute-Provence are at their peak. The rows run in perfect lines toward the hills, and the air hums with bees.\n\n## When to go\n\nGo early in the morning or late in the day. The light is softer, the colour is deeper and the roads are quieter. By midday the heat flattens everything, including the photographs.\n\n## A few gentle rules\n\n- The fields are working farms: stay on the edges and never pick the flowers.\n- Buy your lavender, honey and essential oil directly from the farms along the road.\n- Bring a hat and plenty of water.\n\n> Lavender smells different in the field than in a sachet. Warmer, greener, almost like resin.\n\nWe ended the day in a village café with a glass of rosé, watching the fields turn from purple to grey as the sun went down behind the mountain."
+    },
+    {
+      "id": "a4",
+      "slug": "old-roses-worth-growing",
+      "title": "Old Roses Worth Growing",
+      "dek": "Why we chose scent and softness over perfect blooms, and how to start your own collection.",
+      "category": "garden",
+      "date": "2026-06-08",
+      "author": "",
+      "cover": "photos/roses.jpg",
+      "coverCaption": "",
+      "featured": false,
+      "status": "published",
+      "body": "When we planted our first roses, we chose them from a catalogue for their colour. Most of them sulked. The ones that thrived were the old varieties a neighbour gave us as cuttings: loose, fragrant and forgiving.\n\n## What makes an old rose\n\nOld garden roses and their close descendants tend to have fuller, softer flowers and a much stronger scent. Many flower only once, in a glorious rush in early summer, but they are often tougher and need less care.\n\n## Where to start\n\n1. Visit a rose garden in June and note the ones you can smell from a distance.\n2. Plant in autumn or late winter, when the soil is workable.\n3. Give them sun, space and a generous spade of compost.\n4. Prune lightly. Many old roses look best a little wild.\n\n> A rose garden is planted for the next owner as much as for yourself.\n\nThis year we added three climbers against the barn wall. In five years, if we are patient, they will reach the roof."
+    },
+    {
+      "id": "a5",
+      "slug": "the-village-bakery-and-the-daily-loaf",
+      "title": "The Village Bakery and the Daily Loaf",
+      "dek": "A morning ritual, a warm paper bag, and why the best bread is always the one bought on foot.",
+      "category": "table",
+      "date": "2026-09-14",
+      "author": "",
+      "cover": "photos/bread.jpg",
+      "coverCaption": "",
+      "featured": false,
+      "status": "published",
+      "body": "Every village worth living in has a bakery, and every bakery has its rhythm. The first loaves come out before dawn. By seven there is a small queue, and by noon the best breads are gone.\n\n## What we buy\n\nA *tradition* for the day, a round country loaf for the week, and on Sundays something sweet for the table. The country loaf keeps for days wrapped in a linen cloth and makes the best toast once it starts to dry.\n\n## Keeping bread well\n\n- Never in the fridge: it goes stale faster.\n- Wrap it in linen or keep it in a wooden bread box.\n- Revive a day-old loaf with a splash of water and five minutes in a hot oven.\n\n> In the country, you don't buy bread for the week. You buy it for the day, and you see your neighbours while you do.\n\nOn the walk home, the end of the baguette rarely survives. That is part of the ritual too."
+    },
+    {
+      "id": "a6",
+      "slug": "a-thatched-cottage-in-normandy",
+      "title": "A Thatched Cottage in Normandy",
+      "dek": "Timber frames, apple orchards and a roof that wears its own garden.",
+      "category": "house",
+      "date": "2026-10-05",
+      "author": "",
+      "cover": "photos/chaumiere.jpg",
+      "coverCaption": "",
+      "featured": false,
+      "status": "published",
+      "body": "Normandy's chaumières are some of the most beautiful houses in rural France: timber frames filled with cob or brick, deep thatched roofs and, along the ridge, a line of irises planted to hold the thatch together.\n\n## Living with a thatched roof\n\nA well-laid thatch can last for decades, but it needs attention. The ridge is usually the first part to be renewed. Moss is cleaned off gently, and nothing is allowed to grow too close.\n\n## The orchard\n\nMost of these cottages come with apple trees. In autumn the grass beneath them is covered with fruit, and the smell of cider drifts from every farm on the lane.\n\n![A timber-framed Norman house in the Pays de Caux](photos/normande.jpg)\n\n> Old houses ask for maintenance, not modernisation.\n\nWe spent a weekend in a cottage like this one, with rain on the thatch and a fire in the hearth. Nothing has ever sounded quieter."
+    },
+    {
+      "id": "a7",
+      "slug": "whitewashed-walls-of-the-camargue",
+      "title": "Whitewashed Walls of the Camargue",
+      "dek": "Low farmhouses, white horses and wide skies at the end of the Rhône.",
+      "category": "travels",
+      "date": "2026-10-26",
+      "author": "",
+      "cover": "photos/mas.jpg",
+      "coverCaption": "",
+      "featured": false,
+      "status": "published",
+      "body": "In the Camargue, the land runs flat to the horizon and the light seems to come from everywhere at once. The traditional farmhouses, the *mas*, sit low against the wind, their walls whitewashed and their shutters painted in faded colours.\n\n## A landscape of water\n\nBetween the farms are salt marshes, rice fields and lagoons. In the right season you can see flamingos feeding in the shallows, and the region's white horses grazing in the reeds.\n\n## Bringing it home\n\nThe Camargue style translates easily into a country house:\n\n- Whitewashed walls and simple, sturdy furniture.\n- Natural materials: reed, rope, rough linen, terracotta.\n- One strong colour on the shutters and doors.\n\n> Some landscapes teach you to own less. This is one of them.\n\nWe left with a bag of coarse sea salt and the wish to come back in spring."
+    }
+  ],
+  "photos": [
+    {
+      "id": "p1",
+      "src": "photos/hero.jpg",
+      "caption": "A Provençal farmhouse in the Jardins Secrets at Vaulx",
+      "credit": "Zairon",
+      "license": "CC BY-SA 4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vaulx_Jardins_secrets_The_Farmhouse_Provence_1.jpg",
+      "gallery": true,
+      "date": "2026-04-12"
+    },
+    {
+      "id": "p2",
+      "src": "photos/farmhouse2.jpg",
+      "caption": "A painted bedroom full of old country furniture",
+      "credit": "Zairon",
+      "license": "CC BY-SA 4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vaulx_Jardins_secrets_The_Farmhouse_Provence_2.jpg",
+      "gallery": true,
+      "date": "2026-04-12"
+    },
+    {
+      "id": "p3",
+      "src": "photos/lavender.jpg",
+      "caption": "Lavender field below Mont Ventoux",
+      "credit": "Robert Brink",
+      "license": "CC BY-SA 3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lavender_field_and_Mont_Ventoux.jpg",
+      "gallery": true,
+      "date": "2026-07-02"
+    },
+    {
+      "id": "p5",
+      "src": "photos/roses.jpg",
+      "caption": "Rosa 'Pollux' in the rose garden at Bagatelle",
+      "credit": "Moonik",
+      "license": "CC BY-SA 3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jardin_de_Bagatelle_Rosa_Pollux_001.JPG",
+      "gallery": true,
+      "date": "2026-06-08"
+    },
+    {
+      "id": "p6",
+      "src": "photos/bread.jpg",
+      "caption": "Country loaves fresh from the oven",
+      "credit": "Touam (Hervé Agnoux)",
+      "license": "CC BY-SA 4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pains_5_c%C3%A9r%C3%A9ales_de_l%27Arc%27h_en_pain.jpg",
+      "gallery": true,
+      "date": "2026-09-14"
+    },
+    {
+      "id": "p7",
+      "src": "photos/chaumiere.jpg",
+      "caption": "A thatched cottage at Saint-Philbert-sur-Risle",
+      "credit": "Jebulon",
+      "license": "CC0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chaumi%C3%A8re_Saint-Philbert1.jpg",
+      "gallery": true,
+      "date": "2026-10-05"
+    },
+    {
+      "id": "p8",
+      "src": "photos/normande.jpg",
+      "caption": "A timber-framed Norman house in the Pays de Caux",
+      "credit": "Pline",
+      "license": "CC BY-SA 3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Maison_normande_pr%C3%A8s_du_Val_de_la_Haie_en_descendant_du_plateau_de_Caux_DSC_0037.jpg",
+      "gallery": true,
+      "date": "2026-10-05"
+    },
+    {
+      "id": "p9",
+      "src": "photos/mas.jpg",
+      "caption": "A whitewashed mas in the Camargue",
+      "credit": "Finoskov",
+      "license": "CC BY-SA 4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:M%C3%A9janes_mas05.jpg",
+      "gallery": true,
+      "date": "2026-10-26"
+    }
+  ]
+}

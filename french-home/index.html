@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maison de Campagne</title>
+  <meta name="description" content="Stories of French country living: houses, gardens, the table, brocante finds and travels through rural France.">
+  <meta name="theme-color" content="#fffdf8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Karla:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap masthead-top">
+      <div class="side left" id="today"></div>
+      <a class="wordmark" href="#/"><span data-site-name>Maison de Campagne</span><small data-site-tagline></small></a>
+      <div class="side right">
+        <button class="menu-btn" id="menu-btn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
+      </div>
+    </div>
+    <nav class="wrap nav" id="nav" aria-label="Main"></nav>
+  </header>
+
+  <main id="app" aria-live="polite"></main>
+
+  <footer class="site">
+    <div class="wrap">
+      <div class="cols">
+        <div>
+          <a class="wordmark" href="#/" data-site-name>Maison de Campagne</a>
+          <p id="foot-about" style="max-width:34em"></p>
+        </div>
+        <div><h4>Explore</h4><ul id="foot-cats"></ul></div>
+        <div><h4>Follow</h4><ul id="foot-links"></ul></div>
+      </div>
+      <div class="fine"><span>© <span id="year"></span> <span data-site-name></span></span><a href="admin.html">Admin</a></div>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Photo viewer">
+    <button class="x" aria-label="Close">×</button>
+    <button class="prev" aria-label="Previous">‹</button>
+    <img alt="">
+    <p></p>
+    <button class="next" aria-label="Next">›</button>
+  </div>
+
+  <script src="assets/common.js"></script>
+  <script src="assets/site.js"></script>
+</body>
+</html>
