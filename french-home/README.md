@@ -1,7 +1,7 @@
-# Maison de Campagne
+# The French Country Club
 
 An original French country living magazine site with its own admin page for publishing articles and photos.
-"Maison de Campagne" is a working title: change it in **Admin → Site settings**.
+The name, tagline and about page can be changed in **Admin → Site settings**.
 
 It needs no server or database. The public site reads everything from `content/site.json`.
 The admin edits that file, uploads photos, and commits both to this GitHub repository in one go.

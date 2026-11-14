@@ -1,17 +1,17 @@
 {
   "site": {
-    "name": "Maison de Campagne",
-    "tagline": "French country living",
-    "description": "Stories from a life in the French countryside: old houses, kitchen gardens, long tables, brocante finds and the small roads between villages.",
+    "name": "The French Country Club",
+    "tagline": "A journal of French country living",
+    "description": "A club for everyone who loves the French countryside: old stone houses, kitchen gardens, long tables, brocante finds and the small roads between villages.",
     "author": "",
     "email": "",
     "instagram": "",
     "quote": "A house in the country is never finished. It simply keeps telling you what it wants next.",
-    "quoteBy": "From our notebook",
-    "galleryIntro": "Corners, gardens, markets and roads: the pictures we keep coming back to.",
-    "aboutTitle": "Welcome to the house",
+    "quoteBy": "From the club notebook",
+    "galleryIntro": "Houses, gardens, markets and roads from across rural France: the pictures we keep coming back to.",
+    "aboutTitle": "Welcome to the club",
     "aboutPhoto": "photos/farmhouse2.jpg",
-    "about": "Maison de Campagne is a journal about living slowly in rural France: restoring old rooms, growing what we eat, setting a long table for friends and hunting for treasures at Sunday markets.\n\nEvery story here is written from the house: what we are planting, what we found at the brocante, which village road we took last weekend.\n\n## Write to us\n\nWe love hearing from readers who share the same dream, or who already live it."
+    "about": "The French Country Club is for everyone who dreams of life in rural France, and for those already living it. There is no membership fee and no dress code. If you love old stone houses, kitchen gardens, market mornings and long lunches under the plane trees, you already belong.\n\nIn the club journal we share what we are restoring, planting and cooking, the treasures we carry home from the brocante, and the villages worth a detour.\n\n## Write to the club\n\nWe love hearing from fellow members: your house, your garden, your favourite market or the road you always take the long way round."
   },
   "categories": [
     {

@@ -1,4 +1,4 @@
-/* Maison de Campagne: public site styles */
+/* The French Country Club: public site styles */
 :root {
   --linen: #f7f2e9;
   --paper: #fffdf8;
@@ -69,7 +69,7 @@ button { font: inherit; }
   .masthead-top .side.left { display: none; }
   .masthead-top .side.right { flex: 0; }
   .masthead-top { padding-top: 14px; padding-bottom: 10px; }
-  .wordmark { text-align: left; font-size: 30px; }
+  .wordmark { text-align: left; font-size: clamp(22px, 7vw, 30px); white-space: normal; min-width: 0; text-wrap: balance; }
   .wordmark small { letter-spacing: .22em; font-size: 10px; }
   .menu-btn { display: block; }
   .nav { display: none; flex-direction: column; gap: 0; padding: 0 0 8px; }
