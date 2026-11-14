@@ -48,11 +48,11 @@
         '<a class="btn" href="#/article/' + esc(hero.slug) + '">Read the story</a></div></section>';
     }
 
-    h += '<section class="block"><div class="wrap"><div class="section-head"><h2>Latest stories</h2><a href="#/journal">All stories →</a></div>' +
+    h += '<section class="block"><div class="wrap"><div class="section-head"><h2>Latest from the club</h2><a href="#/journal">All stories →</a></div>' +
       '<div class="grid">' + rest.slice(0, 3).map(card).join("") + "</div></div></section>";
 
     if ((data.categories || []).length) {
-      h += '<section class="block band"><div class="wrap"><div class="section-head"><h2>Wander through the house</h2></div><div class="cats">' +
+      h += '<section class="block band"><div class="wrap"><div class="section-head"><h2>Explore the club</h2></div><div class="cats">' +
         data.categories.map(function (c) {
           return '<a class="cat reveal" href="#/journal/' + esc(c.id) + '">' + img(c.photo, c.name) + "<span>" + esc(c.name) + "</span></a>";
         }).join("") + "</div></div></section>";
@@ -76,7 +76,7 @@
     }
 
     if (gallery.length) {
-      h += '<section class="block" style="padding-top:0"><div class="wrap"><div class="section-head"><h2>Seen around the house</h2><a href="#/gallery">Gallery →</a></div>' +
+      h += '<section class="block" style="padding-top:0"><div class="wrap"><div class="section-head"><h2>Seen in the countryside</h2><a href="#/gallery">Gallery →</a></div>' +
         '<div class="strip">' + gallery.map(function (p, i) {
           return '<button data-lb="home" data-i="' + i + '" aria-label="' + esc(p.caption || "Open photo") + '">' + img(p.src, p.caption) + "</button>";
         }).join("") + "</div></div></section>";
@@ -88,7 +88,7 @@
   function journal(catId) {
     var list = published().filter(function (a) { return !catId || a.category === catId; });
     var c = catId ? cat(catId) : null;
-    var h = '<div class="wrap page-head"><span class="kicker">The Journal</span><h1>' + esc(c ? c.name : "All stories") + "</h1>" +
+    var h = '<div class="wrap page-head"><span class="kicker">The Club Journal</span><h1>' + esc(c ? c.name : "All stories") + "</h1>" +
       "<p>" + esc(c ? (c.blurb || "") : (data.site.tagline || "")) + "</p>" +
       '<nav class="filters"><a href="#/journal"' + (!catId ? ' class="on"' : "") + ">All</a>" +
       (data.categories || []).map(function (x) {
@@ -124,7 +124,7 @@
   function gallery() {
     var list = (data.photos || []).filter(function (p) { return p.gallery !== false; });
     lb.sets = { gallery: list };
-    return '<div class="wrap page-head"><span class="kicker">Gallery</span><h1>Seen around the house</h1><p>' + esc(data.site.galleryIntro || "") + "</p></div>" +
+    return '<div class="wrap page-head"><span class="kicker">Gallery</span><h1>Seen in the countryside</h1><p>' + esc(data.site.galleryIntro || "") + "</p></div>" +
       '<section class="block" style="padding-top:10px"><div class="wrap">' +
       (list.length ? '<div class="masonry">' + list.map(function (p, i) {
         return '<figure class="reveal" data-lb="gallery" data-i="' + i + '">' + img(p.src, p.caption) + (p.caption ? "<figcaption>" + esc(p.caption) + "</figcaption>" : "") + "</figure>";
@@ -133,10 +133,10 @@
 
   function about() {
     var s = data.site;
-    return '<div class="wrap page-head"><span class="kicker">About</span><h1>' + esc(s.aboutTitle || "About") + "</h1></div>" +
+    return '<div class="wrap page-head"><span class="kicker">About the club</span><h1>' + esc(s.aboutTitle || "About") + "</h1></div>" +
       '<section class="block" style="padding-top:10px"><div class="wrap about"><div class="ph">' + img(s.aboutPhoto, s.name) + "</div>" +
       '<div class="prose" style="padding-top:0">' + M.md(s.about) +
-      (s.email ? '<p>Write to us: <a href="mailto:' + esc(s.email) + '">' + esc(s.email) + "</a></p>" : "") + "</div></div></section>";
+      (s.email ? '<p>Write to the club: <a href="mailto:' + esc(s.email) + '">' + esc(s.email) + "</a></p>" : "") + "</div></div></section>";
   }
 
   function credits() {

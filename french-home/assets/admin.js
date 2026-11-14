@@ -371,7 +371,7 @@
       return '<label class="field"><span>' + label + '</span><input type="' + (type || "text") + '" data-s="' + key + '" value="' + esc(s[key] || "") + '" placeholder="' + esc(ph || "") + '">' + (help ? "<small>" + help + "</small>" : "") + "</label>";
     };
     return '<section class="panel"><div class="panel-head"><h2>Site settings</h2></div>' +
-      '<div class="row">' + f("name", "Site name", "Maison de Campagne") + f("tagline", "Tagline", "French country living") + "</div>" +
+      '<div class="row">' + f("name", "Site name", "The French Country Club") + f("tagline", "Tagline", "A journal of French country living") + "</div>" +
       '<label class="field"><span>Short description</span><textarea data-s="description" rows="2">' + esc(s.description || "") + "</textarea><small>Shown in the footer.</small></label>" +
       '<div class="row">' + f("author", "Default author", "Your name") + f("email", "Contact email", "", "email") + f("instagram", "Instagram link", "https://instagram.com/…", "url") + "</div>" +
       '<div class="row">' + f("quote", "Home page quote", "") + f("quoteBy", "Quote by", "") + "</div>" +
