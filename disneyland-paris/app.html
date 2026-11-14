@@ -716,6 +716,49 @@ body{background:radial-gradient(1200px 700px at 50% -10%,#1b2a7a 0%,rgba(6,10,34
 .ln-music[aria-pressed="true"]{background:rgba(243,197,107,.22);color:var(--gold)}
 .ln-music{margin-left:auto}.localnav .ln-btn{margin-left:0}
 
+/* ---------- Ambient layers ---------- */
+#amb{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+#aurora{position:fixed;inset:0 0 35% 0;pointer-events:none;z-index:0;opacity:0;transition:opacity 2s ease;mix-blend-mode:screen;overflow:hidden}
+.fx-aurora #aurora{opacity:.55}
+#aurora i{position:absolute;left:-20%;right:-20%;height:38%;border-radius:50%;filter:blur(40px);transform-origin:50% 50%}
+#aurora i:nth-child(1){top:4%;background:linear-gradient(90deg,transparent,rgba(79,227,155,.55),rgba(120,200,255,.35),transparent);animation:aur1 16s ease-in-out infinite alternate}
+#aurora i:nth-child(2){top:16%;background:linear-gradient(90deg,transparent,rgba(160,120,255,.45),rgba(79,227,155,.4),transparent);animation:aur2 21s ease-in-out infinite alternate}
+#aurora i:nth-child(3){top:28%;background:linear-gradient(90deg,transparent,rgba(120,220,255,.35),rgba(247,169,198,.3),transparent);animation:aur1 26s ease-in-out infinite alternate-reverse}
+@keyframes aur1{from{transform:translateX(-8%) skewY(-4deg) scaleY(.7)}to{transform:translateX(8%) skewY(5deg) scaleY(1.2)}}
+@keyframes aur2{from{transform:translateX(10%) skewY(6deg) scaleY(1.1)}to{transform:translateX(-10%) skewY(-3deg) scaleY(.6)}}
+.no-lights .lights{display:none}
+.ln-magic{flex:none;border:0;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;background:rgba(255,255,255,.12);color:var(--ink)}
+
+/* ---------- Magic panel (bottom sheet) ---------- */
+.fxpanel{position:fixed;inset:0;z-index:65}
+.fx-back{position:absolute;inset:0;background:rgba(3,6,22,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transition:opacity .35s ease}
+.fx-sheet{position:absolute;left:50%;bottom:0;width:min(560px,100%);max-height:88svh;overflow:auto;transform:translate(-50%,105%);transition:transform .55s var(--ease);
+  background:linear-gradient(180deg,rgba(30,40,100,.92),rgba(12,18,52,.96));backdrop-filter:blur(30px) saturate(1.6);-webkit-backdrop-filter:blur(30px) saturate(1.6);
+  border-radius:30px 30px 0 0;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 -30px 80px rgba(0,0,0,.6);padding:10px 20px calc(20px + env(safe-area-inset-bottom,0px))}
+.fxpanel.on .fx-back{opacity:1}.fxpanel.on .fx-sheet{transform:translate(-50%,0)}
+.fx-grab{width:40px;height:5px;border-radius:9px;background:rgba(255,255,255,.25);margin:4px auto 12px}
+.fx-sheet h2{font-family:var(--f-display);font-size:30px;font-weight:700;letter-spacing:-.03em}
+.fx-sub{margin:2px 0 14px;color:var(--muted);font-size:15px}
+.fx-label{font-size:13px;font-weight:600;color:var(--muted);margin:14px 4px 8px}
+.fx-seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border-radius:14px;background:rgba(255,255,255,.07)}
+.fx-seg button{border:0;border-radius:10px;padding:10px 6px;background:transparent;color:var(--muted);font-weight:600;font-size:14px;transition:background .3s,color .3s}
+.fx-seg button[aria-pressed="true"]{background:var(--gold);color:#241800}
+.fx-now{margin:8px 4px 0;font-size:12.5px;color:var(--muted);min-height:1em}
+.fx-now a{color:var(--gold)}
+.fx-list{border-radius:18px;background:rgba(255,255,255,.06);overflow:hidden}
+.fx-row{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 14px}
+.fx-row+.fx-row{box-shadow:inset 0 1px 0 rgba(255,255,255,.07)}
+.fx-ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(243,197,107,.3),rgba(255,93,115,.25));font-size:17px;color:#fff}
+.fx-tx b{display:block;font-size:15.5px;font-weight:600}.fx-tx small{display:block;color:var(--muted);font-size:12.5px;line-height:1.35}
+.sw{position:relative;width:51px;height:31px;border-radius:99px;border:0;background:rgba(255,255,255,.18);padding:0;transition:background .3s}
+.sw i{position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.35);transition:transform .35s var(--spring)}
+.sw[aria-checked="true"]{background:var(--fir)}.sw[aria-checked="true"] i{transform:translateX(20px)}
+.fx-finale{margin-top:16px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:16px;padding:14px;font-weight:700;font-size:16px;
+  color:#241800;background:linear-gradient(90deg,#ffd98c,#f7a9c6,#ff8a9a);box-shadow:0 10px 30px -10px rgba(255,93,115,.6)}
+.fx-finale svg{width:18px;height:18px}
+.fx-done{margin-top:10px;width:100%;border:0;border-radius:16px;padding:13px;font-weight:600;font-size:16px;background:rgba(255,255,255,.1);color:var(--ink)}
+@media (max-width:640px){.hero .actions .icon-btn{padding:7px 11px;font-size:12.5px}.hero #snowBtn{display:none}.ln-magic{display:none}}
+
 </style>
 
 <canvas id="snow" aria-hidden="true"></canvas>
@@ -1641,6 +1684,11 @@ const FINE = matchMedia("(hover: hover) and (pointer: fine)").matches;
 const $ = s => document.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+/* Effect and music choices, remembered on this device only */
+const FXK = "magic-weekend-fx-v1";
+const FXP = {lanterns:true, stars:true, aurora:false, pixie:true, tink:true, lights:true, heroFw:true, track:"street"};
+try { const o = JSON.parse(localStorage.getItem(FXK) || "{}"); if (o && typeof o === "object") for (const k in FXP) if (typeof o[k] === typeof FXP[k]) FXP[k] = o[k]; } catch(e){}
+const saveFx = () => { try { localStorage.setItem(FXK, JSON.stringify(FXP)); } catch(e){} };
 
 /* ---------------- FX canvas: fireworks + pixie dust ----------------
    Rendered like a long-exposure photo: every frame fades what is already on the
@@ -1738,7 +1786,7 @@ function rocket(x, ty, opts = {}){
   rockets.push({x:sx, y:sy, px:sx, py:sy, vx:(x - sx) / (Math.sqrt(2 * h / .05)), vy:-Math.sqrt(2 * .05 * h) * 1.04, ty, t:0, kind:opts.kind || "burst", pal:opts.pal, big:opts.big});
   kick();
 }
-function launch(x, y, big, from){ if (RM) return; rocket(x, y, {big, from}); }
+function launch(x, y, big, from){ if (RM || !FXP.heroFw) return; rocket(x, y, {big, from}); }
 function show(n = 9){
   if (RM) return;
   for (let i = 0; i < n; i++) setTimeout(() => rocket(FW * rnd(.12, .88), FH * rnd(.1, .38), {big:i === n - 1 || Math.random() < .3}), i * 420 + rnd(0, 200));
@@ -1756,7 +1804,7 @@ window.__magic = {show, dust, explode, rocket, launch};
 let lastTrail = 0;
 if (!RM){
   addEventListener("pointermove", e => {
-    if (e.pointerType !== "mouse") return; const now = performance.now(); if (now - lastTrail < 28) return; lastTrail = now;
+    if (e.pointerType !== "mouse" || !FXP.pixie) return; const now = performance.now(); if (now - lastTrail < 28) return; lastTrail = now;
     if (e.target.closest && e.target.closest(".leaflet-container,input,textarea")) return;
     spark({x:e.clientX, y:e.clientY, vx:rnd(-.4, .4), vy:rnd(0, .6), c:pick(PAL)[0], size:rnd(2.5, 4.5), life:rnd(26, 40), drag:.96, grav:.025, tw:.9, trail:0, star:Math.random() < .5}); kick();
   }, {passive:true});
@@ -1764,6 +1812,7 @@ if (!RM){
     const t = e.target.closest && e.target;
     if (!t || t.closest(".leaflet-container,input,select,textarea,.overlay")) return;
     if (t.closest("[data-me]")){ const b = t.closest("[data-me]"); if (b.getAttribute("aria-pressed") !== "true"){ const c = getComputedStyle(b.querySelector(".av") || b).backgroundColor; explode(e.clientX, e.clientY, "ring", [c, "#ffffff"], false); dust(e.clientX, e.clientY, 20); } return; }
+    if (!FXP.pixie) return;
     if (t.closest(".tab")){ dust(e.clientX, e.clientY, 16); return; }
     if (t.closest("button,a,.pick")) dust(e.clientX, e.clientY, 10);
   }, {passive:true});
@@ -1879,27 +1928,103 @@ function lights(n){ let h = ""; for (let i = 0; i < n; i++){ const x = (i + .5) 
 if (cd && !cd.querySelector(".lights")) cd.prepend(lights(innerWidth < 640 ? 14 : 24));
 function xmasLights(root){ $$(".xmas", root).forEach(c => { if (!c.querySelector(".lights")) c.prepend(lights(innerWidth < 640 ? 12 : 22)); }); }
 
-/* ---------------- Music box: Silent Night ----------------
-   Franz Xaver Gruber's 1818 carol is in the public domain. This is our own
-   music-box arrangement, synthesised live with Web Audio: plucked comb notes
-   (sine + soft overtones, fast attack, long ring), a quiet arpeggio and a
-   generated hall reverb. Nothing plays until someone taps the button. */
+
+/* =====================================================================
+   Magic panel: effects and music, remembered on this device only.
+   ===================================================================== */
+const NOTE_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>';
+const WAND_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 15 9"/><path d="M15 3v3M18.5 4.5l-2 2M21 9h-3M12 6h0M19 13l-1.5-1.5"/></svg>';
+
+/* ---------------- Ambient canvas: lanterns + shooting stars ---------------- */
+const amb = document.createElement("canvas"); amb.id = "amb"; amb.setAttribute("aria-hidden", "true");
+(document.getElementById("snow") || document.body.firstChild).after(amb);
+const ax = amb.getContext("2d");
+let AW = 0, AH = 0, lanterns = [], meteors = [], ambRunning = false, ambLast = 0, nextMeteor = 0;
+function sizeAmb(){ const d = Math.min(2, devicePixelRatio || 1); AW = innerWidth; AH = innerHeight; amb.width = Math.round(AW * d); amb.height = Math.round(AH * d); ax.setTransform(d,0,0,d,0,0); }
+sizeAmb(); addEventListener("resize", sizeAmb);
+const LANTERN = (() => { const c = document.createElement("canvas"); c.width = 96; c.height = 120; const x = c.getContext("2d");
+  const gl = x.createRadialGradient(48, 62, 2, 48, 62, 48); gl.addColorStop(0, "rgba(255,190,90,.55)"); gl.addColorStop(1, "rgba(255,150,60,0)"); x.fillStyle = gl; x.fillRect(0, 0, 96, 120);
+  const body = x.createLinearGradient(0, 40, 0, 90); body.addColorStop(0, "#ffe7a8"); body.addColorStop(.6, "#ffb347"); body.addColorStop(1, "#e2731f");
+  x.fillStyle = body; x.beginPath(); x.moveTo(36, 42); x.lineTo(60, 42); x.quadraticCurveTo(66, 66, 62, 86); x.lineTo(34, 86); x.quadraticCurveTo(30, 66, 36, 42); x.fill();
+  x.fillStyle = "rgba(120,50,10,.55)"; x.fillRect(34, 84, 28, 3);
+  const core = x.createRadialGradient(48, 72, 1, 48, 72, 12); core.addColorStop(0, "rgba(255,255,230,.95)"); core.addColorStop(1, "rgba(255,220,150,0)"); x.fillStyle = core; x.fillRect(30, 55, 36, 34);
+  return c; })();
+const newLantern = init => ({x:rnd(0, AW), y:init ? rnd(AH * .2, AH * 1.1) : AH + rnd(30, 160), s:rnd(.35, 1), vy:rnd(.12, .32), ph:rnd(0, 6.28), sw:rnd(.2, .7), fl:rnd(0, 6.28)});
+function ambLoop(now){
+  const dt = Math.min(3, ambLast ? (now - ambLast) / 16.67 : 1); ambLast = now;
+  ax.clearRect(0, 0, AW, AH);
+  if (FXP.lanterns){
+    const want = AW < 640 ? 9 : 16, init = !lanterns.length; while (lanterns.length < want) lanterns.push(newLantern(init));
+    lanterns.sort((a, b) => a.s - b.s);
+    for (let i = lanterns.length - 1; i >= 0; i--){ const l = lanterns[i]; l.y -= l.vy * l.s * dt * 1.4; l.ph += .01 * dt; l.fl += .08 * dt;
+      if (l.y < -120){ lanterns[i] = newLantern(false); continue; }
+      const w = 96 * l.s * .55, h = 120 * l.s * .55, fade = Math.min(1, (l.y + 60) / (AH * .35));
+      ax.globalAlpha = (.35 + .55 * l.s) * fade * (.85 + .15 * Math.sin(l.fl)); ax.drawImage(LANTERN, l.x + Math.sin(l.ph) * 18 * l.sw - w / 2, l.y - h / 2, w, h); }
+  } else lanterns = [];
+  if (FXP.stars){
+    if (now > nextMeteor){ nextMeteor = now + rnd(3500, 8000); const goRight = Math.random() < .5;
+      meteors.push({x:goRight ? rnd(-50, AW * .5) : rnd(AW * .5, AW + 50), y:rnd(-20, AH * .35), vx:(goRight ? 1 : -1) * rnd(9, 14), vy:rnd(3, 5.5), life:46, max:46}); }
+    for (let i = meteors.length - 1; i >= 0; i--){ const m = meteors[i]; m.x += m.vx * dt; m.y += m.vy * dt; m.life -= dt; if (m.life <= 0){ meteors.splice(i, 1); continue; }
+      const a = Math.sin(Math.PI * m.life / m.max), tx = m.x - m.vx * 11, ty = m.y - m.vy * 11;
+      const gr = ax.createLinearGradient(m.x, m.y, tx, ty); gr.addColorStop(0, `rgba(255,255,255,${.95 * a})`); gr.addColorStop(.25, `rgba(190,215,255,${.4 * a})`); gr.addColorStop(1, "rgba(150,180,255,0)");
+      ax.globalAlpha = 1; ax.strokeStyle = gr; ax.lineWidth = 2; ax.lineCap = "round"; ax.beginPath(); ax.moveTo(m.x, m.y); ax.lineTo(tx, ty); ax.stroke();
+      ax.fillStyle = `rgba(255,255,255,${a})`; ax.beginPath(); ax.arc(m.x, m.y, 1.8, 0, 6.283); ax.fill(); }
+  } else meteors = [];
+  ax.globalAlpha = 1;
+  if ((FXP.lanterns || FXP.stars) && !document.hidden) requestAnimationFrame(ambLoop); else { ambRunning = false; ambLast = 0; ax.clearRect(0, 0, AW, AH); }
+}
+function startAmb(){ if (RM || ambRunning || !(FXP.lanterns || FXP.stars) || document.hidden) return; ambRunning = true; ambLast = 0; requestAnimationFrame(ambLoop); }
+document.addEventListener("visibilitychange", startAmb);
+
+/* ---------------- Northern lights (CSS layer) ---------------- */
+const aur = document.createElement("div"); aur.id = "aurora"; aur.setAttribute("aria-hidden", "true"); aur.innerHTML = "<i></i><i></i><i></i>"; amb.after(aur);
+
+/* ---------------- Tinker Bell flies by ---------------- */
+let tinkT = null;
+function tinkFlight(){
+  if (RM || !FXP.tink || document.hidden) return;
+  const ltr = Math.random() < .5, y0 = rnd(FH * .15, FH * .6), y1 = rnd(FH * .1, FH * .55), dur = rnd(3200, 4400), t0 = performance.now(), amp = rnd(30, 70);
+  (function step(now){
+    const k = Math.min(1, (now - t0) / dur), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+    const x = ltr ? -40 + (FW + 80) * e : FW + 40 - (FW + 80) * e, y = y0 + (y1 - y0) * e + Math.sin(k * 9) * amp;
+    spark({x, y, vx:0, vy:0, c:"#fff3c4", size:9, life:2.2, drag:1, grav:0, trail:0, star:1});
+    for (let i = 0; i < 2; i++) spark({x:x + rnd(-3, 3), y:y + rnd(-3, 3), vx:rnd(-.5, .5), vy:rnd(.2, 1.1), c:pick(["#ffd27a","#fff1c9","#bfe6ff"]), size:rnd(2, 4), life:rnd(30, 55), drag:.97, grav:.025, tw:1, trail:0, star:Math.random() < .5});
+    kick(); if (k < 1) requestAnimationFrame(step);
+  })(t0);
+}
+function scheduleTink(){ clearTimeout(tinkT); if (RM || !FXP.tink) return; tinkT = setTimeout(() => { tinkFlight(); scheduleTink(); }, rnd(22000, 40000)); }
+
+/* ---------------- Music: Main Street, U.S.A. ----------------
+   Real recordings: public-domain ragtime (Scott Joplin's era is exactly the
+   turn-of-the-century America that Main Street is themed on), played through
+   a soft "park loudspeaker" EQ, with a synthesised street around it: crowd,
+   the horse-drawn streetcar and its bell, the railroad whistle, sleigh bells.
+   Alternative: our music-box Silent Night. */
+const TRACKS = /*TRACKS*/[]/*END*/;
 const NOTE = n => { const m = {C:0,D:2,E:4,F:5,G:7,A:9,B:11}[n[0]] + (n[1] === "#" ? 1 : 0); return 440 * Math.pow(2, (m + (parseInt(n.slice(-1)) + 1) * 12 - 69) / 12); };
 const MEL = "G4 3,A4 1,G4 2,E4 6,G4 3,A4 1,G4 2,E4 6,D5 4,D5 2,B4 6,C5 4,C5 2,G4 6,A4 4,A4 2,C5 3,B4 1,A4 2,G4 3,A4 1,G4 2,E4 6,A4 4,A4 2,C5 3,B4 1,A4 2,G4 3,A4 1,G4 2,E4 6,D5 4,D5 2,F5 3,D5 1,B4 2,C5 6,E5 6,C5 3,G4 1,E4 2,G4 3,F4 1,D4 2,C4 12"
   .split(",").map(s => { const [n, d] = s.split(" "); return [NOTE(n), +d]; });
 const CH = {C:["C3","G3","E4"], G:["G2","D3","B3"], F:["F2","C3","A3"], G7:["G2","F3","B3"]};
 const BARS = ["C","C","C","C","G","G","C","C","F","F","C","C","F","F","C","C","G","G","C","C","C","G7","C","C"];
 const EIGHTH = .3, LOOP = BARS.length * 6 * EIGHTH + 3.2;
-let actx = null, master = null, verb = null, playing = false, timer = null, loopStart = 0, nextLoop = 0;
+let actx = null, master = null, verb = null, boxBus = null, streetBus = null, musicBus = null, playing = false, timer = null, nextLoop = 0, mode = null, evT = [], audioEl = null, trackI = 0;
 function setupAudio(){
   actx = new (window.AudioContext || window.webkitAudioContext)();
   master = actx.createGain(); master.gain.value = 0; master.connect(actx.destination);
   verb = actx.createConvolver(); const len = actx.sampleRate * 3.2, ir = actx.createBuffer(2, len, actx.sampleRate);
   for (let ch = 0; ch < 2; ch++){ const d = ir.getChannelData(ch); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3.2); }
-  verb.buffer = ir; const wet = actx.createGain(); wet.gain.value = .55; verb.connect(wet); wet.connect(master);
+  verb.buffer = ir; const wet = actx.createGain(); wet.gain.value = .5; verb.connect(wet); wet.connect(master);
+  boxBus = actx.createGain(); boxBus.connect(master); boxBus.connect(verb);
+  streetBus = actx.createGain(); streetBus.gain.value = 0; streetBus.connect(master); const sv = actx.createGain(); sv.gain.value = .6; streetBus.connect(sv); sv.connect(verb);
+  // park loudspeaker colour for the recordings
+  musicBus = actx.createGain(); musicBus.gain.value = .62;
+  const hp = actx.createBiquadFilter(); hp.type = "highpass"; hp.frequency.value = 110;
+  const lp = actx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 7000;
+  const pk = actx.createBiquadFilter(); pk.type = "peaking"; pk.frequency.value = 2200; pk.gain.value = 2.5; pk.Q.value = .8;
+  musicBus.connect(hp); hp.connect(pk); pk.connect(lp); lp.connect(master); const mv = actx.createGain(); mv.gain.value = .35; lp.connect(mv); mv.connect(verb);
 }
-function pluck(f, t, vel, dur){
-  const out = actx.createGain(); out.connect(master); out.connect(verb);
+function pluck(f, t, vel, dur, bus){
+  const out = actx.createGain(); out.connect(bus || boxBus);
   [[1, 1], [2, .28], [3, .08], [4.2, .05]].forEach(([h, a]) => {
     const o = actx.createOscillator(), g = actx.createGain(); o.type = "sine"; o.frequency.value = f * h; o.detune.value = (Math.random() - .5) * 6;
     g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vel * a, t + .006); g.gain.exponentialRampToValueAtTime(.0001, t + dur / Math.sqrt(h));
@@ -1910,22 +2035,121 @@ function scheduleLoop(t0){
   let t = t0; MEL.forEach(([f, d]) => { pluck(f, t, .16, Math.max(1.6, d * EIGHTH * 2.2)); t += d * EIGHTH; });
   BARS.forEach((c, b) => CH[c].forEach((n, k) => pluck(NOTE(n), t0 + (b * 6 + k * 2) * EIGHTH, .055, 2.4)));
 }
-function tick(){ if (!playing) return; while (nextLoop < actx.currentTime + 1){ scheduleLoop(nextLoop); nextLoop += LOOP; } }
-function setMusic(on){
+function tick(){ if (!playing || mode !== "box") return; while (nextLoop < actx.currentTime + 1){ scheduleLoop(nextLoop); nextLoop += LOOP; } }
+/* street sounds */
+let noiseBuf = null;
+function noise(){ if (noiseBuf) return noiseBuf; const n = actx.sampleRate * 4, b = actx.createBuffer(1, n, actx.sampleRate), d = b.getChannelData(0); let last = 0;
+  for (let i = 0; i < n; i++){ const w = Math.random() * 2 - 1; last = (last + .04 * w) / 1.04; d[i] = last * 3.2 + w * .15; } return noiseBuf = b; }
+let crowd = null;
+function startCrowd(){
+  if (crowd) return; const src = actx.createBufferSource(); src.buffer = noise(); src.loop = true;
+  const bp = actx.createBiquadFilter(); bp.type = "bandpass"; bp.frequency.value = 650; bp.Q.value = .7;
+  const g = actx.createGain(); g.gain.value = .11; const lfo = actx.createOscillator(), lg = actx.createGain(); lfo.frequency.value = .08; lg.gain.value = .04; lfo.connect(lg); lg.connect(g.gain);
+  src.connect(bp); bp.connect(g); g.connect(streetBus); src.start(); lfo.start(); crowd = {src, lfo};
+}
+function stopCrowd(){ if (!crowd) return; try { crowd.src.stop(); crowd.lfo.stop(); } catch(e){} crowd = null; }
+function bell(t, pan){ const p = actx.createStereoPanner(); p.pan.value = pan; p.connect(streetBus);
+  [0, .32].forEach(o => [[1250, .05], [3150, .02], [4700, .01]].forEach(([f, v]) => { const s = actx.createOscillator(), g = actx.createGain(); s.frequency.value = f;
+    g.gain.setValueAtTime(0, t + o); g.gain.linearRampToValueAtTime(v, t + o + .004); g.gain.exponentialRampToValueAtTime(.0001, t + o + 1.3); s.connect(g); g.connect(p); s.start(t + o); s.stop(t + o + 1.4); })); }
+function streetcar(){ const t0 = actx.currentTime + .1, dur = 8, p = actx.createStereoPanner(), env = actx.createGain();
+  p.pan.setValueAtTime(-.85, t0); p.pan.linearRampToValueAtTime(.85, t0 + dur); env.gain.setValueAtTime(0, t0); env.gain.linearRampToValueAtTime(1, t0 + dur * .45); env.gain.linearRampToValueAtTime(0, t0 + dur);
+  env.connect(p); p.connect(streetBus);
+  for (let t = 0; t < dur; t += .44){ [0, .19].forEach((o, k) => { const at = t0 + t + o + rnd(-.015, .015);
+    const s = actx.createBufferSource(); s.buffer = noise(); const bp = actx.createBiquadFilter(); bp.type = "bandpass"; bp.frequency.value = k ? 1100 : 820; bp.Q.value = 3; const g = actx.createGain();
+    g.gain.setValueAtTime(0, at); g.gain.linearRampToValueAtTime(.5, at + .004); g.gain.exponentialRampToValueAtTime(.001, at + .07); s.connect(bp); bp.connect(g); g.connect(env); s.start(at, rnd(0, 3), .09); }); }
+  bell(t0 + dur * .4, 0); }
+function whistle(){ const t = actx.currentTime + .1, g = actx.createGain(), lp = actx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 1800; g.connect(lp); lp.connect(streetBus);
+  g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.035, t + .25); g.gain.setValueAtTime(.035, t + 1.4); g.gain.linearRampToValueAtTime(0, t + 2.2);
+  [415, 523, 622].forEach(f => { const o = actx.createOscillator(); o.type = "triangle"; o.frequency.setValueAtTime(f * .97, t); o.frequency.linearRampToValueAtTime(f, t + .3); const v = actx.createOscillator(), vg = actx.createGain(); v.frequency.value = 5.5; vg.gain.value = 3; v.connect(vg); vg.connect(o.frequency); o.connect(g); o.start(t); v.start(t); o.stop(t + 2.3); v.stop(t + 2.3); }); }
+function jingle(){ const t0 = actx.currentTime + .05, p = actx.createStereoPanner(); p.pan.value = rnd(-.6, .6); p.connect(streetBus);
+  for (let i = 0; i < 16; i++){ const t = t0 + i * .085 + rnd(0, .03); [5200, 6650, 8100].forEach(f => { const o = actx.createOscillator(), g = actx.createGain(); o.frequency.value = f * rnd(.98, 1.02);
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.012, t + .002); g.gain.exponentialRampToValueAtTime(.0001, t + .25); o.connect(g); g.connect(p); o.start(t); o.stop(t + .3); }); } }
+function streetEvents(){
+  const ev = (fn, a, b) => { const k = () => { if (playing && mode === "street"){ fn(); } evT.push(setTimeout(k, rnd(a, b))); }; evT.push(setTimeout(k, rnd(a * .3, b * .5))); };
+  ev(streetcar, 35000, 60000); ev(whistle, 70000, 120000); ev(jingle, 22000, 40000);
+}
+function playTrack(){
+  if (!TRACKS.length) return false;
+  if (!audioEl){ audioEl = new Audio(); audioEl.preload = "auto"; audioEl.crossOrigin = "anonymous"; actx.createMediaElementSource(audioEl).connect(musicBus);
+    audioEl.addEventListener("ended", () => { trackI = (trackI + 1) % TRACKS.length; audioEl.src = TRACKS[trackI].f; audioEl.play().catch(() => {}); nowPlaying(); }); }
+  if (!audioEl.src) audioEl.src = TRACKS[trackI].f;
+  audioEl.play().catch(() => {}); nowPlaying(); return true;
+}
+function nowPlaying(){ const el = $("#fxNow"); if (!el) return; const t = mode === "street" && TRACKS[trackI];
+  el.innerHTML = !playing ? "" : t ? `Now playing: <b>${esc(t.t)}</b> · ${esc(t.by)} · <a href="${esc(t.page)}" target="_blank" rel="noopener">${esc(t.lic)}</a>` : mode === "street" ? "Main Street sounds" : "Now playing: <b>Silent Night</b> · music box arrangement"; }
+function setMusic(on, m){
+  if (m) mode = m; if (!mode) mode = FXP.track === "box" ? "box" : "street";
   if (on && !actx) setupAudio();
   playing = on;
-  $$("[data-music]").forEach(b => { b.setAttribute("aria-pressed", String(on)); });
-  if (!actx) return;
+  $$("[data-music]").forEach(b => b.setAttribute("aria-pressed", String(on)));
+  if (!actx){ syncPanel(); return; }
   const now = actx.currentTime; master.gain.cancelScheduledValues(now); master.gain.setValueAtTime(master.gain.value, now);
-  if (on){ actx.resume(); master.gain.linearRampToValueAtTime(.9, now + 1.5); if (nextLoop < now) nextLoop = now + .15; clearInterval(timer); timer = setInterval(tick, 250); tick(); }
-  else { master.gain.linearRampToValueAtTime(0, now + .8); clearInterval(timer); setTimeout(() => { if (!playing){ actx.suspend(); nextLoop = 0; } }, 900); }
+  evT.forEach(clearTimeout); evT = []; clearInterval(timer);
+  if (on){
+    actx.resume(); master.gain.linearRampToValueAtTime(.9, now + 1.5);
+    if (mode === "box"){ streetBus.gain.setTargetAtTime(0, now, .3); stopCrowd(); if (audioEl) audioEl.pause(); if (nextLoop < now) nextLoop = now + .15; timer = setInterval(tick, 250); tick(); }
+    else { streetBus.gain.setTargetAtTime(.55, now, .5); startCrowd(); streetEvents(); if (!playTrack()){ if (nextLoop < now) nextLoop = now + .4; timer = setInterval(() => { if (nextLoop < actx.currentTime + 1){ scheduleLoop(nextLoop); nextLoop += LOOP; } }, 250); } }
+  } else { master.gain.linearRampToValueAtTime(0, now + .8); setTimeout(() => { if (!playing){ if (audioEl) audioEl.pause(); stopCrowd(); actx.suspend(); nextLoop = 0; } }, 900); }
+  nowPlaying(); syncPanel();
 }
-const NOTE_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>';
+document.addEventListener("visibilitychange", () => { if (!actx || !playing) return; if (document.hidden){ actx.suspend(); if (audioEl) audioEl.pause(); } else { actx.resume(); if (mode === "street" && audioEl) audioEl.play().catch(() => {}); } });
+
+/* ---------------- Buttons ---------------- */
 const heroActs = $(".hero .actions");
-if (heroActs){ const b = document.createElement("button"); b.className = "icon-btn music"; b.type = "button"; b.dataset.music = "1"; b.setAttribute("aria-pressed", "false"); b.title = "Silent Night, music box"; b.innerHTML = NOTE_SVG + "Music"; heroActs.prepend(b); }
-const lnb = document.createElement("button"); lnb.className = "ln-music"; lnb.type = "button"; lnb.dataset.music = "1"; lnb.setAttribute("aria-pressed", "false"); lnb.textContent = "♪ Music"; $("#lnFw").before(lnb);
-$$("[data-music]").forEach(b => b.addEventListener("click", () => setMusic(!playing)));
-document.addEventListener("visibilitychange", () => { if (document.hidden && playing && actx) actx.suspend(); else if (!document.hidden && playing && actx) actx.resume(); });
+const mkBtn = (cls, html, title, data) => { const b = document.createElement("button"); b.className = cls; b.type = "button"; b.title = title; b.innerHTML = html; Object.assign(b.dataset, data); return b; };
+if (heroActs){ heroActs.prepend(mkBtn("icon-btn", WAND_SVG + "Magic", "Effects and music", {fxopen:"1"})); heroActs.prepend(mkBtn("icon-btn music", NOTE_SVG + "Music", "Main Street music", {music:"1"})); }
+$("#lnFw").before(mkBtn("ln-music", "♪ Music", "Main Street music", {music:"1"}), mkBtn("ln-magic", "✦ Magic", "Effects and music", {fxopen:"1"}));
+$$("[data-music]").forEach(b => { b.setAttribute("aria-pressed", "false"); b.addEventListener("click", () => setMusic(!playing)); });
+
+/* ---------------- Panel ---------------- */
+const ROWS = [
+  ["snow","Snow","Soft snowfall over the whole app","❄"],
+  ["heroFw","Fireworks over the castle","Rockets now and then above the photo at the top","✺"],
+  ["lanterns","Floating lanterns","Warm lanterns drifting up behind the pages","◍"],
+  ["stars","Shooting stars","A streak across the night sky every few seconds","☄"],
+  ["aurora","Northern lights","Frozen-style ribbons of light in the sky","≈"],
+  ["tink","Tinker Bell","Flies across the screen now and then","✧"],
+  ["pixie","Pixie dust","Sparkles when you tap, and behind the mouse","✦"],
+  ["lights","String lights","Twinkling Christmas lights on the cards","⁂"]];
+const panel = document.createElement("div"); panel.className = "fxpanel"; panel.id = "fxpanel"; panel.hidden = true;
+panel.innerHTML = `<div class="fx-back" data-fxclose></div>
+  <div class="fx-sheet" role="dialog" aria-modal="true" aria-labelledby="fxTitle">
+    <div class="fx-grab" aria-hidden="true"></div>
+    <h2 id="fxTitle">Magic</h2><p class="fx-sub">Effects and music for this device.</p>
+    <div class="fx-label">Music</div>
+    <div class="fx-seg" role="group" aria-label="Music">${[["off","Off"],["street","Main Street"],["box","Music box"]].map(([k, l]) => `<button type="button" data-track="${k}">${l}</button>`).join("")}</div>
+    <p class="fx-now" id="fxNow" aria-live="polite"></p>
+    <div class="fx-label">Effects</div>
+    <div class="fx-list">${ROWS.map(([k, t, s, i]) => `<div class="fx-row"><span class="fx-ic" aria-hidden="true">${i}</span><span class="fx-tx"><b id="fxl-${k}">${t}</b><small>${s}</small></span><button type="button" class="sw" role="switch" aria-labelledby="fxl-${k}" data-fx="${k}"><i></i></button></div>`).join("")}</div>
+    <button type="button" class="fx-finale" id="fxFinale">${WAND_SVG}Fireworks finale</button>
+    <button type="button" class="fx-done" data-fxclose>Done</button>
+  </div>`;
+document.body.appendChild(panel);
+let lastFocus = null;
+function openPanel(){ lastFocus = document.activeElement; panel.hidden = false; syncPanel(); requestAnimationFrame(() => panel.classList.add("on")); setTimeout(() => panel.querySelector(".fx-seg button").focus(), 50); }
+function closePanel(){ panel.classList.remove("on"); setTimeout(() => { panel.hidden = true; }, 380); if (lastFocus) lastFocus.focus(); }
+$$("[data-fxopen]").forEach(b => b.addEventListener("click", openPanel));
+panel.addEventListener("click", e => { if (e.target.closest("[data-fxclose]")) closePanel(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !panel.hidden) closePanel(); });
+function snowOn(){ const b = $("#snowBtn"); return !!b && b.getAttribute("aria-pressed") === "true"; }
+function syncPanel(){
+  $$("[data-fx]", panel).forEach(b => b.setAttribute("aria-checked", String(b.dataset.fx === "snow" ? snowOn() : !!FXP[b.dataset.fx])));
+  const cur = playing ? mode : "off"; $$("[data-track]", panel).forEach(b => b.setAttribute("aria-pressed", String(b.dataset.track === cur)));
+}
+$$("[data-fx]", panel).forEach(b => b.addEventListener("click", () => {
+  const k = b.dataset.fx;
+  if (k === "snow"){ const s = $("#snowBtn"); if (s) s.click(); }
+  else { FXP[k] = !FXP[k]; saveFx(); applyFx(); if (FXP[k] && k === "tink") tinkFlight(); if (FXP[k] && k === "heroFw") show(3); }
+  syncPanel();
+}));
+$$("[data-track]", panel).forEach(b => b.addEventListener("click", () => { const k = b.dataset.track; if (k === "off") setMusic(false); else { FXP.track = k; saveFx(); setMusic(true, k); } }));
+$("#fxFinale").addEventListener("click", () => { closePanel(); setTimeout(() => show(14), 300); });
+function applyFx(){
+  document.body.classList.toggle("fx-aurora", !!FXP.aurora && !RM);
+  document.body.classList.toggle("no-lights", !FXP.lights);
+  startAmb(); scheduleTink();
+}
+applyFx();
 
 /* ---------------- Hook into the app's re-renders ---------------- */
 function refresh(){
