@@ -847,7 +847,7 @@ canvas.live{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-e
 
 /* ---------- Split-flap countdown ---------- */
 .cd-num{position:relative;perspective:400px}
-.cd-num .flap{position:absolute;inset:0;display:grid;place-items:center;transform-origin:50% 100%;backface-visibility:hidden;animation:flap .6s cubic-bezier(.4,0,.6,1) forwards;color:var(--ink)}
+.cd-num .flap-unused{position:absolute;inset:0;display:grid;place-items:center;transform-origin:50% 100%;backface-visibility:hidden;animation:flap .6s cubic-bezier(.4,0,.6,1) forwards;color:var(--ink)}
 @keyframes flap{0%{transform:rotateX(0);opacity:1;filter:none}100%{transform:rotateX(-100deg);opacity:0;filter:brightness(.4)}}
 .cd-num.tick{animation:none}
 
@@ -864,6 +864,11 @@ canvas.live{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-e
 .hero h1{translate:calc(var(--hx,0) * 22px) calc(var(--hy,0) * 14px);transition:translate .6s var(--ease)}
 .hero .sub,.crew-strip{translate:calc(var(--hx,0) * 12px) calc(var(--hy,0) * 8px);transition:translate .7s var(--ease)}
 @media (prefers-reduced-motion:reduce){.rv{transform:none}.globe-cv{opacity:1;transform:none}}
+
+/* ---------- Calm pass ---------- */
+.cd-num.flip{animation:flipIn .55s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes flipIn{from{transform:perspective(300px) rotateX(-75deg);opacity:.2}to{transform:none;opacity:1}}
+#amb{opacity:.7}
 
 </style>
 
@@ -1727,7 +1732,7 @@ function drawSky(t){
 }
 function skyLoop(t){
   if (heroVisible && !document.hidden){
-    if (t-lastAuto > 4200 && sparks.length < 400){ lastAuto=t; firework(W*(.15+Math.random()*.7), H*(.12+Math.random()*.28), false); }
+    if (t-lastAuto > 7000 && sparks.length < 400){ lastAuto=t; firework(W*(.15+Math.random()*.7), H*(.12+Math.random()*.28), false); }
     drawSky(t);
   }
   requestAnimationFrame(skyLoop);
@@ -1832,7 +1837,8 @@ function sprite(color, kind){
 function hexA(h, a){ if (h.startsWith("rgb")) return h.replace(/rgba?\(([^)]+)\)/, (m, v) => `rgba(${v.split(",").slice(0, 3).join(",")},${a})`);
   const n = parseInt(h.slice(1), 16); return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`; }
 let spawned = 0;
-function spark(o){ spawned++; const p = Object.assign({px:o.x, py:o.y, age:0, size:6, drag:.975, grav:.045, life:80, tw:0, trail:1, shed:0, split:0, crackle:0, star:0, c:"#fff"}, o); p.max = p.life; p.spr = sprite(p.c, p.star ? "star" : "dot"); parts.push(p); return p; }
+const CAP = 1600;
+function spark(o){ spawned++; if (parts.length >= CAP) return o; const p = Object.assign({px:o.x, py:o.y, age:0, size:6, drag:.975, grav:.045, life:80, tw:0, trail:1, shed:0, split:0, crackle:0, star:0, c:"#fff"}, o); p.max = p.life; p.spr = sprite(p.c, p.star ? "star" : "dot"); parts.push(p); return p; }
 function loop(now){
   const dt = Math.min(2.5, last ? (now - last) / 16.67 : 1); last = now;
   // long-exposure fade
@@ -1891,12 +1897,12 @@ function explode(x, y, kind, pal, big){
   else sphere(n, 4.4 * m, (vx, vy) => spark({x, y, vx, vy, c:"#fff4d6", size:4.5, life:rnd(80, 110), tw:1, crackle:Math.random() < .35, drag:.97}));
   kick();
 }
-function rocket(x, ty, opts = {}){
+function rocket(x, ty, opts = {}){ if (rockets.length > 8) return;
   const sy = opts.from != null ? opts.from : FH + 10, sx = x + rnd(-40, 40), h = Math.max(60, sy - ty);
   rockets.push({x:sx, y:sy, px:sx, py:sy, vx:(x - sx) / (Math.sqrt(2 * h / .05)), vy:-Math.sqrt(2 * .05 * h) * 1.04, ty, t:0, kind:opts.kind || "burst", pal:opts.pal, big:opts.big});
   kick();
 }
-function launch(x, y, big, from){ if (RM || !FXP.heroFw || scrollY > innerHeight * .3 || document.querySelector("#overlay:not([hidden])")) return; rocket(x, y, {big, from}); }
+function launch(x, y, big, from){ if (RM || !FXP.heroFw || scrollY > innerHeight * .15 || document.querySelector("#overlay:not([hidden])")) return; rocket(x, y, {big, from}); }
 function show(n = 9){
   if (RM) return;
   for (let i = 0; i < n; i++) setTimeout(() => rocket(FW * rnd(.12, .88), FH * rnd(.1, .38), {big:i === n - 1 || Math.random() < .3}), i * 420 + rnd(0, 200));
@@ -1914,7 +1920,7 @@ window.__magic = {show, dust, explode, rocket, launch, count:() => parts.length 
 let lastTrail = 0;
 if (!RM){
   addEventListener("pointermove", e => {
-    if (e.pointerType !== "mouse" || !FXP.pixie) return; const now = performance.now(); if (now - lastTrail < 28) return; lastTrail = now;
+    if (true) return; const now = performance.now(); if (now - lastTrail < 28) return; lastTrail = now;
     if (e.target.closest && e.target.closest(".leaflet-container,input,textarea")) return;
     spark({x:e.clientX, y:e.clientY, vx:rnd(-.4, .4), vy:rnd(0, .6), c:pick(PAL)[0], size:rnd(2.5, 4.5), life:rnd(26, 40), drag:.96, grav:.025, tw:.9, trail:0, star:Math.random() < .5}); kick();
   }, {passive:true});
@@ -2063,7 +2069,7 @@ function ambLoop(now){
   const dt = Math.min(3, ambLast ? (now - ambLast) / 16.67 : 1); ambLast = now;
   ax.clearRect(0, 0, AW, AH);
   if (FXP.lanterns){
-    const want = AW < 640 ? 9 : 16, init = !lanterns.length; while (lanterns.length < want) lanterns.push(newLantern(init));
+    const want = AW < 640 ? 4 : 7, init = !lanterns.length; while (lanterns.length < want) lanterns.push(newLantern(init));
     lanterns.sort((a, b) => a.s - b.s);
     for (let i = lanterns.length - 1; i >= 0; i--){ const l = lanterns[i]; l.y -= l.vy * l.s * dt * 1.4; l.ph += .01 * dt; l.fl += .08 * dt;
       if (l.y < -120){ lanterns[i] = newLantern(false); continue; }
@@ -2071,7 +2077,7 @@ function ambLoop(now){
       ax.globalAlpha = (.35 + .55 * l.s) * fade * (.85 + .15 * Math.sin(l.fl)); ax.drawImage(LANTERN, l.x + Math.sin(l.ph) * 18 * l.sw - w / 2, l.y - h / 2, w, h); }
   } else lanterns = [];
   if (FXP.stars){
-    if (now > nextMeteor){ nextMeteor = now + rnd(3500, 8000); const goRight = Math.random() < .5;
+    if (now > nextMeteor){ nextMeteor = now + rnd(14000, 26000); const goRight = Math.random() < .5;
       meteors.push({x:goRight ? rnd(-50, AW * .5) : rnd(AW * .5, AW + 50), y:rnd(-20, AH * .35), vx:(goRight ? 1 : -1) * rnd(9, 14), vy:rnd(3, 5.5), life:46, max:46}); }
     for (let i = meteors.length - 1; i >= 0; i--){ const m = meteors[i]; m.x += m.vx * dt; m.y += m.vy * dt; m.life -= dt; if (m.life <= 0){ meteors.splice(i, 1); continue; }
       const a = Math.sin(Math.PI * m.life / m.max), tx = m.x - m.vx * 11, ty = m.y - m.vy * 11;
@@ -2101,7 +2107,7 @@ function tinkFlight(){
     kick(); if (k < 1) requestAnimationFrame(step);
   })(t0);
 }
-function scheduleTink(){ clearTimeout(tinkT); if (RM || !FXP.tink) return; tinkT = setTimeout(() => { tinkFlight(); scheduleTink(); }, rnd(22000, 40000)); }
+function scheduleTink(){ clearTimeout(tinkT); if (RM || !FXP.tink) return; tinkT = setTimeout(() => { tinkFlight(); scheduleTink(); }, rnd(70000, 120000)); }
 
 /* ---------------- Music: Main Street, U.S.A. ----------------
    Real recordings: public-domain ragtime (Scott Joplin's era is exactly the
@@ -2748,12 +2754,11 @@ function buildGlobe(T, sec){
   setTimeout(() => shake(.8), 700);
 }
 
-/* ---------------- Split-flap countdown ---------------- */
-$$(".cd-num").forEach(n => new MutationObserver(() => {
-  if (RM) return; const old = n.dataset.prev; n.dataset.prev = n.textContent; if (!old || old === n.textContent || n.querySelector(".flap")) return;
-  const f = document.createElement("span"); f.className = "flap"; f.setAttribute("aria-hidden", "true"); f.textContent = old; n.appendChild(f); setTimeout(() => f.remove(), 620);
-}).observe(n, {childList:true, characterData:true, subtree:false}));
-$$(".cd-num").forEach(n => n.dataset.prev = n.textContent);
+/* ---------------- Flip-in countdown digits (no extra elements inside the number) ---------------- */
+$$(".cd-num").forEach(n => { n.dataset.prev = n.textContent; new MutationObserver(() => {
+  const v = n.textContent; if (RM || v === n.dataset.prev) return; n.dataset.prev = v;
+  n.classList.remove("flip"); void n.offsetWidth; n.classList.add("flip");
+}).observe(n, {childList:true, characterData:true, subtree:true}); });
 
 /* ---------------- Cover-flow carousels ---------------- */
 function coverflow(c){ const r = c.getBoundingClientRect(), mid = r.left + r.width / 2;
@@ -2776,6 +2781,6 @@ new MutationObserver(() => { enhance($("#overlay")); rideFx(); countRide(); addL
 refresh();
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { indX = null; placeInd(); });
 // a small welcome show once the page has settled
-if (!RM) setTimeout(() => { if (scrollY < innerHeight * .5 && !document.hidden) show(4); }, 1400);
+
 })();
 </script>
