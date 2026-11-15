@@ -744,13 +744,12 @@ footer .foot{position:relative}
 @keyframes huey{to{filter:hue-rotate(360deg)}}
 
 /* ---------- Christmas decorations ---------- */.sec-head{position:relative}
-.baubles{position:absolute;right:4px;top:-14px;display:flex;gap:14px;pointer-events:none}
-.bauble{position:relative;display:block;width:16px;height:calc(var(--l) + 16px);pointer-events:auto;cursor:pointer;transform-origin:50% 0;animation:swing 3.4s ease-in-out infinite alternate;animation-delay:var(--d)}
-.bauble::before{content:"";position:absolute;left:50%;top:0;width:1px;height:var(--l);background:rgba(255,255,255,.3)}
-.bauble::after{content:"";position:absolute;left:0;bottom:0;width:16px;height:16px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0,var(--b) 30%,color-mix(in srgb,var(--b) 60%,#000) 100%);box-shadow:0 0 12px color-mix(in srgb,var(--b) 70%,transparent)}
-.bauble.ring{animation:jiggle .8s ease}
-@keyframes swing{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
-@keyframes jiggle{0%,100%{transform:rotate(0)}20%{transform:rotate(-24deg)}45%{transform:rotate(18deg)}70%{transform:rotate(-9deg)}}
+
+
+
+
+
+
 
 .card.hello{overflow:hidden}.card.hello 
 .lights i{pointer-events:auto;cursor:pointer}
@@ -784,7 +783,7 @@ footer .foot{position:relative}
 .toast{max-width:min(86vw,420px);text-align:center;background:rgba(18,26,70,.82);color:var(--ink);border-radius:20px;padding:11px 18px;font-size:14.5px;font-weight:600;line-height:1.35;
   backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),0 20px 50px rgba(0,0,0,.5)}
 @media (max-width:640px){
-  .baubles{top:-40px;right:2px;gap:10px;transform:scale(.8);transform-origin:100% 0}
+  
   .sec-head{margin-top:44px}
   .view>.sec-head:first-child{margin-top:30px}
 }
@@ -2398,7 +2397,6 @@ document.addEventListener("click", e => {
   else if ((el = t.closest("#creditsBtn"))){ const [x, y] = at(el); hearts(x, y); }
   else if ((el = t.closest("#toast"))){ confetti(40); el.hidden = true; }
   else if ((el = t.closest(".lights i"))){ el.style.setProperty("--c", pick(BULBS)); el.classList.remove("pop"); void el.offsetWidth; el.classList.add("pop"); const [x, y] = at(el); dust(x, y, 6, getComputedStyle(el).backgroundColor); }
-  else if ((el = t.closest(".bauble"))){ el.classList.remove("ring"); void el.offsetWidth; el.classList.add("ring"); const [x, y] = at(el); dust(x, y + 10, 14, getComputedStyle(el).getPropertyValue("--b")); if (playing && actx) jingle(); }
   else if ((el = t.closest(".leaflet-popup-content"))) burstAt(el, "#ffd27a", 10);
 }, false);
 document.addEventListener("pointerover", e => { const el = e.target.closest && e.target.closest(".spec, .incl span, .emt .pill"); if (!el || e.pointerType !== "mouse" || el.dataset.hov) return; el.dataset.hov = "1"; setTimeout(() => delete el.dataset.hov, 1500); burstAt(el, "#fff1c9", 4); });
@@ -2414,10 +2412,7 @@ const sb = $("#snowBtn"); let sbT = null;
 if (sb){ sb.addEventListener("pointerdown", () => { sbT = setTimeout(() => { flurry(); flurry(); hello("Blizzard!"); }, 700); }); ["pointerup","pointerleave"].forEach(ev => sb.addEventListener(ev, () => clearTimeout(sbT))); }
 
 /* ---------------- Christmas decorations ---------------- */
-const BAUBLE_C = ["#ff5d73","#f3c56b","#4fc58f","#8fc9ff","#f7a9c6"];
 function decorate(root){
-  $$(".sec-head", root).forEach((h, i) => { if (h.querySelector(".baubles")) return; const d = document.createElement("div"); d.className = "baubles"; d.setAttribute("aria-hidden", "true");
-    d.innerHTML = [0, 1, 2].map(k => `<span class="bauble" style="--b:${BAUBLE_C[(i + k) % 5]};--l:${[34, 52, 26][k]}px;--d:${(k * .7 + i * .3).toFixed(2)}s"></span>`).join(""); h.appendChild(d); });
 }
 decorate(document);
 
