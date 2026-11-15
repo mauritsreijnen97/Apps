@@ -806,7 +806,7 @@ footer .foot{position:relative}
 .carousel>.pick.rv.in{transform:translateZ(var(--cz,0px)) rotateY(calc(var(--cf,0deg) + var(--ry,0deg))) rotateX(var(--rx,0deg)) scale(var(--cs,1));transition:transform .25s ease-out,opacity .6s}
 
 /* ---------- Reveals now rise out of the page in 3-D ---------- */.view{perspective:1400px}
-.rv{transform:translate3d(0,56px,-90px) rotateX(16deg);transform-origin:50% 100%}
+.rv{transform:translate3d(0,40px,-40px) rotateX(7deg);transform-origin:50% 0}
 
 /* ---------- Hero depth ---------- */.hero-photo img{translate:calc(var(--hx,0) * -26px) calc(var(--hy,0) * -18px);transition:translate .8s var(--ease)}
 .hero h1{translate:calc(var(--hx,0) * 22px) calc(var(--hy,0) * 14px);transition:translate .6s var(--ease)}
@@ -816,6 +816,13 @@ footer .foot{position:relative}
 /* ---------- Calm pass ---------- */.cd-num.flip{animation:flipIn .55s cubic-bezier(.2,.9,.3,1.2)}
 @keyframes flipIn{from{transform:perspective(300px) rotateX(-75deg);opacity:.2}to{transform:none;opacity:1}}
 #amb{opacity:.7}
+
+/* ---------- Editorial pass ---------- */
+.food-meta{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--muted);margin-top:auto}
+.food p,.ride p,.showcard p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ride{gap:8px}
+.ride .where,.food .muted{font-size:13px;color:var(--muted)}
+.lights{display:none}
 
 </style>
 </head><body>
@@ -850,7 +857,7 @@ footer .foot{position:relative}
 </section>
 
 <main class="wrap" id="app"></main>
-<footer><p class="foot wrap"><button class="btn ghost" id="creditsBtn" style="padding:6px 12px;font-size:12px;margin-bottom:8px">Photo &amp; map credits</button><br>Made for Max, Marjo, Martina &amp; Maurits. A personal trip guide, not an official Disney app. Hours and show times come from published schedules and can change, so check the official app on the day.</p></footer>
+<footer><p class="foot wrap"><button class="btn ghost" id="creditsBtn" style="padding:6px 12px;font-size:12px;margin-bottom:6px">Photo, music &amp; map credits</button><br>Made for Max, Marjo, Martina &amp; Maurits · not an official Disney app.</p></footer>
 
 <div class="tabbar"><nav aria-label="Sections" id="tabs"></nav></div>
 <div class="overlay" id="overlay" hidden></div>
@@ -1126,7 +1133,7 @@ const R = {}, B = {};
 const showCard = s0 => { const s = Object.assign({}, s0, {photo: picOf("show:" + s0.id)}); return `<article class="card showcard">
   ${photo(s.photo) ? `<div class="ph">${imgTag(s.photo, "photo", s.name)}<span class="ph-chip" style="background:var(--gold)">${svg(ICON.sparkle)}${esc(s.when)}</span></div>` : art("var(--gold)", ICON.sparkle, s.name, `<span class="ph-chip" style="background:var(--gold)">${svg(ICON.sparkle)}${esc(s.when)}</span>`)}
   <div><h3>${esc(s.name)}</h3><div class="where">${esc(s.where)}</div></div>
-  <p>${esc(s.d)}</p>${creditLine(s.photo)}</article>`; };
+  <p>${esc(s.d)}</p></article>`; };
 const emtCard = (compact) => `<section class="card emt">
   <div class="emt-head"><div class="emt-time mono">${EMT.start}<span>–</span>${EMT.end}</div>
     <div><div class="eyebrow">Your magic hours</div><h2>Extra Magic Time, both mornings</h2>
@@ -1143,8 +1150,6 @@ const dayCard = (d, isToday) => { const k = picOf("day:" + d.n); return `<articl
     <div class="sun"><span>${svg('<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>')} ${d.sunrise}</span><span>${svg('<path d="M3 18h18M7 18a5 5 0 0 1 10 0M12 7v4M5 12l2 1M19 12l-2 1"/>')} ${d.sunset}</span></div></div>
   <div class="hours"><div><span class="muted">Extra Magic Time</span><b class="mono" style="color:var(--gold)">${EMT.start} – ${EMT.end}</b></div>
     <div><span class="muted">Both parks</span><b class="mono">${d.hours}</b></div></div>
-  <p class="credit" style="margin:0">${d.hoursNote}. Confirm in the official app.</p>
-  <ul class="facts-list">${d.facts.map(([ic,t,x]) => `<li>${svg(ICON[ic])}<span><b>${t}</b><br>${x}</span></li>`).join("")}</ul>
 </article>`; };
 
 /* ================= Home ================= */
@@ -1161,7 +1166,7 @@ R.home = () => {
     <div class="whoami" role="group" aria-label="Who's reading">${CREW.map(c=>`<button class="who" data-me="${c.id}" aria-pressed="${S.me===c.id}">${av(c)}<span>${c.name}</span></button>`).join("")}</div>
   </section>
   ${t ? dayCard(t, true) : ""}
-  ${emtCard(false)}
+  ${emtCard(true)}
   <section style="display:grid;gap:12px">
     <div class="sec-head"><div><div class="eyebrow">Must-sees</div><h2 style="font-size:20px;margin-top:4px">The big ones</h2></div><a class="btn ghost" href="#rides" style="padding:8px 12px;font-size:13px">All rides</a></div>
     <div class="carousel" role="group" aria-label="Ride highlights">${picks.map(r => `<button class="pick" data-open="${r.id}" aria-label="${esc(r.name)}">
@@ -1213,7 +1218,7 @@ function openPhoto(k){
 R.days = () => {
   const t = today();
   return `
-  <div class="sec-head"><div><div class="eyebrow">Your two days</div><h2>Hours, magic hours & shows</h2></div><span class="muted">Information only, no schedule</span></div>
+  <div class="sec-head"><div><div class="eyebrow">Your two days</div><h2>Hours, magic hours & shows</h2></div></div>
   <div class="grid g2">${DAYS.map(d => dayCard(d, t && t.n===d.n)).join("")}</div>
   ${emtCard(true)}
   <section style="display:grid;gap:12px">
@@ -1259,12 +1264,10 @@ function rideCard(r){
   const tm = TYPE_META[r.type];
   return `<article class="card ride" data-rid="${r.id}">
     <button class="linkish" data-open="${r.id}" aria-label="Open ${esc(r.name)} details" style="display:grid;gap:12px">
-      <div class="ph ${rideKey(r)?"":"art"}" style="--bc:${tm.c}">${rideKey(r)?imgTag(rideKey(r),"photo",r.id===rideKey(r)?r.name:""):"<i></i><i></i>"+svg(tm.icon)}${areaChip(rideKey(r), r.id)}<span class="ph-chip" style="background:${tm.c}">${svg(tm.icon)}${tm.label}</span>${r.emt?`<span class="ph-emt">${svg(ICON.clock)}Magic hours</span>`:""}</div>
+      <div class="ph ${rideKey(r)?"":"art"}" style="--bc:${tm.c}">${rideKey(r)?imgTag(rideKey(r),"photo",r.id===rideKey(r)?r.name:""):"<i></i><i></i>"+svg(tm.icon)}${areaChip(rideKey(r), r.id)}${r.emt?`<span class="ph-emt">${svg(ICON.clock)}Magic hours</span>`:""}</div>
       <div style="min-width:0"><h3>${esc(r.name)}</h3><div class="where">${esc(r.land)} · ${PARKS[r.park]}</div></div>
     </button>
     <p>${esc(r.blurb)}</p>
-    ${r.tip?`<div class="tipline"><span aria-hidden="true">✦</span><span>${esc(r.tip)}</span></div>`:""}
-    <div class="thrill" aria-label="Intensity ${r.lvl} of 5">${[1,2,3,4,5].map(i=>`<i class="${i<=r.lvl?"on":""}"></i>`).join("")}<span class="muted" style="font-size:11px;margin-left:6px">Intensity</span></div>
   </article>`;
 }
 B.rides = () => {
@@ -1426,7 +1429,7 @@ R.food = () => {
   const groups = [["hotel","At your hotel"],["parks","In the parks"],["village","Disney Village"]];
   const g = f => f.where==="Disneyland Hotel" ? "hotel" : f.where==="Disney Village" ? "village" : "parks";
   return `
-  <div class="sec-head"><div><div class="eyebrow">Food & drinks</div><h2>Where to eat</h2></div><span class="muted">Table-service spots fill up: book them in the official app</span></div>
+  <div class="sec-head"><div><div class="eyebrow">Food & drinks</div><h2>Where to eat</h2></div><span class="muted">Book table service in the Disneyland app.</span></div>
   <section class="card breakfast">
     <div class="eyebrow" style="color:var(--mint)">Included in your booking</div>
     <h3 style="font-family:var(--f-display);font-size:20px;margin-top:4px">Breakfast, tea time & drinks at the Deluxe Lounge</h3>
@@ -1439,9 +1442,9 @@ R.food = () => {
       <div class="grid g3">${FOOD.filter(f => g(f)===k).map(f => `
         <article class="card food">
           ${foodKey(f) ? `<div class="ph">${imgTag(foodKey(f), "photo", foodKey(f)===f.id ? f.name : "")}${areaChip(foodKey(f), f.id)}</div>` : art(k === "hotel" ? "var(--rose)" : k === "village" ? "var(--ice)" : "var(--gold)", ICON.food, "")}
-          <div><h3>${esc(f.name)}</h3><div class="muted" style="font-size:12.5px">${esc(f.where)} · ${esc(f.kind)}</div></div>
+          <div><h3>${esc(f.name)}</h3><div class="muted" style="font-size:13px">${esc(f.kind)}</div></div>
           <p style="margin:0;font-size:13.5px;color:#d3d6f5">${esc(f.blurb)}</p>
-          <div class="pills">${f.tags.map(t=>`<span class="pill ${t==="Character dining"?"hot":""}">${esc(t)}</span>`).join("")}${f.book?`<span class="pill">Book ahead</span>`:`<span class="pill ok">Walk in</span>`}</div>
+          <div class="food-meta">${f.tags.includes("Character dining") ? `<span class="pill hot">Character dining</span>` : ""}<span>${f.book ? "Book ahead" : "Walk in"}</span></div>
         </article>`).join("")}</div>
     </section>`).join("")}`;
 };
@@ -1463,7 +1466,6 @@ R.hotel = () => `
         <dt>Check-out</dt><dd>Mon, usually by 11:00</dd>
       </dl>
       <div class="incl"><span>Breakfast included</span><span>Deluxe Lounge access</span><span>Park tickets</span><span>Extra Magic Time</span></div>
-      ${creditLine(picOf("room")) ? `<div style="margin-top:12px">${creditLine(picOf("room"))}</div>` : ""}
     </section>
     <section class="card" style="display:grid;gap:12px;align-content:start">
       ${picOf("hotel_lobby") ? `<div class="ph">${imgTag(picOf("hotel_lobby"),"photo","The Disneyland Hotel lobby at Christmas")}<span class="ph-chip" style="background:var(--rose)">The lobby at Christmas</span></div>` : ""}
@@ -1473,7 +1475,6 @@ R.hotel = () => `
         <li>${svg(ICON.star)}<span><b>Own reception & concierge</b><br>A dedicated desk for Deluxe guests, so no queue at the main reception.</span></li>
         <li>${svg(ICON.clock)}<span><b>Extra Magic Time every day</b><br>Up to an hour before the public, on arrival and departure day too (08:00–09:00).</span></li>
         <li>${svg(ICON.sparkle)}<span><b>Illuminated canopy</b><br>Deluxe rooms have an animated, lit canopy above the beds.</span></li>
-        <li>${svg(ICON.hotel)}<span><b>Bell desk</b><br>Drop bags before check-in and leave them after check-out.</span></li>
       </ul>
     </section>
   </div>
@@ -1484,8 +1485,6 @@ R.hotel = () => `
       <li><span>The <b>official Disneyland Paris app</b> has live wait times, the day's show times and restaurant bookings.</span></li>
       <li><span>Extra Magic Time rides vary by morning. Peter Pan's Flight and World of Frozen get the longest queues later, so they're worth going to first.</span></li>
       <li><span>It's dark before 17:00 in late November, so Christmas lights, the parade and Big Thunder Mountain are at their best early in the evening.</span></li>
-      <li><span>Since April 2026 the castle show uses projections and fireworks. The drones fly over the lake in Disney Cascade of Lights.</span></li>
-      <li><span>Late November is usually 3–8 °C and damp. Indoor rides (Pirates, "it's a small world", Ratatouille) are warm.</span></li>
       <li><span><b>Single Rider</b> lines on Ratatouille and Flight Force are much shorter if you don't mind splitting up.</span></li>
     </ol>
   </section>`;
@@ -1748,7 +1747,7 @@ const $ = s => document.querySelector(s), $$ = (s, r = document) => [...r.queryS
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 /* Effect and music choices, remembered on this device only */
-const FXP = {lanterns:true, stars:true, aurora:false, pixie:true, tink:true, lights:true, heroFw:true, track:"street"};
+const FXP = {lanterns:false, stars:true, aurora:false, pixie:true, tink:true, lights:true, heroFw:true, track:"street"};
 
 
 /* ---------------- FX canvas: fireworks + pixie dust ----------------
@@ -1878,7 +1877,6 @@ if (!RM){
     if (t.closest("[data-me]")){ const b = t.closest("[data-me]"); if (b.getAttribute("aria-pressed") !== "true"){ const c = getComputedStyle(b.querySelector(".av") || b).backgroundColor; explode(e.clientX, e.clientY, "ring", [c, "#ffffff"], false); dust(e.clientX, e.clientY, 20); } return; }
     if (!FXP.pixie) return;
     if (t.closest(".tab")){ dust(e.clientX, e.clientY, 16); return; }
-    if (t.closest("button,a,.pick")) dust(e.clientX, e.clientY, 10);
   }, {passive:true});
 }
 
@@ -1909,7 +1907,7 @@ addEventListener("resize", () => { indX = null; placeInd(); });
 const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(en => {
   if (!en.isIntersecting) return; const el = en.target; el.classList.add("in"); io.unobserve(el);
   if (el.classList.contains("rv")) setTimeout(() => el.classList.add("settled"), 1300 + (parseInt(el.style.getPropertyValue("--d")) || 0));
-}), {rootMargin:"0px 0px -8% 0px", threshold:.06}) : null;
+}), {rootMargin:"0px 0px -4% 0px", threshold:0}) : null;
 const REVEAL = ".view>*:not(.statement), .grid>*, .carousel>*, .facts>*, .emt-cols>*, .duo>*, .hours>*, .landpanel li, .showcard, .daycard";
 function splitWords(h){
   if (h.dataset.split || h.children.length) return; h.dataset.split = "1";
@@ -1921,6 +1919,7 @@ function enhance(root){
   $$(REVEAL, root).forEach(el => {
     if (el.classList.contains("rv") || el.querySelector("#leafmap") || el.id === "leafmap" || el.closest(".rv:not(.view)") && !el.matches(".grid>*,.carousel>*,.facts>*,.emt-cols>*,.duo>*,.hours>*,.landpanel li")) return;
     const sib = el.parentElement ? [...el.parentElement.children].indexOf(el) : 0;
+    if (el.matches(".grid, .carousel, .bento, .emt-cols, .duo, .hours, section:has(> .grid), section:has(> .carousel)") || el.offsetHeight > innerHeight * 1.2) return;   // containers never fade; their cards do
     el.classList.add("rv"); el.style.setProperty("--d", Math.min(sib, 6) * 70 + "ms"); io.observe(el);
   });
   // carousels: load every slide as soon as the row comes near, so swiping never shows a blank card
@@ -1988,8 +1987,7 @@ const BULBS = ["#ff5d73","#f3c56b","#4fc58f","#8fc9ff","#f7a9c6"];
 function lights(n){ let h = ""; for (let i = 0; i < n; i++){ const x = (i + .5) / n * 100, t = 6 + Math.sin((x / 100) * Math.PI) * 9;
   h += `<i style="--x:${x.toFixed(2)}%;--t:${t.toFixed(1)}px;--c:${BULBS[i % BULBS.length]};--dl:${(-Math.random() * 3).toFixed(2)}s;--s:${(1.6 + Math.random() * 1.8).toFixed(2)}s"></i>`; }
   const d = document.createElement("div"); d.className = "lights"; d.setAttribute("aria-hidden", "true"); d.innerHTML = h; return d; }
-if (cd && !cd.querySelector(".lights")) cd.prepend(lights(innerWidth < 640 ? 14 : 24));
-function xmasLights(root){ $$(".xmas", root).forEach(c => { if (!c.querySelector(".lights")) c.prepend(lights(innerWidth < 640 ? 12 : 22)); }); }
+function xmasLights(){}
 
 
 /* =====================================================================
@@ -2396,7 +2394,6 @@ document.addEventListener("click", e => {
   else if ((el = t.closest(".ln-title"))){ scrollTo({top:0, behavior:"smooth"}); tinkFlight(); }
   else if ((el = t.closest("#creditsBtn"))){ const [x, y] = at(el); hearts(x, y); }
   else if ((el = t.closest("#toast"))){ confetti(40); el.hidden = true; }
-  else if ((el = t.closest(".lights i"))){ el.style.setProperty("--c", pick(BULBS)); el.classList.remove("pop"); void el.offsetWidth; el.classList.add("pop"); const [x, y] = at(el); dust(x, y, 6, getComputedStyle(el).backgroundColor); }
   else if ((el = t.closest(".leaflet-popup-content"))) burstAt(el, "#ffd27a", 10);
 }, false);
 document.addEventListener("pointerover", e => { const el = e.target.closest && e.target.closest(".spec, .incl span, .emt .pill"); if (!el || e.pointerType !== "mouse" || el.dataset.hov) return; el.dataset.hov = "1"; setTimeout(() => delete el.dataset.hov, 1500); burstAt(el, "#fff1c9", 4); });
@@ -2525,9 +2522,12 @@ function addLiving(root){
   startLive();
 }
 
-/* Music credits (Creative Commons, from Jamendo) */
-if (TRACKS.length){ const f = $("footer .foot"); if (f){ const p = document.createElement("span"); p.className = "music-credit";
-  p.innerHTML = "<br>Music: " + TRACKS.map(t => `${esc(t.t)} by ${esc(t.by)} (<a href="${esc(t.page)}" target="_blank" rel="noopener">${esc(t.lic)}</a>)`).join(" · ") + ". Street sounds are our own."; f.appendChild(p); } }
+/* Music credits (Creative Commons, from Jamendo), shown on the credits page */
+new MutationObserver(() => { const ov = $("#overlay"); if (!TRACKS.length || ov.hidden || ov.querySelector(".music-credits")) return;
+  const list = ov.querySelector("ul.credits:last-of-type"); if (!list || !/Photos/.test(ov.textContent)) return;
+  const box = document.createElement("div"); box.className = "music-credits";
+  box.innerHTML = `<div class="eyebrow" style="margin:16px 0 8px">Music</div><ul class="credits">${TRACKS.map(t => `<li style="grid-template-columns:1fr"><span><b>${esc(t.t)}</b><br>${esc(t.by)} · <a href="${esc(t.page)}" target="_blank" rel="noopener">${esc(t.lic)}</a></span></li>`).join("")}<li style="grid-template-columns:1fr"><span>Street sounds and the music box: made for this app.</span></li></ul>`;
+  list.after(box); }).observe($("#overlay"), {childList:true});
 
 
 /* =====================================================================
