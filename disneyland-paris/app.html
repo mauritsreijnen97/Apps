@@ -821,6 +821,15 @@ footer .foot{position:relative}
 .ride .where,.food .muted{font-size:13px;color:var(--muted)}
 .lights{display:none}
 
+/* ---------- Closures on your dates ---------- */
+.ph .ph-closed{position:absolute;right:10px;top:10px;z-index:3;font-size:11.5px;font-weight:700;padding:5px 11px;border-radius:999px;background:#ff5d73;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.ph .ph-closed.part{background:rgba(255,184,77,.95);color:#2a1a00}
+.ride.is-closed .ph img{filter:grayscale(.85) brightness(.7)}
+.ride.is-closed canvas.live{display:none}
+.closed-line{margin-top:4px;font-size:13px;color:#ffb0bb;line-height:1.35}
+.closednote{padding:12px 14px;border-radius:16px;background:rgba(255,93,115,.14);font-size:14px;line-height:1.4}
+.closednote.part{background:rgba(255,184,77,.14)}
+
 </style>
 
 <canvas id="snow" aria-hidden="true"></canvas>
@@ -864,7 +873,7 @@ footer .foot{position:relative}
 "use strict";
 
 /* ================= Trip facts ================= */
-const TRIP_START = Date.UTC(2026,10,29,14,0,0);   // 29 Nov 2026 15:00 Paris (CET, UTC+1): hotel check-in
+const TRIP_START = Date.UTC(2026,10,29,7,0,0);    // 29 Nov 2026 08:00 Paris (CET, UTC+1): first minute in the park (Extra Magic Time)
 const DAY1 = Date.UTC(2026,10,28,23,0,0);         // 29 Nov 00:00 Paris
 const DAY2 = Date.UTC(2026,10,29,23,0,0);         // 30 Nov 00:00 Paris
 const TRIP_END = Date.UTC(2026,10,30,23,0,0);     // 1 Dec 00:00 Paris
@@ -879,7 +888,7 @@ const CREW = [
 /* Researched November 2026. Hours and show times change; the page says so wherever it shows them. */
 const EMT = {start:"08:00", end:"09:00",
   dlp:["Peter Pan's Flight","Big Thunder Mountain","Star Wars Hyperspace Mountain","Buzz Lightyear Laser Blast","Dumbo","Orbitron"],
-  daw:["World of Frozen","Crush's Coaster","Ratatouille","Spider-Man W.E.B. Adventure","Tower of Terror"]};
+  daw:["World of Frozen","Ratatouille","Spider-Man W.E.B. Adventure","Tower of Terror"]};
 
 const SHOWS = [
   {id:"tales", name:"Disney Tales of Magic", where:"Sleeping Beauty Castle · Disneyland Park", when:"Every night, around park closing", alt2:"park_dlp",
@@ -888,8 +897,8 @@ const SHOWS = [
    d:"The new drone and water show on the lake that opened with Disney Adventure World on 29 March 2026. This is where the drones moved to.", photo:"land_adventureway"},
   {id:"parade", name:"Mickey's Dazzling Christmas Parade", where:"Main Street, U.S.A. · Disneyland Park", when:"15:55 and 17:45", alt:"land_mainstreetusa",
    photo2:"parade", d:"Part of Disney Enchanted Christmas (7 November 2026 to 6 January 2027). The 2026 schedule has two parades a day, at 15:55 and 17:45. Sunset is just before 17:00, so the 17:45 parade runs after dark.", photo:"land_mainstreetusa"},
-  {id:"arendelle", name:"A Celebration in Arendelle", where:"Arendelle Bay · World of Frozen", when:"Daily", alt:"land_worldoffrozen", alt2:"park_daw",
-   d:"Anna, Elsa and friends on the bay in front of the North Mountain, in the land that opened in March 2026. Anna and Elsa also meet guests inside Arendelle Castle.", photo:"frozen"}
+  {id:"arendelle", name:"Anna and Elsa's Christmas show", where:"Arendelle Bay · World of Frozen", when:"Several times a day", alt:"land_worldoffrozen", alt2:"park_daw",
+   d:"A Celebration in Arendelle is on a winter break (7 November 2026 to early April 2027). In its place, Anna and Elsa have a short Christmas show on Arendelle Bay several times a day.", photo:"frozen"}
 ];
 
 const DAYS = [
@@ -949,7 +958,7 @@ const RIDES = [
   {id:"flight",name:"Avengers Assemble: Flight Force",park:"daw",land:"Avengers Campus",type:"coaster",lvl:5,blurb:"Launched coaster with inversions alongside Iron Man and Captain Marvel.",tip:"Single Rider line is often much faster."},
   {id:"spidey",emt:1,name:"Spider-Man W.E.B. Adventure",park:"daw",land:"Avengers Campus",type:"dark",lvl:1,blurb:"Interactive ride where you sling webs with your hands.",tip:"Compare scores at the exit."},
   {id:"tot",emt:1,name:"The Twilight Zone Tower of Terror",park:"daw",land:"Production Courtyard",type:"thrill",lvl:5,blurb:"Haunted hotel elevator with random drops in the dark.",tip:"Look out over the park at the top."},
-  {id:"crush",emt:1,name:"Crush's Coaster",park:"daw",land:"Worlds of Pixar",type:"coaster",lvl:4,blurb:"Spinning turtle shell coaster through the East Australian Current.",tip:"Queue is slow-moving, check wait first."},
+  {id:"crush",name:"Crush's Coaster",park:"daw",land:"Worlds of Pixar",type:"coaster",lvl:4,blurb:"Spinning turtle shell coaster through the East Australian Current.",tip:"Queue is slow-moving, check wait first."},
   {id:"rat",emt:1,name:"Ratatouille: The Adventure",park:"daw",land:"Worlds of Pixar",type:"dark",lvl:2,blurb:"Trackless 3D ride shrunk to rat size through Gusteau's kitchen.",tip:"Single Rider line available."},
   {id:"rc",name:"RC Racer",park:"daw",land:"Worlds of Pixar",type:"thrill",lvl:4,blurb:"Half-pipe shuttle that swings you up a giant orange track.",tip:""},
   {id:"para",name:"Toy Soldiers Parachute Drop",park:"daw",land:"Worlds of Pixar",type:"family",lvl:2,blurb:"Parachute drop tower in Andy's backyard.",tip:""},
@@ -983,6 +992,13 @@ const FOOD = [
   {id:"earl",name:"Earl of Sandwich",where:"Disney Village",kind:"Quick service",tags:["Quick"],blurb:"Hot sandwiches when you just want something quick.",book:false}
 ];
 
+
+/* Closures on your dates (checked 15 November 2026 against closure trackers and news; confirm in the app). */
+const CLOSED = {
+  crush:{full:true, label:"Closed", note:"Closed for a major refurbishment since 7 September 2026. Back in summer 2027."},
+  rail:{full:false, label:"Partly closed", note:"Discoveryland and Fantasyland stations are closed. Trains still stop at Main Street and Frontierland."}
+};
+RIDES.forEach(r => { if (CLOSED[r.id]) r.closed = CLOSED[r.id]; });
 
 const LANDS = {
   "Main Street, U.S.A.":{c:"#f0c978",d:"Victorian main street leading to the castle. Shops, parades and the railroad station."},
@@ -1154,7 +1170,7 @@ R.home = () => {
   const MUST = ["castle","frozen","btm","pp","hyper","rat","potc","tot","flight","pm"];
   const picks = MUST.map(id => RIDES.find(r => r.id===id)).filter(Boolean);
   const hello = m ? `${greeting()}, ${m.name}` : greeting();
-  const lead = p==="before" ? (daysLeft() ? `${daysLeft()} ${daysLeft()===1?"day":"days"} until the four of you check in at the Disneyland Hotel.` : "Less than a day until the four of you check in at the Disneyland Hotel.")
+  const lead = p==="before" ? (daysLeft() ? `${daysLeft()} ${daysLeft()===1?"day":"days"} until the four of you walk into the park, at 08:00 on Sunday.` : "Less than a day until the four of you walk into the park.")
              : p==="during" ? `It's ${t.date}. Here's what matters today.` : "That was the magic weekend. Merci!";
   return `
   <section class="card hello" ${picOf("hello") ? `style="--hello-bg:url('${esc(photo(picOf("hello")).f)}')"` : ""}>
@@ -1232,6 +1248,7 @@ R.rides = () => {
   if (S.sort==="thrill") list.sort((a,b)=>b.lvl-a.lvl || a.name.localeCompare(b.name));
   else if (S.sort==="az") list.sort((a,b)=>a.name.localeCompare(b.name));
   else list.sort((a,b)=>a.park.localeCompare(b.park) || a.land.localeCompare(b.land) || a.name.localeCompare(b.name));
+  list.sort((a,b) => (a.closed && a.closed.full ? 1 : 0) - (b.closed && b.closed.full ? 1 : 0));
   return `
   <div class="sec-head"><div><div class="eyebrow">Attractions</div><h2>Rides & wonders</h2></div><span class="muted">${list.length} of ${RIDES.length}</span></div>
   <div class="card" style="display:grid;gap:12px">
@@ -1258,10 +1275,10 @@ R.rides = () => {
 };
 function rideCard(r){
   const tm = TYPE_META[r.type];
-  return `<article class="card ride" data-rid="${r.id}">
+  return `<article class="card ride ${r.closed && r.closed.full ? "is-closed" : ""}" data-rid="${r.id}">
     <button class="linkish" data-open="${r.id}" aria-label="Open ${esc(r.name)} details" style="display:grid;gap:12px">
-      <div class="ph ${rideKey(r)?"":"art"}" style="--bc:${tm.c}">${rideKey(r)?imgTag(rideKey(r),"photo",r.id===rideKey(r)?r.name:""):"<i></i><i></i>"+svg(tm.icon)}${areaChip(rideKey(r), r.id)}${r.emt?`<span class="ph-emt">${svg(ICON.clock)}Magic hours</span>`:""}</div>
-      <div style="min-width:0"><h3>${esc(r.name)}</h3><div class="where">${esc(r.land)} · ${PARKS[r.park]}</div></div>
+      <div class="ph ${rideKey(r)?"":"art"}" style="--bc:${tm.c}">${rideKey(r)?imgTag(rideKey(r),"photo",r.id===rideKey(r)?r.name:""):"<i></i><i></i>"+svg(tm.icon)}${areaChip(rideKey(r), r.id)}${r.closed ? `<span class="ph-closed ${r.closed.full ? "" : "part"}">${r.closed.label}</span>` : ""}${r.emt && !r.closed?`<span class="ph-emt">${svg(ICON.clock)}Magic hours</span>`:""}</div>
+      <div style="min-width:0"><h3>${esc(r.name)}</h3><div class="where">${esc(r.land)} · ${PARKS[r.park]}</div>${r.closed ? `<div class="closed-line">${esc(r.closed.note)}</div>` : ""}</div>
     </button>
     <p>${esc(r.blurb)}</p>
   </article>`;
@@ -1399,7 +1416,7 @@ B.map = () => {
   const pinIcon = (cls, html, c, size=24) => L.divIcon({className:"", html:`<div class="pin ${cls}" style="width:${size}px;height:${size}px;background:${c}">${html}</div>`, iconSize:[size,size], iconAnchor:[size/2,size/2], popupAnchor:[0,-size/2]});
   if (layer !== "food") RIDES.forEach(r => { const pos = P[r.id]; if (!pos) return; const tm = TYPE_META[r.type];
     const m = L.marker([pos[0]/1e5, pos[1]/1e5], {icon:pinIcon(r.emt?"voted":"", svg(tm.icon), tm.c), title:r.name, keyboard:true}).addTo(map);
-    m.bindPopup(`<div class="pop">${rideKey(r) ? imgTag(rideKey(r), "photo", "") : ""}<div><b>${esc(r.name)}</b><span class="muted" style="font-size:12px">${esc(r.land)} · ${tm.label}</span><button class="btn primary" data-open="${r.id}">Details</button></div></div>`);
+    m.bindPopup(`<div class="pop">${rideKey(r) ? imgTag(rideKey(r), "photo", "") : ""}<div><b>${esc(r.name)}</b><span class="muted" style="font-size:12px">${esc(r.land)} · ${r.closed ? `<b style="color:#ff8a9a">${r.closed.label}</b>` : tm.label}</span><button class="btn primary" data-open="${r.id}">Details</button></div></div>`);
     m.on("popupopen", e => { const b = e.popup.getElement().querySelector("[data-open]"); if (b) b.onclick = () => openRide(r.id); });
     pins.push(m); if (S.focusRide === r.id) setTimeout(() => { map.setView(m.getLatLng(), 18); m.openPopup(); }, 50); });
   if (layer !== "rides") FOOD.forEach(f => { const pos = P[f.id]; if (!pos) return;
@@ -1496,9 +1513,9 @@ function openRide(id){
     <div class="sh-img">${rideKey(r) ? imgTag(rideKey(r), "photo", rideKey(r)===r.id ? r.name : "") + areaChip(rideKey(r), r.id) : `<div class="ph art" style="--bc:${tm.c};margin:0;border-radius:0;height:100%"><i></i><i></i>${svg(tm.icon)}</div>`}<button class="x" data-close aria-label="Close">×</button></div>
     <div class="sh-body">
       <div class="eyebrow" style="color:${tm.c}">${tm.label} · ${esc(r.land)} · ${PARKS[r.park]}</div>
-      <h2 id="shTitle" style="font-family:var(--f-display);font-size:26px">${esc(r.name)}</h2>
+      <h2 id="shTitle" style="font-family:var(--f-display);font-size:26px">${esc(r.name)}</h2>${r.closed ? `<div class="closednote ${r.closed.full ? "" : "part"}"><b>${r.closed.label} on your dates.</b> ${esc(r.closed.note)}</div>` : ""}
       <p style="margin:0;font-size:15px;color:#d9dcff">${esc(r.blurb)}</p>
-      ${r.tip ? `<div class="tipline" style="font-size:14px"><span aria-hidden="true">✦</span><span>${esc(r.tip)}</span></div>` : ""}
+      ${r.tip && !(r.closed && r.closed.full) ? `<div class="tipline" style="font-size:14px"><span aria-hidden="true">✦</span><span>${esc(r.tip)}</span></div>` : ""}
       <div class="thrill" aria-label="Intensity ${r.lvl} of 5">${[1,2,3,4,5].map(i => `<i class="${i<=r.lvl?"on":""}"></i>`).join("")}<span class="muted" style="font-size:12px;margin-left:8px">Intensity ${r.lvl}/5</span></div>
       ${r.emt ? `<div class="emtnote">${svg(ICON.clock)}<span><b>Usually open during your Extra Magic Time</b> (08:00–09:00 for hotel guests). Not guaranteed every morning; the official app shows that day's list.</span></div>` : ""}
       <div class="actions"><a class="btn" href="#map" data-close data-focus="${r.id}">${svg(ICON.map)}Show on map</a></div>
@@ -1528,7 +1545,7 @@ const pad = n => String(n).padStart(2,"0");
 function tickCountdown(){
   const now = Date.now(); const cap = $("#cdCap");
   let diff;
-  if (now < TRIP_START){ diff = TRIP_START-now; cap.innerHTML = `until check-in at the <b>Disneyland Hotel</b> · Sunday 29 November, 15:00`; }
+  if (now < TRIP_START){ diff = TRIP_START-now; cap.innerHTML = `until your <b>first minute in the park</b> · Sunday 29 November, 08:00`; }
   else if (now < TRIP_END){ diff = TRIP_END-now; cap.innerHTML = `<b>You're here!</b> Time left to soak up the magic · Paris time ${parisNow()}`; }
   else { diff = 0; cap.innerHTML = `<b>Merci</b> for a magical weekend, Max, Marjo, Martina &amp; Maurits`; }
   const d=Math.floor(diff/864e5), h=Math.floor(diff/36e5)%24, m=Math.floor(diff/6e4)%60, s=Math.floor(diff/1e3)%60;
@@ -2503,7 +2520,7 @@ let liveRunning = false, liveLast = 0, liveAcc = 0;
 function liveLoop(now){
   const dt = Math.min(3, liveLast ? (now - liveLast) / 16.67 : 1); liveLast = now; liveAcc += dt;
   let any = false;
-  for (const [cv, L] of lives){ if (!L.host.isConnected){ lives.delete(cv); continue; } if (!L.seen) continue; any = true; if (liveAcc >= 1.9){ sizeLive(L); drawLive(L, liveAcc); } }
+  for (const [cv, L] of lives){ if (!L.host.isConnected){ lives.delete(cv); continue; } if (!L.seen) continue; any = true; if (liveAcc >= 1.9){ sizeLive(L); if (L.w > 4 && L.h > 4) drawLive(L, liveAcc); } }
   if (liveAcc >= 1.9) liveAcc = 0;
   if (any && !document.hidden) requestAnimationFrame(liveLoop); else { liveRunning = false; liveLast = 0; }
 }
