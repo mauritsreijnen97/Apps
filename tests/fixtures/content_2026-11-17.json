@@ -1,0 +1,45 @@
+{
+ "headline": "Maurits, it is strike day, but lines L and U run normally.",
+ "acts": [
+  {"text": "Showers and gusty wind around 11°C. Lines L and U run normally; RER D and lines J, N, R and P run two trains in three."},
+  {"text": "From 11 AM, 17 metro and RER stations close around Étoile, Concorde, Invalides and Austerlitz; the march leaves Nation at 2 PM for Place d'Italie."},
+  {"text": "Showers continue under a yellow wind warning. Line U's last train from La Défense is 9:15 PM, and the A13 tunnel stays shut outbound."}
+ ],
+ "marks": [{"hour": 11, "label": "stations shut, 11 AM"}, {"hour": 14, "label": "march, 2 PM"}],
+ "weather_motif": "rain",
+ "weather_line": "Saint-Cloud and Issy: showers from morning to night after heavy overnight rain, 11°C to 16°C, about 24 mm, yellow wind warning",
+ "sections": [
+  {"kind": "coming_up", "items": [
+   {"title": "General strike: your lines run, central Paris does not",
+    "url": "https://www.sortiraparis.com/actualites/a-paris/articles/358322-greve-sncf-et-ratp-du-17-novembre-les-previsions-de-trafic-rer-transilien-et-metro-annonces",
+    "text": "Transilien forecasts normal service on lines L and U, and RER A, B, C and E run normally. From 11 AM, 17 stations close; the march leaves Nation at 2 PM for Place d'Italie.",
+    "link_phrase": "forecasts normal service on lines L and U"},
+   {"title": "A13 Saint-Cloud tunnel, day two",
+    "url": "https://www.infosyvelines.fr/articles/versailles-tunnel-saint-cloud-ferme-lundi-novembre-2026",
+    "text": "The outbound tube stays closed until August 2027; inbound is open and the A14 is toll-free on weekdays for cars.",
+    "link_phrase": "stays closed until August 2027"},
+   {"title": "GHR hotel and restaurant congress at Paris Bercy",
+    "url": "https://www.tradingview.com/news/afp:caf7361054f5b:0/",
+    "text": "The national GHR 2026 congress for hoteliers and restaurateurs opens today in Bercy. Also on the agenda: Iliad Q3 results at 8 AM.",
+    "link_phrase": "opens today in Bercy"}
+  ]},
+  {"kind": "worth_knowing", "items": [
+   {"title": "Amadeus breach list keeps growing",
+    "url": "https://openjaw.com/newsroom/airline/2026/11/16/caribbean-airlines-breached-in-growing-amadeus-attack-list",
+    "text": "Caribbean Airlines joined Singapore, Cathay, ANA, JAL, Korean, Malaysia and Condor among carriers whose booking data was exposed via an Amadeus display system. Qantas is investigating.",
+    "link_phrase": "booking data was exposed via an Amadeus display system"},
+   {"title": "Airbnb pushes into hotels",
+    "url": "https://travelweekly.co.uk/news/airbnb-targets-hotel-bookings-in-bid-to-challenge-expedia-and-bookingcom",
+    "text": "Airbnb is adding hotels to take on Expedia and Booking.com, and says AI already handles about 40% of its customer service.",
+    "link_phrase": "adding hotels to take on Expedia and Booking.com"},
+   {"title": "Expedia raises its bookings outlook",
+    "url": "https://fool.com/earnings/takeaways/2026/11/15/expedia-3-key-takeaways-for-long-term-investors",
+    "text": "After a Q3 beat, Expedia lifted full-year booking growth to about 10%, citing B2B growth and AI efficiencies.",
+    "link_phrase": "lifted full-year booking growth to about 10%"},
+   {"title": "What today's strike may cost",
+    "url": "https://www.economiematin.fr/greve-novembre-impact-croissance-economique",
+    "text": "Estimates put the cost of today's six-union strike at 300 million to 1 billion euros, four weeks before the Christmas retail peak.",
+    "link_phrase": "300 million to 1 billion euros"}
+  ]}
+ ]
+}
