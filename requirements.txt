@@ -1,0 +1,7 @@
+anthropic==2.9.0
+astral==3.2
+Jinja2==3.1.6
+pydantic==2.13.5
+requests==2.34.2
+playwright==1.65.2
+pytest==9.2.0

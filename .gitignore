@@ -1,0 +1,9 @@
+dist/
+dist-offline/
+screenshots/
+screenshots-offline/
+_site/
+__pycache__/
+.pytest_cache/
+*.pyc
+.venv/

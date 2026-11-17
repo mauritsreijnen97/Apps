@@ -1,0 +1,136 @@
+name: Morning brief
+
+on:
+  schedule:
+    # Weekdays. Times are UTC; GitHub often starts scheduled runs late, so there
+    # are three tries. Winter (UTC+1): 04:17, 04:47, 05:17 Paris.
+    # Summer (UTC+2): 05:17, 05:47, 06:17 Paris. The first finished run wins;
+    # later ones see today's page and stop in seconds.
+    - cron: "17 3 * * 1-5"
+    - cron: "47 3 * * 1-5"
+    - cron: "17 4 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Rebuild even if today's page exists"
+        type: boolean
+        default: false
+  push:
+    branches: [main]   # keeps the other apps on the site up to date
+
+permissions:
+  contents: write      # saves dist/ to the brief-data branch
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      status: ${{ steps.brief.outputs.status || 'not-run' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore previous pages and history
+        run: |
+          mkdir -p dist
+          if git fetch --depth=1 origin brief-data; then
+            git archive FETCH_HEAD | tar -x -C dist
+          fi
+
+      - uses: actions/setup-python@v5
+        if: github.event_name != 'push'
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        if: github.event_name != 'push'
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Build today's brief
+        id: brief
+        if: github.event_name != 'push'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          set +e
+          python -m brief.build ${{ inputs.force && '--force' || '' }}
+          code=$?
+          set -e
+          # 0 fresh or skipped, 3 yesterday's page republished; both still deploy
+          if [ "$code" != "0" ] && [ "$code" != "3" ]; then exit "$code"; fi
+
+      - name: Upload screenshots
+        if: always() && github.event_name != 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-${{ github.run_id }}
+          path: |
+            screenshots/
+            dist/build.json
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: Save pages and history to the brief-data branch
+        if: steps.brief.outputs.status == 'fresh' || steps.brief.outputs.status == 'stale'
+        run: |
+          git config user.name "morning-brief[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          tmp=$(mktemp -d)
+          if git fetch --depth=1 origin brief-data; then
+            git worktree add "$tmp" FETCH_HEAD
+            git -C "$tmp" checkout -B brief-data
+          else
+            git worktree add --orphan -b brief-data "$tmp"
+          fi
+          rsync -a --delete --exclude .git --exclude .candidate.html dist/ "$tmp"/
+          git -C "$tmp" add -A
+          git -C "$tmp" commit -m "Morning brief $(TZ=Europe/Paris date +%F): ${{ steps.brief.outputs.status }}" || echo "nothing to commit"
+          git -C "$tmp" push origin brief-data
+
+      - name: Assemble the site
+        if: steps.brief.outputs.status != 'skipped'
+        run: |
+          mkdir -p _site
+          rsync -a --exclude .git --exclude .github --exclude dist --exclude _site --exclude brief \
+            --exclude tests --exclude reference --exclude screenshots --exclude Makefile \
+            --exclude requirements.txt --exclude README.md --exclude .gitignore ./ _site/
+          if [ -f dist/index.html ]; then
+            mkdir -p _site/morning-brief
+            rsync -a --exclude .candidate.html dist/ _site/morning-brief/
+          fi
+          touch _site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.brief.outputs.status != 'skipped'
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.status != 'skipped'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+  report:
+    # Turns the run red (and emails you) when the page could not be refreshed.
+    needs: [build, deploy]
+    if: always() && needs.build.outputs.status == 'stale'
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "::error::Today's brief failed its checks twice; yesterday's page is live with a 'not updated today' note. See dist/build.json in the run artifacts."
+          exit 1

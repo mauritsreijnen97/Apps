@@ -1,0 +1,214 @@
+{% include "_head.html" %}
+<body>
+<div class="band top">
+  <div class="wrap">
+    <p class="date rise d1">{{ date_line }}{% if stale_note %} · <span style="color:var(--grey)">{{ stale_note }}</span>{% endif %}</p>
+    <h1 class="rise d2">{{ headline }}</h1>
+
+    <svg class="scene" viewBox="0 0 840 170" role="img" aria-label="{{ scene.aria }}">
+      <defs>
+        <clipPath id="sky"><rect x="-40" y="-60" width="920" height="172"/></clipPath>
+      </defs>
+
+      <!-- sun on today's arc, placed by the current Paris time -->
+      <g clip-path="url(#sky)">
+        <g id="sun" transform="translate({{ scene.sun_x }} 112)"{% if scene.sun_opacity < 1 %} opacity="{{ scene.sun_opacity }}"{% endif %}>
+          <circle class="glow" r="22" fill="#C6613F" opacity=".10"/>
+          <g class="rays" stroke="#C6613F" stroke-width="1.6" stroke-linecap="round">
+            <line x1="0" y1="-19" x2="0" y2="-25"/><line x1="0" y1="19" x2="0" y2="25"/>
+            <line x1="-19" y1="0" x2="-25" y2="0"/><line x1="19" y1="0" x2="25" y2="0"/>
+            <line x1="13.4" y1="13.4" x2="17.7" y2="17.7"/><line x1="-13.4" y1="-13.4" x2="-17.7" y2="-17.7"/>
+            <line x1="13.4" y1="-13.4" x2="17.7" y2="-17.7"/><line x1="-13.4" y1="13.4" x2="-17.7" y2="17.7"/>
+          </g>
+          <circle r="12" fill="#C6613F"/>
+        </g>
+      </g>
+{% for c in scene.clouds %}
+      <!-- {{ c.note }} -->
+      <g class="fade {{ c.delay }}">
+        <g transform="{{ c.transform }}">
+          <g class="cloud">
+            <path d="M150 52 q2 -12 14 -10 q5 -10 17 -6 q10 -4 13 6 q10 1 9 10 z" fill="#F9F9F7" stroke="#2E2C27" stroke-width="1.5" stroke-linejoin="round"/>
+{%- if c.kind == "rain" %}
+            <g stroke="#B4B3A8" stroke-width="1.4" stroke-linecap="round">
+              <line class="twinkle" x1="164" y1="60" x2="160" y2="70"/>
+              <line class="twinkle" x1="176" y1="62" x2="172" y2="72"/>
+              <line class="twinkle" x1="188" y1="60" x2="184" y2="70"/>
+              <line class="twinkle" x1="200" y1="62" x2="196" y2="72"/>
+            </g>
+{%- elif c.kind == "snow" %}
+            <g fill="#B4B3A8">
+              <circle class="twinkle" cx="163" cy="63" r="1.6"/>
+              <circle class="twinkle" cx="175" cy="69" r="1.6"/>
+              <circle class="twinkle" cx="187" cy="62" r="1.6"/>
+              <circle class="twinkle" cx="199" cy="68" r="1.6"/>
+            </g>
+{%- endif %}
+          </g>
+        </g>
+      </g>
+{% endfor %}
+{%- if scene.birds %}
+      <!-- birds over the {{ scene.birds.note }} -->
+      <g class="fade d5">
+        <g transform="{{ scene.birds.transform }}">
+          <g class="birds" fill="none" stroke="#2E2C27" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path class="wing" d="M118 24 q6 -6 12 0 q6 -6 12 0"/>
+            <path class="wing b" d="M148 14 q4.5 -4.5 9 0 q4.5 -4.5 9 0"/>
+          </g>
+        </g>
+      </g>
+{% endif %}
+{%- if scene.ripples %}
+      <!-- rain ripples on the water through the afternoon -->
+      <g class="fade d6" stroke="#B4B3A8" stroke-width="1.4" stroke-linecap="round" fill="none">
+        <line class="ripple" x1="380" y1="132" x2="422" y2="132"/>
+        <line class="ripple" x1="442" y1="138" x2="470" y2="138"/>
+        <line class="ripple" x1="490" y1="132" x2="540" y2="132"/>
+        <ellipse class="twinkle" cx="402" cy="140" rx="7" ry="2"/>
+        <ellipse class="twinkle" cx="512" cy="141" rx="6" ry="1.8"/>
+      </g>
+{% endif %}
+{%- if scene.fog %}
+      <!-- low fog drifting across the morning -->
+      <g class="fade d4" stroke="#B4B3A8" stroke-width="1.4" stroke-linecap="round" fill="none">
+        <line class="ripple" x1="20" y1="70" x2="120" y2="70"/>
+        <line class="ripple" x1="60" y1="80" x2="190" y2="80"/>
+        <line class="ripple" x1="150" y1="90" x2="260" y2="90"/>
+      </g>
+{% endif %}
+      <!-- evening: moon, stars{% if scene.evening_cloud %}, a cloud coming in{% endif %} -->
+      <g id="night" class="fade d7">
+        <g fill="#B4B3A8">
+          <circle class="twinkle" cx="650" cy="30" r="1.5"/>
+          <circle class="twinkle" cx="760" cy="22" r="1.3"/>
+          <circle class="twinkle" cx="790" cy="58" r="1.5"/>
+          <circle class="twinkle" cx="622" cy="62" r="1.1"/>
+        </g>
+        <path d="M712 26 a17 17 0 1 0 14 28 a13 13 0 1 1 -14 -28 z" fill="none" stroke="#2E2C27" stroke-width="1.6" stroke-linejoin="round"/>
+{%- if scene.evening_cloud %}
+        <g class="cloud">
+          <path d="M640 92 q2 -12 14 -10 q5 -10 17 -6 q10 -4 13 6 q10 1 9 10 z" fill="#F9F9F7" stroke="#2E2C27" stroke-width="1.5" stroke-linejoin="round"/>
+        </g>
+{%- endif %}
+      </g>
+
+      <!-- the day itself: one unbroken line, 7 AM on the left, 11 PM on the right -->
+      <path id="terrain" class="terrain" fill="none" stroke="#2E2C27" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        d="M0 118 C40 116 70 104 110 100 S180 104 230 110 S310 116 370 116 S470 116 520 114 S600 104 640 106 S720 114 770 112 S820 112 840 114"/>
+
+      <!-- time-bound moments sit on the line -->
+      <g id="marks" class="fade d8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="11" fill="#6B6A63"></g>
+      <g id="now" class="fade d9"></g>
+    </svg>
+
+    <div class="acts">
+{%- for a in acts %}
+      <div class="act rise d{{ loop.index + 2 }}">
+        <b>{{ a.label }}</b>
+        <p>{{ a.text }}</p>
+      </div>
+{%- endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="band bottom">
+  <div class="wrap">
+{%- for s in sections %}
+    <section class="rise d{{ [loop.index + 5, 9]|min }}">
+      <h2>{{ s.title }}</h2>
+{%- if s.line %}
+      <p class="line">{{ s.line }}</p>
+{%- else %}
+      <ol>
+{%- for i in s.entries %}
+        <li><div><a class="t" href="{{ i.url }}">{{ i.title }}</a>
+          <p>{{ i.html }}</p></div></li>
+{%- endfor %}
+      </ol>
+{%- endif %}
+    </section>
+{%- endfor %}
+  </div>
+</div>
+
+<script>
+(function(){
+  var SUNRISE = {{ sun.rise_js }}, SUNSET = {{ sun.set_js }};   // Paris, today
+  var START = Math.min(7, Math.floor(SUNRISE)), END = 23, W = 840; // x axis = 7 AM (earlier in summer) to 11 PM
+  var path = document.getElementById('terrain');
+  var len = path.getTotalLength();
+  path.style.setProperty('--len', len);
+  var NS = 'http://www.w3.org/2000/svg';
+  function xOf(h){ return (h - START) / (END - START) * W; }
+  function yAt(x){
+    var lo = 0, hi = len;
+    for (var i = 0; i < 24; i++){ var m = (lo+hi)/2; if (path.getPointAtLength(m).x < x) lo = m; else hi = m; }
+    return path.getPointAtLength(lo).y;
+  }
+  function el(tag, attrs, parent){ var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; }
+
+  // grey dots: things happening around you, not on your calendar
+  var marks = document.getElementById('marks');
+  var MARKS = {{ marks|tojson }}, placed = [];
+  function hits(a, b){ return a.x < b.x + b.width + 4 && b.x < a.x + a.width + 4 && a.y < b.y + b.height && b.y < a.y + a.height; }
+  MARKS.forEach(function(m){
+    var x = xOf(m[0]), y = yAt(x);
+    el('circle', {cx:x, cy:y, r:6, fill:'#B4B3A8'}, marks);
+    var anchor = x > W - 70 ? 'end' : x < 70 ? 'start' : 'middle';
+    var t = el('text', {x:x, y:y+22, 'text-anchor': anchor}, marks);
+    if (anchor === 'end') t.setAttribute('x', x + 6);
+    if (anchor === 'start') t.setAttribute('x', x - 6);
+    t.textContent = m[1];
+    // two moments close together: lift the second label above its dot
+    var box = t.getBBox();
+    if (placed.some(function(p){ return hits(box, p); })){ t.setAttribute('y', y - 12); box = t.getBBox(); }
+    placed.push(box);
+  });
+
+  // live Paris time
+  function parisHour(){
+    try {
+      var p = new Intl.DateTimeFormat('en-GB', {timeZone:'Europe/Paris', hour:'2-digit', minute:'2-digit', hour12:false}).formatToParts(new Date());
+      var h = +p.find(function(x){return x.type==='hour';}).value, mi = +p.find(function(x){return x.type==='minute';}).value;
+      return (h % 24) + mi/60;
+    } catch(e){ var d = new Date(); return d.getHours() + d.getMinutes()/60; }
+  }
+  var sun = document.getElementById('sun'), night = document.getElementById('night'), now = document.getElementById('now');
+  var dot = el('g', {}, now);
+  el('circle', {class:'pulse', r:5, fill:'none', stroke:'#2E2C27', 'stroke-width':1.4}, dot);
+  el('circle', {r:3.5, fill:'#2E2C27'}, dot);
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function target(h){
+    if (h <= SUNRISE) return {x:xOf(SUNRISE), y:112};             // half-risen on the horizon
+    if (h >= SUNSET)  return {x:xOf(SUNSET), y:132};              // set below the line
+    var t = (h - SUNRISE) / (SUNSET - SUNRISE);
+    return {x:xOf(h), y:108 - 78 * Math.sin(Math.PI * t)};
+  }
+  var cur = {x:xOf(SUNRISE), y:150};
+  function place(p){ sun.setAttribute('transform', 'translate(' + p.x.toFixed(1) + ' ' + p.y.toFixed(1) + ')'); }
+  function update(first){
+    var h = parisHour(), to = target(h);
+    night.style.opacity = h >= SUNSET - 0.5 || h < SUNRISE ? 1 : 0.55;
+    var hx = Math.max(0, Math.min(W, xOf(Math.max(START, Math.min(END, h)))));
+    dot.setAttribute('transform', 'translate(' + hx.toFixed(1) + ' ' + yAt(hx).toFixed(1) + ')');
+    if (reduce || !first){ cur = to; place(to); return; }
+    var from = {x:cur.x, y:cur.y}, t0 = null, D = 2600;
+    function step(ts){
+      if (!t0) t0 = ts;
+      var k = Math.min(1, (ts - t0 - 500) / D); if (k < 0) k = 0;
+      var e = 1 - Math.pow(1 - k, 3);
+      cur = {x: from.x + (to.x - from.x) * e, y: from.y + (to.y - from.y) * e};
+      place(cur);
+      if (k < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  update(true);
+  setInterval(function(){ update(false); }, 60000);
+})();
+</script>
+</body>
+</html>
