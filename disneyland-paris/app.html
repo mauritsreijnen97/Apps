@@ -785,15 +785,6 @@ footer .foot{position:relative}
   .view>.sec-head:first-child{margin-top:30px}
 }
 
-/* ---------- 3-D snow globe ---------- */.globe-sec{display:grid;justify-items:center;gap:6px;margin:6px 0 10px}
-.globe-wrap{position:relative;width:min(100%,560px);aspect-ratio:1/1.02}
-.globe-cv{width:100%;height:100%;display:block;cursor:grab;opacity:0;transform:translateY(30px) scale(.94);transition:opacity 1.4s var(--ease),transform 1.6s var(--ease)}
-.globe-sec.ready .globe-cv{opacity:1;transform:none}
-.globe-cv:active{cursor:grabbing}
-.globe-wrap::before{content:"";position:absolute;left:14%;right:14%;bottom:3%;height:12%;border-radius:50%;background:radial-gradient(closest-side,rgba(243,197,107,.35),transparent);filter:blur(12px);z-index:-1}
-.globe-cap{margin:0;font-size:13px;color:var(--muted);letter-spacing:.01em}
-.globe-sec.noweb{display:none}
-
 /* ---------- Split-flap countdown ---------- */.cd-num{position:relative;perspective:400px}
 
 @keyframes flap{0%{transform:rotateX(0);opacity:1;filter:none}100%{transform:rotateX(-100deg);opacity:0;filter:brightness(.4)}}
@@ -808,7 +799,7 @@ footer .foot{position:relative}
 /* ---------- Hero depth ---------- */.hero-photo img{translate:calc(var(--hx,0) * -26px) calc(var(--hy,0) * -18px);transition:translate .8s var(--ease)}
 .hero h1{translate:calc(var(--hx,0) * 22px) calc(var(--hy,0) * 14px);transition:translate .6s var(--ease)}
 .hero .sub,.crew-strip{translate:calc(var(--hx,0) * 12px) calc(var(--hy,0) * 8px);transition:translate .7s var(--ease)}
-@media (prefers-reduced-motion:reduce){.rv{transform:none}.globe-cv{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.rv{transform:none}}
 
 /* ---------- Calm pass ---------- */.cd-num.flip{animation:flipIn .55s cubic-bezier(.2,.9,.3,1.2)}
 @keyframes flipIn{from{transform:perspective(300px) rotateX(-75deg);opacity:.2}to{transform:none;opacity:1}}
@@ -2553,160 +2544,6 @@ new MutationObserver(() => { const ov = $("#overlay"); if (!TRACKS.length || ov.
   list.after(box); }).observe($("#overlay"), {childList:true});
 
 
-/* =====================================================================
-   3-D snow globe, premium render: three.js r128 with bloom, image-based
-   reflections, soft shadows, a lacquered base and a detailed original
-   castle. Loaded only when it comes near the screen.
-   ===================================================================== */
-const TJS = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
-const loadJs = src => new Promise((res, rej) => { const s = document.createElement("script"); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); });
-let threeP = null;
-const loadThree = () => threeP || (threeP = (window.THREE ? Promise.resolve() : loadJs(TJS)).then(() => window.THREE));
-function globeSection(view){
-  if (!view || view.id !== "v-home" || view.querySelector(".globe-sec")) return;
-  const after = view.querySelector(".statement") || view.querySelector(".hello"); if (!after) return;
-  const sec = document.createElement("section"); sec.className = "globe-sec"; sec.setAttribute("aria-label", "Snow globe");
-  sec.innerHTML = `<div class="globe-wrap"><canvas class="globe-cv" role="img" aria-label="A snow globe with a fairy-tale castle. Drag to spin it, tap to shake it."></canvas></div><p class="globe-cap">Drag to spin · tap to shake</p>`;
-  after.after(sec);
-  const io = new IntersectionObserver(es => { if (es[0].isIntersecting){ io.disconnect(); loadThree().then(T => buildGlobe(T, sec)).catch(() => sec.classList.add("noweb")); } }, {rootMargin:"400px"}); io.observe(sec);
-}
-function buildGlobe(T, sec){
-  const cv = sec.querySelector("canvas"); let renderer;
-  try { renderer = new T.WebGLRenderer({canvas:cv, antialias:true, alpha:true, powerPreference:"high-performance"}); } catch(e){ sec.classList.add("noweb"); return; }
-  const DPR = Math.min(2, devicePixelRatio || 1); renderer.setPixelRatio(DPR);
-  renderer.outputEncoding = T.sRGBEncoding; renderer.toneMapping = T.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.1;
-  renderer.shadowMap.enabled = true; renderer.shadowMap.type = T.PCFSoftShadowMap; renderer.setClearColor(0x000000, 0);
-  const scene = new T.Scene(), cam = new T.PerspectiveCamera(30, 1, .1, 100); cam.position.set(0, 1.5, 10.6); cam.lookAt(0, 1.0, 0);
-
-  // --- lights
-  scene.add(new T.HemisphereLight(0x9fb2ff, 0x2a1438, .55));
-  const moon = new T.DirectionalLight(0xdfe6ff, 1.25); moon.position.set(-3.5, 6.5, 4.5); moon.castShadow = true;
-  moon.shadow.mapSize.set(1024, 1024); moon.shadow.camera.left = -3; moon.shadow.camera.right = 3; moon.shadow.camera.top = 4; moon.shadow.camera.bottom = -2; moon.shadow.radius = 4; moon.shadow.bias = -.0008; scene.add(moon);
-  const warm = new T.PointLight(0xffa64d, 1.4, 4.5, 2); warm.position.set(0, .75, .85); scene.add(warm);
-  const rim = new T.PointLight(0xff5c9a, 1.1, 12); rim.position.set(4, 2.5, -3.5); scene.add(rim);
-  const world = new T.Group(); scene.add(world);
-  const std = (c, o = {}) => { const m = new T.MeshStandardMaterial(Object.assign({color:c, roughness:.6, metalness:0}, o)); m.color.convertSRGBToLinear(); return m; };
-  const snowM = std(0xf6f8ff, {roughness:.85}), pinkM = std(0xd7769e, {roughness:.42}), pink2 = std(0xe6a0bd, {roughness:.48}), blueM = std(0x2c50c8, {roughness:.22, metalness:.35}),
-        goldM = std(0xffcf70, {roughness:.18, metalness:1}), stoneM = std(0xb9aed4, {roughness:.85}), darkM = std(0x221a36, {roughness:.5});
-  const cast = o => { o.castShadow = true; o.receiveShadow = true; return o; };
-
-  // --- lacquered base with gold trim and plaque
-  const base = cast(new T.Mesh(new T.CylinderGeometry(1.98, 2.3, .85, 96), (() => { const m = new T.MeshPhysicalMaterial({color:0x3a2466, roughness:.3, metalness:.15, clearcoat:1, clearcoatRoughness:.06}); m.color.convertSRGBToLinear(); return m; })()));
-  base.position.y = -.43; world.add(base);
-  [[0, 1.0], [-.83, 1.14], [-.42, 1.07]].forEach(([y, s]) => { const r = new T.Mesh(new T.TorusGeometry(1.99, y === -.42 ? .025 : .065, 20, 160), goldM); r.rotation.x = Math.PI / 2; r.position.y = y; r.scale.setScalar(s); world.add(r); });
-  const pc = document.createElement("canvas"); pc.width = 1024; pc.height = 256; const px = pc.getContext("2d");
-  const pg = px.createLinearGradient(0, 0, 0, 256); pg.addColorStop(0, "#f7d98f"); pg.addColorStop(.5, "#d9a441"); pg.addColorStop(1, "#f3cf7e"); px.fillStyle = pg; px.fillRect(0, 0, 1024, 256);
-  px.strokeStyle = "rgba(90,50,0,.6)"; px.lineWidth = 6; px.strokeRect(14, 14, 996, 228);
-  px.fillStyle = "#3a2200"; px.textAlign = "center"; px.font = "700 84px -apple-system, Inter, sans-serif"; px.fillText("Our Magic Weekend", 512, 128); px.font = "600 46px -apple-system, Inter, sans-serif"; px.fillText("29 – 30 November 2026", 512, 200);
-  const ptex = new T.CanvasTexture(pc); ptex.encoding = T.sRGBEncoding; ptex.anisotropy = 8;
-  const plaque = new T.Mesh(new T.CylinderGeometry(2.165, 2.165, .5, 64, 1, true, -.62, 1.24), new T.MeshStandardMaterial({map:ptex, roughness:.25, metalness:.85}));
-  plaque.position.y = -.46; plaque.rotation.y = Math.PI; world.add(plaque);
-
-  // --- snow ground with gentle bumps
-  const hillG = new T.CircleGeometry(1.92, 96); hillG.rotateX(-Math.PI / 2); const hp = hillG.attributes.position;
-  for (let i = 0; i < hp.count; i++){ const x = hp.getX(i), z = hp.getZ(i), d = Math.sqrt(x * x + z * z); hp.setY(i, .22 * Math.cos(Math.min(1, d / 1.92) * Math.PI / 2) + .03 * Math.sin(x * 5) * Math.cos(z * 4.3)); }
-  hillG.computeVertexNormals(); const hill = new T.Mesh(hillG, snowM); hill.receiveShadow = true; world.add(hill);
-
-  // --- castle (original design)
-  const castle = new T.Group(); castle.position.set(0, .2, -.15); world.add(castle);
-  const add = (geo, m, x, y, z) => { const o = cast(new T.Mesh(geo, m)); o.position.set(x, y, z); castle.add(o); return o; };
-  const crenel = (w, d, y, z0) => { for (let i = -w / 2 + .05; i <= w / 2; i += .12) add(new T.BoxGeometry(.06, .07, .06), stoneM, i, y, z0); };
-  const winM = new T.MeshBasicMaterial({color:0xffcf7a}); winM.color.multiplyScalar(2.2); const wins = [];
-  const win = (x, y, z, ry = 0, s = 1) => { const w = new T.Mesh(new T.PlaneGeometry(.055 * s, .1 * s), winM.clone()); w.position.set(x, y, z); w.rotation.y = ry; castle.add(w); wins.push(w); };
-  const tower = (r, h, x, z, roofH, y0 = 0, flag = false) => {
-    const prof = [new T.Vector2(r * 1.06, 0), new T.Vector2(r, h * .9), new T.Vector2(r * 1.12, h * .93), new T.Vector2(r * 1.12, h), new T.Vector2(0, h)];
-    add(new T.LatheGeometry(prof, 32), pink2, x, y0, z);
-    add(new T.ConeGeometry(r * 1.32, roofH, 32), blueM, x, y0 + h + roofH / 2, z);
-    add(new T.SphereGeometry(r * .2, 16, 12), goldM, x, y0 + h + roofH + r * .12, z);
-    add(new T.CylinderGeometry(.008, .008, r * 1.2, 6), goldM, x, y0 + h + roofH + r * .7, z);
-    if (flag){ const f = add(new T.PlaneGeometry(.16, .09), new T.MeshStandardMaterial({color:0xff5d73, side:T.DoubleSide, roughness:.6}), x + .08, y0 + h + roofH + r * 1.05, z); f.userData.flag = true; }
-    for (let a = 0; a < 3; a++){ const ang = Math.PI / 2 + (a - 1) * .55; win(x + Math.sin(ang - Math.PI / 2) * r * 1.01, y0 + h * .55, z + Math.cos(ang - Math.PI / 2) * r * 1.01, ang - Math.PI / 2, .9); }
-  };
-  add(new T.BoxGeometry(1.7, .5, .8), stoneM, 0, .25, 0); crenel(1.7, .8, .54, .4);
-  add(new T.BoxGeometry(1.15, .62, .6), pinkM, 0, .81, -.02); crenel(1.15, .6, 1.15, .28);
-  add(new T.BoxGeometry(.62, .45, .45), pink2, 0, 1.35, -.05);
-  tower(.17, 1.0, -.82, .2, .55, 0, true); tower(.17, 1.0, .82, .2, .55, 0, true); tower(.13, .82, -.55, -.32, .46); tower(.13, .82, .55, -.32, .46);
-  tower(.22, .72, 0, -.05, .95, 1.12, true); tower(.09, .6, -.3, .1, .4, 1.1); tower(.09, .6, .3, .1, .4, 1.1); tower(.07, .45, -.18, -.25, .32, 1.35); tower(.07, .45, .18, -.25, .32, 1.35);
-  const arch = add(new T.CylinderGeometry(.15, .15, .8, 32, 1, false, 0, Math.PI), darkM, 0, .2, .02); arch.rotation.set(0, 0, Math.PI / 2); arch.rotation.y = Math.PI / 2;
-  add(new T.BoxGeometry(.32, .03, .5), stoneM, 0, .02, .62);
-  [[-.3, .82], [.3, .82], [-.15, .82], [.15, .82], [0, 1.35], [-.6, .3], [.6, .3], [-.3, .3], [.3, .3]].forEach(([x, y]) => win(x, y, y > 1 ? .18 : y > .5 ? .29 : .41));
-  // --- Christmas tree with bulbs
-  const tree = new T.Group(); tree.position.set(-1.12, .12, .62); world.add(tree);
-  [[.42, .52, .26], [.34, .44, .55], [.25, .36, .82], [.15, .26, 1.03]].forEach(([r, h, y]) => { const c = cast(new T.Mesh(new T.ConeGeometry(r, h, 24), std(0x17573a, {roughness:.7}))); c.position.y = y; tree.add(c); });
-  const starM = new T.MeshBasicMaterial({color:0xffe28a}); starM.color.multiplyScalar(3); const star = new T.Mesh(new T.OctahedronGeometry(.075), starM); star.position.y = 1.22; tree.add(star);
-  const bulbs = []; const BC = [0xff4d63, 0xffc44d, 0x4fe39b, 0x7fc4ff, 0xff8fd0];
-  for (let i = 0; i < 34; i++){ const a = i * 1.63, y = .1 + (i / 34) * 1.0, r = .41 - (i / 34) * .32; const m = new T.MeshBasicMaterial({color:BC[i % 5]}); m.color.multiplyScalar(2.4); const b = new T.Mesh(new T.SphereGeometry(.026, 10, 8), m); b.position.set(Math.cos(a) * r, y, Math.sin(a) * r); tree.add(b); bulbs.push(b); }
-  // --- lamp posts, firs
-  [[.98, .72], [1.25, -.15], [-.38, 1.18], [.4, 1.2]].forEach(([x, z]) => { const p = cast(new T.Mesh(new T.CylinderGeometry(.018, .026, .6, 10), goldM)); p.position.set(x, .38, z); world.add(p);
-    const lm = new T.MeshBasicMaterial({color:0xffe0a0}); lm.color.multiplyScalar(2.6); const l = new T.Mesh(new T.SphereGeometry(.05, 16, 12), lm); l.position.set(x, .7, z); world.add(l); });
-  [[1.3, .5, .9], [.85, -1.0, 1.1], [-1.35, -.4, 1], [-.75, -1.08, .85], [1.45, -.75, .7], [-1.5, .25, .75]].forEach(([x, z, s]) => { const f = cast(new T.Mesh(new T.ConeGeometry(.16 * s, .46 * s, 16), std(0x245f47, {roughness:.8}))); f.position.set(x, .26 + .2 * s, z); world.add(f);
-    const cap = new T.Mesh(new T.ConeGeometry(.1 * s, .14 * s, 16), snowM); cap.position.set(x, .38 + .32 * s, z); world.add(cap); });
-
-  // --- glass: glossy physical shell + fresnel rim + soft highlight
-  const gl1 = new T.Mesh(new T.SphereGeometry(2, 96, 64), new T.MeshPhysicalMaterial({color:0xffffff, roughness:0, metalness:0, transparent:true, opacity:.08, clearcoat:1, clearcoatRoughness:0, depthWrite:false}));
-  const gl2 = new T.Mesh(new T.SphereGeometry(2.005, 96, 64), new T.ShaderMaterial({transparent:true, depthWrite:false, blending:T.AdditiveBlending,
-    vertexShader:"varying vec3 n; varying vec3 v; void main(){ vec4 mv = modelViewMatrix * vec4(position,1.); n = normalize(normalMatrix * normal); v = normalize(-mv.xyz); gl_Position = projectionMatrix * mv; }",
-    fragmentShader:"varying vec3 n; varying vec3 v; void main(){ float f = pow(1. - max(dot(n, v), 0.), 3.); float h = pow(max(dot(reflect(-v, n), normalize(vec3(-.45,.6,.65))), 0.), 90.); float h2 = pow(max(dot(reflect(-v, n), normalize(vec3(.6,.2,.75))), 0.), 30.) * .25; vec3 c = vec3(.75,.85,1.) * f * .6 + vec3(1.) * (h * 1.4 + h2) + vec3(1.,.55,.75) * f * .25; gl_FragColor = vec4(c, 1.); }"}));
-  [gl1, gl2].forEach(g => { g.position.y = 1.15; g.renderOrder = 5; world.add(g); });
-
-  // --- snow inside: soft sparkling flakes
-  const N = 1200, pos = new Float32Array(N * 3), vel = new Float32Array(N * 3), size = new Float32Array(N), R = 1.86, cy = 1.15;
-  const randIn = i => { let x, y, z; do { x = Math.random() * 2 - 1; y = Math.random() * 2 - 1; z = Math.random() * 2 - 1; } while (x * x + y * y + z * z > 1); pos[i * 3] = x * R; pos[i * 3 + 1] = cy + y * R; pos[i * 3 + 2] = z * R; };
-  for (let i = 0; i < N; i++){ randIn(i); vel[i * 3 + 1] = -Math.random() * .004; size[i] = .5 + Math.random() * 1.2; }
-  const sg = new T.BufferGeometry(); sg.setAttribute("position", new T.BufferAttribute(pos, 3)); sg.setAttribute("size", new T.BufferAttribute(size, 1));
-  const snowMat = new T.ShaderMaterial({transparent:true, depthWrite:false, blending:T.AdditiveBlending, uniforms:{t:{value:0}, px:{value:DPR}},
-    vertexShader:"attribute float size; uniform float t; uniform float px; varying float tw; void main(){ vec4 mv = modelViewMatrix * vec4(position,1.); tw = .6 + .4 * sin(t * .07 + position.x * 13. + position.z * 7.); gl_PointSize = size * px * 26. / -mv.z; gl_Position = projectionMatrix * mv; }",
-    fragmentShader:"varying float tw; void main(){ vec2 c = gl_PointCoord - .5; float d = length(c); float a = smoothstep(.5, 0., d); a *= a; gl_FragColor = vec4(vec3(1.,.98,.95) * (.7 + tw * .6), a * .85); }"});
-  const snow = new T.Points(sg, snowMat); snow.renderOrder = 4; world.add(snow);
-
-  // --- light glow: a soft additive halo on every light source
-  const hc = document.createElement("canvas"); hc.width = hc.height = 128; const hx = hc.getContext("2d"); const hg = hx.createRadialGradient(64, 64, 0, 64, 64, 64);
-  hg.addColorStop(0, "rgba(255,255,255,1)"); hg.addColorStop(.18, "rgba(255,255,255,.55)"); hg.addColorStop(.45, "rgba(255,255,255,.12)"); hg.addColorStop(1, "rgba(255,255,255,0)"); hx.fillStyle = hg; hx.fillRect(0, 0, 128, 128);
-  const haloTex = new T.CanvasTexture(hc); const halos = [];
-  const halo = (obj, color, s, parent) => { const m = new T.SpriteMaterial({map:haloTex, color, transparent:true, depthWrite:false, blending:T.AdditiveBlending, opacity:.9});
-    const sp = new T.Sprite(m); sp.scale.set(s, s, 1); sp.position.copy(obj.position); sp.renderOrder = 6; (parent || obj.parent).add(sp); halos.push({sp, base:.9, s}); return sp; };
-  wins.forEach(w => halo(w, 0xffb85c, .32));
-  bulbs.forEach((b, i) => { b.userData.halo = halo(b, BC[i % 5], .16); });
-  halo(star, 0xffe08a, .7);
-  world.children.filter(o => o.isMesh && o.geometry && o.geometry.type === "SphereGeometry" && o.material.isMeshBasicMaterial).forEach(l => halo(l, 0xffd690, .55));
-  const castleGlow = new T.Sprite(new T.SpriteMaterial({map:haloTex, color:0xff9a5c, transparent:true, depthWrite:false, blending:T.AdditiveBlending, opacity:.18})); castleGlow.scale.set(3.2, 2.4, 1); castleGlow.position.set(0, .9, .2); world.add(castleGlow);
-  // --- interaction
-  let yaw = -.4, pitch = 0, vy = .0022, dragging = false, lx = 0, ly = 0, moved = 0, wobble = 0;
-  const shake = power => { for (let i = 0; i < N; i++){ vel[i * 3] = (Math.random() - .5) * .08 * power; vel[i * 3 + 1] = Math.random() * .075 * power; vel[i * 3 + 2] = (Math.random() - .5) * .08 * power; } wobble = 1; if (typeof playing !== "undefined" && playing && actx) jingle(); };
-  cv.addEventListener("pointerdown", e => { dragging = true; moved = 0; lx = e.clientX; ly = e.clientY; cv.setPointerCapture(e.pointerId); });
-  cv.addEventListener("pointermove", e => { if (!dragging) return; const dx = e.clientX - lx, dy = e.clientY - ly; lx = e.clientX; ly = e.clientY; moved += Math.abs(dx) + Math.abs(dy);
-    vy = dx * .0035; yaw += dx * .01; pitch = Math.max(-.3, Math.min(.3, pitch + dy * .004)); if (Math.abs(dx) > 18) shake(.6); });
-  cv.addEventListener("pointerup", () => { dragging = false; if (moved < 6){ shake(1); if (window.__hello) window.__hello(pick(["Let it snow!", "Snow day!", "A whole winter in your hands"])); } });
-  cv.style.touchAction = "pan-y";
-  const resize = () => { const r = {width:cv.clientWidth, height:cv.clientHeight}; if (!r.width) return; renderer.setSize(r.width, r.height, false); cam.aspect = r.width / r.height; cam.updateProjectionMatrix();
-  };
-  resize(); addEventListener("resize", resize);
-  let visible = true; new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible){ last = 0; requestAnimationFrame(loop); } }).observe(cv);
-  let last = 0, t = 0;
-  const flags = []; castle.traverse(o => { if (o.userData.flag) flags.push(o); });
-  function loop(now){
-    if (!visible || document.hidden || !cv.isConnected) return; const dt = Math.min(3, last ? (now - last) / 16.67 : 1); last = now; t += dt;
-    if (!dragging){ yaw += vy * dt; vy += (.0022 - vy) * .02 * dt; pitch *= .97; }
-    wobble *= Math.pow(.93, dt); world.rotation.set(pitch + Math.sin(t * .5) * .06 * wobble, yaw, Math.sin(t * .45) * .08 * wobble);
-    for (let i = 0; i < N; i++){ const k = i * 3; vel[k] *= .985; vel[k + 2] *= .985; vel[k + 1] = vel[k + 1] * .985 - .00032 * dt;
-      pos[k] += vel[k] * dt + Math.sin(t * .02 + i) * .0007; pos[k + 1] += vel[k + 1] * dt; pos[k + 2] += vel[k + 2] * dt;
-      const x = pos[k], y = pos[k + 1] - cy, z = pos[k + 2], d = Math.sqrt(x * x + y * y + z * z);
-      if (d > R){ const s = R / d * .98; pos[k] = x * s; pos[k + 1] = cy + y * s; pos[k + 2] = z * s; vel[k] *= -.3; vel[k + 2] *= -.3; }
-      const ground = .22 * Math.cos(Math.min(1, Math.sqrt(x * x + z * z) / 1.92) * Math.PI / 2) + .02;
-      if (pos[k + 1] < ground && vel[k + 1] < 0){ pos[k + 1] = ground; vel[k] = vel[k + 1] = vel[k + 2] = 0; if (Math.random() < .004 * dt) randIn(i); } }
-    sg.attributes.position.needsUpdate = true; snowMat.uniforms.t.value = t;
-    wins.forEach((w, i) => w.material.color.setRGB(1, .78, .45).multiplyScalar(1.7 + .6 * Math.sin(t * .05 + i * 1.7)));
-    bulbs.forEach((b, i) => { const on = Math.sin(t * .08 + i * .9) > -.4; b.visible = on; b.userData.halo.visible = on; });
-    halos.forEach((h, i) => { if (h.sp.visible) h.sp.material.opacity = h.base * (.75 + .25 * Math.sin(t * .06 + i * 2.3)); }); castleGlow.material.opacity = .15 + .05 * Math.sin(t * .05);
-    flags.forEach((f, i) => { f.rotation.y = Math.sin(t * .15 + i) * .4; f.scale.x = .85 + .15 * Math.sin(t * .2 + i); });
-    star.rotation.y += .02 * dt; warm.intensity = 1.3 + .25 * Math.sin(t * .09);
-    renderer.render(scene, cam);
-    requestAnimationFrame(loop);
-  }
-  sec.classList.add("ready"); requestAnimationFrame(loop);
-  setTimeout(() => shake(.8), 700);
-}
-
 /* ---------------- Flip-in countdown digits (no extra elements inside the number) ---------------- */
 $$(".cd-num").forEach(n => { n.dataset.prev = n.textContent; new MutationObserver(() => {
   const v = n.textContent; if (RM || v === n.dataset.prev) return; n.dataset.prev = v;
@@ -2738,7 +2575,7 @@ function loadWx(){ if (wxTried) return paintWx(); wxTried = true;
     .then(r => r.ok ? r.json() : null).then(j => { if (j && j.daily && j.daily.time){ WX = j.daily; paintWx(); } }).catch(() => {}); }
 /* ---------------- Hook into the app's re-renders ---------------- */
 function refresh(){
-  const view = $("#app .view"); statement(view); globeSection(view); loadWx(); setTimeout(() => $$("#app .carousel").forEach(coverflow), 60); xmasLights($("#app")); placeMickeys(); decorate($("#app")); addLiving($("#app")); enhance($("#app")); placeInd(); lnSub(); onScroll();
+  const view = $("#app .view"); statement(view); loadWx(); setTimeout(() => $$("#app .carousel").forEach(coverflow), 60); xmasLights($("#app")); placeMickeys(); decorate($("#app")); addLiving($("#app")); enhance($("#app")); placeInd(); lnSub(); onScroll();
   // stagger the first screen of a newly opened view
 }
 new MutationObserver(refresh).observe($("#app"), {childList:true});
