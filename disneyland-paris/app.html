@@ -830,6 +830,15 @@ footer .foot{position:relative}
 .closednote{padding:12px 14px;border-radius:16px;background:rgba(255,93,115,.14);font-size:14px;line-height:1.4}
 .closednote.part{background:rgba(255,184,77,.14)}
 
+/* ---------- Weather on the day cards ---------- */
+.wx{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;padding:12px 14px;border-radius:18px;background:var(--panel-2)}
+.wx-t{font-family:var(--f-display);font-size:30px;font-weight:700;letter-spacing:-.04em;line-height:1}
+.wx-t small{font-size:.55em;color:var(--muted);font-weight:600}
+.wx-d{display:grid;gap:2px}
+.wx-sky{font-size:15px;font-weight:600}
+.wx-src{font-size:12.5px;color:var(--muted)}
+.wx.live .wx-src{color:var(--fir)}
+
 </style>
 
 <canvas id="snow" aria-hidden="true"></canvas>
@@ -904,13 +913,13 @@ const SHOWS = [
 const DAYS = [
   {n:1, date:"Sunday 29 November", short:"Sun 29 Nov", t0:DAY1,
    hours:"9:00 – 22:00", hoursNote:"Parks open at 9:00 on your dates, right after your Extra Magic Time",
-   sunset:"16:57", sunrise:"08:20",
+   sunset:"16:57", sunrise:"08:20", iso:"2026-11-29", wx:{hi:9, lo:5, rain:60, sky:"Cloudy, showers likely"},
    facts:[["clock","Extra Magic Time","08:00 – 09:00 for hotel guests. Your arrival day counts."],
           ["hotel","Hotel check-in","Room ready from about 15:00. The bell desk keeps bags before that."],
           ["sparkle","Christmas parade","Mickey's Dazzling Christmas Parade at 15:55 and 17:45 on Main Street."]]},
   {n:2, date:"Monday 30 November", short:"Mon 30 Nov", t0:DAY2,
    hours:"9:00 – 22:00", hoursNote:"Listed for 30 November in 2026 park-hour guides",
-   sunset:"16:56", sunrise:"08:22",
+   sunset:"16:56", sunrise:"08:22", iso:"2026-11-30", wx:{hi:8, lo:4, rain:50, sky:"Cloudy, some rain possible"},
    facts:[["clock","Extra Magic Time","08:00 – 09:00 again. Departure day counts too."],
           ["hotel","Hotel check-out","Usually by 11:00. The bell desk holds bags for the rest of the day."],
           ["sparkle","Christmas parade & evening shows","Parade at 15:55 and 17:45, then Disney Tales of Magic at the castle and Disney Cascade of Lights on the lake."]]}
@@ -1160,6 +1169,7 @@ const dayCard = (d, isToday) => { const k = picOf("day:" + d.n); return `<articl
   ${k ? `<div class="ph">${imgTag(k, "photo", "")}<span class="ph-chip" style="background:var(--gold)">${svg(ICON.clock)}Extra Magic Time ${EMT.start}</span></div>` : art(d.n === 1 ? "var(--rose)" : "var(--ice)", ICON.days, "", `<b class="art-big">${d.n === 1 ? "29" : "30"}</b><span class="ph-chip" style="background:var(--gold)">${svg(ICON.clock)}Extra Magic Time ${EMT.start}</span>`)}
   <div class="day-top"><div><div class="eyebrow">${isToday ? "Today" : "Day " + d.n}</div><h2>${d.date}</h2></div>
     <div class="sun"><span>${svg('<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>')} ${d.sunrise}</span><span>${svg('<path d="M3 18h18M7 18a5 5 0 0 1 10 0M12 7v4M5 12l2 1M19 12l-2 1"/>')} ${d.sunset}</span></div></div>
+  <div class="wx" data-wx="${d.iso}"><span class="wx-t">${d.wx.hi}°<small> / ${d.wx.lo}°</small></span><span class="wx-d"><b class="wx-sky">${d.wx.sky}</b><span class="wx-src">Estimate · ${d.wx.rain}% chance of rain</span></span></div>
   <div class="hours"><div><span class="muted">Extra Magic Time</span><b class="mono" style="color:var(--gold)">${EMT.start} – ${EMT.end}</b></div>
     <div><span class="muted">Both parks</span><b class="mono">${d.hours}</b></div></div>
 </article>`; };
@@ -1201,7 +1211,7 @@ R.home = () => {
     <div class="eyebrow">Your stay at a glance</div>
     <h2 class="glance-h">Everything that matters, <span class="dim">in one look.</span></h2>
     <div class="bento">${[["Check-in","Sun 29","Nov, from 15:00","g"],["Check-out","Mon 30","Nov, by 11:00",""],["Magic hours",EMT.start,"to " + EMT.end + ", both days","g"],
-      ["Parks open","9:00","to 22:00, both days",""],["Guests","4","Max, Marjo, Martina & Maurits",""],["Sunset","16:57","bring a warm layer","g"]].map(([l,v,x,c]) =>
+      ["Parks open","9:00","to 22:00, both days",""],["Guests","4","Max, Marjo, Martina & Maurits",""],["Sunset","16:57","about 9°, bring a warm layer","g"]].map(([l,v,x,c]) =>
       `<div class="spec"><span class="spec-l">${l}</span><b class="spec-v ${c?"grad":""}">${v}</b><span class="spec-x">${esc(x)}</span></div>`).join("")}
     </div>
   </section>`;
@@ -2713,9 +2723,22 @@ document.addEventListener("scroll", e => { const c = e.target; if (c.classList &
 if (!RM && FINE && heroEl){ heroEl.addEventListener("pointermove", e => { const r = heroEl.getBoundingClientRect(), px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
   heroEl.style.setProperty("--hx", px.toFixed(3)); heroEl.style.setProperty("--hy", py.toFixed(3)); }); heroEl.addEventListener("pointerleave", () => { heroEl.style.setProperty("--hx", 0); heroEl.style.setProperty("--hy", 0); }); }
 
+/* Live forecast: when the trip is close enough and the page may reach Open-Meteo (free, no key),
+   it replaces the estimate on the day cards. Only Disneyland Paris' coordinates are sent. */
+let WX = null, wxTried = false;
+const WXT = {0:"Clear", 1:"Mostly clear", 2:"Partly cloudy", 3:"Cloudy", 45:"Fog", 48:"Fog", 51:"Drizzle", 53:"Drizzle", 55:"Drizzle", 61:"Light rain", 63:"Rain", 65:"Heavy rain",
+  71:"Light snow", 73:"Snow", 75:"Heavy snow", 80:"Showers", 81:"Showers", 82:"Heavy showers", 95:"Thunderstorms"};
+function paintWx(){ if (!WX) return; $$("[data-wx]").forEach(el => { const i = WX.time.indexOf(el.dataset.wx); if (i < 0) return;
+  el.querySelector(".wx-t").innerHTML = `${Math.round(WX.temperature_2m_max[i])}°<small> / ${Math.round(WX.temperature_2m_min[i])}°</small>`;
+  el.querySelector(".wx-sky").textContent = WXT[WX.weather_code[i]] || "Mixed";
+  el.querySelector(".wx-src").textContent = `Forecast · ${WX.precipitation_probability_max[i]}% chance of rain`; el.classList.add("live"); }); }
+function loadWx(){ if (wxTried) return paintWx(); wxTried = true;
+  const days = (Date.UTC(2026,10,29) - Date.now()) / 864e5; if (days > 15 || days < -2) return;
+  fetch("https://api.open-meteo.com/v1/forecast?latitude=48.8722&longitude=2.7758&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FParis&start_date=2026-11-29&end_date=2026-11-30")
+    .then(r => r.ok ? r.json() : null).then(j => { if (j && j.daily && j.daily.time){ WX = j.daily; paintWx(); } }).catch(() => {}); }
 /* ---------------- Hook into the app's re-renders ---------------- */
 function refresh(){
-  const view = $("#app .view"); statement(view); globeSection(view); setTimeout(() => $$("#app .carousel").forEach(coverflow), 60); xmasLights($("#app")); placeMickeys(); decorate($("#app")); addLiving($("#app")); enhance($("#app")); placeInd(); lnSub(); onScroll();
+  const view = $("#app .view"); statement(view); globeSection(view); loadWx(); setTimeout(() => $$("#app .carousel").forEach(coverflow), 60); xmasLights($("#app")); placeMickeys(); decorate($("#app")); addLiving($("#app")); enhance($("#app")); placeInd(); lnSub(); onScroll();
   // stagger the first screen of a newly opened view
 }
 new MutationObserver(refresh).observe($("#app"), {childList:true});
